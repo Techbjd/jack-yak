@@ -16,31 +16,28 @@ const provinces = [
 const BASE_COLOR = '#253A55';
 const ACTIVE_COLOR = '#2D8A8A';
 
-const labelPct = (coord: number, offset: number, size: number) =>
-  `${((coord - offset) / size) * 100}%`;
-
 const NepalMap = () => {
   const [active, setActive] = useState(null);
 
   return (
-    <div className='w-full h-screen relative m-auto flex flex-col justify-center items-center top-80 overflow-hidden'>
-      <p className='absolute right-100 top-64 text-4xl'>CHINA</p>
+    <div className='w-full h-screen relative m-auto flex flex-col justify-center items-center top-80'>
+      <p className='absolute right-100 top-50 text-4xl'>CHINA</p>
 
       {/* Same image stack + positioning as before */}
       <img
         src="/Nepal-[Vectorized].png"
         alt="Nepal Map vectorized"
-        className='absolute top-15 max-w-full h-auto'
+        className='absolute top-15'
       />
       <img
         src="/NepalMap.png"
         alt="Nepal Map"
-        className='absolute max-w-full h-auto'
+        className='absolute'
       />
 
       {/* Overlay sits exactly on top of the images above — same absolute/top-15 anchor,
           sized to the Figma bounding box, scaled with the images via % width/height */}
-      <div className="absolute top-15" style={{ width: REF.w, maxWidth: '100%', aspectRatio: `${REF.w} / ${REF.h}` }}>
+      <div className="absolute top-15" style={{ width: REF.w, height: REF.h }}>
         <svg
           className="absolute inset-0 w-full h-full"
           viewBox={`0 0 ${REF.w} ${REF.h}`}
@@ -93,8 +90,8 @@ const NepalMap = () => {
               onMouseLeave={() => setActive(null)}
               className="absolute font-manrope capitalize leading-[22px] text-base whitespace-nowrap cursor-pointer"
               style={{
-                left: labelPct(p.label.left, REF.x, REF.w),
-                top: labelPct(p.label.top, REF.y, REF.h),
+                left: p.label.left - REF.x,
+                top: p.label.top - REF.y,
                 color: isActive ? ACTIVE_COLOR : BASE_COLOR,
                 fontWeight: isActive ? 700 : 400,
                 transition: 'color 0.15s ease, font-weight 0.15s ease',
