@@ -8,4 +8,86 @@
         'Instrument Sans', ui-sans-serif, system-ui, sans-serif,
         'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
         'Noto Color Emoji';
+    --font-manrope: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+
+    /* ── Brand colors ── */
+    --color-navy: #0E1B2B;
+    --color-navy-light: #253A55;
+    --color-navy-gradient: #5180BB;
+    --color-teal: #2D8A8A;
+    --color-orange: #FF7A00;
+    --color-blue-icon: #60A5FA;
+
+    /* ── Text colors ── */
+    --color-text-primary: #334155;
+    --color-text-white: #ffffff;
+
+    /* ── Background colors ── */
+    --color-bg-cream: #F7F2EE;
+    --color-bg-warm: #F9F4F0;
+    --color-bg-placeholder: #D9D9D9;
+
+    /* ── Border radius ── */
+    --radius-card: 5px;
+    --radius-image: 17px;
+
+    /* ── Font sizes (design tokens) ── */
+    --text-2xs: 8px;
+    --text-xs-sm: 10px;
+    --text-sm-base: 13px;
+    --text-base-md: 14px;
+    --text-md-lg: 16px;
+    --text-lg-xl: 20px;
+    --text-xl-2xl: 24px;
+    --text-2xl-3xl: 32px;
+    --text-3xl-4xl: 36px;
+
+    /* ── Max widths (content containers) ── */
+    --max-w-content-sm: 300px;
+    --max-w-content: 342px;
+    --max-w-content-md: 575px;
+    --max-w-content-lg: 605px;
+    --max-w-map: 900px;
+    --max-w-quote: 1011px;
+    --max-w-page: 1200px;
+    --max-w-container: 1440px;
+
+    /* ── Spacing (named dimensions) ── */
+    --spacing-card-w: 117px;
+    --spacing-card-h: 97px;
+    --spacing-logo: 91px;
+    --spacing-logo-w: 91.84px;
+    --spacing-sidebar: 183px;
+    --spacing-hamburger: 15px;
+
+    /* ── Border widths ── */
+    --border-width-hero-line: 3px;
+
+    /* ── Shadows ── */
+    --shadow-card: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* ===== Global overflow-prevention reset ===== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* optional dev safety net — remove once you trust the layout */
+}
+
+img, video, svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Prevent flex/grid children from refusing to shrink below content width */
+.flex > *,
+.grid > * {
+  min-width: 0;
 }

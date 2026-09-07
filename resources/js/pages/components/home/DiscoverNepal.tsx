@@ -1,68 +1,80 @@
 import React from 'react';
+import {
+    fontPrimary,
+    sectionPadding,
+    headingSubsection,
+    bodyTextSmall,
+    ctaMobile,
+    ctaDesktop,
+    imageRoundedXl,
+} from '@/config/theme';
 
 const DiscoverNepal = () => {
-
     return (
-        <section className="relative w-full overflow-hidden py-16 md:py-24">
+        <section className={`relative w-full overflow-hidden ${sectionPadding}`}>
             {/* Decorative rotated patch, scoped behind the image cluster */}
             <img
                 src="/patch3.png"
                 alt=""
                 aria-hidden="true"
-                className="
-          pointer-events-none select-none
-          absolute right-0 top-1/2 -translate-y-1/2
-          w-[280px] md:w-[420px] lg:w-[520px]
-          rotate-[89.27deg]
-          opacity-90
-          -z-10
-        "
+                className="pointer-events-none absolute top-1/2 right-0 -z-10 w-70 -translate-y-1/2 rotate-[89.27deg] opacity-90 select-none md:w-[420px] lg:w-[520px]"
             />
 
-            <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24 flex flex-col md:flex-row items-center gap-12 md:gap-16">
+            <div className="mx-auto flex max-w-container flex-col items-center gap-12 px-6 md:flex-row md:gap-16 md:px-12 lg:px-24 bg-bg-warm md:bg-transparent">
+                {/* Mobile: single image first */}
+                <div className="w-[95%] md:hidden">
+                    <div
+                        className={`aspect-336/229 w-full rounded-2xl ${imageRoundedXl}`}
+                        style={{
+                            backgroundImage: "url('/discover-nepal-2.png')",
+                        }}
+                    />
+                </div>
+
                 {/* Left: heading, copy, CTA */}
-                <div className="flex-1 flex flex-col gap-6 max-w-[605px]">
-                    <h2 className="font-manrope font-bold text-[#334155] text-3xl md:text-4xl leading-[1.05]">
+                <div className="flex max-w-content-lg flex-1 flex-col items-center gap-6 text-center md:items-start md:text-left">
+                    <h2 className={headingSubsection}>
                         Discover the Beauty of Nepal
                     </h2>
-                    <p className="font-manrope font-normal text-[#334155] text-lg md:text-2xl leading-[1.05]">
-                        From snow-capped peaks and peaceful lakes to ancient heritage
-                        sites and vibrant local communities, Nepal offers experiences
-                        unlike anywhere else.
+                    <p className={`${bodyTextSmall} md:text-lg`}>
+                        From snow-capped peaks and peaceful lakes to ancient
+                        heritage sites and vibrant local communities, Nepal
+                        offers experiences unlike anywhere else.
                     </p>
 
-                    <button className="mt-2 w-fit h-[42px] px-3 rounded-full bg-[#2D8A8A] flex items-center gap-2 font-manrope font-bold text-white text-[16px] leading-[22px]">
+                    {/* Mobile CTA button */}
+                    <button className={`${ctaMobile} mt-2 md:hidden`}>
                         <span className="px-2">Start Your Journey</span>
-                        <span className="bg-[#F7F2EE] mr-1 rounded-full w-8 h-8 flex items-center justify-center shrink-0">
-                            <span className="relative w-[10px] h-[10px]">
-                                <span className="absolute top-1/2 left-0 w-full h-px bg-[#60A5FA] -translate-y-1/2" />
-                                <span className="absolute left-1/2 top-0 h-full w-px bg-[#60A5FA] -translate-x-1/2" />
+                    </button>
+
+                    {/* Desktop CTA button */}
+                    <button className={`${ctaDesktop} mt-2`}>
+                        <span className="px-2">Start Your Journey</span>
+                        <span className="mr-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-bg-cream">
+                            <span className="relative h-2.5 w-2.5">
+                                <span className="absolute top-1/2 left-0 h-px w-full -translate-y-1/2 bg-blue-icon" />
+                                <span className="absolute top-0 left-1/2 h-full w-px -translate-x-1/2 bg-blue-icon" />
                             </span>
                         </span>
                     </button>
                 </div>
 
-                {/* Right: staggered image pair */}
-                <div className="flex-1 w-full flex items-center justify-end md:justify-center gap-4 md:gap-6">
+                {/* Desktop: staggered image pair */}
+                <div className="hidden w-full flex-1 items-center justify-end gap-4 md:flex md:justify-center md:gap-6">
                     {/* Rectangle 37 — taller, sits higher (offset up) */}
                     <div
-                        className="
-              w-[38%] md:w-[257px]
-              aspect-square
-              rounded-2xl bg-[#D9D9D9] bg-cover bg-center
-              -mt-10 md:-mt-14
-            "
-                        style={{ backgroundImage: "url('/discover-nepal-1.png')" }}
+                        className={`-mt-14 aspect-square w-64.25 rounded-2xl ${imageRoundedXl}`}
+                        style={{
+                            backgroundImage: "url('/discover-nepal-1.png')",
+                        }}
                     />
 
                     {/* Rectangle 36 — shorter, sits lower */}
                     <div
-                        className="
-              w-[48%] md:w-[386px]
-              aspect-square
-              rounded-2xl bg-[#D9D9D9] bg-cover bg-center
-            "
-                        style={{ backgroundImage: "url('/discover-nepal-2.png')" }}
+                        className={`aspect-square w-96.5 rounded-2xl ${imageRoundedXl}`}
+                        style={{
+                            backgroundImage: "url('/discover-nepal-2.png')",
+                        }}
                     />
                 </div>
             </div>

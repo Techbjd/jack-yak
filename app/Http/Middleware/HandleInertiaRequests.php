@@ -41,6 +41,20 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
+            'colors' => [
+                'navy' => config('colors.navy'),
+                'navy_light' => config('colors.navy_light'),
+                'navy_gradient' => config('colors.navy_gradient'),
+                'teal' => config('colors.teal'),
+                'orange' => config('colors.orange'),
+                'blue_icon' => config('colors.blue_icon'),
+                'text_primary' => config('colors.text_primary'),
+                'text_white' => config('colors.text_white'),
+                'bg_cream' => config('colors.bg_cream'),
+                'bg_warm' => config('colors.bg_warm'),
+                'bg_placeholder' => config('colors.bg_placeholder'),
+                'progress' => config('colors.progress'),
+            ],
         ];
     }
 }

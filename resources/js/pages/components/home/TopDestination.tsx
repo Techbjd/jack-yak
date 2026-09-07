@@ -1,82 +1,121 @@
 import React from 'react';
+import { fontPrimary, cardMobileImage, cardMobileContent } from '@/config/theme';
 
 const destinations = [
-  { name: 'Tilicho Lake', image: '/Group_35.png', ratio: '258 / 391', raised: true, size: 'md' },
-  { name: 'Everest', image: '/Group_36.png', ratio: '258 / 391', raised: false, size: 'lg' },
-  { name: 'Gokyo Lake', image: '/Group_37.png', ratio: '258 / 391', raised: true, size: 'md' },
+    {
+        name: 'Mount Everest',
+        subtitle: 'Highest Peak',
+        image: '/Group_36.png',
+        ratio: '258 / 391',
+        raised: false,
+        size: 'lg',
+    },
+    {
+        name: 'Mount Everest',
+        subtitle: 'Highest Peak',
+        image: '/Group_36.png',
+        ratio: '258 / 391',
+        raised: false,
+        size: 'lg',
+    },
+    {
+        name: 'Mount Everest',
+        subtitle: 'Highest Peak',
+        image: '/Group_36.png',
+        ratio: '258 / 391',
+        raised: false,
+        size: 'lg',
+    },
+    {
+        name: 'Mount Everest',
+        subtitle: 'Highest Peak',
+        image: '/Group_36.png',
+        ratio: '258 / 391',
+        raised: false,
+        size: 'lg',
+    },
 ];
 
 const TopDestinations = () => {
-  return (
-    <section className="w-full" style={{ padding: 'clamp(2rem, 6vw, 6rem) clamp(1rem, 5vw, 6rem)' }}>
-      <div className="mx-auto flex flex-col items-center" style={{ maxWidth: 1200, gap: 'clamp(2rem, 5vw, 4rem)' }}>
-        <h2
-          className="font-manrope font-bold text-[#334155] text-center"
-          style={{ fontSize: 'clamp(24px, 4vw, 36px)', lineHeight: 1.05, maxWidth: 342 }}
+    return (
+        <section
+            className="w-full py-16 md:py-24 px-6 md:px-12 lg:px-24"
         >
-          Explore Nepal's Top Destinations
-        </h2>
-
-        {/* MOBILE: horizontal scroll-snap carousel, center card shown larger.
-            DESKTOP (md+): original CSS grid, unchanged. */}
-        <div
-          className="
-            w-full
-            flex md:grid
-            overflow-x-auto md:overflow-visible
-            snap-x snap-mandatory md:snap-none
-            -mx-6 px-6 md:mx-0 md:px-0
-            gap-4 md:gap-6
-            items-end
-            [scrollbar-width:none] [-ms-overflow-style:none]
-            [&::-webkit-scrollbar]:hidden
-          "
-          style={{
-            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-          }}
-        >
-          {destinations.map((dest) => (
             <div
-              key={dest.name}
-              className={`
-                relative rounded-2xl overflow-hidden bg-[#D9D9D9] bg-cover bg-center
-                shrink-0 snap-center
-                ${dest.size === 'lg' ? 'w-[70%] md:w-auto' : 'w-[52%] md:w-auto'}
-              `}
-              style={{
-                aspectRatio: dest.ratio,
-                backgroundImage: `url(${dest.image})`,
-                transform:
-                  dest.raised
-                    ? 'translateY(clamp(-16px, -2vw, 0px))'
-                    : 'none',
-              }}
+                className="mx-auto flex flex-col items-center gap-16 md:gap-24 max-w-page"
             >
-              <div className="absolute inset-0 bg-linear-to-b from-black/40 via-black/0 to-black/10" />
-              <span
-                className="absolute left-0 right-0 text-center font-manrope font-medium text-white"
-                style={{ top: '6%', fontSize: 'clamp(14px, 2vw, 24px)' }}
-              >
-                {dest.name}
-              </span>
-            </div>
-          ))}
-        </div>
+                <h2
+                    className={`${fontPrimary} text-center font-bold text-text-primary text-xl-2xl md:text-3xl-4xl leading-[1.05] max-w-content`}
+                >
+                    Explore Nepal's Top Destinations
+                </h2>
 
-        {/* Mobile-only hint dots, purely visual — shows there's more to swipe */}
-        <div className="flex md:hidden items-center gap-1.5 -mt-2">
-          {destinations.map((dest) => (
-            <span
-              key={dest.name}
-              className={`rounded-full ${
-                dest.size === 'lg' ? 'w-4 h-1.5 bg-[#334155]/70' : 'w-1.5 h-1.5 bg-[#334155]/30'
-              }`}
-            />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+                {/* MOBILE: horizontal scroll cards */}
+                <div className="w-full overflow-x-auto [scrollbar-none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden md:hidden">
+                    <div className="flex w-max gap-5 pl-5 pr-5 snap-x snap-mandatory">
+                        {destinations.map((dest, i) => (
+                            <div
+                                key={i}
+                                className="flex shrink-0 snap-start flex-col"
+                            >
+                                <div
+                                    className={`${cardMobileImage} rounded-t-card bg-bg-placeholder bg-cover bg-center`}
+                                    style={{
+                                        backgroundImage: `url(${dest.image})`,
+                                    }}
+                                />
+                                <div className={`${cardMobileContent} flex flex-col items-center justify-center rounded-b-card bg-white shadow-card`}>
+                                    <span
+                                        className={`${fontPrimary} font-bold text-navy-light text-xs-sm leading-[14px] tracking-[0.03em]`}
+                                    >
+                                        {dest.name}
+                                    </span>
+                                    <span
+                                        className={`${fontPrimary} text-navy-light text-2xs font-semibold leading-[11px] tracking-[0.03em]`}
+                                    >
+                                        {dest.subtitle}
+                                    </span>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* DESKTOP: horizontal scroll-snap carousel */}
+                <div
+                    className="-mx-6 hidden w-full snap-x snap-mandatory [scrollbar-width:none] items-end gap-4 overflow-x-auto px-6 [-ms-overflow-style:none] md:flex md:snap-none md:gap-6 md:overflow-visible md:px-0 [&::-webkit-scrollbar]:hidden"
+                    style={{
+                        gridTemplateColumns:
+                            'repeat(auto-fit, minmax(220px, 1fr))',
+                    }}
+                >
+                    {destinations.map((dest) => (
+                        <div
+                            key={dest.name}
+                            className={`relative shrink-0 snap-center overflow-hidden rounded-2xl bg-bg-placeholder bg-cover bg-center ${dest.size === 'lg' ? 'w-auto' : 'w-auto'} `}
+                            style={{
+                                aspectRatio: dest.ratio,
+                                backgroundImage: `url(${dest.image})`,
+                                transform: dest.raised
+                                    ? 'translateY(clamp(-16px, -2vw, 0px))'
+                                    : 'none',
+                            }}
+                        >
+                            <div className="absolute inset-0 bg-linear-to-b from-black/40 via-black/0 to-black/10" />
+                            <span
+                                className={`${fontPrimary} absolute right-0 left-0 text-center font-medium text-white text-base-md md:text-xl-2xl`}
+                                style={{
+                                    top: '6%',
+                                }}
+                            >
+                                {dest.name}
+                            </span>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
 };
 
 export default TopDestinations;

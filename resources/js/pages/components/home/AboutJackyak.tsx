@@ -1,80 +1,112 @@
 import React from 'react';
+import {
+    fontPrimary,
+    sectionPadding,
+    sectionContainer,
+    headingSection,
+    bodyText,
+    imageRoundedLg,
+} from '@/config/theme';
 
 const AboutJackyak = () => {
-  return (
-    <section className="relative w-full overflow-hidden py-16 md:py-24">
-      {/* Decorative background patch — same rotated-strip motif as Hero's patches,
-          scoped to this section only so it doesn't leak into layout height */}
-      <img
-        src="/patch2.png"
-        alt=""
-        aria-hidden="true"
-        className="
-          pointer-events-none select-none
-          absolute -left-32 -top-10 md:-left-24 md:-top-16
-          w-[280px] md:w-[420px] lg:w-[520px]
-          opacity-90
-          -z-10
-        "
-      />
-
-      <div className="max-w-[1440px] mx-auto px-6 md:px-12 lg:px-24 flex flex-col gap-16 md:gap-24">
-        {/* Row 1: About text + image */}
-        <div className="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-16">
-          <div className="flex-1 flex flex-col gap-6 max-w-[575px]">
-            <h2 className="font-manrope font-bold text-[#334155] text-3xl md:text-4xl leading-[1.05] uppercase">
-              About Jackyak
-            </h2>
-            <p className="font-manrope font-normal text-[#334155] text-lg md:text-2xl leading-[1.05]">
-              JackYak is your trusted travel companion for exploring Nepal.
-              Discover curated trekking itineraries, hidden destinations,
-              local culture, and unforgettable adventures—from the Himalayas
-              to the Terai. From Everest to the Terai, experience Nepal
-              through carefully crafted journeys.
-            </p>
-          </div>
-
-          <div className="flex-1 w-full">
-            <div
-              className="
-                w-full max-w-[590px] aspect-[590/287]
-                rounded-[17px] bg-[#D9D9D9]
-                bg-cover bg-center
-                mx-auto md:mx-0 md:ml-auto
-              "
-              style={{ backgroundImage: "url('/aboutJackyak.png')" }}
+    return (
+        <section className={`relative w-full overflow-hidden ${sectionPadding}`}>
+            <img
+                src="/patch2.png"
+                alt=""
+                aria-hidden="true"
+                className="pointer-events-none absolute -top-10 -left-32 -z-10 w-[280px] opacity-90 select-none md:-top-16 md:-left-24 md:w-[420px] lg:w-[520px]"
             />
-          </div>
-        </div>
 
-        {/* Row 2: Popular Destinations + Travel Tips */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
-          <div className="flex flex-col gap-4 max-w-[575px]">
-            <h3 className="font-manrope font-bold text-[#334155] text-3xl md:text-4xl leading-[1.05]">
-              Popular Destinations
-            </h3>
-            <p className="font-manrope font-normal text-[#334155] text-lg md:text-2xl leading-[1.05]">
-              Discover breathtaking mountains, serene lakes, ancient heritage
-              sites, lush national parks, and vibrant cities across Nepal.
-              Every destination offers a unique adventure waiting to be
-              explored.
-            </p>
-          </div>
+            <div className={`${sectionContainer} bg-bg-warm sm:bg-white`}>
+                {/* About text */}
+                <div className="flex flex-col items-center gap-6 text-center md:flex-row md:items-center md:gap-16 md:text-left">
+                    <div className="flex max-w-content-md flex-1 flex-col gap-6">
+                        <h2 className={headingSection}>
+                            About Jackyak
+                        </h2>
+                        <p className={bodyText}>
+                            JackYak is your trusted travel companion for
+                            exploring Nepal. Discover curated trekking
+                            itineraries, hidden destinations, local culture, and
+                            unforgettable adventures—from the Himalayas to the
+                            Terai. From Everest to the Terai, experience Nepal
+                            through carefully crafted journeys.
+                        </p>
+                    </div>
 
-          <div className="flex flex-col gap-4 max-w-[575px]">
-            <h3 className="font-manrope font-bold text-[#334155] text-3xl md:text-4xl leading-[1.05]">
-              Travel Tips
-            </h3>
-            <p className="font-manrope font-normal text-[#334155] text-lg md:text-2xl leading-[1.05]">
-              Find essential information on the best seasons to visit,
-              packing guides, permits, transportation, budgeting, and safety
-              tips before you travel.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+                    {/* Desktop image */}
+                    <div className="hidden w-full flex-1 justify-end md:block">
+                        <div
+                            className={`mx-auto aspect-[590/287] w-full max-w-[590px] rounded-image ${imageRoundedLg} md:mx-0 md:ml-auto`}
+                            style={{
+                                backgroundImage: "url('/aboutJackyak.png')",
+                            }}
+                        />
+                    </div>
+                </div>
+
+                {/* Mobile: Popular Destinations → Image → Travel Tips */}
+                <div className="flex flex-col items-center gap-10 md:hidden">
+                    <div className="flex max-w-content-md flex-col gap-4 text-center">
+                        <h3 className={`${fontPrimary} text-lg-xl leading-[1.05] font-bold text-text-primary`}>
+                            Popular Destinations
+                        </h3>
+                        <p className={bodyText}>
+                            Discover breathtaking mountains, serene lakes,
+                            ancient heritage sites, lush national parks, and
+                            vibrant cities across Nepal. Every destination
+                            offers a unique adventure waiting to be explored.
+                        </p>
+                    </div>
+
+                    <div
+                        className={`aspect-[333/162] w-full max-w-[333px] rounded-image ${imageRoundedLg}`}
+                        style={{
+                            backgroundImage: "url('/aboutJackyak.png')",
+                        }}
+                    />
+
+                    <div className="flex max-w-content-md flex-col gap-4 text-center">
+                        <h3 className={`${fontPrimary} text-xl-2xl leading-[1.05] font-bold text-text-primary`}>
+                            Travel Tips
+                        </h3>
+                        <p className={bodyText}>
+                            Find essential information on the best seasons to
+                            visit, packing guides, permits, transportation,
+                            budgeting, and safety tips before you travel.
+                        </p>
+                    </div>
+                </div>
+
+                {/* Desktop: Popular Destinations + Travel Tips side by side */}
+                <div className="hidden md:grid md:grid-cols-2 md:gap-16">
+                    <div className="flex max-w-content-md flex-col gap-4 text-left">
+                        <h3 className={`${fontPrimary} text-3xl-4xl leading-[1.05] font-bold text-text-primary`}>
+                            Popular Destinations
+                        </h3>
+                        <p className={`${fontPrimary} text-xl-2xl leading-[1.05] font-normal text-text-primary`}>
+                            Discover breathtaking mountains, serene lakes,
+                            ancient heritage sites, lush national parks, and
+                            vibrant cities across Nepal. Every destination
+                            offers a unique adventure waiting to be explored.
+                        </p>
+                    </div>
+
+                    <div className="flex max-w-content-md flex-col gap-4 text-left bg-white">
+                        <h3 className={`${fontPrimary} text-3xl-4xl leading-[1.05] font-bold text-text-primary`}>
+                            Travel Tips
+                        </h3>
+                        <p className={`${fontPrimary} text-xl-2xl leading-[1.05] font-normal text-text-primary`}>
+                            Find essential information on the best seasons to
+                            visit, packing guides, permits, transportation,
+                            budgeting, and safety tips before you travel.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
 };
 
 export default AboutJackyak;
