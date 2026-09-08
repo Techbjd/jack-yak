@@ -1,3 +1,79 @@
+# Jack-Yak Project Guidelines
+
+## Team Collaboration
+
+### Code Review Checklist
+Before submitting code, verify:
+- [ ] Code follows project conventions (check `.ai/rules/`)
+- [ ] Tests pass (`php artisan test --compact`)
+- [ ] PHP code formatted (`vendor/bin/pint --dirty --format agent`)
+- [ ] TypeScript types are correct (`npm run types:check`)
+- [ ] No new warnings or errors in browser console
+
+### Git Workflow
+1. Create feature branches from `main`
+2. Use conventional commits: `feat:`, `fix:`, `docs:`, `refactor:`, `test:`
+3. Keep commits focused and atomic
+4. Write descriptive PR titles and descriptions
+
+### Communication
+- Document architectural decisions in `.ai/rules/`
+- Use `record-rule` to capture non-obvious patterns
+- Ask questions early - don't block on unclear requirements
+- Share context when reviewing others' code
+
+### Getting Started
+1. Run `composer setup` to initialize the project
+2. Check `.ai/rules/index.md` for coding conventions
+3. Review existing components before creating new ones
+4. Use `php artisan make:test --pest {name}` for new tests
+
+### Project Structure
+```
+app/
+├── Http/Controllers/    # Inertia controllers
+├── Models/             # Eloquent models
+└── Providers/          # Service providers
+
+resources/js/
+├── pages/              # Inertia page components
+│   └── components/     # Co-located components
+├── config/             # Design tokens & navigation
+└── types/              # TypeScript definitions
+
+tests/
+├── Feature/            # HTTP & integration tests
+└── Unit/               # Isolated unit tests
+```
+
+### Common Commands
+```bash
+# Development
+composer dev              # Start dev server
+npm run dev               # Start Vite dev server
+
+# Testing
+php artisan test --compact    # Run all tests
+vendor/bin/pest --filter=name # Run specific test
+
+# Code Quality
+vendor/bin/pint --dirty --format agent  # Format PHP
+npm run check                            # Lint JS/TS
+npm run types:check                      # Type check
+
+# CI Pipeline
+composer ci:check        # Full CI check
+```
+
+### Key Conventions
+- **PHP**: Use constructor property promotion, explicit return types, curly braces always
+- **React**: Co-locate components with pages, use `useColors()` for design tokens
+- **Tailwind**: Use theme.ts constants, mobile-first responsive design
+- **Testing**: Use Pest functional API, factories for test data
+- **Types**: Strict TypeScript, define interfaces in `resources/js/types/`
+
+---
+
 <laravel-boost-guidelines>
 === foundation rules ===
 
@@ -10,6 +86,7 @@ The Laravel Boost guidelines are specifically curated by Laravel maintainers for
 This application is a Laravel application running on PHP 8.5. You are an expert with the Laravel ecosystem. Always use the APIs that match the installed major version of each package — do not assume a version.
 
 Before relying on a package's API, confirm its installed version:
+
 - PHP packages: run `composer show --direct` to list direct dependencies with versions, or `composer show <vendor/package>` for a single package.
 - JS packages: check `package.json` for the installed versions.
 
@@ -85,7 +162,7 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 
 - Execute PHP in app context for debugging and testing code. Do not create models without user approval, prefer tests with factories instead. Prefer existing Artisan commands over custom tinker code.
 - Always use single quotes to prevent shell expansion: `php artisan tinker --execute 'Your::code();'`
-  - Double quotes for PHP strings inside: `php artisan tinker --execute 'User::where("active", true)->count();'`
+    - Double quotes for PHP strings inside: `php artisan tinker --execute 'User::where("active", true)->count();'`
 
 === php rules ===
 
