@@ -1,4 +1,3 @@
-import React from 'react';
 import {
     fontPrimary,
     sectionPadding,
@@ -15,7 +14,7 @@ const AboutJackyak = () => {
                 src="/patch2.png"
                 alt=""
                 aria-hidden="true"
-                className="pointer-events-none absolute -top-10 -left-32 -z-10 w-[280px] opacity-90 select-none md:-top-16 md:-left-24 md:w-[420px] lg:w-[520px]"
+                className="pointer-events-none absolute -top-10 -left-32 -z-10 w-70 opacity-90 select-none md:-top-16 md:-left-24 md:w-105 lg:w-130"
             />
 
             <div className={`${sectionContainer} bg-bg-warm sm:bg-white`}>
@@ -38,7 +37,7 @@ const AboutJackyak = () => {
                     {/* Desktop image */}
                     <div className="hidden w-full flex-1 justify-end md:block">
                         <div
-                            className={`mx-auto aspect-[590/287] w-full max-w-[590px] rounded-image ${imageRoundedLg} md:mx-0 md:ml-auto`}
+                            className={`mx-auto aspect-590/287 w-full max-w-147.5 rounded-image ${imageRoundedLg} md:mx-0 md:ml-auto`}
                             style={{
                                 backgroundImage: "url('/aboutJackyak.png')",
                             }}
@@ -61,7 +60,7 @@ const AboutJackyak = () => {
                     </div>
 
                     <div
-                        className={`aspect-[333/162] w-full max-w-[333px] rounded-image ${imageRoundedLg}`}
+                        className={`aspect-333/162 w-full max-w-83.25 rounded-image ${imageRoundedLg}`}
                         style={{
                             backgroundImage: "url('/aboutJackyak.png')",
                         }}

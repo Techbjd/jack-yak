@@ -1,4 +1,3 @@
-import React from 'react';
 import { FaInstagram, FaFacebookF, FaWhatsapp } from 'react-icons/fa';
 import type { IconType } from 'react-icons';
 import { fontPrimary } from '@/config/theme';

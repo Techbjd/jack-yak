@@ -1,4 +1,3 @@
-import React from 'react';
 import {
     fontPrimary,
     sectionPadding,
@@ -17,7 +16,7 @@ const DiscoverNepal = () => {
                 src="/patch3.png"
                 alt=""
                 aria-hidden="true"
-                className="pointer-events-none absolute top-1/2 right-0 -z-10 w-70 -translate-y-1/2 rotate-[89.27deg] opacity-90 select-none md:w-[420px] lg:w-[520px]"
+                className="pointer-events-none absolute top-1/2 right-0 -z-10 w-70 -translate-y-1/2 rotate-[89.27deg] opacity-90 select-none md:w-105 lg:w-130"
             />
 
             <div className="mx-auto flex max-w-container flex-col items-center gap-12 px-6 md:flex-row md:gap-16 md:px-12 lg:px-24 bg-bg-warm md:bg-transparent">

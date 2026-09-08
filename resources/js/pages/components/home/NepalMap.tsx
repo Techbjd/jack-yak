@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { fontPrimary, sectionPadding } from '@/config/theme';
 import { useColors } from '@/config/colors';
 
@@ -16,9 +15,7 @@ const SVG_OFFSET = {
     height: REF.h / IMG.h,
 };
 
-
 const NepalMap = () => {
-    const [active, setActive] = useState<string | null>(null);
     const colors = useColors();
     const MAP_BASE_COLOR = colors.navy_light;
     const MAP_ACTIVE_COLOR = colors.teal;
@@ -27,12 +24,12 @@ const NepalMap = () => {
         <section className={`relative w-full px-6 md:px-12 lg:px-24 ${sectionPadding}`}>
             <div className="relative mx-auto w-full overflow-visible max-w-container">
                 {/* CHINA label */}
-                <p className={`${fontPrimary} absolute right-[5%] top-[0] text-3xl font-bold text-teal md:text-4xl`}>
+                <p className={`${fontPrimary} absolute right-[5%] top-0 text-3xl font-bold text-teal md:text-4xl`}>
                     CHINA
                 </p>
 
                 {/* INDIA label */}
-                <p className={`${fontPrimary} absolute bottom-[0] left-[10%] text-3xl font-bold text-teal md:text-4xl`}>
+                <p className={`${fontPrimary} absolute bottom-0 left-[10%] text-3xl font-bold text-teal md:text-4xl`}>
                     INDIA
                 </p>
 
