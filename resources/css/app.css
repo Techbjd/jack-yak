@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 
 @source '../views';
+@source '../js/**/*.{ts,tsx,js,jsx}';
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 
 @theme {
@@ -103,29 +104,63 @@
     --rotate-patch: 89.27deg;
     --patch-dest-w: 968.88px;
     --patch-dest-h: 594.14px;
+
+    /* ── Destination page tokens (mobile-first, team-shared) ── */
+    --font-display: 'EB Garamond', Georgia, serif;
+    --color-ember: #FF5728;
+    --text-xs-md: 12px;
+    --text-display: 64px;
+    --text-journey: 60px;
+    --leading-journey: 82px;
+    --text-display-lg: 250px;
+    --leading-display-lg: 326px;
+    --max-w-content-xl: 733px;
+    --radius-dest-card: 13px;
+    --radius-card-sm: 7px;
+    --spacing-dest-card-w: 109px;
+    --spacing-dest-card-h: 192px;
+    --spacing-feat-card-h: 140px;
+}
+
+@utility no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 /* ===== Global overflow-prevention reset ===== */
+/* NOTE: must live in @layer base — unlayered author CSS beats ALL
+   layered utilities (h-12, w-full, …) regardless of specificity. */
 
-*, *::before, *::after {
-  box-sizing: border-box;
-}
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 
-html, body {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden; /* optional dev safety net — remove once you trust the layout */
-}
+  html,
+  body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* optional dev safety net — remove once you trust the layout */
+  }
 
-img, video, svg {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
+  img,
+  video,
+  svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
 
-/* Prevent flex/grid children from refusing to shrink below content width */
-.flex > *,
-.grid > * {
-  min-width: 0;
+  /* Prevent flex/grid children from refusing to shrink below content width */
+  .flex > *,
+  .grid > * {
+    min-width: 0;
+  }
 }

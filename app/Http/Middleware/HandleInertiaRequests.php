@@ -48,6 +48,7 @@ class HandleInertiaRequests extends Middleware
                 'teal' => config('colors.teal'),
                 'orange' => config('colors.orange'),
                 'blue_icon' => config('colors.blue_icon'),
+                'ember' => config('colors.ember'),
                 'text_primary' => config('colors.text_primary'),
                 'text_white' => config('colors.text_white'),
                 'bg_cream' => config('colors.bg_cream'),

@@ -21,6 +21,7 @@ export function setRootColors(colors: Colors): void {
     root.style.setProperty('--color-teal', colors.teal);
     root.style.setProperty('--color-orange', colors.orange);
     root.style.setProperty('--color-blue-icon', colors.blue_icon);
+    root.style.setProperty('--color-ember', colors.ember);
     root.style.setProperty('--color-text-primary', colors.text_primary);
     root.style.setProperty('--color-text-white', colors.text_white);
     root.style.setProperty('--color-bg-cream', colors.bg_cream);

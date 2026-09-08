@@ -16,6 +16,12 @@ export default defineConfig({
                 bunny('Instrument Sans', {
                     weights: [400, 500, 600],
                 }),
+                bunny('EB Garamond', {
+                    weights: [500],
+                }),
+                bunny('Manrope', {
+                    weights: [300, 400, 500, 600, 700, 800],
+                }),
             ],
         }),
         inertia(),

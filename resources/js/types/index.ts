@@ -12,6 +12,7 @@ export interface PageProps {
         teal: string;
         orange: string;
         blue_icon: string;
+        ember: string;
         text_primary: string;
         text_white: string;
         bg_cream: string;

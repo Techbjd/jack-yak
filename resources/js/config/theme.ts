@@ -15,6 +15,17 @@
 // --------------------------------------------
 export const fontPrimary = 'font-manrope';
 
+/** Display serif for destination titles (EB Garamond) */
+export const fontDisplay = 'font-display';
+
+/** Eyebrow label — tiny bold label above headings */
+export const eyebrow =
+    'font-manrope text-xs-md font-bold text-text-primary';
+
+/** Destination card name + province (10px bold navy) */
+export const destCardTitle =
+    'font-manrope text-xs-sm leading-tight font-bold text-navy-light';
+
 // --------------------------------------------
 // Layout: Section & Container
 // --------------------------------------------
