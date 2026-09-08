@@ -26,10 +26,6 @@ export const sectionPadding = 'py-16 md:py-24';
 export const sectionContainer =
     'mx-auto flex max-w-container flex-col gap-16 px-6 md:gap-24 md:px-12 lg:px-24';
 
-/** Centered content container — tight variant (DiscoverNepal) */
-export const sectionContainerTight =
-    'mx-auto flex max-w-container flex-col items-center gap-12 px-6 md:flex-row md:gap-16 md:px-12 lg:px-24';
-
 // --------------------------------------------
 // Typography: Reusable text patterns
 // --------------------------------------------
@@ -92,12 +88,5 @@ export const cardMobileContent = 'h-[37px] w-card-w';
 // --------------------------------------------
 // Colors: For inline styles (SVG, dynamic)
 // --------------------------------------------
-// These values match config/colors.php.
 // For runtime access, use useColors() hook from @/config/colors.
 // --------------------------------------------
-
-/** Map base color (navy) */
-export const MAP_BASE_COLOR = '#253A55';
-
-/** Map active color (teal) */
-export const MAP_ACTIVE_COLOR = '#2D8A8A';
