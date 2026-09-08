@@ -1,9 +1,9 @@
-export type * from './auth';
+import type { User } from './auth';
 
 export interface PageProps {
     name: string;
     auth: {
-        user: unknown;
+        user: User;
     };
     colors: {
         navy: string;
