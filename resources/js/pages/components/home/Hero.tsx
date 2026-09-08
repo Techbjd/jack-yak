@@ -1,74 +1,72 @@
 import Header from '../shared/Header';
 import { Plus } from 'lucide-react';
 import { fontPrimary, ctaIconCircle } from '@/config/theme';
+import { cn } from '@/lib/utils';
 
 export default function Hero() {
     return (
-        <div className=" box-content relative w-full bg-white sm:bg-navy [overflow-x:clip] [overflow-y:visible]">
+        <div className="relative w-full bg-white sm:bg-navy overflow-x-clip overflow-y-visible flex flex-col justify-between">
 
-            {/* Clipped visuals only — background image + gradient stay inside the box */}
-            <div className="absolute inset-0">
-                <img
-                    src="/Hero-bg.png"
-                    alt="hero background"
-                    className="absolute inset-0 w-full h-full object-fit md:object-cover z-0"
-                />
-                <div className="absolute inset-0 bg-linear-to-r from-navy-light to-navy-gradient opacity-40 blur-2xl sm:blur-[70px] lg:blur-[100.9px] z-10" />
+            {/* Background image & gradient overlay — Fully responsive background layers */}
+            <div
+                className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+                style={{ backgroundImage: "url('/Hero-bg.png')" }}
+            />
+            <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden">
+                <div className="absolute inset-0 bg-linear-to-r from-navy-light to-navy-gradient opacity-40 blur-2xl sm:blur-hero-sm lg:blur-hero-lg" />
             </div>
 
-            {/* Bottom ridge patch — fixed-height anchor line, image centered on its bottom edge */}
-            <div className="  pointer-events-none absolute inset-x-0.5 bottom-0 h-40 z-15">
-                <img
-                    src="/Herosecond.png"
-                    alt=""
-                    className="fixed left-0 top-full w-full h-auto max-h-64 -translate-y-1/2 object-contain object-bottom"
-                />
-            </div>
+            {/* Ridge patch — centered on the hero bottom edge, half in / half out */}
+            <img
+                src="/Herosecond.png"
+                alt=""
+                className="absolute inset-x-0 top-full z-10 pointer-events-none w-full h-auto object-contain object-bottom -translate-y-1/2"
+            />
 
             {/* Header */}
-            <div className="relative z-30">
+            <div className="relative z-30 w-full">
                 <Header />
             </div>
 
-            {/* Hero text content */}
-            <div className="relative z-20 flex flex-col items-center sm:items-start text-white
-                      min-w-0
-                      px-4 sm:px-6 md:px-10 lg:pl-27.25
-                      pt-8 sm:pt-16 lg:pt-20
-                      pb-16 sm:pb-24 lg:pb-32
-                      max-w-full lg:max-w-225">
-                <h1
-                    className={`${fontPrimary} font-extrabold
-             text-[clamp(1.15rem,2vw,2rem)]
-             sm:text-[clamp(1.15rem,7vw,6rem)]
-             leading-[1.15] sm:leading-tight
-             wrap-break-words max-w-full
-             text-center sm:text-left
-             text-orange sm:text-white`}
-                >
-                    The World Above
-                    the Clouds
-                </h1>
+            {/* Hero text content — Flexbox & Grid layout with theme design tokens */}
+            <div className="relative z-20 flex-1 flex flex-col justify-center mx-auto w-full max-w-container px-6 md:px-12 lg:px-24 pt-12 pb-48 sm:pb-72 lg:pt-20 lg:pb-96">
+                <div className="grid grid-cols-1 gap-4 sm:gap-6 md:gap-8 max-w-4xl items-center sm:items-start text-center sm:text-left">
+                    <h1 className={cn(
+                        fontPrimary,
+                        "font-extrabold text-4xl sm:text-6xl md:text-3xl-4xl lg:text-hero",
+                        "leading-tight lg:leading-hero",
+                        "text-orange sm:text-white tracking-tight"
+                    )}>
+                        The World Above
+                        the Clouds
+                    </h1>
 
-                <div className="w-[clamp(1.5rem,2vw,2rem)] h-0 border-t-hero-line sm:border-t-5 border-white my-[clamp(0.625rem,1.5vw,2rem)] hidden sm:block" />
+                    <div className="w-8 sm:w-10 h-0 border-t-4 sm:border-t-5 border-white hidden sm:block my-1" />
 
-                <p className={`hidden sm:block max-w-full sm:max-w-134.5 ${fontPrimary} font-bold
-                      text-[clamp(0.75rem,1.4vw,1.5rem)] leading-snug`}>
-                    Nestled in the heart of the Himalayas, Nepal is a land of majestic
-                    mountains, rich heritage, and adventures unlike anywhere else.
-                </p>
+                    <p className={cn(
+                        fontPrimary,
+                        "hidden sm:block max-w-content-md",
+                        "font-bold text-lg md:text-xl lg:text-xl-2xl",
+                        "leading-snug md:leading-relaxed text-white"
+                    )}>
+                        Nestled in the heart of the Himalayas, Nepal is a land of majestic
+                        mountains, rich heritage, and adventures unlike anywhere else.
+                    </p>
 
-                <button className={`mt-[clamp(0.75rem,2vw,1.5rem)]
-                           px-[clamp(0.75rem,1.5vw,1rem)] py-[clamp(0.4rem,1vw,0.625rem)]
-                           rounded-full bg-orange sm:bg-teal
-                           flex items-center gap-[clamp(0.375rem,1vw,0.5rem)]
-                           ${fontPrimary} font-bold
-                           text-[clamp(0.75rem,1.5vw,1rem)] text-white shrink-0`}>
-                    <span>Explore Nepal</span>
-                    <span className={`${ctaIconCircle} p-[clamp(0.3rem,0.8vw,0.5rem)] aspect-square flex items-center justify-center`}>
-                        <Plus className="w-[clamp(0.6rem,1.2vw,0.875rem)] h-[clamp(0.6rem,1.2vw,0.875rem)] text-blue-icon" strokeWidth={3} />
-                    </span>
-                </button>
+                    <button className={cn(
+                        "w-fit h-10.5 px-4 py-2 mt-2 sm:mt-4",
+                        "rounded-full bg-orange sm:bg-teal",
+                        "flex items-center gap-3 shrink-0 mx-auto sm:mx-0",
+                        fontPrimary,
+                        "font-bold text-sm sm:text-md-lg leading-normal text-white",
+                        "shadow-md hover:opacity-95 transition-opacity cursor-pointer"
+                    )}>
+                        <span>Explore Nepal</span>
+                        <span className={ctaIconCircle}>
+                            <Plus className="w-4 h-4 text-blue-icon" strokeWidth={3} />
+                        </span>
+                    </button>
+                </div>
             </div>
         </div>
     );

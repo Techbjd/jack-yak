@@ -1,47 +1,46 @@
 import React, { useState } from 'react';
 import { Search, User, Heart, X } from 'lucide-react';
 import { fontPrimary } from '@/config/theme';
+import { desktopNav, mobileNav } from '@/config/navigation';
 
 const Header = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     return (
         <>
-            <header className="relative z-50 mx-auto flex max-w-[90%] items-center justify-between bg-transparent p-4">
+            <header className="relative z-50 mx-auto flex w-full max-w-container items-center justify-between px-6 pt-6 md:px-12 lg:px-24 md:pt-10 bg-transparent">
                 {/* Logo */}
-                <div className="flex items-center justify-center pt-2">
+                <div className="flex items-center justify-center shrink-0">
                     <img
                         src="/jack-yak-logo.png"
                         alt="Jack Yak Logo"
-                        className="h-14 w-auto object-contain"
+                        className="h-12 md:h-16 lg:h-20 w-auto object-contain"
                     />
                 </div>
 
                 {/* Navigation Links - Desktop only */}
-                <nav className="hidden flex-1 flex-row items-center justify-center space-x-5 md:flex">
-                    <ul className="flex flex-row items-center justify-center space-x-6 text-white">
-                        <li>
-                            <a href="#destination">Destination</a>
-                        </li>
-                        <li>
-                            <a href="#guides">Guides</a>
-                        </li>
-                        <li>
-                            <a href="#about">About</a>
-                        </li>
+                <nav className="hidden md:flex items-center justify-center">
+                    <ul className={`${fontPrimary} flex items-center gap-8 lg:gap-12 text-white font-semibold text-lg lg:text-2xl leading-tight`}>
+                        {desktopNav.map((item) => (
+                            <li key={item.href}>
+                                <a href={item.href} className="hover:opacity-80 transition-opacity">
+                                    {item.label}
+                                </a>
+                            </li>
+                        ))}
                     </ul>
                 </nav>
 
                 {/* Action Buttons / Icons - Desktop */}
-                <div className="hidden items-center gap-4 md:flex">
-                    <button aria-label="Menu" className="">
-                        <Heart className="h-5 w-5 text-white" />
+                <div className="hidden md:flex items-center gap-4 lg:gap-6 text-white">
+                    <button aria-label="Favorites" className="p-1 hover:opacity-80 transition-opacity">
+                        <Heart className="h-5 w-5 lg:h-6 lg:w-6 text-white" />
                     </button>
-                    <button aria-label="Search">
-                        <Search className="h-5 w-5 rotate-[9.82deg] text-white" />
+                    <button aria-label="Search" className="p-1 hover:opacity-80 transition-opacity">
+                        <Search className="h-5 w-5 lg:h-6 lg:w-6 rotate-[9.82deg] text-white" />
                     </button>
-                    <button aria-label="Profile">
-                        <User className="h-5 w-5 text-white drop-shadow-card" />
+                    <button aria-label="Profile" className="p-1 hover:opacity-80 transition-opacity">
+                        <User className="h-5 w-5 lg:h-6 lg:w-6 text-white drop-shadow-card" />
                     </button>
                 </div>
 
@@ -89,27 +88,11 @@ const Header = () => {
                         {/* Navigation Links */}
                         <nav className="absolute top-[140px] left-0 w-full">
                             <ul className={`${fontPrimary} flex flex-col text-base-md leading-[19px] font-medium text-navy-light`}>
-                                <li className="px-5 py-2">
-                                    <a href="#home">Home</a>
-                                </li>
-                                <li className="px-5 py-2">
-                                    <a href="#destination">Destinations</a>
-                                </li>
-                                <li className="px-5 py-2">
-                                    <a href="#guides">Guides</a>
-                                </li>
-                                <li className="px-5 py-2">
-                                    <a href="#about">About</a>
-                                </li>
-                                <li className="px-5 py-2">
-                                    <a href="#favorites">Favorites</a>
-                                </li>
-                                <li className="px-5 py-2">
-                                    <a href="#search">Search</a>
-                                </li>
-                                <li className="px-5 py-2">
-                                    <a href="#profile">Profile</a>
-                                </li>
+                                {mobileNav.map((item) => (
+                                    <li key={item.href} className="px-5 py-2">
+                                        <a href={item.href}>{item.label}</a>
+                                    </li>
+                                ))}
                             </ul>
                         </nav>
                     </div>
