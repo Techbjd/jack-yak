@@ -71,24 +71,29 @@ const SocialIcon: React.FC<SocialIconProps> = ({ label, Icon, href = '#' }) => {
 const Footer: React.FC = () => {
     return (
         <footer className="w-full bg-navy text-white">
+            {/* Torn-edge mask — swap with footer.png later */}
             <div className="-mb-1 w-full overflow-hidden">
-                <img
-                    src="/footer.png"
-                    alt=""
-                    aria-hidden="true"
-                    className="pointer-events-none h-auto w-full object-cover select-none"
-                />
+                <div className="flex aspect-1440/470 w-full items-center justify-center bg-bg-placeholder select-none">
+                    <span
+                        className={`${fontPrimary} text-xs-sm font-medium text-white/80`}
+                    >
+                        footer.png
+                    </span>
+                </div>
             </div>
             <div className="mx-auto max-w-container px-6 md:px-16 lg:px-24">
                 {/* MOBILE: logo + tagline + 2x2 grid of columns */}
                 <div className="flex flex-col gap-8 md:hidden">
                     {/* Brand */}
                     <div className="flex flex-col gap-4">
-                        <img
-                            src="/jack-yak-logo.png"
-                            alt="JackYak"
-                            className="h-logo w-logo-w"
-                        />
+                        {/* Logo mask — swap with jack-yak-logo.png later */}
+                        <div className="flex h-logo w-logo-w items-center justify-center bg-bg-placeholder">
+                            <span
+                                className={`${fontPrimary} text-2xs font-medium text-white/80`}
+                            >
+                                logo
+                            </span>
+                        </div>
                         <p className={`${fontPrimary} text-xs-sm leading-[1.05] font-normal text-white`}>
                             Helping travelers explore Nepal with trusted
                             information.
@@ -123,11 +128,14 @@ const Footer: React.FC = () => {
                 <div className="hidden flex-col gap-10 md:flex md:flex-row md:justify-between md:gap-8">
                     {/* Brand */}
                     <div className="flex max-w-content-sm flex-col gap-4">
-                        <img
-                            src="/jack-yak-logo.png"
-                            alt="JackYak"
-                            className="h-auto w-20"
-                        />
+                        {/* Logo mask — swap with jack-yak-logo.png later */}
+                        <div className="flex h-20 w-20 items-center justify-center bg-bg-placeholder">
+                            <span
+                                className={`${fontPrimary} text-2xs font-medium text-white/80`}
+                            >
+                                logo
+                            </span>
+                        </div>
                         <p className={`${fontPrimary} text-sm leading-[1.05] font-normal text-white md:text-base`}>
                             Helping travelers explore Nepal with trusted
                             information.
