@@ -28,3 +28,10 @@ yarn-error.log
 /.zed
 /.AGENTS.md
 /.for.zip
+SKILL.md
+skill.md
+# Agent skill docs (auto-generated, local only) — all markdown inside any skills folder
+**/skills/*.md
+**/skills/**/*.md
+**/skill/*.md
+**/skill/**/*.md
