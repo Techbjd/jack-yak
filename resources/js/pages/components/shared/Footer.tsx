@@ -74,11 +74,13 @@ const Footer: React.FC = () => {
             {/* Torn-edge mask — swap with footer.png later */}
             <div className="-mb-1 w-full overflow-hidden">
                 <div className="flex aspect-1440/470 w-full items-center justify-center bg-bg-placeholder select-none">
-                    <span
-                        className={`${fontPrimary} text-xs-sm font-medium text-white/80`}
-                    >
-                        footer.png
-                    </span>
+
+                    <img
+                        src="/footer.png"
+                        alt="JackYak Logo"
+                        className="h-full w-full object-contain"
+                    />
+
                 </div>
             </div>
             <div className="mx-auto max-w-container px-6 md:px-16 lg:px-24">
@@ -86,13 +88,13 @@ const Footer: React.FC = () => {
                 <div className="flex flex-col gap-8 md:hidden">
                     {/* Brand */}
                     <div className="flex flex-col gap-4">
-                        {/* Logo mask — swap with jack-yak-logo.png later */}
-                        <div className="flex h-logo w-logo-w items-center justify-center bg-bg-placeholder">
-                            <span
-                                className={`${fontPrimary} text-2xs font-medium text-white/80`}
-                            >
-                                logo
-                            </span>
+
+                        <div className="flex h-logo w-logo-w items-center justify-center ">
+                            <img
+                                src="/jack-yak-logo.png"
+                                alt="JackYak Logo"
+                                className="h-full w-full object-contain"
+                            />
                         </div>
                         <p className={`${fontPrimary} text-xs-sm leading-[1.05] font-normal text-white`}>
                             Helping travelers explore Nepal with trusted
@@ -129,12 +131,12 @@ const Footer: React.FC = () => {
                     {/* Brand */}
                     <div className="flex max-w-content-sm flex-col gap-4">
                         {/* Logo mask — swap with jack-yak-logo.png later */}
-                        <div className="flex h-20 w-20 items-center justify-center bg-bg-placeholder">
-                            <span
-                                className={`${fontPrimary} text-2xs font-medium text-white/80`}
-                            >
-                                logo
-                            </span>
+                        <div className="flex h-20 w-20 items-center justify-center ">
+                            <img
+                                src="/jack-yak-logo.png"
+                                alt="JackYak Logo"
+                                className="h-full w-full object-contain"
+                            />
                         </div>
                         <p className={`${fontPrimary} text-sm leading-[1.05] font-normal text-white md:text-base`}>
                             Helping travelers explore Nepal with trusted
@@ -172,11 +174,11 @@ const Footer: React.FC = () => {
                 <div className="mt-12 flex flex-col items-center gap-4 border-t border-white/10 pt-6 md:mt-16 md:grid md:grid-cols-3">
                     <div className="hidden md:block" />
 
-                    <p className={`${fontPrimary} order-2 text-center text-md-lg font-medium text-white/54 md:order-none md:text-base`}>
+                    <p className={`${fontPrimary} order-2 text-center text-md-lg font-medium text-white/54 md:order-0 md:text-base`}>
                         © 2026 JackYak. All rights reserved.
                     </p>
 
-                    <div className="order-1 flex flex-row items-center justify-center gap-4 md:order-none md:justify-end">
+                    <div className="order-1 flex flex-row items-center justify-center gap-4 md:order-0 md:justify-end">
                         <SocialIcon label="Instagram" Icon={FaInstagram} />
                         <SocialIcon label="Facebook" Icon={FaFacebookF} />
                         <SocialIcon label="WhatsApp" Icon={FaWhatsapp} />
