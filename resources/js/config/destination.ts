@@ -2,41 +2,55 @@
 // Destination Page Data — Single Source of Truth
 // ============================================
 // Edit content here → all destination components update.
-// Desktop layouts reuse the same data as mobile.
+// Desktop shows the 5 shared cards; mobile scrolls all 7 (incl. 2 mobile-only extras).
 // ============================================
 
 export interface DestinationCard {
     name: string;
     province: string;
     image: string;
+    /** Mobile-only extras — hidden on desktop */
+    mobileOnly?: boolean;
 }
 
-/** Popular destinations — desktop shows all 5, mobile scrolls */
+/** Popular destinations — 5 shared + 2 mobile-only extras */
 export const popularDestinations: DestinationCard[] = [
     {
         name: 'Mount Everest (Sagarmatha)',
         province: 'Koshi Province',
-        image: '/Group_36.png',
+        image: '/destination/mount_everest.png',
     },
     {
         name: 'Langtang Valley',
         province: 'Bagmati Province',
-        image: '/Group_35.png',
+        image: '/destination/langtang_mountain.png',
     },
     {
         name: 'Pokhara',
         province: 'Gandaki Province',
-        image: '/Group_37.png',
+        image: '/destination/pokhara_lake.png',
     },
     {
         name: 'Mardi Himal',
         province: 'Gandaki Province',
-        image: '/Group_35.png',
+        image: '/destination/Mardi_mountain.png',
     },
     {
         name: 'Mustang (Upper Mustang)',
         province: 'Gandaki Province',
-        image: '/Group_36.png',
+        image: '/destination/upper_mustang.png',
+    },
+    {
+        name: 'Chitwan Rhino',
+        province: 'Terai Region',
+        image: '/destination/mobile_rihno.png',
+        mobileOnly: true,
+    },
+    {
+        name: 'Kathmandu Temple',
+        province: 'Bagmati Province',
+        image: '/destination/mobile_temple.png',
+        mobileOnly: true,
     },
 ];
 
