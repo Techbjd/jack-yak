@@ -31,7 +31,7 @@ export const destCardTitle =
 // --------------------------------------------
 
 /** Full-width section with responsive vertical padding */
-export const sectionPadding = 'py-16 md:py-24';
+export const sectionPadding = 'py-0  md:py-24';
 
 /** Centered content container — standard section layout */
 export const sectionContainer =
