@@ -7,6 +7,7 @@ Before planning or editing, find the row whose globs match the file's path and r
 | config/** | .ai/rules/config-2.md |
 | resources/js/config/** | .ai/rules/config.md |
 | app/Http/Controllers/** | .ai/rules/controllers.md |
+| resources/css/** | .ai/rules/css.md |
 | resources/js/pages/components/destination/** | .ai/rules/destination.md |
 | **/* | .ai/rules/general.md |
 | resources/js/**/*.tsx, resources/js/**/*.css, resources/js/** | .ai/rules/js.md |
