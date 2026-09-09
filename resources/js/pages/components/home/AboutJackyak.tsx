@@ -10,12 +10,7 @@ import {
 const AboutJackyak = () => {
     return (
         <section className={`relative w-full overflow-hidden ${sectionPadding}`}>
-            <img
-                src="/patch2.png"
-                alt=""
-                aria-hidden="true"
-                className="pointer-events-none absolute -top-10 -left-32 -z-10 w-70 opacity-90 select-none md:-top-16 md:-left-24 md:w-105 lg:w-130"
-            />
+            {/* Decorative patch2 — re-add <img src="/patch2.png"> once the asset lands in public/ */}
 
             <div className={`${sectionContainer} bg-bg-warm sm:bg-white`}>
                 {/* About text */}
