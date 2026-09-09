@@ -51,16 +51,17 @@ export default function PopularDestinations() {
                 <div className="flex w-max snap-x gap-4 px-6">
                     {popularDestinations.map((dest, i) => (
                         <div
-                            key={`${dest.image}-${i}`}
+                            key={`${dest.name}-${i}`}
                             className="flex w-dest-card-w shrink-0 snap-start flex-col gap-2"
                         >
-                            {/* Card mask — swap with dest.image later */}
-                            <div
+                            {/* Card image */}
+                            <img
                                 className={cn(
                                     imagePlaceholder,
-                                    'h-dest-card-h w-full rounded-dest-card',
+                                    'h-dest-card-h w-full rounded-dest-card object-cover',
                                 )}
-                            />
+                                src={dest.image} alt={dest.name} />
+
                             <p className={destCardTitle}>{dest.name}</p>
                             <p className={destCardTitle}>{dest.province}</p>
                         </div>
@@ -81,9 +82,11 @@ export default function PopularDestinations() {
                 ))}
             </div>
 
-            {/* DESKTOP: 5-col grid, labels overlaid on the image */}
+            {/* DESKTOP: 5-col grid, labels overlaid on the image (shared cards only — mobile extras excluded) */}
             <div className="hidden px-6 md:grid md:grid-cols-5 md:gap-6 md:px-12 lg:px-24">
-                {popularDestinations.map((dest, i) => (
+                {popularDestinations
+                    .filter((dest) => !dest.mobileOnly)
+                    .map((dest, i) => (
                     <div
                         key={`${dest.image}-${i}`}
                         className="flex flex-col gap-3"
@@ -92,11 +95,12 @@ export default function PopularDestinations() {
                             className="relative w-full"
                             style={{ aspectRatio: DESKTOP_CARD_RATIO }}
                         >
-                            {/* Card mask — swap with dest.image later */}
-                            <div
+                            <img
+                                src={dest.image}
+                                alt={dest.name}
                                 className={cn(
                                     imagePlaceholder,
-                                    'absolute inset-0 rounded-dest-card',
+                                    'absolute inset-0 h-full w-full rounded-dest-card object-cover',
                                 )}
                             />
                             <div className="absolute bottom-0 left-0 flex flex-col gap-1 p-4">
@@ -117,11 +121,6 @@ export default function PopularDestinations() {
                                     {dest.province}
                                 </p>
                             </div>
-                        </div>
-                        {/* Mobile only — labels below the image */}
-                        <div className="flex flex-col gap-2 md:hidden">
-                            <p className={destCardTitle}>{dest.name}</p>
-                            <p className={destCardTitle}>{dest.province}</p>
                         </div>
                     </div>
                 ))}
