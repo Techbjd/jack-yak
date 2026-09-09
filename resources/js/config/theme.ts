@@ -79,7 +79,7 @@ export const ctaIconCircle =
 // --------------------------------------------
 
 /** Placeholder image — gray background, cover, center */
-export const imagePlaceholder = 'bg-bg-placeholder bg-cover bg-center';
+export const imagePlaceholder = 'bg-bg-placeholder bg-contain bg-center';
 
 /** Image with 17px rounded corners (AboutJackyak) */
 export const imageRoundedLg = `${imagePlaceholder} rounded-image`;
