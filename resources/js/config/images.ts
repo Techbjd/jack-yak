@@ -45,6 +45,14 @@ export const IMAGES = {
             heritage: '/images/destination/icons/icon-heritage.png',
             lakes: '/images/destination/icons/icon-lakes.png',
         },
+        featured: {
+            elephantSafari: '/images/destination/featured/elephant_safari.png',
+            jeepSafari: '/images/destination/featured/jeep_safari.png',
+            canoeSafari: '/images/destination/featured/canoe_safari.png',
+            birdWatchingSafari: '/images/destination/featured/birdwatching_safari.png',
+            crocodileWatching: '/images/destination/featured/crocodilewatching.png',
+            tigerWatching: '/images/destination/featured/tiger_watching.png',
+        },
     },
     featured: {
         tilichoLake: '/images/featured/tilicho-lake.png',
