@@ -6,13 +6,14 @@ import {
     bodyText,
     imageRoundedLg,
 } from '@/config/theme';
+import { IMAGES } from '@/config/images';
 
 const AboutJackyak = () => {
     return (
         <section className={`relative w-full overflow-hidden ${sectionPadding}`}>
             {/* Decorative patch2 — re-add <img src="/patch2.png"> once the asset lands in public/ */}
 
-            <div className={`${sectionContainer} bg-bg-warm sm:bg-white`}>
+            <div className={`${sectionContainer} bg-surface-warm sm:bg-white`}>
                 {/* About text */}
                 <div className="flex flex-col items-center gap-6 text-center md:flex-row md:items-center md:gap-16 md:text-left">
                     <div className="flex max-w-content-md flex-1 flex-col gap-6">
@@ -34,7 +35,7 @@ const AboutJackyak = () => {
                         <div
                             className={`mx-auto aspect-590/287 w-full max-w-147.5 rounded-image ${imageRoundedLg} md:mx-0 md:ml-auto`}
                             style={{
-                                backgroundImage: "url('/aboutJackyak.png')",
+                                backgroundImage: `url('${IMAGES.home.aboutJackyak}')`,
                             }}
                         />
                     </div>
@@ -57,7 +58,7 @@ const AboutJackyak = () => {
                     <div
                         className={`aspect-333/162 w-full max-w-83.25 rounded-image ${imageRoundedLg}`}
                         style={{
-                            backgroundImage: "url('/aboutJackyak.png')",
+                            backgroundImage: `url('${IMAGES.home.aboutJackyak}')`,
                         }}
                     />
 

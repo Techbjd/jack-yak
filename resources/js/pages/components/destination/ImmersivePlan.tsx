@@ -1,4 +1,5 @@
 import { eyebrow, fontPrimary, imagePlaceholder } from '@/config/theme';
+import { IMAGES } from '@/config/images';
 import { cn } from '@/lib/utils';
 
 export default function ImmersivePlan() {
@@ -6,7 +7,7 @@ export default function ImmersivePlan() {
         <section className="flex w-full flex-col px-6 py-8 md:px-12 md:py-12 lg:px-24">
             <div className="grid grid-cols-2 items-stretch overflow-hidden rounded-immersive md:grid-cols-12 md:min-h-81.5">
                 {/* Left — warm panel */}
-                <div className="flex flex-col justify-center gap-4 bg-bg-warm p-5 md:col-span-5 md:gap-5 md:p-8 lg:gap-6 lg:px-16 lg:py-10">
+                <div className="flex flex-col justify-center gap-4 bg-surface-warm p-5 md:col-span-5 md:gap-5 md:p-8 lg:gap-6 lg:px-16 lg:py-10">
                     {/* <p
                         className={cn(
                             eyebrow,
@@ -37,7 +38,7 @@ export default function ImmersivePlan() {
                         href="#"
                         className={cn(
                             fontPrimary,
-                            'flex w-fit items-center justify-center bg-ember px-5 py-2 text-xs-sm font-bold tracking-wide text-white md:h-12.75 md:w-52 md:bg-teal md:px-0 md:py-0 md:text-md-lg',
+                            'flex w-fit items-center justify-center bg-cta-ember px-5 py-2 text-xs-sm font-bold tracking-wide text-white md:h-12.75 md:w-52 md:bg-cta md:px-0 md:py-0 md:text-md-lg',
                         )}
                     >
                         Start Planning
@@ -52,13 +53,13 @@ export default function ImmersivePlan() {
                 >
                     {/* Mobile only — temple portrait (408x640) fits the narrow half-column */}
                     <img
-                        src="/destination/Temple.png"
+                        src={IMAGES.destination.swayambhuStupa}
                         alt="Temple image"
                         className="absolute inset-0 h-full w-full object-cover md:hidden"
                     />
                     {/* Desktop only — immersive wide (1648x652) fits the ~2.2:1 right panel */}
                     <img
-                        src="/destination/Immersive_mobile.png"
+                        src={IMAGES.destination.stupaPanorama}
                         alt="Temple image"
                         className="absolute inset-0 hidden h-full w-full object-cover md:block"
                     />

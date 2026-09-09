@@ -1,16 +1,17 @@
 import Header from '../shared/Header';
 import { Plus } from 'lucide-react';
 import { fontPrimary, ctaIconCircle } from '@/config/theme';
+import { IMAGES } from '@/config/images';
 import { cn } from '@/lib/utils';
 
 export default function Hero() {
     return (
-        <div className="relative w-full bg-white sm:bg-navy overflow-x-clip overflow-y-visible flex flex-col justify-between">
+        <div className="relative w-full bg-white sm:bg-brand overflow-x-clip overflow-y-visible flex flex-col justify-between">
 
             {/* Background image & gradient overlay — Fully responsive background layers */}
             <div
                 className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
-                style={{ backgroundImage: "url('/Hero-bg.png')" }}
+                style={{ backgroundImage: `url('${IMAGES.home.heroBg}')` }}
             />
             <div className="absolute inset-0 z-10 pointer-events-none overflow-hidden">
                 <div className="absolute inset-0 bg-linear-to-r from-navy-light to-navy-gradient opacity-40 blur-2xl sm:blur-hero-sm lg:blur-hero-lg" />
@@ -18,7 +19,7 @@ export default function Hero() {
 
             {/* Ridge patch — centered on the hero bottom edge, half in / half out */}
             <img
-                src="/Herosecond.png"
+                src={IMAGES.home.heroSecondary}
                 alt=""
                 className="absolute inset-x-0 top-full z-10 pointer-events-none w-full h-auto object-contain object-bottom -translate-y-1/2"
             />
@@ -35,7 +36,7 @@ export default function Hero() {
                         fontPrimary,
                         "font-extrabold text-4xl sm:text-6xl md:text-3xl-4xl lg:text-hero",
                         "leading-tight lg:leading-hero",
-                        "text-orange sm:text-white tracking-tight"
+                        "text-cta-accent sm:text-white tracking-tight"
                     )}>
                         The World Above
                         the Clouds
@@ -55,7 +56,7 @@ export default function Hero() {
 
                     <button className={cn(
                         "w-fit h-10.5 px-4 py-2 mt-2 sm:mt-4",
-                        "rounded-full bg-orange sm:bg-teal",
+                        "rounded-full bg-cta-accent sm:bg-cta",
                         "flex items-center gap-3 shrink-0 mx-auto sm:mx-0",
                         fontPrimary,
                         "font-bold text-sm sm:text-md-lg leading-normal text-white",
@@ -63,7 +64,7 @@ export default function Hero() {
                     )}>
                         <span>Explore Nepal</span>
                         <span className={ctaIconCircle}>
-                            <Plus className="w-4 h-4 text-blue-icon" strokeWidth={3} />
+                            <Plus className="w-4 h-4 text-icon-accent" strokeWidth={3} />
                         </span>
                     </button>
                 </div>

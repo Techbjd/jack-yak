@@ -1,23 +1,24 @@
 import { fontPrimary, cardMobileImage, cardMobileContent } from '@/config/theme';
+import { IMAGES } from '@/config/images';
 import { cn } from '@/lib/utils';
 
 const destinations = [
     {
         name: 'Tilicho Lake',
         subtitle: 'Scenic Lake',
-        image: '/Group_36.png',
+        image: IMAGES.featured.tilichoLake,
         variant: 'sm' as const,
     },
     {
         name: 'Mount Everest',
         subtitle: 'Highest Peak',
-        image: '/Group_36.png',
+        image: IMAGES.featured.everestPrayerFlags,
         variant: 'lg' as const,
     },
     {
         name: 'Gokyo Lake',
         subtitle: 'Sacred Lake',
-        image: '/Group_36.png',
+        image: IMAGES.featured.gokyoLake,
         variant: 'sm' as const,
     },
 ];
@@ -69,14 +70,14 @@ const TopDestinations = () => {
                                 )}>
                                     <span className={cn(
                                         fontPrimary,
-                                        "font-bold text-navy-light",
+                                        "font-bold text-ink",
                                         "text-xs-sm leading-3 tracking-wide"
                                     )}>
                                         {dest.name}
                                     </span>
                                     <span className={cn(
                                         fontPrimary,
-                                        "text-navy-light text-2xs font-semibold",
+                                        "text-ink text-2xs font-semibold",
                                         "leading-2.5 tracking-wide"
                                     )}>
                                         {dest.subtitle}

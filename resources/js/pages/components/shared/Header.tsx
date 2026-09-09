@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Search, User, Heart, X } from 'lucide-react';
 import { fontPrimary } from '@/config/theme';
 import { desktopNav, mobileNav } from '@/config/navigation';
+import { IMAGES } from '@/config/images';
 import { cn } from '@/lib/utils';
 
 interface HeaderProps {
@@ -15,10 +16,10 @@ interface HeaderProps {
 const Header = ({ tone = 'onDark' }: HeaderProps) => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const onLight = tone === 'onLight';
-    const ink = onLight ? 'text-navy-light' : 'text-white';
-    const stripe = onLight ? 'bg-navy-light' : 'bg-white';
+    const ink = onLight ? 'text-ink' : 'text-white';
+    const stripe = onLight ? 'bg-ink' : 'bg-white';
     const ring = onLight
-        ? 'focus-visible:ring-navy-light'
+        ? 'focus-visible:ring-ink'
         : 'focus-visible:ring-white';
 
     return (
@@ -27,7 +28,7 @@ const Header = ({ tone = 'onDark' }: HeaderProps) => {
                 {/* Logo */}
                 <div className="flex shrink-0 items-center justify-center">
                     <img
-                        src="/jack-yak-logo.png"
+                        src={IMAGES.logo.jackYak}
                         alt="Jack Yak Logo"
                         className={cn(
                             'h-12 w-auto object-contain md:h-16 lg:h-20',
@@ -105,13 +106,13 @@ const Header = ({ tone = 'onDark' }: HeaderProps) => {
                                 className="flex h-8 w-8 items-center justify-center"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
-                                <X className="h-5 w-5 text-navy-light" />
+                                <X className="h-5 w-5 text-ink" />
                             </button>
                         </div>
 
                         <div className="px-5 pt-2 pb-6">
                             <img
-                                src="/jack-yak-logo.png"
+                                src={IMAGES.logo.jackYak}
                                 alt="Jack Yak Logo"
                                 className="h-logo w-logo object-contain brightness-0"
                             />
@@ -119,7 +120,7 @@ const Header = ({ tone = 'onDark' }: HeaderProps) => {
 
                         <nav className="flex-1 overflow-y-auto px-5 py-2">
                             <ul
-                                className={`${fontPrimary} flex flex-col text-base-md leading-[19px] font-medium text-navy-light`}
+                                className={`${fontPrimary} flex flex-col text-base-md leading-[19px] font-medium text-ink`}
                             >
                                 {mobileNav.map((item) => (
                                     <li key={item.href} className="py-2">

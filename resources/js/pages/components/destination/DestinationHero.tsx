@@ -1,5 +1,6 @@
 import Header from '../shared/Header';
 import { fontDisplay, fontPrimary, imagePlaceholder } from '@/config/theme';
+import { IMAGES } from '@/config/images';
 import { cn } from '@/lib/utils';
 
 export default function DestinationHero() {
@@ -26,7 +27,7 @@ export default function DestinationHero() {
                                 'text-xs-sm font-medium text-white/80',
                             )}
                         >
-                            <img src="/destination/destination.png" alt="Ama Dablam" />
+                            <img src={IMAGES.destination.amaDablam} alt="Ama Dablam" />
                         </span>
                     </div>
                 </div>

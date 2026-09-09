@@ -6,6 +6,7 @@ import AboutJackyak from './components/home/AboutJackyak';
 import DiscoverNepal from './components/home/DiscoverNepal';
 import TopDestinations from './components/home/TopDestination';
 import Footer from './components/shared/Footer';
+import { IMAGES } from '@/config/images';
 
 
 export default function Home() {
@@ -21,7 +22,7 @@ export default function Home() {
             </div>
             <div className="relative z-10 hidden w-full md:block">
                 <img
-                    src="/Mountain.png"
+                    src={IMAGES.home.mountainDivider}
                     alt="Mountain Image"
                     className="m-auto h-auto w-full object-cover px-2"
                 />

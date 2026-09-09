@@ -1,4 +1,5 @@
 import { fontPrimary, sectionPadding } from '@/config/theme';
+import { IMAGES } from '@/config/images';
 import { useColors } from '@/config/colors';
 
 // Image dimensions from Figma
@@ -39,7 +40,7 @@ const NepalMap = () => {
                     <div className="relative w-full" style={{ aspectRatio: `${IMG.w} / ${IMG.h}` }}>
                         {/* Vectorized map — behind, shifted up so top edge peeks out */}
                         <img
-                            src="/image.png"
+                            src={IMAGES.home.provincesMap}
                             alt="Nepal Map vectorized"
                             className="absolute left-4 z-0 hidden w-full object-contain object-top md:block"
                             style={{ height: 'calc(100% + 40px)', top: -55 }}

@@ -3,7 +3,10 @@
 // ============================================
 // Edit content here → all destination components update.
 // Desktop shows the 5 shared cards; mobile scrolls all 7 (incl. 2 mobile-only extras).
+// Image URLs come from @/config/images (IMAGES registry).
 // ============================================
+
+import { IMAGES } from './images';
 
 export interface DestinationCard {
     name: string;
@@ -18,38 +21,38 @@ export const popularDestinations: DestinationCard[] = [
     {
         name: 'Mount Everest (Sagarmatha)',
         province: 'Koshi Province',
-        image: '/destination/mount_everest.png',
+        image: IMAGES.destination.mountEverest,
     },
     {
         name: 'Langtang Valley',
         province: 'Bagmati Province',
-        image: '/destination/langtang_mountain.png',
+        image: IMAGES.destination.langtangMountain,
     },
     {
         name: 'Pokhara',
         province: 'Gandaki Province',
-        image: '/destination/pokhara_lake.png',
+        image: IMAGES.destination.pokharaLake,
     },
     {
         name: 'Mardi Himal',
         province: 'Gandaki Province',
-        image: '/destination/Mardi_mountain.png',
+        image: IMAGES.destination.mardiHimal,
     },
     {
         name: 'Mustang (Upper Mustang)',
         province: 'Gandaki Province',
-        image: '/destination/upper_mustang.png',
+        image: IMAGES.destination.upperMustang,
     },
     {
         name: 'Chitwan Rhino',
         province: 'Terai Region',
-        image: '/destination/mobile_rihno.png',
+        image: IMAGES.destination.chitwanRhino,
         mobileOnly: true,
     },
     {
         name: 'Kathmandu Temple',
         province: 'Bagmati Province',
-        image: '/destination/mobile_temple.png',
+        image: IMAGES.destination.kathmanduTemple,
         mobileOnly: true,
     },
 ];
@@ -64,14 +67,14 @@ export const featuredTabs: string[] = [
     'Lakes',
 ];
 
-/** Featured tab icons — Figma artwork in public/destination/ */
+/** Featured tab icons — Figma artwork (@/config/images registry) */
 export const featuredTabIcons: Record<string, string> = {
-    All: '/destination/icon-all.png',
-    Trekking: '/destination/icon-treaking.png',
-    Safari: '/destination/icon-safari.png',
-    Spiritual: '/destination/icon-spritual.png',
-    Heritage: '/destination/icon-heritage.png',
-    Lakes: '/destination/icon-lake.png',
+    All: IMAGES.destination.icons.all,
+    Trekking: IMAGES.destination.icons.trekking,
+    Safari: IMAGES.destination.icons.safari,
+    Spiritual: IMAGES.destination.icons.spiritual,
+    Heritage: IMAGES.destination.icons.heritage,
+    Lakes: IMAGES.destination.icons.lakes,
 };
 
 export interface FeaturedCard {
@@ -86,37 +89,37 @@ export interface FeaturedCard {
 /** Featured grid — 2-col uniform on mobile, mosaic on desktop */
 export const featuredCards: FeaturedCard[] = [
     {
-        src: '/Group_35.png',
+        src: IMAGES.featured.tilichoLake,
         label: 'Elephant Safari',
         ratio: '292 / 350',
         span: 'md:col-span-3',
     },
     {
-        src: '/Group_36.png',
+        src: IMAGES.featured.everestPrayerFlags,
         label: 'Jeep Safari',
         ratio: '606 / 351',
         span: 'md:col-span-6',
     },
     {
-        src: '/Group_37.png',
+        src: IMAGES.featured.gokyoLake,
         label: 'Canoe Safari',
         ratio: '292 / 350',
         span: 'md:col-span-3',
     },
     {
-        src: '/discover-nepal-1.png',
+        src: IMAGES.home.discoverNepal1,
         label: 'Bird Watching Safari',
         ratio: '506 / 351',
         span: 'md:col-span-5',
     },
     {
-        src: '/discover-nepal-2.png',
+        src: IMAGES.home.discoverNepal2,
         label: 'Crocodile Watching',
         ratio: '394 / 349',
         span: 'md:col-span-4',
     },
     {
-        src: '/Group_35.png',
+        src: IMAGES.featured.tilichoLake,
         label: 'Tiger Tracking',
         ratio: '292 / 350',
         span: 'md:col-span-3',

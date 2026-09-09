@@ -1,4 +1,5 @@
 import { cn } from '@/lib/utils';
+import { IMAGES } from '@/config/images';
 import {
     bodyTextSmall,
     ctaMobile,
@@ -15,15 +16,15 @@ const STAGGERED_RATIO = '257 / 387';
 const DiscoverNepal = () => {
     return (
         <section
-            className={cn('relative w-full overflow-hidden  ', sectionPadding)}
+            className={cn('relative w-full overflow-hidden', sectionPadding)}
         >
             {/* Decorative patch3 — re-add <img src="/patch3.png" className="pointer-events-none absolute top-1/2 right-0 -z-10 w-70 -translate-y-1/2 rotate-[89.27deg] opacity-90 select-none md:w-105 lg:w-130"> once the asset lands in public/ */}
 
-            <div className="mx-auto flex max-w-container flex-col items-center gap-5 bg-bg-warm px-8 md:flex-row md:gap-16 md:bg-transparent md:px-12 lg:px-24">
+            <div className="mx-auto flex max-w-container flex-col items-center gap-5 bg-surface-warm px-8 md:flex-row md:gap-16 md:bg-transparent md:px-12 lg:px-24">
                 {/* Mobile second: single image (336 x 229) */}
                 <div className="order-2 w-full md:hidden">
                     <img
-                        src="/discover-nepal-2.png"
+                        src={IMAGES.home.discoverNepal2}
                         alt="Himalayan peak at dusk"
                         loading="lazy"
                         className={cn(
@@ -58,7 +59,7 @@ const DiscoverNepal = () => {
                     <button
                         className={cn(
                             ctaMobile,
-                            'order-4 text-xs-md mb-2 md:hidden',
+                            'order-4 text-xs-md md:hidden',
                         )}
                     >
                         <span className="px-2">Start Your Journey</span>
@@ -68,7 +69,7 @@ const DiscoverNepal = () => {
                     <button
                         className={cn(
                             fontPrimary,
-                            'hidden h-10.5 w-52 items-center justify-center rounded-full bg-teal text-md-lg font-bold text-white md:order-3  md:mt-5 md:flex',
+                            'hidden h-10.5 w-52 items-center justify-center rounded-full bg-cta text-md-lg font-bold text-white md:order-3 md:mt-5 md:flex',
                         )}
                     >
                         Start Your Journey
@@ -79,7 +80,7 @@ const DiscoverNepal = () => {
                 <div className="hidden w-full min-w-0 flex-1 items-start justify-center gap-5 md:flex lg:justify-end">
                     {/* Rectangle 36 — shorter, sits lower */}
                     <img
-                        src="/discover-nepal-1.png"
+                        src={IMAGES.home.discoverNepal1}
                         alt="Stone cairn before snowy peaks"
                         loading="lazy"
                         className={cn(
@@ -91,7 +92,7 @@ const DiscoverNepal = () => {
 
                     {/* Rectangle 37 — taller, sits higher */}
                     <img
-                        src="/discover-nepal-2.png"
+                        src={IMAGES.home.discoverNepal2}
                         alt="Himalayan peak at dusk"
                         loading="lazy"
                         className={cn(

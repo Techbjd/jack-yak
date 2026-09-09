@@ -1,6 +1,7 @@
 import { FaInstagram, FaFacebookF, FaWhatsapp } from 'react-icons/fa';
 import type { IconType } from 'react-icons';
 import { fontPrimary } from '@/config/theme';
+import { IMAGES } from '@/config/images';
 
 interface FooterColumnData {
     title: string;
@@ -70,13 +71,13 @@ const SocialIcon: React.FC<SocialIconProps> = ({ label, Icon, href = '#' }) => {
 
 const Footer: React.FC = () => {
     return (
-        <footer className="w-full bg-navy text-white">
-            {/* Torn-edge mask — swap with footer.png later */}
+        <footer className="w-full bg-brand text-white">
+            {/* Torn-edge trekker panorama */}
             <div className="-mb-1 w-full overflow-hidden">
                 <div className="flex aspect-1440/470 w-full items-center justify-center bg-bg-placeholder select-none">
 
                     <img
-                        src="/footer.png"
+                        src={IMAGES.home.trekkerYak}
                         alt="JackYak Logo"
                         className="h-full w-full object-contain"
                     />
@@ -91,7 +92,7 @@ const Footer: React.FC = () => {
 
                         <div className="flex h-logo w-logo-w items-center justify-center ">
                             <img
-                                src="/jack-yak-logo.png"
+                                src={IMAGES.logo.jackYak}
                                 alt="JackYak Logo"
                                 className="h-full w-full object-contain"
                             />
@@ -130,10 +131,10 @@ const Footer: React.FC = () => {
                 <div className="hidden flex-col gap-10 md:flex md:flex-row md:justify-between md:gap-8">
                     {/* Brand */}
                     <div className="flex max-w-content-sm flex-col gap-4">
-                        {/* Logo mask — swap with jack-yak-logo.png later */}
+                        {/* Logo */}
                         <div className="flex h-20 w-20 items-center justify-center ">
                             <img
-                                src="/jack-yak-logo.png"
+                                src={IMAGES.logo.jackYak}
                                 alt="JackYak Logo"
                                 className="h-full w-full object-contain"
                             />

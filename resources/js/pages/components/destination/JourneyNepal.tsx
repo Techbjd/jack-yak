@@ -1,4 +1,5 @@
 import { eyebrow, fontPrimary, imagePlaceholder } from '@/config/theme';
+import { IMAGES } from '@/config/images';
 import { cn } from '@/lib/utils';
 
 function MaskLabel({ name }: { name: string }) {
@@ -21,7 +22,7 @@ export default function JourneyNepal() {
             <div className="-mx-6 -my-0.5 grid grid-cols-2 items-stretch gap-0 md:mx-0 lg:-mx-24 lg:grid-cols-12">
                 <div className="flex flex-col gap-4 pl-6 md:gap-6 md:pl-0 xs:pl-8 lg:col-span-5 lg:justify-center lg:pl-20">
                     <img
-                        src="/destination/yak-mascot.png"
+                        src={IMAGES.destination.yakMascot}
                         alt="JackYak mascot"
                         className="w-9 lg:w-28"
                     />
@@ -70,7 +71,7 @@ export default function JourneyNepal() {
                     )}
                 >
                     <img
-                        src="/destination/journey_mobile.png"
+                        src={IMAGES.destination.journeyMobile}
                         alt="Journey Nepal"
                         className="absolute inset-0 h-full w-full object-cover"
                     />
@@ -83,7 +84,7 @@ export default function JourneyNepal() {
                     )}
                 >
                     <img
-                        src="/destination/journey.png"
+                        src={IMAGES.destination.journey}
                         alt="Journey Nepal"
                         className="absolute inset-0 h-full w-full object-cover"
                     />
@@ -92,7 +93,7 @@ export default function JourneyNepal() {
 
             {/* Row 2 — teal card + image + yak panel */}
             <div className="-mx-6 grid grid-cols-3 items-stretch gap-0 xs:grid-cols-2 md:mx-0 lg:-mx-24 lg:grid-cols-12 lg:gap-0 lg:min-h-71.5">
-                <div className="col-span-2 flex flex-col justify-center gap-5 bg-ember px-8 py-10 text-white xs:col-span-1 md:gap-3 md:bg-teal md:p-6 lg:col-span-3 lg:justify-start lg:px-16 lg:pt-12">
+                <div className="col-span-2 flex flex-col justify-center gap-5 bg-cta-ember px-8 py-10 text-white xs:col-span-1 md:gap-3 md:bg-cta md:p-6 lg:col-span-3 lg:justify-start lg:px-16 lg:pt-12">
                     <h3
                         className={cn(
                             fontPrimary,
@@ -120,7 +121,7 @@ export default function JourneyNepal() {
                     )}
                 >
                     <img
-                        src="/destination/journey_mobile_mountain.png"
+                        src={IMAGES.destination.journeyMobileMountain}
                         alt="Journey Nepal"
                         className="absolute inset-0 h-full w-full object-cover"
                     />
@@ -133,7 +134,7 @@ export default function JourneyNepal() {
                     )}
                 >
                     <img
-                        src="/destination/journey_mountain.png"
+                        src={IMAGES.destination.journeyMountain}
                         alt="Journey Nepal"
                         className="absolute inset-0 h-full w-full object-cover"
                     />
