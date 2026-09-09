@@ -59,6 +59,28 @@ export const IMAGES = {
         everestPrayerFlags: '/images/featured/everest-prayer-flags.png',
         gokyoLake: '/images/featured/gokyo-lake.png',
     },
+    // About page slots use object-cover: frames have fixed ratios, so upload
+    // matching shapes to avoid heavy cropping —
+    // destinations: landscape ~4:3 (e.g. 800x600),
+    // luklaFlight: large landscape, min 1200x800 (crops hardest, spans full
+    // steps height from 600px up),
+    // travelerAvatar: square (e.g. 400x400; object-top keeps faces).
+    about: {
+     mountEverest: '/images/destination/mount-everest.png',
+        pokharaLakeside: '/images/about/pokhara.png',
+        chitwanSafari: '/images/about/chitwan.png',
+        luklaFlight: '/images/about/desktop_plane.png',
+        travelerAvatar: '/images/about/traveler-avatar.png',
+    },
+    icons: {
+            advanture: '/images/about/icons/advanture_activities.png',
+            localCommunication: '/images/about/icons/local_communication.png',
+            nationalPark: '/images/about/icons/national_park.png',
+           travelling: '/images/about/icons/traveling.png',
+            wildlife: '/images/about/icons/wildlife_experience.png',
+
+
+        },
 } as const;
 
 export type Images = typeof IMAGES;
