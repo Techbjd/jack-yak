@@ -8,16 +8,16 @@ export default function DestinationHero() {
             <Header tone="onLight" />
 
             <div className="flex flex-col items-center px-6 pt-2 text-center md:px-12 lg:px-12">
-                <h1
+                {/* <h1
                     className={cn(
                         fontDisplay,
-                        'text-display leading-tight font-medium text-text-primary lg:text-display-lg lg:leading-display-lg',
+                        'text-center text-display leading-tight font-medium text-text-primary lg:text-display-lg lg:leading-display-lg',
                     )}
                 >
                     Ama Dablam
-                </h1>
+                </h1> */}
 
-                {/* Panorama mask — swap with mountain asset later */}
+                {/* Panorama — Ama Dablam backdrop */}
                 <div className={cn('relative mt-4 w-full', imagePlaceholder)}>
                     <div className="flex aspect-video w-full items-center justify-center lg:aspect-1464/958">
                         <span
@@ -26,26 +26,21 @@ export default function DestinationHero() {
                                 'text-xs-sm font-medium text-white/80',
                             )}
                         >
-                            Mountain.png
+                            <img src="/destination/destination.png" alt="Ama Dablam" />
                         </span>
                     </div>
-                    <div
-                        aria-hidden="true"
-                        className="absolute inset-0 bg-linear-to-t from-white via-white/50 to-transparent"
-                    />
                 </div>
 
                 <p
                     className={cn(
                         fontPrimary,
-                        'max-w-content-sm py-8 text-center text-sm-base leading-snug font-medium text-text-primary lg:max-w-content-xl lg:py-12 lg:text-2xl-3xl lg:leading-snug',
+                        'mx-auto mt-6 w-full max-w-70 text-center text-sm-base leading-snug font-medium text-text-primary md:mt-8 md:max-w-md md:text-md-lg',
                     )}
                 >
-                    Nepal is a land of extraordinary diversity where the
-                    Himalayas, ancient heritage, vibrant cultures, and abundant
-                    wildlife come together. From the world&apos;s highest peaks
-                    to lush subtropical jungles, Nepal offers unforgettable
-                    experiences for every traveler.
+                    Nepal is a land of extraordinary diversity where the Himalayas, ancient
+                    heritage, vibrant cultures, and abundant wildlife come together. From the
+                    world&apos;s highest peaks to lush subtropical jungles, Nepal offers
+                    unforgettable experiences for every traveler.
                 </p>
             </div>
         </div>
