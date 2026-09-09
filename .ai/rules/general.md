@@ -12,7 +12,7 @@ Laravel 13 + Inertia.js v3 + React 19 + Tailwind CSS v4 stack. Single-page app p
 PHP: `vendor/bin/pint` for formatting (laravel preset), `phpstan analyse` (level 7). JS/TS: `npm run check` for linting, `npm run types:check` for TypeScript. Run `composer ci:check` for full pipeline. Always run Pint after modifying PHP files: `vendor/bin/pint --dirty --format agent`.
 
 ## Jack-Yak Project: Color System & Design Tokens
-**Brand Colors (config/colors.php → CSS variables):**
+**Brand Colors (resources/js/config/colors.ts COLORS + @theme — frontend truth):**
 - `navy`: #0E1B2B (primary dark)
 - `navy_light`: #253A55 (secondary dark)
 - `navy_gradient`: #5180BB (gradient endpoint)
@@ -106,8 +106,7 @@ mobileNav: ['Home', 'Destinations', 'Guides', 'About', 'Favorites', 'Search', 'P
 - `imageRoundedXl`: 2xl rounded corners
 
 **Color Access:**
-- PHP: `config('colors.navy')`
-- React: `useColors()` hook from `@/config/colors`
+- React: `useColors()` hook from `@/config/colors` (static `COLORS`, no provider needed)
 - CSS: `var(--color-navy)` or Tailwind `text-navy`
 
 ## Jack-Yak Project: Features & Business Logic
@@ -140,9 +139,8 @@ mobileNav: ['Home', 'Destinations', 'Guides', 'About', 'Favorites', 'Search', 'P
 
 ## Quick Reference - Where to Edit What
 **Want to change a color?**
-→ Edit `config/colors.php` (PHP source of truth)
-→ CSS variables auto-update via `resources/css/app.css` @theme
-→ React components auto-update via `useColors()` hook
+→ Edit hexes in `resources/js/config/colors.ts` (`COLORS`) AND `resources/css/app.css` @theme (keep in sync)
+→ React components auto-update via `useColors()` hook + Tailwind utilities
 
 **Want to change fonts?**
 → Edit `resources/css/app.css` @theme block (font families)
