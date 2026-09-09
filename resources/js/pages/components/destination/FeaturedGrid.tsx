@@ -10,7 +10,11 @@ import {
     type LucideIcon,
 } from 'lucide-react';
 import { eyebrow, fontPrimary, imagePlaceholder } from '@/config/theme';
-import { featuredCards, featuredTabs } from '@/config/destination';
+import {
+    featuredCards,
+    featuredTabIcons,
+    featuredTabs,
+} from '@/config/destination';
 import { cn } from '@/lib/utils';
 
 const TAB_ICONS: Record<string, LucideIcon> = {
@@ -21,6 +25,39 @@ const TAB_ICONS: Record<string, LucideIcon> = {
     Heritage: Landmark,
     Lakes: Waves,
 };
+
+
+const TAB_ICON_SIZE: Record<string, string> = {
+    Spiritual: 'h-9 w-9',
+    Lakes: 'h-8.5 w-8.5',
+};
+
+/** Figma icon artwork with Lucide fallback until the uploads land */
+function TabIcon({ tab }: { tab: string }) {
+    const [ready, setReady] = useState(false);
+    const [failed, setFailed] = useState(false);
+    const src = featuredTabIcons[tab];
+    const Icon = TAB_ICONS[tab] ?? Globe;
+    const size = TAB_ICON_SIZE[tab] ?? 'h-7 w-7';
+
+    return (
+        <>
+            {src && !failed && (
+                <img
+                    src={src}
+                    alt=""
+                    aria-hidden="true"
+                    onLoad={() => setReady(true)}
+                    onError={() => setFailed(true)}
+                    className={cn(size, 'object-contain', !ready && 'hidden')}
+                />
+            )}
+            {(!src || failed || !ready) && (
+                <Icon className={cn(size, 'text-text-primary')} />
+            )}
+        </>
+    );
+}
 
 export default function FeaturedGrid() {
     const [activeTab, setActiveTab] = useState<string>('Safari');
@@ -72,7 +109,7 @@ export default function FeaturedGrid() {
                                     fontPrimary,
                                     'text-md-lg',
                                     isActive
-                                        ? 'font-medium text-orange'
+                                        ? 'font-medium text-cta-accent'
                                         : 'font-medium text-text-primary',
                                 )}
                             >
@@ -81,7 +118,7 @@ export default function FeaturedGrid() {
                             <span
                                 className={cn(
                                     'h-0.5 w-6 rounded-full',
-                                    isActive ? 'bg-orange' : 'bg-transparent',
+                                    isActive ? 'bg-cta-accent' : 'bg-transparent',
                                 )}
                             />
                         </button>
@@ -89,21 +126,20 @@ export default function FeaturedGrid() {
                 })}
             </div>
 
-            {/* DESKTOP: icon tabs between two rules, thick segment under the active tab */}
+            {/* DESKTOP: artwork tabs between two rules, thick segment under the active tab */}
             <div className="hidden md:block">
                 <div className="h-px w-full bg-text-primary/20" />
                 <div className="grid grid-cols-6">
                     {featuredTabs.map((tab) => {
-                        const Icon = TAB_ICONS[tab] ?? Globe;
                         const isActive = tab === activeTab;
                         return (
                             <button
                                 key={tab}
                                 type="button"
                                 onClick={() => setActiveTab(tab)}
-                                className="flex cursor-pointer flex-col items-center gap-2 py-3"
+                                className="flex cursor-pointer flex-row items-center justify-center gap-2 py-3"
                             >
-                                <Icon className="h-7 w-7 text-text-primary" />
+                                <TabIcon tab={tab} />
                                 <span
                                     className={cn(
                                         fontPrimary,
@@ -170,7 +206,7 @@ export default function FeaturedGrid() {
                             {card.label}
                         </p>
                         <span className="absolute -right-1 -bottom-1.5 flex h-10 w-12 items-center justify-center rounded-full bg-white md:-right-4 md:-bottom-4 md:h-16 md:w-16">
-                            <span className="flex h-6.5 w-6.5 items-center justify-center rounded-full bg-text-primary md:h-10 md:w-10 md:bg-teal">
+                            <span className="flex h-6.5 w-6.5 items-center justify-center rounded-full bg-text-primary md:h-10 md:w-10 md:bg-cta">
                                 <ArrowUpRight className="h-3.5 w-3.5 text-white md:h-5 md:w-5" />
                             </span>
                         </span>

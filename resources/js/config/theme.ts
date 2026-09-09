@@ -25,7 +25,7 @@ export const eyebrow =
 
 /** Destination card name + province (10px bold navy) */
 export const destCardTitle =
-    'font-manrope text-xs-sm leading-tight font-bold text-navy-light';
+    'font-manrope text-xs-sm leading-tight font-bold text-ink';
 
 // --------------------------------------------
 // Layout: Section & Container
@@ -64,15 +64,15 @@ export const bodyTextSmall =
 
 /** Mobile CTA button — orange pill */
 export const ctaMobile =
-    'font-manrope flex h-[25px] w-fit items-center justify-center gap-2 rounded-full bg-orange px-3 text-xs-sm leading-[16px] font-bold text-white';
+    'font-manrope flex h-[25px] w-fit items-center justify-center gap-2 rounded-full bg-cta-accent px-3 text-xs-sm leading-[16px] font-bold text-white';
 
 /** Desktop CTA button — teal pill */
 export const ctaDesktop =
-    'font-manrope hidden h-[42px] w-fit items-center justify-center gap-2 rounded-full bg-teal px-3 text-md-lg leading-[22px] font-bold text-white md:flex';
+    'font-manrope hidden h-[42px] w-fit items-center justify-center gap-2 rounded-full bg-cta px-3 text-md-lg leading-[22px] font-bold text-white md:flex';
 
 /** Cream circle for icon inside CTA */
 export const ctaIconCircle =
-    'flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-bg-cream';
+    'flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-surface-cream';
 
 // --------------------------------------------
 // Cards: Image patterns
