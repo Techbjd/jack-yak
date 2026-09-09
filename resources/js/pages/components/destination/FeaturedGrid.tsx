@@ -11,7 +11,8 @@ import {
 } from 'lucide-react';
 import { eyebrow, fontPrimary, imagePlaceholder } from '@/config/theme';
 import {
-    featuredCards,
+    destinationFeaturedCards,
+
     featuredTabIcons,
     featuredTabs,
 } from '@/config/destination';
@@ -174,7 +175,7 @@ export default function FeaturedGrid() {
 
             {/* Cards — uniform 2-col on mobile, mosaic on desktop */}
             <div className="grid grid-cols-2 gap-x-3 gap-y-4 md:grid-cols-12 md:gap-5">
-                {featuredCards.map((card, i) => (
+                {destinationFeaturedCards.map((card, i) => (
                     <div
                         key={`${card.src}-${i}`}
                         className={cn(
@@ -187,14 +188,11 @@ export default function FeaturedGrid() {
                             src={card.src}
                             alt={card.label}
                             loading="lazy"
-                            className={cn(
-                                imagePlaceholder,
-                                'absolute inset-0 h-full w-full rounded-card-sm object-cover',
-                            )}
+                            className='absolute inset-0 h-full w-full  object-cover'
                         />
                         <div
                             aria-hidden="true"
-                            className="absolute inset-0 rounded-card-sm bg-black/20"
+                            className="absolute inset-0 rounded-card-sm bg-black/0"
                         />
                         {/* Desktop only — safari label */}
                         <p
