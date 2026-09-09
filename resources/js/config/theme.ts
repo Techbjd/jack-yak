@@ -5,8 +5,9 @@
 // and they propagate across the entire app.
 // ============================================
 //
-// NOTE: Color values are defined in config/colors.php
-// and shared via Inertia. Use useColors() hook to access them.
+// NOTE: Color hex values live in resources/js/config/colors.ts (COLORS)
+// and resources/css/app.css @theme (keep in sync). Use useColors() hook
+// to access them from components.
 // The raw values here are fallbacks for SSR/static contexts.
 // ============================================
 
