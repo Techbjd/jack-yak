@@ -88,7 +88,7 @@ mobileNav: ['Home', 'Destinations', 'Guides', 'About', 'Favorites', 'Search', 'P
 {
   name: string;        // "Mount Everest"
   subtitle: string;    // "Highest Peak"
-  image: string;       // "/Group_36.png"
+  image: string;       // "/images/featured/everest-prayer-flags.png"
   ratio: string;       // "258 / 391"
   raised: boolean;     // translate up on desktop
   size: 'lg' | 'sm';  // card size variant
@@ -118,13 +118,15 @@ mobileNav: ['Home', 'Destinations', 'Guides', 'About', 'Favorites', 'Search', 'P
 5. **Discover Nepal**: Staggered image gallery with discovery content
 6. **Top Destinations**: Carousel of destinations (Everest, etc.)
 
-**Image Assets:**
-- Hero: `/Hero-bg.png`, `/Herosecond.png`, `/Mountain.png`
-- Map: `/image.png`, leader lines SVG
-- About: `/aboutJackyak.png`, `/patch2.png`
-- Discover: `/discover-nepal-1.png`, `/discover-nepal-2.png`, `/patch3.png`
-- Destinations: `/Group_36.png`
-- Logo: `/jack-yak-logo.png`
+**Image Assets (`public/images/`, kebab-case, grouped by feature):**
+- Logo: `/images/logo/jack-yak-logo.png`
+- Home: `/images/home/hero-bg.png`, `/images/home/hero-secondary.png`, `/images/home/mountain-divider.png`
+- Map: `/images/home/nepal-provinces-map.png`, leader lines SVG
+- About: `/images/home/about-jackyak.png`
+- Discover: `/images/home/discover-nepal-1.png`, `/images/home/discover-nepal-2.png`
+- Footer: `/images/home/trekker-yak-silhouette.png`
+- Destinations: `/images/destination/ama-dablam-panorama.png`, `/images/destination/journey*.png`, `/images/destination/icons/*.png`
+- Featured: `/images/featured/tilicho-lake.png`, `/images/featured/everest-prayer-flags.png`, `/images/featured/gokyo-lake.png`
 
 **UI Elements:**
 - Hamburger menu with mobile sidebar overlay
@@ -139,8 +141,13 @@ mobileNav: ['Home', 'Destinations', 'Guides', 'About', 'Favorites', 'Search', 'P
 
 ## Quick Reference - Where to Edit What
 **Want to change a color?**
-→ Edit hexes in `resources/js/config/colors.ts` (`COLORS`) AND `resources/css/app.css` @theme (keep in sync)
+→ Part-named alias in `resources/js/config/colors.ts` (`COLORS`) AND `resources/css/app.css` @theme (keep in sync)
+→ Aliases: `brand`, `ink`, `cta`, `cta-accent`, `cta-ember`, `surface-warm`, `surface-cream`, `icon-accent`
+→ Components use aliases (`bg-cta`); primitives (`teal`, `navy`, …) stay for decorative blends
 → React components auto-update via `useColors()` hook + Tailwind utilities
+
+**Want to change an image?**
+→ Edit `resources/js/config/images.ts` (`IMAGES` registry) — single source for all asset URLs
 
 **Want to change fonts?**
 → Edit `resources/css/app.css` @theme block (font families)

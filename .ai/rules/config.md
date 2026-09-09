@@ -28,7 +28,8 @@ Frontend-owned color system: static `COLORS` in `resources/js/config/colors.ts` 
 - `imagePlaceholder` / `imageRoundedLg` / `imageRoundedXl` = image styles
 - `cardMobileImage` / `cardMobileContent` = card dimensions
 
-**resources/js/config/colors.ts** - `COLORS` palette + useColors() hook + setRootColors()
+**resources/js/config/colors.ts** - `COLORS` palette + semantic aliases + useColors() hook + setRootColors()
+**resources/js/config/images.ts** - `IMAGES` registry (all image URLs, grouped by feature)
 **resources/js/config/navigation.ts** - desktopNav + mobileNav arrays
 
 **Pattern**: Edit constant → all components using it update automatically

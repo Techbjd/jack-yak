@@ -42,7 +42,7 @@ const desktopNav: NavItem[] = [
 Destinations defined as config:
 ```typescript
 const destinations = [
-  { name: 'Mount Everest', subtitle: 'Highest Peak', image: '/Group_36.png', ... },
+  { name: 'Mount Everest', subtitle: 'Highest Peak', image: '/images/featured/everest-prayer-flags.png', ... },
   ...
 ];
 ```
