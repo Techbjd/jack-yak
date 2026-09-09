@@ -87,39 +87,43 @@ export interface FeaturedCard {
 }
 
 /** Featured grid — 2-col uniform on mobile, mosaic on desktop */
-export const featuredCards: FeaturedCard[] = [
+
+
+
+
+export const destinationFeaturedCards: FeaturedCard[] = [
     {
-        src: IMAGES.featured.tilichoLake,
+        src: IMAGES.destination.featured.elephantSafari,
         label: 'Elephant Safari',
         ratio: '292 / 350',
         span: 'md:col-span-3',
     },
     {
-        src: IMAGES.featured.everestPrayerFlags,
+        src: IMAGES.destination.featured.jeepSafari,
         label: 'Jeep Safari',
         ratio: '606 / 351',
         span: 'md:col-span-6',
     },
     {
-        src: IMAGES.featured.gokyoLake,
+        src: IMAGES.destination.featured.canoeSafari,
         label: 'Canoe Safari',
         ratio: '292 / 350',
         span: 'md:col-span-3',
     },
     {
-        src: IMAGES.home.discoverNepal1,
+        src: IMAGES.destination.featured.birdWatchingSafari,
         label: 'Bird Watching Safari',
         ratio: '506 / 351',
         span: 'md:col-span-5',
     },
     {
-        src: IMAGES.home.discoverNepal2,
+        src: IMAGES.destination.featured.crocodileWatching,
         label: 'Crocodile Watching',
         ratio: '394 / 349',
         span: 'md:col-span-4',
     },
     {
-        src: IMAGES.featured.tilichoLake,
+        src: IMAGES.destination.featured.tigerWatching,
         label: 'Tiger Tracking',
         ratio: '292 / 350',
         span: 'md:col-span-3',
