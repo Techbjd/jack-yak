@@ -64,6 +64,16 @@ export const featuredTabs: string[] = [
     'Lakes',
 ];
 
+/** Featured tab icons — Figma artwork in public/destination/ */
+export const featuredTabIcons: Record<string, string> = {
+    All: '/destination/icon-all.png',
+    Trekking: '/destination/icon-treaking.png',
+    Safari: '/destination/icon-safari.png',
+    Spiritual: '/destination/icon-spritual.png',
+    Heritage: '/destination/icon-heritage.png',
+    Lakes: '/destination/icon-lake.png',
+};
+
 export interface FeaturedCard {
     src: string;
     label: string;
