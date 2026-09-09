@@ -11,6 +11,9 @@
         'Noto Color Emoji';
     --font-manrope: 'Manrope', ui-sans-serif, system-ui, sans-serif;
 
+    /* ── Custom breakpoint: xs ≥ 400px (compact layouts below 400px) ── */
+    --breakpoint-xs: 25rem;
+
     /* ── Brand colors ── */
     --color-navy: #0E1B2B;
     --color-navy-light: #253A55;
@@ -46,14 +49,15 @@
     --leading-hero: 101px;
 
     /* ── Max widths (content containers) ── */
-    --max-w-content-sm: 300px;
-    --max-w-content: 342px;
-    --max-w-content-md: 575px;
-    --max-w-content-lg: 605px;
-    --max-w-map: 900px;
-    --max-w-quote: 1011px;
-    --max-w-page: 1200px;
-    --max-w-container: 1440px;
+    /* NOTE: Tailwind v4 max-width utilities read --container-*, NOT --max-w-* */
+    --container-content-sm: 300px;
+    --container-content: 342px;
+    --container-content-md: 575px;
+    --container-content-lg: 605px;
+    --container-map: 900px;
+    --container-quote: 1011px;
+    --container-page: 1200px;
+    --container-container: 1440px;
 
     /* ── Spacing (named dimensions) ── */
     --spacing-card-w: 117px;
@@ -98,7 +102,7 @@
     --leading-dest-name: 1.0545;
 
     /* Section */
-    --max-w-dest-title: 342px;
+    --container-dest-title: 342px;
 
     /* Patch rotation */
     --rotate-patch: 89.27deg;
@@ -114,12 +118,13 @@
     --leading-journey: 82px;
     --text-display-lg: 250px;
     --leading-display-lg: 326px;
-    --max-w-content-xl: 733px;
+    --container-content-xl: 733px;
     --radius-dest-card: 13px;
     --radius-card-sm: 7px;
     --spacing-dest-card-w: 109px;
     --spacing-dest-card-h: 192px;
     --spacing-feat-card-h: 140px;
+    --radius-immersive: 10px;
 }
 
 @utility no-scrollbar {
