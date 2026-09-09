@@ -28,7 +28,7 @@ export default function PopularDestinations() {
                     href="#"
                     className={cn(
                         fontPrimary,
-                        'flex items-center gap-2 text-xs-sm font-bold text-orange md:text-md-lg md:text-text-primary',
+                        'flex items-center gap-2 text-xs-sm font-bold text-cta-accent md:text-md-lg md:text-text-primary',
                     )}
                 >
                     VIEW ALL
@@ -76,7 +76,7 @@ export default function PopularDestinations() {
                         key={i}
                         className={cn(
                             'h-2.5 w-2.5 rounded-full',
-                            i === 0 ? 'bg-orange' : 'bg-bg-placeholder',
+                            i === 0 ? 'bg-cta-accent' : 'bg-bg-placeholder',
                         )}
                     />
                 ))}
