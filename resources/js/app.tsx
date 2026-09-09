@@ -1,6 +1,5 @@
 import { createInertiaApp } from '@inertiajs/react';
-import { ColorsContext, setRootColors } from '@/config/colors';
-import type { PageProps } from '@/types';
+import { COLORS, ColorsContext, setRootColors } from '@/config/colors';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -9,12 +8,11 @@ void createInertiaApp({
     progress: {
         color: '#4B5563',
     },
-    withApp(app, { page }) {
-        const colors = (page.props as unknown as PageProps).colors;
-        setRootColors(colors);
+    withApp(app) {
+        setRootColors(COLORS);
 
         return (
-            <ColorsContext.Provider value={colors}>
+            <ColorsContext.Provider value={COLORS}>
                 {app}
             </ColorsContext.Provider>
         );
