@@ -1,16 +1,48 @@
 import { createContext, useContext } from 'react';
-import type { PageProps } from '@/types';
 
-export type Colors = PageProps['colors'];
+// ============================================
+// Palette — Frontend Source of Truth
+// ============================================
+// Hex values live here and in resources/css/app.css @theme (keep in sync).
+// Components read them via useColors(); Tailwind classes via bg-*/text-*.
+// ============================================
 
-export const ColorsContext = createContext<Colors | null>(null);
+export interface Colors {
+    navy: string;
+    navy_light: string;
+    navy_gradient: string;
+    teal: string;
+    orange: string;
+    blue_icon: string;
+    ember: string;
+    text_primary: string;
+    text_white: string;
+    bg_cream: string;
+    bg_warm: string;
+    bg_placeholder: string;
+    progress: string;
+}
+
+export const COLORS: Colors = {
+    navy: '#0E1B2B',
+    navy_light: '#253A55',
+    navy_gradient: '#5180BB',
+    teal: '#2D8A8A',
+    orange: '#FF7A00',
+    blue_icon: '#60A5FA',
+    ember: '#FF5728',
+    text_primary: '#334155',
+    text_white: '#ffffff',
+    bg_cream: '#F7F2EE',
+    bg_warm: '#F9F4F0',
+    bg_placeholder: '#D9D9D9',
+    progress: '#4B5563',
+};
+
+export const ColorsContext = createContext<Colors>(COLORS);
 
 export function useColors(): Colors {
-    const ctx = useContext(ColorsContext);
-    if (!ctx) {
-        throw new Error('useColors must be used within a ColorsProvider');
-    }
-    return ctx;
+    return useContext(ColorsContext);
 }
 
 export function setRootColors(colors: Colors): void {
