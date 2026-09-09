@@ -14,6 +14,9 @@
     /* ── Custom breakpoint: xs ≥ 400px (compact layouts below 400px) ── */
     --breakpoint-xs: 25rem;
 
+    /* ── Custom breakpoint: ms ≥ 600px (mid-small: steps up from mobile sizing) ── */
+    --breakpoint-ms: 37.5rem;
+
     /* ── Brand colors ── */
     --color-navy: #0E1B2B;
     --color-navy-light: #253A55;
