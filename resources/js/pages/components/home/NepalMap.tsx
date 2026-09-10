@@ -3,13 +3,13 @@ import { cn } from '@/lib/utils';
 import { IMAGES } from '@/config/images';
 import { useColors } from '@/config/colors';
 
-// Image dimensions from Figma
+// Image dimensions in px
 const IMG = { x: 298, y: 1377, w: 872, h: 460 };
 
-// Leader-line bounding box in Figma coordinates
+// Leader-line bounding box in the same coordinates
 const REF = { x: 240, y: 1377, w: 985, h: 566 };
 
-// Offsets relative to the image (in Figma px)
+// Offsets relative to the image (in px)
 const SVG_OFFSET = {
     left: (REF.x - IMG.x) / IMG.w,
     top: (REF.y - IMG.y) / IMG.h,
