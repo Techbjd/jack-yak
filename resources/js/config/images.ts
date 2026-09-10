@@ -49,8 +49,10 @@ export const IMAGES = {
             elephantSafari: '/images/destination/featured/elephant_safari.png',
             jeepSafari: '/images/destination/featured/jeep_safari.png',
             canoeSafari: '/images/destination/featured/canoe_safari.png',
-            birdWatchingSafari: '/images/destination/featured/birdwatching_safari.png',
-            crocodileWatching: '/images/destination/featured/crocodilewatching.png',
+            birdWatchingSafari:
+                '/images/destination/featured/birdwatching_safari.png',
+            crocodileWatching:
+                '/images/destination/featured/crocodilewatching.png',
             tigerWatching: '/images/destination/featured/tiger_watching.png',
         },
     },
@@ -66,21 +68,23 @@ export const IMAGES = {
     // steps height from 600px up),
     // travelerAvatar: square (e.g. 400x400; object-top keeps faces).
     about: {
-     mountEverest: '/images/destination/mount-everest.png',
+        mountEverest: '/images/destination/mount-everest.png',
         pokharaLakeside: '/images/about/pokhara.png',
         chitwanSafari: '/images/about/chitwan.png',
         luklaFlight: '/images/about/desktop_plane.png',
         travelerAvatar: '/images/about/traveler-avatar.png',
+        hero: '/images/aboutus/aboutus_Hero.png',
+        difference: '/images/aboutus/aboutusSecondPage.png',
+        differenceMobile: '/images/aboutus/abooutussecondpage_Mobile.png',
+        plan: '/images/aboutus/aboutus_thirdpage.png',
     },
     icons: {
-            advanture: '/images/about/icons/advanture_activities.png',
-            localCommunication: '/images/about/icons/local_communication.png',
-            nationalPark: '/images/about/icons/national_park.png',
-           travelling: '/images/about/icons/traveling.png',
-            wildlife: '/images/about/icons/wildlife_experience.png',
-
-
-        },
+        advanture: '/images/about/icons/advanture_activities.png',
+        localCommunication: '/images/about/icons/local_communication.png',
+        nationalPark: '/images/about/icons/national_park.png',
+        travelling: '/images/about/icons/traveling.png',
+        wildlife: '/images/about/icons/wildlife_experience.png',
+    },
 } as const;
 
 export type Images = typeof IMAGES;
