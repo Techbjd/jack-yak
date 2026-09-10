@@ -179,9 +179,43 @@ export const quizButton =
 /** Quiz helper note — 15px subtle */
 export const quizNote =
     'font-manrope text-[15px] leading-5 font-medium text-subtle';
-
 /** Quiz inline error — small red, mirrors login errors */
 export const quizError = 'font-manrope pt-1.5 text-xs font-medium text-red-500';
+
+// --------------------------------------------
+// About: page patterns (Figma mobile + desktop, token-only)
+// --------------------------------------------
+
+/** About hero title — EB Garamond navy on mobile, giant white on desktop */
+export const aboutHeroTitle =
+    'font-display text-display leading-about font-medium text-ink md:text-about-display md:leading-about-display md:text-white';
+
+/** About centered section title — 16px mobile, 60px desktop */
+export const aboutSectionTitle =
+    'font-manrope text-md-lg leading-snug font-bold text-ink md:text-section-xl md:leading-section-xl';
+
+/** About left-aligned heading — 16px mobile, 36px desktop */
+export const aboutHeading =
+    'font-manrope text-md-lg leading-snug font-bold text-ink md:text-3xl-4xl';
+
+/** About subheading with accent bar — 14px mobile, 32px desktop */
+export const aboutSubhead =
+    'font-manrope text-base-md leading-snug font-bold text-ink md:text-2xl-3xl';
+
+/** About body copy — 10px mobile, 24px desktop */
+export const aboutBody =
+    'font-manrope text-xs-sm leading-snug font-medium text-text-primary md:text-xl-2xl';
+
+/** About accent bar — placeholder tick beside subheads */
+export const aboutBar = 'bg-bg-placeholder h-3.5 w-1.5 shrink-0 md:h-7 md:w-3';
+
+/** About newsletter CTA — navy pill on mobile, teal bar on desktop */
+export const aboutCta =
+    'font-manrope flex h-5.5 w-43 items-center justify-center rounded-full bg-ink text-xs-sm font-normal text-white md:h-18 md:w-full md:max-w-content-md md:bg-cta md:text-xl-2xl';
+
+/** About newsletter note — black 10px mobile, 24px desktop */
+export const aboutNote =
+    'font-manrope text-xs-sm leading-snug font-medium text-black md:text-xl-2xl';
 
 // --------------------------------------------
 // Colors: For inline styles (SVG, dynamic)
