@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
     coverImageAbsolute,
     fontPrimary,
@@ -5,8 +6,10 @@ import {
 } from '@/config/theme';
 import { IMAGES } from '@/config/images';
 import { cn } from '@/lib/utils';
+import CheckAvailability from '../booking/CheckAvailability';
 
 export default function ImmersivePlan() {
+    const [availabilityOpen, setAvailabilityOpen] = useState(false);
     return (
         <section className="flex w-full flex-col px-6 py-8 md:px-12 md:py-12 lg:px-24">
             <div className="rounded-immersive grid grid-cols-2 items-stretch overflow-hidden md:min-h-81.5 md:grid-cols-12">
@@ -38,15 +41,20 @@ export default function ImmersivePlan() {
                         travel guides, local insights, trekking routes, and
                         hidden gems designed to inspire your next adventure.
                     </p>
-                    <a
-                        href="#"
+                    <button
+                        type="button"
+                        onClick={() => setAvailabilityOpen(true)}
                         className={cn(
                             fontPrimary,
-                            'bg-cta-ember text-xs-sm md:bg-cta md:text-md-lg flex w-fit items-center justify-center px-5 py-2 font-bold tracking-wide text-white md:h-12.75 md:w-52 md:px-0 md:py-0',
+                            'bg-cta-ember text-xs-sm md:bg-cta md:text-md-lg flex w-fit cursor-pointer items-center justify-center px-5 py-2 font-bold tracking-wide text-white md:h-12.75 md:w-52 md:px-0 md:py-0',
                         )}
                     >
                         Start Planning
-                    </a>
+                    </button>
+                    <CheckAvailability
+                        open={availabilityOpen}
+                        onClose={() => setAvailabilityOpen(false)}
+                    />
                 </div>
                 {/* Right — temple backdrop */}
                 <div
