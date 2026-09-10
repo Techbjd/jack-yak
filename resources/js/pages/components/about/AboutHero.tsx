@@ -42,7 +42,7 @@ export default function AboutHero() {
                     <h1
                         className={cn(
                             aboutHeroTitle,
-                            'absolute inset-x-0 -top-32 px-12 text-center drop-shadow-md lg:px-24',
+                            'absolute inset-x-0 top-10 px-12 text-center drop-shadow-md lg:px-24',
                         )}
                     >
                         ABOUT US
