@@ -9,10 +9,9 @@ import {
     Waves,
     type LucideIcon,
 } from 'lucide-react';
-import { eyebrow, fontPrimary, imagePlaceholder } from '@/config/theme';
+import { coverImageAbsolute, eyebrow, fontPrimary } from '@/config/theme';
 import {
     destinationFeaturedCards,
-
     featuredTabIcons,
     featuredTabs,
 } from '@/config/destination';
@@ -26,7 +25,6 @@ const TAB_ICONS: Record<string, LucideIcon> = {
     Heritage: Landmark,
     Lakes: Waves,
 };
-
 
 const TAB_ICON_SIZE: Record<string, string> = {
     Spiritual: 'h-9 w-9',
@@ -70,7 +68,7 @@ export default function FeaturedGrid() {
                     <p
                         className={cn(
                             eyebrow,
-                            'hidden tracking-wide md:block md:text-md-lg',
+                            'md:text-md-lg hidden tracking-wide md:block',
                         )}
                     >
                         Discover
@@ -78,7 +76,7 @@ export default function FeaturedGrid() {
                     <h2
                         className={cn(
                             fontPrimary,
-                            'text-lg-xl font-bold tracking-wide text-text-primary lg:text-journey lg:leading-journey',
+                            'text-lg-xl text-text-primary lg:text-journey lg:leading-journey font-bold tracking-wide',
                         )}
                     >
                         Featured Destinations
@@ -88,7 +86,7 @@ export default function FeaturedGrid() {
                 <p
                     className={cn(
                         fontPrimary,
-                        'hidden text-md-lg font-medium text-text-primary lg:block lg:max-w-xs',
+                        'text-md-lg text-text-primary hidden font-medium lg:block lg:max-w-xs',
                     )}
                 >
                     Discover the country&apos;s most remarkable destinations.
@@ -110,8 +108,8 @@ export default function FeaturedGrid() {
                                     fontPrimary,
                                     'text-md-lg',
                                     isActive
-                                        ? 'font-medium text-cta-accent'
-                                        : 'font-medium text-text-primary',
+                                        ? 'text-cta-accent font-medium'
+                                        : 'text-text-primary font-medium',
                                 )}
                             >
                                 {tab}
@@ -119,7 +117,9 @@ export default function FeaturedGrid() {
                             <span
                                 className={cn(
                                     'h-0.5 w-6 rounded-full',
-                                    isActive ? 'bg-cta-accent' : 'bg-transparent',
+                                    isActive
+                                        ? 'bg-cta-accent'
+                                        : 'bg-transparent',
                                 )}
                             />
                         </button>
@@ -129,7 +129,7 @@ export default function FeaturedGrid() {
 
             {/* DESKTOP: artwork tabs between two rules, thick segment under the active tab */}
             <div className="hidden md:block">
-                <div className="h-px w-full bg-text-primary/20" />
+                <div className="bg-text-primary/20 h-px w-full" />
                 <div className="grid grid-cols-6">
                     {featuredTabs.map((tab) => {
                         const isActive = tab === activeTab;
@@ -160,13 +160,13 @@ export default function FeaturedGrid() {
                     {featuredTabs.map((tab) =>
                         tab === activeTab ? (
                             <div key={tab} className="flex items-center">
-                                <span className="h-px flex-1 bg-text-primary/20" />
-                                <span className="h-1 w-32 rounded-full bg-text-primary" />
-                                <span className="h-px flex-1 bg-text-primary/20" />
+                                <span className="bg-text-primary/20 h-px flex-1" />
+                                <span className="bg-text-primary h-1 w-32 rounded-full" />
+                                <span className="bg-text-primary/20 h-px flex-1" />
                             </div>
                         ) : (
                             <div key={tab} className="flex items-center">
-                                <span className="h-px w-full bg-text-primary/20" />
+                                <span className="bg-text-primary/20 h-px w-full" />
                             </div>
                         ),
                     )}
@@ -179,7 +179,7 @@ export default function FeaturedGrid() {
                     <div
                         key={`${card.src}-${i}`}
                         className={cn(
-                            'relative h-feat-card-h w-full md:h-auto',
+                            'h-feat-card-h relative w-full md:h-auto',
                             card.span,
                         )}
                         style={{ aspectRatio: card.ratio }}
@@ -188,23 +188,26 @@ export default function FeaturedGrid() {
                             src={card.src}
                             alt={card.label}
                             loading="lazy"
-                            className='absolute inset-0 h-full w-full  object-cover'
+                            className={cn(
+                                coverImageAbsolute,
+                                'rounded-card-sm',
+                            )}
                         />
                         <div
                             aria-hidden="true"
-                            className="absolute inset-0 rounded-card-sm bg-black/0"
+                            className="rounded-card-sm absolute inset-0 bg-black/0"
                         />
                         {/* Desktop only — safari label */}
                         <p
                             className={cn(
                                 fontPrimary,
-                                'absolute bottom-4 left-4 hidden text-xl-2xl leading-snug font-bold text-white drop-shadow-md md:block',
+                                'text-xl-2xl absolute bottom-4 left-4 hidden leading-snug font-bold text-white drop-shadow-md md:block',
                             )}
                         >
                             {card.label}
                         </p>
                         <span className="absolute -right-1 -bottom-1.5 flex h-10 w-12 items-center justify-center rounded-full bg-white md:-right-4 md:-bottom-4 md:h-16 md:w-16">
-                            <span className="flex h-6.5 w-6.5 items-center justify-center rounded-full bg-text-primary md:h-10 md:w-10 md:bg-cta">
+                            <span className="bg-text-primary md:bg-cta flex h-6.5 w-6.5 items-center justify-center rounded-full md:h-10 md:w-10">
                                 <ArrowUpRight className="h-3.5 w-3.5 text-white md:h-5 md:w-5" />
                             </span>
                         </span>
