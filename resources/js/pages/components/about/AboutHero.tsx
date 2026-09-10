@@ -39,6 +39,11 @@ export default function AboutHero() {
                         loading="eager"
                         className="h-auto w-full object-cover"
                     />
+                    {/* Sky scrim — gives the upper half a sky tone so the white title reads */}
+                    <div
+                        aria-hidden
+                        className="from-navy-gradient/80 absolute inset-x-0 top-0 h-1/2 bg-linear-to-b to-transparent"
+                    />
                     <h1
                         className={cn(
                             aboutHeroTitle,
