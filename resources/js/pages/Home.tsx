@@ -1,19 +1,17 @@
-import { Head } from '@inertiajs/react';
 import Hero from './components/home/Hero';
 import NepalMap from './components/home/NepalMap';
 import MapQuote from './components/home/MapQuote';
 import AboutJackyak from './components/home/AboutJackyak';
 import DiscoverNepal from './components/home/DiscoverNepal';
 import TopDestinations from './components/home/TopDestination';
-import Footer from './components/shared/Footer';
+import AppLayout from '@/layouts/AppLayout';
 import { IMAGES } from '@/config/images';
-
 
 export default function Home() {
     return (
-        <div className="mx-auto flex w-full max-w-360  flex-col items-center justify-center ">
+        <AppLayout title="Home">
             <Hero />
-            <div className="relative z-20 w-full flex flex-col items-center gap-16 py-16 md:py-70 md:gap-20">
+            <div className="relative z-20 flex w-full flex-col items-center gap-16 py-16 md:gap-20 md:py-70">
                 <NepalMap />
                 <MapQuote />
             </div>
@@ -33,9 +31,6 @@ export default function Home() {
             <div className="relative z-10 w-full">
                 <TopDestinations />
             </div>
-            <div className="relative z-10 w-full">
-                <Footer />
-            </div>
-        </div>
+        </AppLayout>
     );
 }
