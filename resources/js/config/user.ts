@@ -1,5 +1,5 @@
 // ============================================
-// User — profile section content (Figma mobile + desktop)
+// User — profile section content
 // ============================================
 // Copy + counts live here so components stay pure UI.
 // Backend replaces these with the authenticated user later.
