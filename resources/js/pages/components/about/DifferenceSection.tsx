@@ -11,14 +11,14 @@ export default function DifferenceSection() {
                 Why Choosing JackYak makes all the Difference
             </h2>
             <img
-                src={IMAGES.about.pokharaLakeside}
-                alt="Golden fields beneath snowy Himalayan peaks"
+                src={IMAGES.about.differenceMobile}
+                alt="Decorated yaks by a mountain lake"
                 loading="lazy"
                 className="aspect-square w-full object-cover md:hidden"
             />
             <img
-                src={IMAGES.home.heroBg}
-                alt="Turquoise alpine lake beneath Himalayan peaks"
+                src={IMAGES.about.difference}
+                alt="Decorated yaks by a mountain lake"
                 loading="lazy"
                 className="hidden aspect-video w-full object-cover md:block"
             />
