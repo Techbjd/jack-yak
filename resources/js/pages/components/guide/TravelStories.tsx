@@ -1,10 +1,13 @@
+import { useState } from 'react';
 import { Quote } from 'lucide-react';
 import { fontPrimary, fontQuote, fontQuoteMark } from '@/config/theme';
 import { IMAGES } from '@/config/images';
 import { cn } from '@/lib/utils';
 import CarouselDots from '../shared/CarouselDots';
+import GiveReview from '../review/GiveReview';
 
 const TravelStories = () => {
+    const [reviewOpen, setReviewOpen] = useState(false);
     return (
         <section className="bg-surface-warm w-full">
             <div className="max-w-container mx-auto w-full px-6 pb-8 md:px-12 md:pb-12 lg:px-24">
@@ -92,9 +95,25 @@ const TravelStories = () => {
                                     dotClassName="size-[2.64px] md:size-2.5"
                                 />
                             </div>
+                            <div className="flex justify-center pt-2 md:justify-start md:pt-4">
+                                <button
+                                    type="button"
+                                    onClick={() => setReviewOpen(true)}
+                                    className={cn(
+                                        fontPrimary,
+                                        'text-cta-accent text-xs-sm md:text-md-lg cursor-pointer font-bold tracking-wide underline-offset-4 hover:underline',
+                                    )}
+                                >
+                                    Share your experience
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </figure>
+                <GiveReview
+                    open={reviewOpen}
+                    onClose={() => setReviewOpen(false)}
+                />
             </div>
         </section>
     );
