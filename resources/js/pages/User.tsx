@@ -10,7 +10,8 @@ export default function User() {
     return (
         <AppLayout title="User" shellClassName="bg-canvas">
             <UserHero />
-            <div className="max-w-map mx-auto flex w-full flex-col gap-6 px-6 pt-12 pb-10 md:gap-10 md:px-12 md:pt-36 md:pb-16">
+            {/* relative z-10: cards float above the hero backdrop image */}
+            <div className="max-w-map relative z-10 mx-auto flex w-full flex-col gap-6 px-6 pt-12 pb-10 md:gap-10 md:px-12 md:pt-36 md:pb-16">
                 <ProfileCard />
                 <SavedCard />
                 <SettingsCard />
