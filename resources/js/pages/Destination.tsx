@@ -1,16 +1,14 @@
-import { Head } from '@inertiajs/react';
 import DestinationHero from './components/destination/DestinationHero';
 import JourneyNepal from './components/destination/JourneyNepal';
 import PopularDestinations from './components/destination/PopularDestinations';
 import ImmersivePlan from './components/destination/ImmersivePlan';
 import FeaturedGrid from './components/destination/FeaturedGrid';
 import DiscoverNepal from './components/home/DiscoverNepal';
-import Footer from './components/shared/Footer';
+import AppLayout from '@/layouts/AppLayout';
 
 export default function Destination() {
     return (
-        <div className="mx-auto flex w-full max-w-360 flex-col items-center">
-            <Head title="Destinations" />
+        <AppLayout title="Destinations">
             <div className="w-full">
                 <DestinationHero />
             </div>
@@ -29,9 +27,6 @@ export default function Destination() {
             <div className="w-full">
                 <DiscoverNepal />
             </div>
-            <div className="w-full">
-                <Footer />
-            </div>
-        </div>
+        </AppLayout>
     );
 }
