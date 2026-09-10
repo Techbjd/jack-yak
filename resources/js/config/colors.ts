@@ -15,6 +15,19 @@ import { createContext, useContext } from 'react';
 // - surface-warm  → alternating section backgrounds (bg-surface-warm)
 // - surface-cream → CTA icon circles (bg-surface-cream)
 // - icon-accent   → CTA glyph icons (text-icon-accent)
+// - quote-blush   → testimonial quote mark (text-quote-blush)
+// - canvas        → view-all page background (bg-canvas)
+// - steel         → pagination inactive text (text-steel)
+// - pine          → login sign-in button (bg-pine)
+// - frost         → login input background on desktop (bg-frost)
+// - frost-line    → login input border (border-frost-line)
+// - fog           → login input placeholder (placeholder:text-fog)
+// - divider       → login "Or" divider lines (bg-divider)
+// - midnight      → quiz labels + primary button (text-midnight, bg-midnight)
+// - mist          → quiz placeholder + option text (placeholder:text-mist)
+// - quiz-line     → quiz input/select/segment borders (border-quiz-line)
+// - hairline      → quiz row dividers (bg-hairline)
+// - subtle        → quiz helper note (text-subtle)
 // Primitives (navy, teal, …) remain for decorative blends (gradients, map).
 // ============================================
 
@@ -41,6 +54,19 @@ export interface Colors {
     surface_warm: string;
     surface_cream: string;
     icon_accent: string;
+    quote_blush: string;
+    canvas: string;
+    steel: string;
+    pine: string;
+    frost: string;
+    frost_line: string;
+    fog: string;
+    divider: string;
+    midnight: string;
+    mist: string;
+    quiz_line: string;
+    hairline: string;
+    subtle: string;
 }
 
 export const COLORS: Colors = {
@@ -65,6 +91,19 @@ export const COLORS: Colors = {
     surface_warm: '#F9F4F0',
     surface_cream: '#F7F2EE',
     icon_accent: '#60A5FA',
+    quote_blush: '#F8E2D3',
+    canvas: '#F8FAFC',
+    steel: '#667085',
+    pine: '#162D3A',
+    frost: '#F7FBFF',
+    frost_line: '#E5E9F1',
+    fog: '#B7B5BB',
+    divider: '#E7EFF0',
+    midnight: '#172738',
+    mist: '#768091',
+    quiz_line: '#E2E5EA',
+    hairline: '#F1F3F5',
+    subtle: '#858D99',
 };
 
 export const ColorsContext = createContext<Colors>(COLORS);
@@ -95,4 +134,17 @@ export function setRootColors(colors: Colors): void {
     root.style.setProperty('--color-surface-warm', colors.surface_warm);
     root.style.setProperty('--color-surface-cream', colors.surface_cream);
     root.style.setProperty('--color-icon-accent', colors.icon_accent);
+    root.style.setProperty('--color-quote-blush', colors.quote_blush);
+    root.style.setProperty('--color-canvas', colors.canvas);
+    root.style.setProperty('--color-steel', colors.steel);
+    root.style.setProperty('--color-pine', colors.pine);
+    root.style.setProperty('--color-frost', colors.frost);
+    root.style.setProperty('--color-frost-line', colors.frost_line);
+    root.style.setProperty('--color-fog', colors.fog);
+    root.style.setProperty('--color-divider', colors.divider);
+    root.style.setProperty('--color-midnight', colors.midnight);
+    root.style.setProperty('--color-mist', colors.mist);
+    root.style.setProperty('--color-quiz-line', colors.quiz_line);
+    root.style.setProperty('--color-hairline', colors.hairline);
+    root.style.setProperty('--color-subtle', colors.subtle);
 }
