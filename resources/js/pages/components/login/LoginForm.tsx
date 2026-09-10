@@ -35,7 +35,6 @@ export default function LoginForm() {
             document.getElementById('login-email')?.focus();
             return;
         }
-
     };
 
     return (
