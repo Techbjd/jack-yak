@@ -8,7 +8,10 @@ interface TrustItem {
 }
 
 const trustItems: TrustItem[] = [
-    { label: 'UNESCO Heritage Sites', image: IMAGES.destination.icons.heritage },
+    {
+        label: 'UNESCO Heritage Sites',
+        image: IMAGES.destination.icons.heritage,
+    },
     { label: 'Nepal Tourism', image: IMAGES.icons.travelling },
     { label: 'National Parks', image: IMAGES.icons.nationalPark },
     { label: 'Adventure Activities', image: IMAGES.icons.advanture },
@@ -18,10 +21,9 @@ const trustItems: TrustItem[] = [
 
 const TrustStrip = () => {
     return (
-        <section className="w-full bg-slate-50">
-            <div className="mx-auto w-full max-w-container px-6 md:px-12 lg:px-24">
-
-                <div className="grid grid-cols-3 gap-x-4 gap-y-6 border-t border-bg-placeholder py-6 md:grid-cols-6 md:gap-0 md:py-0">
+        <section className="bg-surface-warm w-full">
+            <div className="max-w-container mx-auto w-full px-6 md:px-12 lg:px-24">
+                <div className="border-bg-placeholder grid grid-cols-3 gap-x-4 gap-y-6 border-t py-6 md:grid-cols-6 md:gap-0 md:py-0">
                     {trustItems.map(({ label, image }, i) => (
                         <div
                             key={label}
@@ -29,7 +31,7 @@ const TrustStrip = () => {
                                 'relative flex flex-col items-center gap-2 px-2 text-center md:px-4 md:py-6',
                                 // Vertical divider — change h-12 to adjust its length
                                 i !== 0 &&
-                                    'md:before:absolute md:before:top-1/2 md:before:left-0 md:before:h-12 md:before:w-px md:before:-translate-y-1/2 md:before:bg-bg-placeholder md:before:content-[""]',
+                                    'md:before:bg-bg-placeholder md:before:absolute md:before:top-1/2 md:before:left-0 md:before:h-12 md:before:w-px md:before:-translate-y-1/2 md:before:content-[""]',
                             )}
                         >
                             <img
@@ -41,7 +43,7 @@ const TrustStrip = () => {
                             <p
                                 className={cn(
                                     fontPrimary,
-                                    'text-xs-sm leading-snug font-medium text-ink md:text-md-lg ',
+                                    'text-xs-sm text-ink md:text-md-lg leading-snug font-medium',
                                 )}
                             >
                                 {label}
