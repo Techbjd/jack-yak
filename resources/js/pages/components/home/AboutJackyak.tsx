@@ -25,7 +25,6 @@ const AboutJackyak = () => {
         <section
             className={cn('relative w-full overflow-hidden', sectionPadding)}
         >
-
             <div
                 className={cn(sectionContainer, 'bg-surface-warm sm:bg-white')}
             >
