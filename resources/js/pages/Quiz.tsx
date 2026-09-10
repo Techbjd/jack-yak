@@ -21,12 +21,12 @@ export default function Quiz() {
                         <img
                             src={IMAGES.logo.jackYak}
                             alt="JackYak"
-                            className="w-36 object-contain lg:w-[213px]"
+                            className="w-36 object-contain lg:w-53.25"
                         />
                         <p
                             className={cn(
                                 fontPrimary,
-                                'lg:text-2xl-3xl max-w-82.5 text-2xl leading-[44px] font-semibold text-white',
+                                'lg:text-2xl-3xl max-w-82.5 text-2xl leading-11 font-semibold text-white',
                             )}
                         >
                             Find your perfect destination in Nepal
@@ -36,7 +36,7 @@ export default function Quiz() {
 
                 {/* Form column */}
                 <div className="flex w-full flex-1 justify-center px-6 py-10 sm:px-10 lg:items-start lg:px-14 lg:py-14">
-                    <div className="w-full max-w-[680px]">
+                    <div className="w-full max-w-170">
                         <QuizForm />
                     </div>
                 </div>
