@@ -86,11 +86,122 @@ export interface FeaturedCard {
     span: string;
 }
 
-/** Featured grid — 2-col uniform on mobile, mosaic on desktop */
+export interface ViewAllDestination {
+    name: string;
+    tagline: string;
+    province: string;
+    days: string;
+    image: string;
+}
 
-
-
-
+/** View-all listing — 15 cards (5 rows × 3 on mobile Figma) */
+export const viewAllDestinations: ViewAllDestination[] = [
+    {
+        name: 'Mount Everest',
+        tagline: 'Highest Peak',
+        province: 'Koshi Province',
+        days: '12–16 Days',
+        image: IMAGES.destination.mountEverest,
+    },
+    {
+        name: 'Swayambhu Stupa',
+        tagline: 'Heritage Site',
+        province: 'Bagmati Province',
+        days: '1–2 Days',
+        image: IMAGES.destination.swayambhuStupa,
+    },
+    {
+        name: 'Pokhara Lakeside',
+        tagline: 'Lake City',
+        province: 'Gandaki Province',
+        days: '3–5 Days',
+        image: IMAGES.destination.pokharaLake,
+    },
+    {
+        name: 'Langtang Valley',
+        tagline: 'Glacier Valley',
+        province: 'Bagmati Province',
+        days: '7–10 Days',
+        image: IMAGES.destination.langtangMountain,
+    },
+    {
+        name: 'Mardi Himal',
+        tagline: 'Ridge Trek',
+        province: 'Gandaki Province',
+        days: '5–7 Days',
+        image: IMAGES.destination.mardiHimal,
+    },
+    {
+        name: 'Upper Mustang',
+        tagline: 'Forbidden Kingdom',
+        province: 'Gandaki Province',
+        days: '10–14 Days',
+        image: IMAGES.destination.upperMustang,
+    },
+    {
+        name: 'Chitwan Safari',
+        tagline: 'Wildlife Safari',
+        province: 'Terai Region',
+        days: '2–3 Days',
+        image: IMAGES.destination.chitwanRhino,
+    },
+    {
+        name: 'Kathmandu Durbar',
+        tagline: 'Heritage Sites',
+        province: 'Bagmati Province',
+        days: '2–3 Days',
+        image: IMAGES.destination.kathmanduTemple,
+    },
+    {
+        name: 'Stupa Panorama',
+        tagline: 'Mountain Views',
+        province: 'Bagmati Province',
+        days: '1–2 Days',
+        image: IMAGES.destination.stupaPanorama,
+    },
+    {
+        name: 'Elephant Safari',
+        tagline: 'Jungle Safari',
+        province: 'Terai Region',
+        days: '1–2 Days',
+        image: IMAGES.destination.featured.elephantSafari,
+    },
+    {
+        name: 'Jeep Safari',
+        tagline: 'Jungle Safari',
+        province: 'Terai Region',
+        days: '1–2 Days',
+        image: IMAGES.destination.featured.jeepSafari,
+    },
+    {
+        name: 'Canoe Safari',
+        tagline: 'River Safari',
+        province: 'Terai Region',
+        days: '1–2 Days',
+        image: IMAGES.destination.featured.canoeSafari,
+    },
+    {
+        name: 'Tilicho Lake',
+        tagline: 'Highest Lake',
+        province: 'Gandaki Province',
+        days: '8–12 Days',
+        image: IMAGES.featured.tilichoLake,
+    },
+    {
+        name: 'Everest Flags',
+        tagline: 'Prayer Flags',
+        province: 'Koshi Province',
+        days: '12–16 Days',
+        image: IMAGES.featured.everestPrayerFlags,
+    },
+    {
+        name: 'Gokyo Lakes',
+        tagline: 'Turquoise Lakes',
+        province: 'Koshi Province',
+        days: '10–13 Days',
+        image: IMAGES.featured.gokyoLake,
+    },
+];
 export const destinationFeaturedCards: FeaturedCard[] = [
     {
         src: IMAGES.destination.featured.elephantSafari,
