@@ -34,7 +34,7 @@ function pageItems(page: number, totalPages: number): (number | 'ellipsis')[] {
     return items;
 }
 
-/** View-all pagination — Figma boxes, active ink, fully controlled */
+/** View-all pagination — boxed pages, active ink, fully controlled */
 export default function Pagination({
     page,
     totalPages,
