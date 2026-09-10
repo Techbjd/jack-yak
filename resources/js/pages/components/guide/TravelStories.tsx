@@ -11,7 +11,7 @@ const TravelStories = () => {
     return (
         <section className="bg-surface-warm w-full">
             <div className="max-w-container mx-auto w-full px-6 pb-8 md:px-12 md:pb-12 lg:px-24">
-                {/* Mobile: Figma side-by-side card — heading left, quote right, dots centered with author bottom-right */}
+                {/* Mobile: side-by-side card — heading left, quote right, dots centered with author bottom-right */}
                 <figure className="rounded-card-sm bg-surface-warm shadow-card md:rounded-image p-3 md:p-10">
                     <div className="flex items-start gap-3 md:items-center md:gap-8">
                         {/* Left: heading */}
