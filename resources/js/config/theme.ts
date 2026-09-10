@@ -19,9 +19,14 @@ export const fontPrimary = 'font-manrope';
 /** Display serif for destination titles (EB Garamond) */
 export const fontDisplay = 'font-display';
 
+/** Quote body for testimonial cards (Poppins) — Figma Travel Stories */
+export const fontQuote = 'font-poppins';
+
+/** Quote mark glyph for testimonial cards (Roboto) — Figma Travel Stories */
+export const fontQuoteMark = 'font-roboto';
+
 /** Eyebrow label — tiny bold label above headings */
-export const eyebrow =
-    'font-manrope text-xs-md font-bold text-text-primary';
+export const eyebrow = 'font-manrope text-xs-md font-bold text-text-primary';
 
 /** Destination card name + province (10px bold navy) */
 export const destCardTitle =
@@ -31,12 +36,23 @@ export const destCardTitle =
 // Layout: Section & Container
 // --------------------------------------------
 
+/** Page shell — centered max-width column shared by Home/About/Destination */
+export const pageShell =
+    'mx-auto flex w-full max-w-container flex-col items-center';
+
 /** Full-width section with responsive vertical padding */
 export const sectionPadding = 'py-0  md:py-24';
+
+/** Muted section background — replaces hardcoded bg-slate-50 */
+export const sectionMuted = 'w-full bg-surface-warm';
 
 /** Centered content container — standard section layout */
 export const sectionContainer =
     'mx-auto flex max-w-container flex-col gap-16 px-6 md:gap-24 md:px-12 lg:px-24';
+
+/** Narrow section container — single-line px rhythm reused ~8x */
+export const sectionInner =
+    'mx-auto w-full max-w-container px-6 md:px-12 lg:px-24';
 
 // --------------------------------------------
 // Typography: Reusable text patterns
@@ -87,6 +103,25 @@ export const imageRoundedLg = `${imagePlaceholder} rounded-image`;
 /** Image with 2xl rounded corners (DiscoverNepal) */
 export const imageRoundedXl = `${imagePlaceholder} rounded-2xl`;
 
+/** Absolute cover image — dedupes `absolute inset-0 h-full w-full object-cover` (~10x) */
+export const coverImageAbsolute = 'absolute inset-0 h-full w-full object-cover';
+
+/** Card with small radius — replaces hardcoded rounded-xl */
+export const cardRounded = 'rounded-dest-card';
+
+/** Panel with medium radius — replaces hardcoded rounded-xl on figures/panels */
+export const panelRounded = 'rounded-immersive';
+
+/** View-all link — teal/ink responsive pattern reused in Popular + TopDestinations */
+export const viewAllLink =
+    'font-manrope flex items-center gap-1 text-2xs font-bold tracking-wide text-cta-accent md:text-md-lg md:text-ink';
+
+/** Carousel dot row — shared flex wrapper */
+export const carouselDotsWrap = 'flex items-center justify-center gap-2';
+
+/** Single carousel dot — size handled by component, color by active state */
+export const carouselDot = 'rounded-full';
+
 // --------------------------------------------
 // Mobile card dimensions
 // --------------------------------------------
@@ -96,6 +131,57 @@ export const cardMobileImage = 'h-card-h w-card-w';
 
 /** Mobile destination card — text area */
 export const cardMobileContent = 'h-[37px] w-card-w';
+
+// --------------------------------------------
+// Auth: Login patterns (Figma mobile + desktop)
+// --------------------------------------------
+
+/** Login heading — 24px bold ink */
+export const authTitle = 'font-manrope text-2xl font-bold text-ink';
+
+/** Login subtitle / field label — 14px bold ink */
+export const authLabel = 'font-manrope text-sm font-bold text-ink';
+
+/** Login text input — 38px, 9px radius, white mobile / frost desktop */
+export const authInput =
+    'font-manrope h-9.5 w-full rounded-[9px] border border-frost-line bg-white px-3 text-xs font-bold text-ink outline-none placeholder:text-fog focus:border-ink lg:bg-frost';
+
+/** Login primary button — dark pine pill */
+export const authButton =
+    'font-manrope flex h-9.5 w-full items-center justify-center rounded-[9px] bg-pine text-sm font-bold text-white';
+
+/** Login social button — same shell as inputs, icon + label row */
+export const authSocialButton =
+    'font-manrope flex h-9.5 w-full items-center justify-center gap-2.5 rounded-[9px] border border-frost-line bg-white text-xs font-bold text-ink lg:bg-frost';
+
+/** Login "Or" divider hairline */
+export const authDividerLine = 'h-px flex-1 bg-divider';
+
+// --------------------------------------------
+// Quiz: Destination-finder form patterns (Figma desktop)
+// --------------------------------------------
+
+/** Quiz field label / question — 15px medium midnight */
+export const quizLabel =
+    'font-manrope text-[15px] leading-5 font-medium text-midnight';
+
+/** Quiz text input / select — 47px, 6px radius, quiz-line border */
+export const quizInput =
+    'font-manrope h-[47px] w-full rounded-md border border-quiz-line bg-white px-4 text-[15px] font-medium text-midnight outline-none placeholder:text-mist focus:border-midnight';
+
+/** Quiz segmented option text — 14px mist */
+export const quizOption = 'font-manrope text-base-md font-medium text-mist';
+
+/** Quiz primary button — midnight 48px bar, 20px bold white */
+export const quizButton =
+    'font-manrope flex h-12 w-full items-center justify-center rounded-md bg-midnight text-lg-xl font-bold text-white';
+
+/** Quiz helper note — 15px subtle */
+export const quizNote =
+    'font-manrope text-[15px] leading-5 font-medium text-subtle';
+
+/** Quiz inline error — small red, mirrors login errors */
+export const quizError = 'font-manrope pt-1.5 text-xs font-medium text-red-500';
 
 // --------------------------------------------
 // Colors: For inline styles (SVG, dynamic)
