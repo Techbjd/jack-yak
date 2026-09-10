@@ -36,8 +36,8 @@ export default function JourneyStory() {
                 {aboutPlanTitle}
             </h2>
             <img
-                src={IMAGES.destination.langtangMountain}
-                alt="Trekker on a snowy Himalayan ridge"
+                src={IMAGES.about.plan}
+                alt="Cyclist on a high Himalayan trail"
                 loading="lazy"
                 className="aspect-square w-full object-cover md:aspect-video"
             />
