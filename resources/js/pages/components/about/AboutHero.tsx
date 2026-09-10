@@ -3,7 +3,7 @@ import { aboutHeroTitle } from '@/config/theme';
 import { IMAGES } from '@/config/images';
 import Header from '../shared/Header';
 
-/** About hero — navy title above image on mobile; composite photo + overlay on desktop */
+/** About hero — navy title above image on mobile; composite photo + title straddling its top edge on desktop */
 export default function AboutHero() {
     return (
         <div className="w-full">
@@ -29,9 +29,11 @@ export default function AboutHero() {
                 </div>
             </div>
 
-            {/* Desktop — base sky photo + transparent-sky overlay (Figma mask groups), white nav + title */}
-            <div className="hidden w-full md:block">
+            {/* Desktop — navy header on canvas, composite photo, title straddling the photo top edge */}
+            <div className="bg-canvas hidden w-full flex-col md:flex">
+                <Header tone="onLight" />
                 <div className="relative w-full">
+                    {/* Base sky photo */}
                     <img
                         src={IMAGES.about.hero}
                         alt="Blue sky over forested Himalayan hills"
@@ -51,13 +53,10 @@ export default function AboutHero() {
                         loading="eager"
                         className="absolute inset-x-0 top-32 h-auto w-full object-cover"
                     />
-                    <div className="absolute inset-x-0 top-0">
-                        <Header tone="onDark" />
-                    </div>
                     <h1
                         className={cn(
                             aboutHeroTitle,
-                            'absolute inset-x-0 top-52 px-12 text-center drop-shadow-md lg:px-24',
+                            'absolute inset-x-0 -top-8 px-12 text-center drop-shadow-md lg:px-24',
                         )}
                     >
                         ABOUT US
