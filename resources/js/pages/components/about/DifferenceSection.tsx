@@ -11,10 +11,16 @@ export default function DifferenceSection() {
                 Why Choosing JackYak makes all the Difference
             </h2>
             <img
+                src={IMAGES.about.pokharaLakeside}
+                alt="Golden fields beneath snowy Himalayan peaks"
+                loading="lazy"
+                className="aspect-square w-full object-cover md:hidden"
+            />
+            <img
                 src={IMAGES.home.heroBg}
                 alt="Turquoise alpine lake beneath Himalayan peaks"
                 loading="lazy"
-                className="aspect-square w-full object-cover md:aspect-video"
+                className="hidden aspect-video w-full object-cover md:block"
             />
             <div className="flex w-full flex-col gap-4 md:gap-6">
                 {aboutDifferenceParagraphs.map((paragraph) => (
