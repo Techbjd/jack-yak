@@ -6,7 +6,6 @@ import { IMAGES } from '@/config/images';
 import { cn } from '@/lib/utils';
 
 interface HeaderProps {
-    
     tone?: 'onDark' | 'onLight';
 }
 
@@ -100,9 +99,15 @@ const Header = ({ tone = 'onDark' }: HeaderProps) => {
                     className="w-hamburger -m-3 flex h-2.5 cursor-pointer flex-col items-center justify-center gap-1 p-3 active:opacity-60 md:hidden"
                     onClick={() => setIsMobileMenuOpen(true)}
                 >
-                    <span className={`h-[1.5px] w-full ${stripe}`}></span>
-                    <span className={`h-[1.5px] w-full ${stripe}`}></span>
-                    <span className={`h-[1.5px] w-full ${stripe}`}></span>
+                    <span
+                        className={`h-0.5 w-full drop-shadow-sm ${stripe}`}
+                    ></span>
+                    <span
+                        className={`h-0.5 w-full drop-shadow-sm ${stripe}`}
+                    ></span>
+                    <span
+                        className={`h-0.5 w-full drop-shadow-sm ${stripe}`}
+                    ></span>
                 </button>
             </header>
 
