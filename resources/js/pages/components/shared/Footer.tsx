@@ -63,7 +63,8 @@ const SocialIcon: React.FC<SocialIconProps> = ({ label, Icon, href = '#' }) => {
         <a
             href={href}
             aria-label={label}
-            className="flex h-6 w-6 items-center justify-center text-white transition-colors hover:text-white"
+            // p-2 -m-2: 40px tap target with zero visual change (margin pulls layout back)
+            className="-m-2 flex h-6 w-6 items-center justify-center p-2 text-white transition-colors outline-none hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
         >
             <Icon size={24} />
         </a>
@@ -107,20 +108,23 @@ const Footer: React.FC = () => {
                     </div>
 
                     {/* 2x2 grid of columns */}
-                    <div className="grid grid-cols-2 gap-x-8 gap-y-8">
+                    <nav
+                        aria-label="Footer"
+                        className="grid grid-cols-2 gap-x-8 gap-y-8"
+                    >
                         {footerColumns.map((col) => (
                             <div
                                 key={col.title}
                                 className="flex flex-col gap-4"
                             >
-                                <span
+                                <h3
                                     className={cn(
                                         fontPrimary,
                                         'text-md-lg font-bold text-white',
                                     )}
                                 >
                                     {col.title}
-                                </span>
+                                </h3>
                                 <ul className="flex flex-col gap-0">
                                     {col.links.map((link) => (
                                         <li key={link}>
@@ -128,7 +132,8 @@ const Footer: React.FC = () => {
                                                 href="#"
                                                 className={cn(
                                                     fontPrimary,
-                                                    'text-md-lg leading-[163%] font-light text-white',
+                                                    // block + py-0.5 keeps the exact 26px row rhythm while making the whole row tappable
+                                                    'text-md-lg block py-0.5 leading-snug font-light text-white outline-none focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-white',
                                                 )}
                                             >
                                                 {link}
@@ -138,7 +143,7 @@ const Footer: React.FC = () => {
                                 </ul>
                             </div>
                         ))}
-                    </div>
+                    </nav>
                 </div>
 
                 {/* DESKTOP: original layout */}
@@ -165,21 +170,24 @@ const Footer: React.FC = () => {
                     </div>
 
                     {/* Columns */}
-                    <div className="grid flex-1 grid-cols-1 gap-x-8 md:grid-cols-4">
+                    <nav
+                        aria-label="Footer"
+                        className="grid flex-1 grid-cols-1 gap-x-8 md:grid-cols-4"
+                    >
                         {footerColumns.map((col) => (
                             <div
                                 key={col.title}
                                 className="border-b border-white/10 md:border-none"
                             >
                                 <div className="mb-4">
-                                    <span
+                                    <h3
                                         className={cn(
                                             fontPrimary,
                                             'text-base-md font-bold text-white',
                                         )}
                                     >
                                         {col.title}
-                                    </span>
+                                    </h3>
                                 </div>
                                 <ul className="flex flex-col gap-2">
                                     {col.links.map((link) => (
@@ -188,7 +196,7 @@ const Footer: React.FC = () => {
                                                 href="#"
                                                 className={cn(
                                                     fontPrimary,
-                                                    'text-base-md leading-[2.56] font-medium text-white/80 transition-colors hover:text-white',
+                                                    'text-base-md leading-[2.56] font-medium text-white/80 transition-colors outline-none hover:text-white focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-white',
                                                 )}
                                             >
                                                 {link}
@@ -198,7 +206,7 @@ const Footer: React.FC = () => {
                                 </ul>
                             </div>
                         ))}
-                    </div>
+                    </nav>
                 </div>
 
                 {/* Bottom bar */}
