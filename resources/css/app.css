@@ -10,6 +10,8 @@
         'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
         'Noto Color Emoji';
     --font-manrope: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+    --font-poppins: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+    --font-roboto: 'Roboto', ui-sans-serif, system-ui, sans-serif;
 
     /* ── Custom breakpoint: xs ≥ 400px (compact layouts below 400px) ── */
     --breakpoint-xs: 25rem;
@@ -18,32 +20,45 @@
     --breakpoint-ms: 37.5rem;
 
     /* ── Brand colors ── */
-    --color-navy: #0E1B2B;
-    --color-navy-light: #253A55;
-    --color-navy-gradient: #5180BB;
-    --color-teal: #2D8A8A;
-    --color-orange: #FF7A00;
-    --color-blue-icon: #60A5FA;
+    --color-navy: #0e1b2b;
+    --color-navy-light: #253a55;
+    --color-navy-gradient: #5180bb;
+    --color-teal: #2d8a8a;
+    --color-orange: #ff7a00;
+    --color-blue-icon: #60a5fa;
 
     /* ── Text colors ── */
     --color-text-primary: #334155;
     --color-text-white: #ffffff;
 
     /* ── Background colors ── */
-    --color-bg-cream: #F7F2EE;
-    --color-bg-warm: #F9F4F0;
-    --color-bg-placeholder: #D9D9D9;
+    --color-bg-cream: #f7f2ee;
+    --color-bg-warm: #f9f4f0;
+    --color-bg-placeholder: #d9d9d9;
 
     /* ── Semantic aliases (part-named, edit these to retheme a part) ── */
     /* Start as copies of the primitives above — diverge freely. */
-    --color-brand: #0E1B2B;
-    --color-ink: #253A55;
-    --color-cta: #2D8A8A;
-    --color-cta-accent: #FF7A00;
-    --color-cta-ember: #FF5728;
-    --color-surface-warm: #F9F4F0;
-    --color-surface-cream: #F7F2EE;
-    --color-icon-accent: #60A5FA;
+    --color-brand: #0e1b2b;
+    --color-ink: #253a55;
+    --color-cta: #2d8a8a;
+    --color-cta-accent: #ff7a00;
+    --color-cta-ember: #ff5728;
+    --color-surface-warm: #f9f4f0;
+    --color-surface-cream: #f7f2ee;
+    --color-icon-accent: #60a5fa;
+    --color-quote-blush: #f8e2d3;
+    --color-canvas: #f8fafc;
+    --color-steel: #667085;
+    --color-pine: #162d3a;
+    --color-frost: #f7fbff;
+    --color-frost-line: #e5e9f1;
+    --color-fog: #b7b5bb;
+    --color-divider: #e7eff0;
+    --color-midnight: #172738;
+    --color-mist: #768091;
+    --color-quiz-line: #e2e5ea;
+    --color-hairline: #f1f3f5;
+    --color-subtle: #858d99;
 
     /* ── Border radius ── */
     --radius-card: 5px;
@@ -125,7 +140,7 @@
 
     /* ── Destination page tokens (mobile-first, team-shared) ── */
     --font-display: 'EB Garamond', Georgia, serif;
-    --color-ember: #FF5728;
+    --color-ember: #ff5728;
     --text-xs-md: 12px;
     --text-display: 64px;
     --text-journey: 60px;
@@ -155,31 +170,31 @@
    layered utilities (h-12, w-full, …) regardless of specificity. */
 
 @layer base {
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-  }
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
 
-  html,
-  body {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; /* optional dev safety net — remove once you trust the layout */
-  }
+    html,
+    body {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden; /* optional dev safety net — remove once you trust the layout */
+    }
 
-  img,
-  video,
-  svg {
-    max-width: 100%;
-    height: auto;
-    display: block;
-  }
+    img,
+    video,
+    svg {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
 
-  /* Prevent flex/grid children from refusing to shrink below content width */
-  .flex > *,
-  .grid > * {
-    min-width: 0;
-  }
+    /* Prevent flex/grid children from refusing to shrink below content width */
+    .flex > *,
+    .grid > * {
+        min-width: 0;
+    }
 }
