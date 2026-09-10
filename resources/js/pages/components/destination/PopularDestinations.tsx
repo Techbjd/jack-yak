@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 import CarouselDots from '../shared/CarouselDots';
 import ViewAllLink from '../shared/ViewAllLink';
 
-// Desktop card portrait ratio from Figma (260 x 374)
+// Desktop card portrait ratio (260 x 374)
 const DESKTOP_CARD_RATIO = '260 / 374';
 
 export default function PopularDestinations() {
