@@ -5,7 +5,7 @@ interface DestinationGridProps {
     destinations: ViewAllDestination[];
 }
 
-/** View-all card grid — 3 cols mobile (Figma), more on larger screens */
+/** View-all card grid — 3 cols mobile, more on larger screens */
 export default function DestinationGrid({
     destinations,
 }: DestinationGridProps) {
