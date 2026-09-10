@@ -9,7 +9,6 @@ import { cn } from '@/lib/utils';
 import CarouselDots from '../shared/CarouselDots';
 import ViewAllLink from '../shared/ViewAllLink';
 
-// Desktop card portrait ratio (260 x 374)
 const DESKTOP_CARD_RATIO = '260 / 374';
 
 export default function PopularDestinations() {
@@ -29,7 +28,6 @@ export default function PopularDestinations() {
                 </ViewAllLink>
             </div>
 
-            {/* Desktop only — section subheading */}
             <p
                 className={cn(
                     fontPrimary,
@@ -39,7 +37,6 @@ export default function PopularDestinations() {
                 Where will you go?
             </p>
 
-            {/* MOBILE: horizontal snap carousel */}
             <div className="no-scrollbar w-full overflow-x-auto md:hidden">
                 <div className="flex w-max snap-x gap-4 px-6">
                     {popularDestinations.map((dest, i) => (
@@ -47,7 +44,6 @@ export default function PopularDestinations() {
                             key={`${dest.name}-${i}`}
                             className="w-dest-card-w flex shrink-0 snap-start flex-col gap-2"
                         >
-                            {/* Card image */}
                             <img
                                 className={cn(
                                     imagePlaceholder,
@@ -64,10 +60,8 @@ export default function PopularDestinations() {
                 </div>
             </div>
 
-            {/* MOBILE: carousel dots */}
             <CarouselDots className="md:hidden" />
 
-            {/* DESKTOP: 5-col grid, labels overlaid on the image (shared cards only — mobile extras excluded) */}
             <div className="hidden px-6 md:grid md:grid-cols-5 md:gap-6 md:px-12 lg:px-24">
                 {popularDestinations
                     .filter((dest) => !dest.mobileOnly)

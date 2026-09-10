@@ -8,7 +8,6 @@ interface CoverImageProps {
     eager?: boolean;
 }
 
-/** Absolute cover image — dedupes `absolute inset-0 h-full w-full object-cover` (~10x) */
 export default function CoverImage({
     src,
     alt,

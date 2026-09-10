@@ -30,7 +30,6 @@ interface GiveReviewProps {
     onClose: () => void;
 }
 
-/** Give-a-review dialog — stars, textarea, photos, place, visit, name */
 export default function GiveReview({ open, onClose }: GiveReviewProps) {
     const today = new Date().toISOString().split('T')[0];
     const fileInputRef = useRef<HTMLInputElement>(null);
@@ -145,7 +144,6 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
             document.getElementById(`review-${firstBad}`)?.focus();
             return;
         }
-        // TODO: post the review (with photos) once the backend endpoint exists
         setDone(true);
     };
 

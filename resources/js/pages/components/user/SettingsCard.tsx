@@ -17,7 +17,6 @@ const SETTING_ICONS: Record<string, typeof UserIcon> = {
     language: Globe,
 };
 
-/** User settings card — settings rows with icons, values, arrows */
 export default function SettingsCard() {
     return (
         <section className="shadow-card flex w-full flex-col gap-2 rounded-xl bg-white p-5 md:rounded-none md:p-10">
@@ -33,7 +32,6 @@ export default function SettingsCard() {
                     const Icon = SETTING_ICONS[row.id] ?? UserIcon;
                     return (
                         <li key={row.id}>
-                            {/* TODO: link each row to its settings screen once the backend routes exist */}
                             <a
                                 href="#"
                                 className="flex items-center gap-3 py-3 md:gap-4 md:py-4"

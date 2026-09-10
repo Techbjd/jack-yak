@@ -8,7 +8,6 @@ interface ViewAllLinkProps {
     className?: string;
 }
 
-/** View-all link — dedupes POPULAR/VIEW ALL pattern in Popular + TopDestinations */
 export default function ViewAllLink({
     children = 'View all',
     href = '#',

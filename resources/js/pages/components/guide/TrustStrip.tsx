@@ -29,7 +29,6 @@ const TrustStrip = () => {
                             key={label}
                             className={cn(
                                 'relative flex flex-col items-center gap-2 px-2 text-center md:px-4 md:py-6',
-                                // Vertical divider — change h-12 to adjust its length
                                 i !== 0 &&
                                     'md:before:bg-bg-placeholder md:before:absolute md:before:top-1/2 md:before:left-0 md:before:h-12 md:before:w-px md:before:-translate-y-1/2 md:before:content-[""]',
                             )}

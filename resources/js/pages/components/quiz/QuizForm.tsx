@@ -17,7 +17,6 @@ import {
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
-/** Destination-finder form — right column of the Quiz page */
 export default function QuizForm() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -63,7 +62,6 @@ export default function QuizForm() {
                 ?.focus();
             return;
         }
-        // TODO: post answers to the backend once the endpoint exists
     };
 
     return (
@@ -72,7 +70,6 @@ export default function QuizForm() {
             onSubmit={handleSubmit}
             className="divide-hairline flex w-full flex-col divide-y"
         >
-            {/* Name + Email */}
             <div className="grid grid-cols-1 gap-5 pb-7 sm:grid-cols-2">
                 <div className="flex flex-col">
                     <label
@@ -184,7 +181,6 @@ export default function QuizForm() {
                 </div>
             </div>
 
-            {/* Dropdown questions */}
             {quizSelectQuestions.map((q) => (
                 <div
                     key={q.id}
@@ -241,7 +237,6 @@ export default function QuizForm() {
                 </div>
             ))}
 
-            {/* Segmented radio questions */}
             {quizSegmentQuestions.map((q) => (
                 <div
                     key={q.id}
@@ -291,7 +286,6 @@ export default function QuizForm() {
                 </div>
             ))}
 
-            {/* Submit */}
             <div className="flex flex-col items-center pt-7">
                 <button type="submit" className={quizButton}>
                     Find My Destination

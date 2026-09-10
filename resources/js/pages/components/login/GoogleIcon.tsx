@@ -2,7 +2,6 @@ interface GoogleIconProps {
     className?: string;
 }
 
-/** Google "G" mark — lucide ships no brand icons, so inline the 4-color SVG */
 export default function GoogleIcon({
     className = 'size-5.25',
 }: GoogleIconProps) {

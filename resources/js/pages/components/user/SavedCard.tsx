@@ -8,7 +8,6 @@ const ROW_ICONS: Record<string, typeof Mountain> = {
     itineraries: ClipboardList,
 };
 
-/** User saved card — bookmark header, destination/itinerary rows */
 export default function SavedCard() {
     return (
         <section className="shadow-card flex w-full flex-col gap-4 rounded-xl bg-white p-5 md:rounded-none md:p-10">
@@ -29,7 +28,6 @@ export default function SavedCard() {
                     const Icon = ROW_ICONS[row.id] ?? Mountain;
                     return (
                         <li key={row.id}>
-                            {/* TODO: link to the saved-items page once the backend endpoint exists */}
                             <a
                                 href="#"
                                 className="flex items-center gap-3 py-3 md:gap-4 md:py-4"

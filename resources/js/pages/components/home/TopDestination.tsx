@@ -38,7 +38,6 @@ const TopDestinations = () => {
     return (
         <section className="w-full px-6 py-16 md:px-12 md:py-24 lg:px-24">
             <div className="max-w-page mx-auto flex flex-col items-center gap-16 md:gap-24">
-                {/* Title */}
                 <h2
                     className={cn(
                         fontPrimary,
@@ -50,7 +49,6 @@ const TopDestinations = () => {
                     Explore Nepal's Top Destinations
                 </h2>
 
-                {/* MOBILE: horizontal scroll cards */}
                 <div className="no-scrollbar w-full overflow-x-auto md:hidden">
                     <div className="flex w-max snap-x snap-mandatory gap-5 pr-5 pl-5">
                         {destinations.map((dest, i) => (
@@ -58,7 +56,6 @@ const TopDestinations = () => {
                                 key={i}
                                 className="flex shrink-0 snap-start flex-col"
                             >
-                                {/* Mobile card image */}
                                 <div
                                     className={cn(
                                         cardMobileImage,
@@ -68,7 +65,6 @@ const TopDestinations = () => {
                                         backgroundImage: `url(${dest.image})`,
                                     }}
                                 />
-                                {/* Mobile card content */}
                                 <div
                                     className={cn(
                                         cardMobileContent,
@@ -99,7 +95,6 @@ const TopDestinations = () => {
                     </div>
                 </div>
 
-                {/* DESKTOP: grid carousel */}
                 <div className="hidden md:grid md:grid-cols-3 md:gap-6">
                     {destinations.map((dest) => {
                         const dims = cardDimensions[dest.variant];
@@ -112,10 +107,8 @@ const TopDestinations = () => {
                                     backgroundImage: `url(${dest.image})`,
                                 }}
                             >
-                                {/* Gradient overlay */}
                                 <div className="absolute inset-0 bg-linear-to-b from-black/40 via-black/0 to-black/10" />
 
-                                {/* Destination name */}
                                 <span
                                     className={cn(
                                         fontPrimary,

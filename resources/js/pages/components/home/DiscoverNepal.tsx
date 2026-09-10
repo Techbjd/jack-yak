@@ -10,7 +10,6 @@ import {
     sectionPadding,
 } from '@/config/theme';
 
-// Staggered pair share one ratio (257 x 387 == 328 x 494)
 const STAGGERED_RATIO = '257 / 387';
 
 const DiscoverNepal = () => {
@@ -18,10 +17,8 @@ const DiscoverNepal = () => {
         <section
             className={cn('relative w-full overflow-hidden', sectionPadding)}
         >
-            {/* Decorative patch3 — re-add <img src="/patch3.png" className="pointer-events-none absolute top-1/2 right-0 -z-10 w-70 -translate-y-1/2 rotate-[89.27deg] opacity-90 select-none md:w-105 lg:w-130"> once the asset lands in public/ */}
 
             <div className="max-w-container bg-surface-warm mx-auto flex flex-col items-center gap-5 px-8 md:flex-row md:gap-16 md:bg-transparent md:px-12 lg:px-24">
-                {/* Mobile second: single image (336 x 229) */}
                 <div className="order-2 w-full md:hidden">
                     <img
                         src={IMAGES.home.discoverNepal2}
@@ -34,7 +31,6 @@ const DiscoverNepal = () => {
                     />
                 </div>
 
-                {/* Text — unwrapped on mobile via contents, column on desktop */}
                 <div className="md:max-w-content-lg contents md:flex md:flex-1 md:flex-col md:items-start md:gap-6 md:text-left">
                     <h2
                         className={cn(
@@ -55,7 +51,6 @@ const DiscoverNepal = () => {
                         offers experiences unlike anywhere else.
                     </p>
 
-                    {/* Mobile CTA button — orange pill, 125 x 25 */}
                     <button
                         className={cn(
                             ctaMobile,
@@ -65,7 +60,6 @@ const DiscoverNepal = () => {
                         <span className="px-2">Start Your Journey</span>
                     </button>
 
-                    {/* Desktop CTA button — teal pill, 209 x 42 */}
                     <button
                         className={cn(
                             fontPrimary,
@@ -76,9 +70,7 @@ const DiscoverNepal = () => {
                     </button>
                 </div>
 
-                {/* Desktop: staggered image pair */}
                 <div className="hidden w-full min-w-0 flex-1 items-start justify-center gap-5 md:flex lg:justify-end">
-                    {/* Shorter image, sits lower */}
                     <img
                         src={IMAGES.home.discoverNepal1}
                         alt="Stone cairn before snowy peaks"
@@ -90,7 +82,6 @@ const DiscoverNepal = () => {
                         style={{ aspectRatio: STAGGERED_RATIO }}
                     />
 
-                    {/* Taller image, sits higher */}
                     <img
                         src={IMAGES.home.discoverNepal2}
                         alt="Himalayan peak at dusk"

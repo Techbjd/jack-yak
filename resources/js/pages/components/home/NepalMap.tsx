@@ -3,13 +3,10 @@ import { cn } from '@/lib/utils';
 import { IMAGES } from '@/config/images';
 import { useColors } from '@/config/colors';
 
-// Image dimensions in px
 const IMG = { x: 298, y: 1377, w: 872, h: 460 };
 
-// Leader-line bounding box in the same coordinates
 const REF = { x: 240, y: 1377, w: 985, h: 566 };
 
-// Offsets relative to the image (in px)
 const SVG_OFFSET = {
     left: (REF.x - IMG.x) / IMG.w,
     top: (REF.y - IMG.y) / IMG.h,
@@ -27,7 +24,6 @@ const NepalMap = () => {
             className={cn('relative w-full', sectionPadding, sectionInner)}
         >
             <div className="max-w-container relative mx-auto w-full overflow-visible">
-                {/* CHINA label */}
                 <p
                     className={cn(
                         fontPrimary,
@@ -37,7 +33,6 @@ const NepalMap = () => {
                     CHINA
                 </p>
 
-                {/* INDIA label */}
                 <p
                     className={cn(
                         fontPrimary,
@@ -47,14 +42,11 @@ const NepalMap = () => {
                     INDIA
                 </p>
 
-                {/* Map wrapper */}
                 <div className="max-w-map relative mx-auto w-full overflow-visible pt-10">
-                    {/* Image container — sized to raster map aspect ratio */}
                     <div
                         className="relative w-full"
                         style={{ aspectRatio: `${IMG.w} / ${IMG.h}` }}
                     >
-                        {/* Vectorized map — behind, shifted up so top edge peeks out */}
                         <img
                             src={IMAGES.home.provincesMap}
                             alt="Nepal Map vectorized"
@@ -63,7 +55,6 @@ const NepalMap = () => {
                         />
                     </div>
 
-                    {/* SVG overlay — leader lines + labels, all in REF coordinate space */}
                     <div
                         className="pointer-events-none absolute hidden md:block"
                         style={{

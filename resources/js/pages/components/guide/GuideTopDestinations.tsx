@@ -38,13 +38,11 @@ const topDestinations: TopDestination[] = [
     },
 ];
 
-// Desktop card image ratio (396 x 306)
 const DESKTOP_IMAGE_RATIO = '396 / 306';
 
 const DestinationCard = ({ dest }: { dest: TopDestination }) => {
     return (
         <article className="basis-card-w ms:basis-[220px] flex shrink-0 grow snap-start flex-col md:basis-[260px] lg:w-full lg:basis-auto">
-            {/* Image with province badge */}
             <div
                 className="h-card-h w-card-w rounded-t-card bg-bg-placeholder ms:h-auto ms:w-full md:rounded-card-sm md:shadow-card relative overflow-hidden"
                 style={{ aspectRatio: DESKTOP_IMAGE_RATIO }}
@@ -71,7 +69,6 @@ const DestinationCard = ({ dest }: { dest: TopDestination }) => {
                 </span>
             </div>
 
-            {/* Info card — overlaps image bottom on desktop */}
             <div className="w-card-w rounded-b-card shadow-card ms:w-full md:rounded-image flex flex-col gap-1 bg-white p-2 md:-mt-2 md:gap-2 md:p-4">
                 <h3
                     className={cn(
@@ -135,7 +132,6 @@ const GuideTopDestinations = () => {
     return (
         <section className="bg-surface-warm w-full">
             <div className="max-w-container mx-auto flex w-full flex-col gap-4 px-6 py-6 md:gap-8 md:px-12 lg:px-24">
-                {/* Heading row */}
                 <div className="flex items-end justify-between gap-4">
                     <div className="flex flex-col gap-1">
                         <p
@@ -160,7 +156,6 @@ const GuideTopDestinations = () => {
                     </ViewAllLink>
                 </div>
 
-                {/* Mobile + Tablet: horizontal snap carousel with arrow on the image */}
                 <div className="relative -mx-6 md:-mx-12 lg:hidden">
                     <div
                         ref={carouselRef}
@@ -176,7 +171,6 @@ const GuideTopDestinations = () => {
                         </div>
                     </div>
 
-                    {/* Carousel next — pinned to the image area, right side */}
                     <button
                         type="button"
                         onClick={scrollToNextImage}
@@ -187,10 +181,8 @@ const GuideTopDestinations = () => {
                     </button>
                 </div>
 
-                {/* Mobile + Tablet: dots */}
                 <CarouselDots className="lg:hidden" />
 
-                {/* Desktop: 3-col grid with arrow aligned to images on the right */}
                 <div className="relative hidden lg:block">
                     <div className="grid gap-6 lg:grid-cols-3">
                         {topDestinations.map((dest, i) => (
@@ -201,7 +193,6 @@ const GuideTopDestinations = () => {
                         ))}
                     </div>
 
-                    {/* Desktop: teal circle next — vertically centered on image area, right edge */}
                     <a
                         href="#"
                         aria-label="Next destinations"

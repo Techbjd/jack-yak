@@ -6,10 +6,7 @@ import { IMAGES } from '@/config/images';
 import { cn } from '@/lib/utils';
 
 interface HeaderProps {
-    /**
-     * Ink tone — 'onDark' (default) renders white ink for dark backgrounds,
-     * 'onLight' renders navy ink for light backgrounds. Home passes nothing.
-     */
+    
     tone?: 'onDark' | 'onLight';
 }
 
@@ -39,7 +36,6 @@ const Header = ({ tone = 'onDark' }: HeaderProps) => {
     return (
         <>
             <header className="max-w-container relative z-50 mx-auto flex w-full items-center justify-between bg-transparent px-6 pt-6 md:px-12 md:pt-10 lg:px-24">
-                {/* Logo */}
                 <div className="flex shrink-0 items-center justify-center">
                     <img
                         src={IMAGES.logo.jackYak}
@@ -51,7 +47,6 @@ const Header = ({ tone = 'onDark' }: HeaderProps) => {
                     />
                 </div>
 
-                {/* Navigation Links - Desktop only */}
                 <nav className="hidden items-center justify-center md:flex">
                     <ul
                         className={cn(
@@ -73,7 +68,6 @@ const Header = ({ tone = 'onDark' }: HeaderProps) => {
                     </ul>
                 </nav>
 
-                {/* Action Buttons / Icons - Desktop */}
                 <div
                     className={cn(
                         'hidden items-center gap-4 md:flex lg:gap-6',
@@ -100,7 +94,6 @@ const Header = ({ tone = 'onDark' }: HeaderProps) => {
                     </button>
                 </div>
 
-                {/* Mobile Hamburger Button — padded to a 39x34 tap target, layout unchanged */}
                 <button
                     aria-label="Open menu"
                     aria-expanded={isMobileMenuOpen}
@@ -113,7 +106,6 @@ const Header = ({ tone = 'onDark' }: HeaderProps) => {
                 </button>
             </header>
 
-            {/* Mobile Sidebar Overlay */}
             {isMobileMenuOpen && (
                 <div
                     role="dialog"
@@ -121,13 +113,11 @@ const Header = ({ tone = 'onDark' }: HeaderProps) => {
                     aria-label="Site menu"
                     className="fixed inset-0 z-100 md:hidden"
                 >
-                    {/* Backdrop */}
                     <div
                         className="absolute inset-0 bg-black/50"
                         onClick={() => setIsMobileMenuOpen(false)}
                     />
 
-                    {/* Sidebar — flex column so logo + nav never overlap */}
                     <div className="w-sidebar absolute top-0 left-0 flex h-full flex-col bg-white shadow-lg">
                         <div className="flex items-center justify-end p-4">
                             <button

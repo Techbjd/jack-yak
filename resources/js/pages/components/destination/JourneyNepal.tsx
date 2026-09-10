@@ -23,7 +23,6 @@ function MaskLabel({ name }: { name: string }) {
 export default function JourneyNepal() {
     return (
         <section className="flex w-full flex-col gap-0 px-6 py-8 md:px-12 md:py-12 lg:px-24">
-            {/* Row 1 — heading + tall image */}
             <div className="-mx-6 -my-0.5 grid grid-cols-2 items-stretch gap-0 md:mx-0 lg:-mx-24 lg:grid-cols-12">
                 <div className="xs:pl-8 flex flex-col gap-4 pl-6 md:gap-6 md:pl-0 lg:col-span-5 lg:justify-center lg:pl-20">
                     <img
@@ -66,8 +65,6 @@ export default function JourneyNepal() {
                         adventures.
                     </p>
                 </div>
-                {/* Row 1 — journey backdrop */}
-                {/* Mobile only — journey portrait */}
                 <div
                     className={cn(
                         imagePlaceholder,
@@ -80,7 +77,6 @@ export default function JourneyNepal() {
                         className={cn(coverImageAbsolute)}
                     />
                 </div>
-                {/* Desktop only — journey wide */}
                 <div
                     className={cn(
                         imagePlaceholder,
@@ -95,7 +91,6 @@ export default function JourneyNepal() {
                 </div>
             </div>
 
-            {/* Row 2 — teal card + image + yak panel */}
             <div className="xs:grid-cols-2 -mx-6 grid grid-cols-3 items-stretch gap-0 md:mx-0 lg:-mx-24 lg:min-h-71.5 lg:grid-cols-12 lg:gap-0">
                 <div className="bg-cta-ember xs:col-span-1 md:bg-cta col-span-2 flex flex-col justify-center gap-5 px-8 py-10 text-white md:gap-3 md:p-6 lg:col-span-3 lg:justify-start lg:px-16 lg:pt-12">
                     <h3
@@ -117,7 +112,6 @@ export default function JourneyNepal() {
                         hidden gems designed to inspire your next adventure.
                     </p>
                 </div>
-                {/* Mobile only — single mountain image */}
                 <div
                     className={cn(
                         imagePlaceholder,
@@ -130,7 +124,6 @@ export default function JourneyNepal() {
                         className={cn(coverImageAbsolute)}
                     />
                 </div>
-                {/* Desktop only — single mountain image */}
                 <div
                     className={cn(
                         imagePlaceholder,
@@ -143,7 +136,6 @@ export default function JourneyNepal() {
                         className={cn(coverImageAbsolute)}
                     />
                 </div>
-                {/* Desktop only — Meet the Yak panel */}
                 <div className="hidden flex-col justify-center gap-3 bg-white p-6 md:col-span-2 md:flex lg:col-span-4 lg:justify-start lg:pt-12">
                     <h3
                         className={cn(

@@ -13,16 +13,7 @@ export default function DestinationHero() {
             <Header tone="onLight" />
 
             <div className="flex flex-col items-center px-6 pt-2 text-center md:px-12 lg:px-12">
-                {/* <h1
-                    className={cn(
-                        fontDisplay,
-                        'text-center text-display leading-tight font-medium text-text-primary lg:text-display-lg lg:leading-display-lg',
-                    )}
-                >
-                    Ama Dablam
-                </h1> */}
 
-                {/* Panorama — Ama Dablam backdrop */}
                 <div className={cn('relative mt-4 w-full', imagePlaceholder)}>
                     <div className="rounded-dest-card relative flex aspect-video w-full items-center justify-center overflow-hidden lg:aspect-1464/958">
                         <img

@@ -25,12 +25,10 @@ const AboutJackyak = () => {
         <section
             className={cn('relative w-full overflow-hidden', sectionPadding)}
         >
-            {/* Decorative patch2 — re-add <img src="/patch2.png"> once the asset lands in public/ */}
 
             <div
                 className={cn(sectionContainer, 'bg-surface-warm sm:bg-white')}
             >
-                {/* About text */}
                 <div className="flex flex-col items-center gap-6 text-center md:flex-row md:items-center md:gap-16 md:text-left">
                     <div className="max-w-content-md flex flex-1 flex-col gap-6">
                         <h2 className={headingSection}>About Jackyak</h2>
@@ -44,7 +42,6 @@ const AboutJackyak = () => {
                         </p>
                     </div>
 
-                    {/* Desktop image */}
                     <div className="hidden w-full flex-1 justify-end md:block">
                         <div
                             className={cn(
@@ -58,7 +55,6 @@ const AboutJackyak = () => {
                     </div>
                 </div>
 
-                {/* Mobile: Popular Destinations → Image → Travel Tips */}
                 <div className="flex flex-col items-center gap-10 md:hidden">
                     <div className="max-w-content-md flex flex-col gap-4 text-center">
                         <h3
@@ -90,7 +86,6 @@ const AboutJackyak = () => {
                     </div>
                 </div>
 
-                {/* Desktop: Popular Destinations + Travel Tips side by side */}
                 <div className="hidden md:grid md:grid-cols-2 md:gap-16">
                     {INFO_BLOCKS.map((block) => (
                         <div

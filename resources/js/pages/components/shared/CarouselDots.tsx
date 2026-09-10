@@ -8,7 +8,6 @@ interface CarouselDotsProps {
     dotClassName?: string;
 }
 
-/** Carousel dots — dedupes `Array.from({ length: DOT_COUNT })` repeated in 3 components */
 export default function CarouselDots({
     count = 5,
     activeIndex = 0,

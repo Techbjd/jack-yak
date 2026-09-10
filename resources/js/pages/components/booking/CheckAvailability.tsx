@@ -26,7 +26,6 @@ interface CheckAvailabilityProps {
     onClose: () => void;
 }
 
-/** Check-availability dialog — date, traveler stepper, optional selects */
 export default function CheckAvailability({
     open,
     onClose,
@@ -53,7 +52,6 @@ export default function CheckAvailability({
             return;
         }
         setDateError('');
-        // TODO: post to the availability endpoint once it exists
         setDone(true);
     };
 

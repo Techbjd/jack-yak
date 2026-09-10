@@ -4,13 +4,11 @@ import { fontPrimary } from '@/config/theme';
 import { IMAGES } from '@/config/images';
 import QuizForm from './components/quiz/QuizForm';
 
-/** Quiz — standalone destination-finder page (no header/footer) */
 export default function Quiz() {
     return (
         <>
             <Head title="Find Your Destination" />
             <main className="flex min-h-screen w-full flex-col bg-white lg:flex-row">
-                {/* Image panel — top banner on mobile, fixed side panel on desktop */}
                 <div className="relative h-64 w-full shrink-0 overflow-hidden sm:h-72 lg:h-auto lg:min-h-screen lg:w-[398px]">
                     <img
                         src={IMAGES.destination.langtangMountain}
@@ -34,7 +32,6 @@ export default function Quiz() {
                     </div>
                 </div>
 
-                {/* Form column */}
                 <div className="flex w-full flex-1 justify-center px-6 py-10 sm:px-10 lg:items-start lg:px-14 lg:py-14">
                     <div className="w-full max-w-170">
                         <QuizForm />

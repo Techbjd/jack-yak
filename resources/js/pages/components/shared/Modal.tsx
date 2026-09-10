@@ -4,15 +4,11 @@ import { X } from 'lucide-react';
 interface ModalProps {
     open: boolean;
     onClose: () => void;
-    /** Accessible name for the dialog */
+    
     label: string;
     children: ReactNode;
 }
 
-/**
- * Shared modal shell — backdrop, Escape to close, body scroll-lock,
- * initial focus into the panel. Content components stay pure forms.
- */
 export default function Modal({ open, onClose, label, children }: ModalProps) {
     const panelRef = useRef<HTMLDivElement>(null);
 

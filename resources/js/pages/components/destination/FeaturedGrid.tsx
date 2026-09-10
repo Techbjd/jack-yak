@@ -31,7 +31,6 @@ const TAB_ICON_SIZE: Record<string, string> = {
     Lakes: 'h-8.5 w-8.5',
 };
 
-/** Icon artwork with Lucide fallback until the uploads land */
 function TabIcon({ tab }: { tab: string }) {
     const [ready, setReady] = useState(false);
     const [failed, setFailed] = useState(false);
@@ -82,7 +81,6 @@ export default function FeaturedGrid() {
                         Featured Destinations
                     </h2>
                 </div>
-                {/* Desktop only — supporting copy */}
                 <p
                     className={cn(
                         fontPrimary,
@@ -93,7 +91,6 @@ export default function FeaturedGrid() {
                 </p>
             </div>
 
-            {/* MOBILE: text tabs */}
             <div className="no-scrollbar flex gap-5 overflow-x-auto md:hidden">
                 {featuredTabs.map((tab) => {
                     const isActive = tab === 'All';
@@ -127,7 +124,6 @@ export default function FeaturedGrid() {
                 })}
             </div>
 
-            {/* DESKTOP: artwork tabs between two rules, thick segment under the active tab */}
             <div className="hidden md:block">
                 <div className="bg-text-primary/20 h-px w-full" />
                 <div className="grid grid-cols-6">
@@ -173,7 +169,6 @@ export default function FeaturedGrid() {
                 </div>
             </div>
 
-            {/* Cards — uniform 2-col on mobile, mosaic on desktop */}
             <div className="grid grid-cols-2 gap-x-3 gap-y-4 md:grid-cols-12 md:gap-5">
                 {destinationFeaturedCards.map((card, i) => (
                     <div
@@ -197,7 +192,6 @@ export default function FeaturedGrid() {
                             aria-hidden="true"
                             className="rounded-card-sm absolute inset-0 bg-black/0"
                         />
-                        {/* Desktop only — safari label */}
                         <p
                             className={cn(
                                 fontPrimary,

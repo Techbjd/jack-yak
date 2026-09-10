@@ -1,7 +1,6 @@
 import { IMAGES } from '@/config/images';
 import ResponsiveHeader from '../shared/ResponsiveHeader';
 
-/** User hero — mountain backdrop on desktop, responsive header */
 export default function UserHero() {
     return (
         <div className="relative w-full">

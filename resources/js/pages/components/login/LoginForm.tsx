@@ -11,7 +11,6 @@ import {
 } from '@/config/theme';
 import GoogleIcon from './GoogleIcon';
 
-/** Login form column — shared by mobile (canvas) and desktop (white) */
 export default function LoginForm() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');

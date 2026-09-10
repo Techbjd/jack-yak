@@ -4,7 +4,6 @@ import DifferenceSection from './components/about/DifferenceSection';
 import JourneyStory from './components/about/JourneyStory';
 import NewsletterCta from './components/about/NewsletterCta';
 
-/** About — hero hosts its own headers, sections stack on canvas */
 export default function About() {
     return (
         <AppLayout title="About" shellClassName="bg-canvas">

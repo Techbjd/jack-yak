@@ -4,12 +4,10 @@ import { userEditButton, userMuted, userName } from '@/config/theme';
 import { IMAGES } from '@/config/images';
 import { userProfile } from '@/config/user';
 
-/** User profile card — avatar + name/email + edit button */
 export default function ProfileCard() {
     return (
         <section className="shadow-card flex w-full flex-col gap-4 rounded-xl bg-white p-5 md:flex-row md:items-center md:justify-between md:rounded-none md:p-10">
             <div className="flex items-center gap-4">
-                {/* TODO: swap with the authenticated user's photo once backend auth lands */}
                 <img
                     src={IMAGES.about.travelerAvatar}
                     alt={userProfile.name}
@@ -20,7 +18,6 @@ export default function ProfileCard() {
                     <p className={userMuted}>{userProfile.email}</p>
                 </div>
             </div>
-            {/* TODO: wire to the edit-profile form once the backend endpoint exists */}
             <a href="#" className={cn(userEditButton, 'shrink-0')}>
                 <Pencil
                     aria-hidden

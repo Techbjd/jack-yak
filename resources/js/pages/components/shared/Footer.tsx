@@ -63,7 +63,6 @@ const SocialIcon: React.FC<SocialIconProps> = ({ label, Icon, href = '#' }) => {
         <a
             href={href}
             aria-label={label}
-            // p-2 -m-2: 40px tap target with zero visual change (margin pulls layout back)
             className="-m-2 flex h-6 w-6 items-center justify-center p-2 text-white transition-colors outline-none hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
         >
             <Icon size={24} />
@@ -74,7 +73,6 @@ const SocialIcon: React.FC<SocialIconProps> = ({ label, Icon, href = '#' }) => {
 const Footer: React.FC = () => {
     return (
         <footer className="bg-brand w-full text-white">
-            {/* Torn-edge trekker panorama */}
             <div className="-mb-1 w-full overflow-hidden">
                 <div className="bg-bg-placeholder flex aspect-1440/470 w-full items-center justify-center select-none">
                     <img
@@ -85,9 +83,7 @@ const Footer: React.FC = () => {
                 </div>
             </div>
             <div className={cn(sectionInner, 'md:px-16')}>
-                {/* MOBILE: logo + tagline + 2x2 grid of columns */}
                 <div className="flex flex-col gap-8 md:hidden">
-                    {/* Brand */}
                     <div className="flex flex-col gap-4">
                         <div className="h-logo w-logo-w flex items-center justify-center">
                             <img
@@ -107,7 +103,6 @@ const Footer: React.FC = () => {
                         </p>
                     </div>
 
-                    {/* 2x2 grid of columns */}
                     <nav
                         aria-label="Footer"
                         className="grid grid-cols-2 gap-x-8 gap-y-8"
@@ -132,7 +127,6 @@ const Footer: React.FC = () => {
                                                 href="#"
                                                 className={cn(
                                                     fontPrimary,
-                                                    // block + py-0.5 keeps the exact 26px row rhythm while making the whole row tappable
                                                     'text-md-lg block py-0.5 leading-snug font-light text-white outline-none focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-white',
                                                 )}
                                             >
@@ -146,11 +140,8 @@ const Footer: React.FC = () => {
                     </nav>
                 </div>
 
-                {/* DESKTOP: original layout */}
                 <div className="hidden flex-col gap-10 md:flex md:flex-row md:justify-between md:gap-8">
-                    {/* Brand */}
                     <div className="max-w-content-sm flex flex-col gap-4">
-                        {/* Logo */}
                         <div className="flex h-20 w-20 items-center justify-center">
                             <img
                                 src={IMAGES.logo.jackYak}
@@ -169,7 +160,6 @@ const Footer: React.FC = () => {
                         </p>
                     </div>
 
-                    {/* Columns */}
                     <nav
                         aria-label="Footer"
                         className="grid flex-1 grid-cols-1 gap-x-8 md:grid-cols-4"
@@ -209,7 +199,6 @@ const Footer: React.FC = () => {
                     </nav>
                 </div>
 
-                {/* Bottom bar */}
                 <div className="mt-12 flex flex-col items-center gap-4 border-t border-white/10 pt-6 md:mt-16 md:grid md:grid-cols-3">
                     <div className="hidden md:block" />
 

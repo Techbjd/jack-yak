@@ -11,10 +11,8 @@ const TravelStories = () => {
     return (
         <section className="bg-surface-warm w-full">
             <div className="max-w-container mx-auto w-full px-6 pb-8 md:px-12 md:pb-12 lg:px-24">
-                {/* Mobile: side-by-side card — heading left, quote right, dots centered with author bottom-right */}
                 <figure className="rounded-card-sm bg-surface-warm shadow-card md:rounded-image p-3 md:p-10">
                     <div className="flex items-start gap-3 md:items-center md:gap-8">
-                        {/* Left: heading */}
                         <div className="md:max-w-content-sm flex w-[38%] shrink-0 flex-col gap-1.5 md:w-auto md:gap-4">
                             <p
                                 className={cn(
@@ -34,7 +32,6 @@ const TravelStories = () => {
                             </h2>
                         </div>
 
-                        {/* Right: quote */}
                         <div className="flex min-w-0 flex-1 flex-col gap-2 md:gap-4">
                             <div className="flex items-start gap-1 md:gap-4">
                                 <span
@@ -59,9 +56,7 @@ const TravelStories = () => {
                                 </blockquote>
                             </div>
 
-                            {/* Bottom row: dots centered, author pinned bottom-right */}
                             <div className="relative flex items-center justify-center md:justify-between md:gap-2">
-                                {/* Author */}
                                 <figcaption className="absolute top-1/2 right-0 flex -translate-y-1/2 items-center gap-1.5 md:static md:order-1 md:translate-none md:gap-4">
                                     <img
                                         src={IMAGES.about.travelerAvatar}
@@ -89,7 +84,6 @@ const TravelStories = () => {
                                     </span>
                                 </figcaption>
 
-                                {/* Dots */}
                                 <CarouselDots
                                     className="gap-1 md:order-2 md:gap-2"
                                     dotClassName="size-[2.64px] md:size-2.5"

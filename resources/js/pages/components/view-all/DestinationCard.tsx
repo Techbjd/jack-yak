@@ -7,7 +7,6 @@ interface DestinationCardProps {
     destination: ViewAllDestination;
 }
 
-/** View-all destination card — 117×134 mobile card, pure Tailwind */
 export default function DestinationCard({ destination }: DestinationCardProps) {
     const { name, tagline, province, days, image } = destination;
 

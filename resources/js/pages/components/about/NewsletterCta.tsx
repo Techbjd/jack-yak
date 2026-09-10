@@ -5,7 +5,6 @@ import { aboutNewsletter } from '@/config/about';
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
-/** About newsletter — title, subtitle, pill email field (Enter to join) */
 export default function NewsletterCta() {
     const [email, setEmail] = useState('');
     const [error, setError] = useState('');
@@ -22,7 +21,6 @@ export default function NewsletterCta() {
             return;
         }
         setError('');
-        // TODO: post to the newsletter endpoint once it exists
         setDone(true);
     };
 

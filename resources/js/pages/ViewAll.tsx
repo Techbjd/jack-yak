@@ -6,7 +6,6 @@ import ViewAllHeader from './components/view-all/ViewAllHeader';
 import DestinationGrid from './components/view-all/DestinationGrid';
 import Pagination from './components/view-all/Pagination';
 
-/** Cards per page — 12 fills the desktop 3-col grid (4 rows) */
 const PAGE_SIZE = 12;
 
 export default function ViewAll() {

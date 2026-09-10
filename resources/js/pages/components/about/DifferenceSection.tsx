@@ -3,7 +3,6 @@ import { aboutBody, aboutSectionTitle } from '@/config/theme';
 import { IMAGES } from '@/config/images';
 import { aboutDifferenceParagraphs } from '@/config/about';
 
-/** About difference — centered title, wide lake image, two paragraphs */
 export default function DifferenceSection() {
     return (
         <section className="flex w-full flex-col items-center gap-6 px-6 py-10 md:gap-10 md:px-12 md:py-16 lg:px-24">

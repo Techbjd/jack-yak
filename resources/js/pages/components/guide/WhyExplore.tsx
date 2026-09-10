@@ -45,7 +45,6 @@ const WhyExplore = () => {
     return (
         <section className="bg-surface-warm w-full">
             <div className="max-w-container mx-auto flex w-full flex-col gap-6 px-6 pt-6 md:gap-10 md:px-12 md:pt-10 lg:px-24">
-                {/* Intro — two columns, description right */}
                 <div className="grid grid-cols-2 items-start gap-4 md:items-center md:gap-8">
                     <div className="flex flex-col gap-2">
                         <p
@@ -76,7 +75,6 @@ const WhyExplore = () => {
                     </p>
                 </div>
 
-                {/* Cards — 2-col grid on mobile, 4-col on desktop */}
                 <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
                     {exploreCards.map(
                         ({ title, description, Icon, image, imageAlt }) => (
@@ -114,7 +112,6 @@ const WhyExplore = () => {
                                 >
                                     {description}
                                 </p>
-                                {/* Desktop: arrow link pinned to card bottom */}
                                 <span className="mt-auto hidden pt-2 md:flex">
                                     <MoveRight className="text-ink group-hover:text-cta h-5 w-5 transition-colors" />
                                 </span>

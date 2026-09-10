@@ -8,7 +8,6 @@ interface PaginationProps {
     onPageChange: (page: number) => void;
 }
 
-/** Page numbers with ellipsis — [1 … window … last] */
 function pageItems(page: number, totalPages: number): (number | 'ellipsis')[] {
     if (totalPages <= 7) {
         return Array.from({ length: totalPages }, (_, i) => i + 1);
@@ -34,7 +33,6 @@ function pageItems(page: number, totalPages: number): (number | 'ellipsis')[] {
     return items;
 }
 
-/** View-all pagination — boxed pages, active ink, fully controlled */
 export default function Pagination({
     page,
     totalPages,

@@ -2,7 +2,6 @@ import { Head } from '@inertiajs/react';
 import { IMAGES } from '@/config/images';
 import LoginForm from './components/login/LoginForm';
 
-/** Login — standalone auth page (no header/footer), image panel on desktop */
 export default function Login() {
     return (
         <>

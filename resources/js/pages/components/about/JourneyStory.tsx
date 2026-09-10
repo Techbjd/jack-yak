@@ -8,7 +8,6 @@ import {
 import { IMAGES } from '@/config/images';
 import { aboutPillars, aboutPlanTitle, aboutStoryIntro } from '@/config/about';
 
-/** About story — journey heading, accent-bar pillars, plan image */
 export default function JourneyStory() {
     return (
         <section className="flex w-full flex-col gap-6 px-6 py-10 md:gap-8 md:px-12 md:py-16 lg:px-24">
