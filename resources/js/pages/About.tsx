@@ -1,19 +1,18 @@
-import { Head } from '@inertiajs/react';
 import Header from './components/shared/Header';
-import Footer from './components/shared/Footer';
 import WhyExplore from './components/about/WhyExplore';
 import AboutTopDestinations from './components/about/AboutTopDestinations';
 import PlanTripSteps from './components/about/PlanTripSteps';
 import TravelStories from './components/about/TravelStories';
 import TrustStrip from './components/about/TrustStrip';
+import AppLayout from '@/layouts/AppLayout';
 
 export default function About() {
     return (
-        <div className="mx-auto flex w-full max-w-360 flex-col items-center bg-slate-50">
-            <Head title="About" />
-            <div className="w-full">
-                <Header tone="onLight" />
-            </div>
+        <AppLayout
+            title="About"
+            shellClassName="bg-surface-warm"
+            header={<Header tone="onLight" />}
+        >
             <div className="w-full">
                 <WhyExplore />
             </div>
@@ -26,12 +25,9 @@ export default function About() {
             <div className="w-full">
                 <TravelStories />
             </div>
-            <div className="w-full hidden sm:block">
+            <div className="hidden w-full sm:block">
                 <TrustStrip />
             </div>
-            <div className="w-full">
-                <Footer />
-            </div>
-        </div>
+        </AppLayout>
     );
 }
