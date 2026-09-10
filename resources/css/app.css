@@ -143,6 +143,11 @@
     --color-ember: #ff5728;
     --text-xs-md: 12px;
     --text-display: 64px;
+    --text-about-display: 200px;
+    --leading-about-display: 261px;
+    --text-section-xl: 60px;
+    --leading-section-xl: 82px;
+    --leading-about: 84px;
     --text-journey: 60px;
     --leading-journey: 82px;
     --text-display-lg: 250px;
