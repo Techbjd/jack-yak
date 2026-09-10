@@ -1,13 +1,13 @@
-import { MoveRight } from 'lucide-react';
 import {
+    coverImageAbsolute,
     destCardTitle,
     fontPrimary,
     imagePlaceholder,
 } from '@/config/theme';
 import { popularDestinations } from '@/config/destination';
 import { cn } from '@/lib/utils';
-
-const DOT_COUNT = 5;
+import CarouselDots from '../shared/CarouselDots';
+import ViewAllLink from '../shared/ViewAllLink';
 
 // Desktop card portrait ratio from Figma (260 x 374)
 const DESKTOP_CARD_RATIO = '260 / 374';
@@ -19,28 +19,21 @@ export default function PopularDestinations() {
                 <h2
                     className={cn(
                         fontPrimary,
-                        'text-md-lg font-bold tracking-wide text-text-primary md:text-lg-xl',
+                        'text-md-lg text-text-primary md:text-lg-xl font-bold tracking-wide',
                     )}
                 >
                     POPULAR DESTINATIONS
                 </h2>
-                <a
-                    href="#"
-                    className={cn(
-                        fontPrimary,
-                        'flex items-center gap-2 text-xs-sm font-bold text-cta-accent md:text-md-lg md:text-text-primary',
-                    )}
-                >
+                <ViewAllLink className="text-cta-accent md:text-text-primary gap-2">
                     VIEW ALL
-                    <MoveRight className="hidden h-7 w-7 text-text-primary md:block" />
-                </a>
+                </ViewAllLink>
             </div>
 
             {/* Desktop only — section subheading */}
             <p
                 className={cn(
                     fontPrimary,
-                    'hidden px-6 text-3xl-4xl leading-snug font-bold text-text-primary md:block md:px-12 lg:px-24',
+                    'text-3xl-4xl text-text-primary hidden px-6 leading-snug font-bold md:block md:px-12 lg:px-24',
                 )}
             >
                 Where will you go?
@@ -52,15 +45,17 @@ export default function PopularDestinations() {
                     {popularDestinations.map((dest, i) => (
                         <div
                             key={`${dest.name}-${i}`}
-                            className="flex w-dest-card-w shrink-0 snap-start flex-col gap-2"
+                            className="w-dest-card-w flex shrink-0 snap-start flex-col gap-2"
                         >
                             {/* Card image */}
                             <img
                                 className={cn(
                                     imagePlaceholder,
-                                    'h-dest-card-h w-full rounded-dest-card object-cover',
+                                    'h-dest-card-h rounded-dest-card w-full object-cover',
                                 )}
-                                src={dest.image} alt={dest.name} />
+                                src={dest.image}
+                                alt={dest.name}
+                            />
 
                             <p className={destCardTitle}>{dest.name}</p>
                             <p className={destCardTitle}>{dest.province}</p>
@@ -70,60 +65,51 @@ export default function PopularDestinations() {
             </div>
 
             {/* MOBILE: carousel dots */}
-            <div className="flex items-center justify-center gap-2 md:hidden">
-                {Array.from({ length: DOT_COUNT }).map((_, i) => (
-                    <span
-                        key={i}
-                        className={cn(
-                            'h-2.5 w-2.5 rounded-full',
-                            i === 0 ? 'bg-cta-accent' : 'bg-bg-placeholder',
-                        )}
-                    />
-                ))}
-            </div>
+            <CarouselDots className="md:hidden" />
 
             {/* DESKTOP: 5-col grid, labels overlaid on the image (shared cards only — mobile extras excluded) */}
             <div className="hidden px-6 md:grid md:grid-cols-5 md:gap-6 md:px-12 lg:px-24">
                 {popularDestinations
                     .filter((dest) => !dest.mobileOnly)
                     .map((dest, i) => (
-                    <div
-                        key={`${dest.image}-${i}`}
-                        className="flex flex-col gap-3"
-                    >
                         <div
-                            className="relative w-full"
-                            style={{ aspectRatio: DESKTOP_CARD_RATIO }}
+                            key={`${dest.image}-${i}`}
+                            className="flex flex-col gap-3"
                         >
-                            <img
-                                src={dest.image}
-                                alt={dest.name}
-                                className={cn(
-                                    imagePlaceholder,
-                                    'absolute inset-0 h-full w-full rounded-dest-card object-cover',
-                                )}
-                            />
-                            <div className="absolute bottom-0 left-0 flex flex-col gap-1 p-4">
-                                <p
+                            <div
+                                className="relative w-full"
+                                style={{ aspectRatio: DESKTOP_CARD_RATIO }}
+                            >
+                                <img
+                                    src={dest.image}
+                                    alt={dest.name}
                                     className={cn(
-                                        fontPrimary,
-                                        'text-md-lg leading-tight font-bold text-white',
+                                        imagePlaceholder,
+                                        coverImageAbsolute,
+                                        'rounded-dest-card',
                                     )}
-                                >
-                                    {dest.name}
-                                </p>
-                                <p
-                                    className={cn(
-                                        fontPrimary,
-                                        'text-md-lg leading-tight font-bold text-white',
-                                    )}
-                                >
-                                    {dest.province}
-                                </p>
+                                />
+                                <div className="absolute bottom-0 left-0 flex flex-col gap-1 p-4">
+                                    <p
+                                        className={cn(
+                                            fontPrimary,
+                                            'text-md-lg leading-tight font-bold text-white',
+                                        )}
+                                    >
+                                        {dest.name}
+                                    </p>
+                                    <p
+                                        className={cn(
+                                            fontPrimary,
+                                            'text-md-lg leading-tight font-bold text-white',
+                                        )}
+                                    >
+                                        {dest.province}
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
             </div>
         </section>
     );
