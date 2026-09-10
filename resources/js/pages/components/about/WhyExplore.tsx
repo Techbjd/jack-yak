@@ -43,15 +43,15 @@ const exploreCards: ExploreCard[] = [
 
 const WhyExplore = () => {
     return (
-        <section className="w-full bg-slate-50">
-            <div className="mx-auto flex w-full max-w-container flex-col gap-6 px-6 pt-6 md:gap-10 md:px-12 md:pt-10 lg:px-24">
+        <section className="bg-surface-warm w-full">
+            <div className="max-w-container mx-auto flex w-full flex-col gap-6 px-6 pt-6 md:gap-10 md:px-12 md:pt-10 lg:px-24">
                 {/* Intro — two columns, description right */}
                 <div className="grid grid-cols-2 items-start gap-4 md:items-center md:gap-8">
                     <div className="flex flex-col gap-2">
                         <p
                             className={cn(
                                 fontPrimary,
-                                'text-xs-sm font-bold text-ink md:text-md-lg',
+                                'text-xs-sm text-ink md:text-md-lg font-bold',
                             )}
                         >
                             Discover Nepal
@@ -59,7 +59,7 @@ const WhyExplore = () => {
                         <h2
                             className={cn(
                                 fontPrimary,
-                                'text-md-lg leading-snug font-bold tracking-wide text-ink md:text-journey md:leading-tight',
+                                'text-md-lg text-ink md:text-journey leading-snug font-bold tracking-wide md:leading-tight',
                             )}
                         >
                             Why Explore with Jackyak
@@ -68,11 +68,11 @@ const WhyExplore = () => {
                     <p
                         className={cn(
                             fontPrimary,
-                            'text-xs-sm leading-relaxed font-semibold text-ink md:justify-self-end md:text-md-lg md:leading-relaxed',
+                            'text-xs-sm text-ink md:text-md-lg leading-relaxed font-semibold md:justify-self-end md:leading-relaxed',
                         )}
                     >
-                        Helping you discover Nepal through trusted guides,
-                        local insights, and unforgettable destinations.
+                        Helping you discover Nepal through trusted guides, local
+                        insights, and unforgettable destinations.
                     </p>
                 </div>
 
@@ -82,9 +82,9 @@ const WhyExplore = () => {
                         ({ title, description, Icon, image, imageAlt }) => (
                             <article
                                 key={title}
-                                className="group flex flex-col gap-3 rounded-xl border border-slate-300 bg-white p-4 transition md:gap-4 md:p-6 md:hover:border-cta md:hover:bg-surface-warm md:hover:shadow-card"
+                                className="group rounded-dest-card border-bg-placeholder md:hover:border-cta md:hover:bg-surface-warm md:hover:shadow-card flex flex-col gap-3 border bg-white p-4 transition md:gap-4 md:p-6"
                             >
-                                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-warm md:h-20 md:w-20 md:group-hover:border md:group-hover:border-ink">
+                                <span className="bg-surface-warm md:group-hover:border-ink flex h-10 w-10 items-center justify-center rounded-full md:h-20 md:w-20 md:group-hover:border">
                                     {image ? (
                                         <img
                                             src={image}
@@ -94,32 +94,33 @@ const WhyExplore = () => {
                                         />
                                     ) : (
                                         Icon && (
-                                            <Icon className="h-5 w-5 text-ink md:h-11 md:w-11" />
+                                            <Icon className="text-ink h-5 w-5 md:h-11 md:w-11" />
                                         )
                                     )}
                                 </span>
-                            <h3
-                                className={cn(
-                                    fontPrimary,
-                                    'text-md-lg leading-tight font-bold text-text-primary md:text-xl-2xl',
-                                )}
-                            >
-                                {title}
-                            </h3>
-                            <p
-                                className={cn(
-                                    fontPrimary,
-                                    'text-xs-sm leading-relaxed font-medium tracking-wide text-text-primary md:text-md-lg',
-                                )}
-                            >
-                                {description}
-                            </p>
-                            {/* Desktop: arrow link pinned to card bottom */}
-                            <span className="mt-auto hidden pt-2 md:flex">
-                                <MoveRight className="h-5 w-5 text-ink transition-colors group-hover:text-cta" />
-                            </span>
-                        </article>
-                    ))}
+                                <h3
+                                    className={cn(
+                                        fontPrimary,
+                                        'text-md-lg text-text-primary md:text-xl-2xl leading-tight font-bold',
+                                    )}
+                                >
+                                    {title}
+                                </h3>
+                                <p
+                                    className={cn(
+                                        fontPrimary,
+                                        'text-xs-sm text-text-primary md:text-md-lg leading-relaxed font-medium tracking-wide',
+                                    )}
+                                >
+                                    {description}
+                                </p>
+                                {/* Desktop: arrow link pinned to card bottom */}
+                                <span className="mt-auto hidden pt-2 md:flex">
+                                    <MoveRight className="text-ink group-hover:text-cta h-5 w-5 transition-colors" />
+                                </span>
+                            </article>
+                        ),
+                    )}
                 </div>
             </div>
         </section>
