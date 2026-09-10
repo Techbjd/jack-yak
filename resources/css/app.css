@@ -59,6 +59,7 @@
     --color-quiz-line: #e2e5ea;
     --color-hairline: #f1f3f5;
     --color-subtle: #858d99;
+    --color-haze: #989ead;
 
     /* ── Border radius ── */
     --radius-card: 5px;
@@ -146,6 +147,7 @@
     --text-about-display: 200px;
     --leading-about-display: 261px;
     --text-section-xl: 60px;
+    --text-modal: 40px;
     --leading-section-xl: 82px;
     --leading-about: 84px;
     --text-journey: 60px;
