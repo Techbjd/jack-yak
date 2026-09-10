@@ -38,7 +38,7 @@ const topDestinations: TopDestination[] = [
     },
 ];
 
-// Desktop card image ratio from Figma (396 x 306)
+// Desktop card image ratio (396 x 306)
 const DESKTOP_IMAGE_RATIO = '396 / 306';
 
 const DestinationCard = ({ dest }: { dest: TopDestination }) => {
