@@ -7,21 +7,33 @@ import Header from '../shared/Header';
 export default function AboutHero() {
     return (
         <div className="w-full">
-            {/* Mobile — navy title on canvas, base photo below with fade */}
+            {/* Mobile — navy header on canvas, composite photo with navy title overlaid */}
             <div className="bg-canvas flex flex-col items-center md:hidden">
                 <div className="w-full">
                     <Header tone="onLight" />
                 </div>
-                <h1 className={cn(aboutHeroTitle, 'px-6 pt-6 text-center')}>
-                    ABOUT US
-                </h1>
                 <div className="relative mt-4 w-full">
                     <img
                         src={IMAGES.about.hero}
                         alt="Blue sky over forested Himalayan hills"
                         loading="eager"
-                        className="h-56 w-full object-cover"
+                        className="h-auto w-full object-cover"
                     />
+                    <img
+                        src={IMAGES.about.heroSecond}
+                        alt=""
+                        aria-hidden
+                        loading="eager"
+                        className="absolute inset-x-0 top-9 h-auto w-full object-cover"
+                    />
+                    <h1
+                        className={cn(
+                            aboutHeroTitle,
+                            'absolute inset-x-0 top-2 px-6 text-center drop-shadow-md',
+                        )}
+                    >
+                        ABOUT US
+                    </h1>
                     <div
                         aria-hidden
                         className="to-canvas absolute inset-x-0 bottom-0 h-16 bg-linear-to-b from-transparent"
@@ -48,7 +60,7 @@ export default function AboutHero() {
                     <h1
                         className={cn(
                             aboutHeroTitle,
-                            'absolute inset-x-0 top-40 -translate-y-0.75 px-12 text-center drop-shadow-md lg:px-24',
+                            'top-feat-card-h absolute inset-x-0 -translate-y-3 px-12 text-center drop-shadow-md lg:px-24',
                         )}
                     >
                         ABOUT US
