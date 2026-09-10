@@ -1,25 +1,39 @@
 import {
-    fontPrimary,
     sectionPadding,
     sectionContainer,
     headingSection,
+    headingSubsection,
     bodyText,
     imageRoundedLg,
 } from '@/config/theme';
+import { cn } from '@/lib/utils';
 import { IMAGES } from '@/config/images';
+
+const INFO_BLOCKS = [
+    {
+        title: 'Popular Destinations',
+        body: 'Discover breathtaking mountains, serene lakes, ancient heritage sites, lush national parks, and vibrant cities across Nepal. Every destination offers a unique adventure waiting to be explored.',
+    },
+    {
+        title: 'Travel Tips',
+        body: 'Find essential information on the best seasons to visit, packing guides, permits, transportation, budgeting, and safety tips before you travel.',
+    },
+] as const;
 
 const AboutJackyak = () => {
     return (
-        <section className={`relative w-full overflow-hidden ${sectionPadding}`}>
+        <section
+            className={cn('relative w-full overflow-hidden', sectionPadding)}
+        >
             {/* Decorative patch2 — re-add <img src="/patch2.png"> once the asset lands in public/ */}
 
-            <div className={`${sectionContainer} bg-surface-warm sm:bg-white`}>
+            <div
+                className={cn(sectionContainer, 'bg-surface-warm sm:bg-white')}
+            >
                 {/* About text */}
                 <div className="flex flex-col items-center gap-6 text-center md:flex-row md:items-center md:gap-16 md:text-left">
-                    <div className="flex max-w-content-md flex-1 flex-col gap-6">
-                        <h2 className={headingSection}>
-                            About Jackyak
-                        </h2>
+                    <div className="max-w-content-md flex flex-1 flex-col gap-6">
+                        <h2 className={headingSection}>About Jackyak</h2>
                         <p className={bodyText}>
                             JackYak is your trusted travel companion for
                             exploring Nepal. Discover curated trekking
@@ -33,7 +47,10 @@ const AboutJackyak = () => {
                     {/* Desktop image */}
                     <div className="hidden w-full flex-1 justify-end md:block">
                         <div
-                            className={`mx-auto aspect-590/287 w-full max-w-147.5 rounded-image ${imageRoundedLg} md:mx-0 md:ml-auto`}
+                            className={cn(
+                                'rounded-image mx-auto aspect-590/287 w-full max-w-147.5 md:mx-0 md:ml-auto',
+                                imageRoundedLg,
+                            )}
                             style={{
                                 backgroundImage: `url('${IMAGES.home.aboutJackyak}')`,
                             }}
@@ -43,61 +60,47 @@ const AboutJackyak = () => {
 
                 {/* Mobile: Popular Destinations → Image → Travel Tips */}
                 <div className="flex flex-col items-center gap-10 md:hidden">
-                    <div className="flex max-w-content-md flex-col gap-4 text-center">
-                        <h3 className={`${fontPrimary} text-lg-xl leading-[1.05] font-bold text-text-primary`}>
-                            Popular Destinations
+                    <div className="max-w-content-md flex flex-col gap-4 text-center">
+                        <h3
+                            className={cn(
+                                headingSubsection,
+                                'text-lg-xl md:text-3xl-4xl',
+                            )}
+                        >
+                            {INFO_BLOCKS[0].title}
                         </h3>
-                        <p className={bodyText}>
-                            Discover breathtaking mountains, serene lakes,
-                            ancient heritage sites, lush national parks, and
-                            vibrant cities across Nepal. Every destination
-                            offers a unique adventure waiting to be explored.
-                        </p>
+                        <p className={bodyText}>{INFO_BLOCKS[0].body}</p>
                     </div>
 
                     <div
-                        className={`aspect-333/162 w-full max-w-83.25 rounded-image ${imageRoundedLg}`}
+                        className={cn(
+                            'rounded-image aspect-333/162 w-full max-w-83.25',
+                            imageRoundedLg,
+                        )}
                         style={{
                             backgroundImage: `url('${IMAGES.home.aboutJackyak}')`,
                         }}
                     />
 
-                    <div className="flex max-w-content-md flex-col gap-4 text-center">
-                        <h3 className={`${fontPrimary} text-xl-2xl leading-[1.05] font-bold text-text-primary`}>
-                            Travel Tips
+                    <div className="max-w-content-md flex flex-col gap-4 text-center">
+                        <h3 className={headingSubsection}>
+                            {INFO_BLOCKS[1].title}
                         </h3>
-                        <p className={bodyText}>
-                            Find essential information on the best seasons to
-                            visit, packing guides, permits, transportation,
-                            budgeting, and safety tips before you travel.
-                        </p>
+                        <p className={bodyText}>{INFO_BLOCKS[1].body}</p>
                     </div>
                 </div>
 
                 {/* Desktop: Popular Destinations + Travel Tips side by side */}
                 <div className="hidden md:grid md:grid-cols-2 md:gap-16">
-                    <div className="flex max-w-content-md flex-col gap-4 text-left">
-                        <h3 className={`${fontPrimary} text-3xl-4xl leading-[1.05] font-bold text-text-primary`}>
-                            Popular Destinations
-                        </h3>
-                        <p className={`${fontPrimary} text-xl-2xl leading-[1.05] font-normal text-text-primary`}>
-                            Discover breathtaking mountains, serene lakes,
-                            ancient heritage sites, lush national parks, and
-                            vibrant cities across Nepal. Every destination
-                            offers a unique adventure waiting to be explored.
-                        </p>
-                    </div>
-
-                    <div className="flex max-w-content-md flex-col gap-4 text-left bg-white">
-                        <h3 className={`${fontPrimary} text-3xl-4xl leading-[1.05] font-bold text-text-primary`}>
-                            Travel Tips
-                        </h3>
-                        <p className={`${fontPrimary} text-xl-2xl leading-[1.05] font-normal text-text-primary`}>
-                            Find essential information on the best seasons to
-                            visit, packing guides, permits, transportation,
-                            budgeting, and safety tips before you travel.
-                        </p>
-                    </div>
+                    {INFO_BLOCKS.map((block) => (
+                        <div
+                            key={block.title}
+                            className="max-w-content-md flex flex-col gap-4 text-left"
+                        >
+                            <h3 className={headingSubsection}>{block.title}</h3>
+                            <p className={bodyText}>{block.body}</p>
+                        </div>
+                    ))}
                 </div>
             </div>
         </section>
