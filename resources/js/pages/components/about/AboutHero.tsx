@@ -3,11 +3,11 @@ import { aboutHeroTitle } from '@/config/theme';
 import { IMAGES } from '@/config/images';
 import Header from '../shared/Header';
 
-/** About hero — navy title above image on mobile; title straddling the image top edge on desktop */
+/** About hero — navy title above image on mobile; composite photo + overlay on desktop */
 export default function AboutHero() {
     return (
         <div className="w-full">
-            {/* Mobile — navy title on canvas, image below with fade */}
+            {/* Mobile — navy title on canvas, base photo below with fade */}
             <div className="bg-canvas flex flex-col items-center md:hidden">
                 <div className="w-full">
                     <Header tone="onLight" />
@@ -18,7 +18,7 @@ export default function AboutHero() {
                 <div className="relative mt-4 w-full">
                     <img
                         src={IMAGES.about.hero}
-                        alt="Terraced hills beneath snowy Himalayan peaks"
+                        alt="Blue sky over forested Himalayan hills"
                         loading="eager"
                         className="h-56 w-full object-cover"
                     />
@@ -29,19 +29,27 @@ export default function AboutHero() {
                 </div>
             </div>
 
-            {/* Desktop — white nav + title over the sky, image full-bleed from the top */}
-            <div className="bg-canvas hidden w-full flex-col md:flex">
+            {/* Desktop — base sky photo + transparent-sky overlay (Figma mask groups), white nav + title */}
+            <div className="hidden w-full md:block">
                 <div className="relative w-full">
                     <img
                         src={IMAGES.about.hero}
-                        alt="Terraced hills beneath snowy Himalayan peaks"
+                        alt="Blue sky over forested Himalayan hills"
                         loading="eager"
                         className="h-auto w-full object-cover"
                     />
-                    {/* Sky scrim — covers nav + title so white ink reads */}
+                    {/* Figma Rectangle 179 — bottom fade into canvas */}
                     <div
                         aria-hidden
-                        className="from-navy-gradient/80 absolute inset-x-0 top-0 h-1/2 bg-linear-to-b to-transparent"
+                        className="to-canvas absolute inset-x-0 bottom-0 h-40 bg-linear-to-b from-transparent"
+                    />
+                    {/* Figma Object at top:129 — mountain cutout, sky stays transparent */}
+                    <img
+                        src={IMAGES.about.heroSecond}
+                        alt=""
+                        aria-hidden
+                        loading="eager"
+                        className="absolute inset-x-0 top-32 h-auto w-full object-cover"
                     />
                     <div className="absolute inset-x-0 top-0">
                         <Header tone="onDark" />
