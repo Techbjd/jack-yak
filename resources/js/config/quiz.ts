@@ -1,9 +1,8 @@
 // ============================================
 // Quiz — Destination-finder form content
 // ============================================
-// Figma shows "Select an option" placeholders only, so the dropdown
-// choices below are sensible defaults — edit freely or replace with
-// backend data later. Activity + season options come from Figma.
+// Dropdown choices are sensible defaults — edit freely or replace with
+// backend data later.
 // Components stay pure UI: they map over these arrays.
 // ============================================
 
