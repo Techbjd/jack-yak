@@ -1,4 +1,5 @@
-import { fontPrimary, sectionPadding } from '@/config/theme';
+import { fontPrimary, sectionPadding, sectionInner } from '@/config/theme';
+import { cn } from '@/lib/utils';
 import { IMAGES } from '@/config/images';
 import { useColors } from '@/config/colors';
 
@@ -22,22 +23,37 @@ const NepalMap = () => {
     const MAP_ACTIVE_COLOR = colors.teal;
 
     return (
-        <section className={`relative w-full px-6 md:px-12 lg:px-24 ${sectionPadding}`}>
-            <div className="relative mx-auto w-full overflow-visible max-w-container">
+        <section
+            className={cn('relative w-full', sectionPadding, sectionInner)}
+        >
+            <div className="max-w-container relative mx-auto w-full overflow-visible">
                 {/* CHINA label */}
-                <p className={`${fontPrimary} absolute right-[5%] top-0 text-3xl font-bold text-teal md:text-4xl`}>
+                <p
+                    className={cn(
+                        fontPrimary,
+                        'text-teal absolute top-0 right-[5%] text-3xl font-bold md:text-4xl',
+                    )}
+                >
                     CHINA
                 </p>
 
                 {/* INDIA label */}
-                <p className={`${fontPrimary} absolute bottom-0 left-[10%] text-3xl font-bold text-teal md:text-4xl`}>
+                <p
+                    className={cn(
+                        fontPrimary,
+                        'text-teal absolute bottom-0 left-[10%] text-3xl font-bold md:text-4xl',
+                    )}
+                >
                     INDIA
                 </p>
 
                 {/* Map wrapper */}
-                <div className="relative mx-auto w-full max-w-map overflow-visible pt-10">
+                <div className="max-w-map relative mx-auto w-full overflow-visible pt-10">
                     {/* Image container — sized to raster map aspect ratio */}
-                    <div className="relative w-full" style={{ aspectRatio: `${IMG.w} / ${IMG.h}` }}>
+                    <div
+                        className="relative w-full"
+                        style={{ aspectRatio: `${IMG.w} / ${IMG.h}` }}
+                    >
                         {/* Vectorized map — behind, shifted up so top edge peeks out */}
                         <img
                             src={IMAGES.home.provincesMap}
@@ -45,8 +61,6 @@ const NepalMap = () => {
                             className="absolute left-4 z-0 hidden w-full object-contain object-top md:block"
                             style={{ height: 'calc(100% + 40px)', top: -55 }}
                         />
-
-
                     </div>
 
                     {/* SVG overlay — leader lines + labels, all in REF coordinate space */}
@@ -58,10 +72,7 @@ const NepalMap = () => {
                             width: `${SVG_OFFSET.width * 100}%`,
                             height: `${SVG_OFFSET.height * 100}%`,
                         }}
-                    >
-
-
-                    </div>
+                    ></div>
                 </div>
             </div>
         </section>
