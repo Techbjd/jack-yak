@@ -1,4 +1,8 @@
-import { fontPrimary, cardMobileImage, cardMobileContent } from '@/config/theme';
+import {
+    fontPrimary,
+    cardMobileImage,
+    cardMobileContent,
+} from '@/config/theme';
 import { IMAGES } from '@/config/images';
 import { cn } from '@/lib/utils';
 
@@ -32,22 +36,23 @@ const cardDimensions: Record<CardVariant, { width: number; height: number }> = {
 
 const TopDestinations = () => {
     return (
-        <section className="w-full py-16 md:py-24 px-6 md:px-12 lg:px-24">
-            <div className="mx-auto flex flex-col items-center gap-16 md:gap-24 max-w-page">
-
+        <section className="w-full px-6 py-16 md:px-12 md:py-24 lg:px-24">
+            <div className="max-w-page mx-auto flex flex-col items-center gap-16 md:gap-24">
                 {/* Title */}
-                <h2 className={cn(
-                    fontPrimary,
-                    "text-center font-bold text-text-primary",
-                    "text-3xl-4xl leading-tight",
-                    "max-w-dest-title"
-                )}>
+                <h2
+                    className={cn(
+                        fontPrimary,
+                        'text-text-primary text-center font-bold',
+                        'text-3xl-4xl leading-tight',
+                        'max-w-dest-title',
+                    )}
+                >
                     Explore Nepal's Top Destinations
                 </h2>
 
                 {/* MOBILE: horizontal scroll cards */}
-                <div className="w-full overflow-x-auto [scrollbar-none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden md:hidden">
-                    <div className="flex w-max gap-5 pl-5 pr-5 snap-x snap-mandatory">
+                <div className="no-scrollbar w-full overflow-x-auto md:hidden">
+                    <div className="flex w-max snap-x snap-mandatory gap-5 pr-5 pl-5">
                         {destinations.map((dest, i) => (
                             <div
                                 key={i}
@@ -57,29 +62,35 @@ const TopDestinations = () => {
                                 <div
                                     className={cn(
                                         cardMobileImage,
-                                        "rounded-t-card bg-bg-placeholder bg-cover bg-center"
+                                        'rounded-t-card bg-bg-placeholder bg-cover bg-center',
                                     )}
                                     style={{
                                         backgroundImage: `url(${dest.image})`,
                                     }}
                                 />
                                 {/* Mobile card content */}
-                                <div className={cn(
-                                    cardMobileContent,
-                                    "flex flex-col items-center justify-center rounded-b-card bg-white shadow-card"
-                                )}>
-                                    <span className={cn(
-                                        fontPrimary,
-                                        "font-bold text-ink",
-                                        "text-xs-sm leading-3 tracking-wide"
-                                    )}>
+                                <div
+                                    className={cn(
+                                        cardMobileContent,
+                                        'rounded-b-card shadow-card flex flex-col items-center justify-center bg-white',
+                                    )}
+                                >
+                                    <span
+                                        className={cn(
+                                            fontPrimary,
+                                            'text-ink font-bold',
+                                            'text-xs-sm leading-3 tracking-wide',
+                                        )}
+                                    >
                                         {dest.name}
                                     </span>
-                                    <span className={cn(
-                                        fontPrimary,
-                                        "text-ink text-2xs font-semibold",
-                                        "leading-2.5 tracking-wide"
-                                    )}>
+                                    <span
+                                        className={cn(
+                                            fontPrimary,
+                                            'text-ink text-2xs font-semibold',
+                                            'leading-2.5 tracking-wide',
+                                        )}
+                                    >
                                         {dest.subtitle}
                                     </span>
                                 </div>
@@ -95,7 +106,7 @@ const TopDestinations = () => {
                         return (
                             <div
                                 key={dest.name}
-                                className="relative overflow-hidden rounded-2xl bg-cover bg-center"
+                                className="rounded-image relative overflow-hidden bg-cover bg-center"
                                 style={{
                                     aspectRatio: `${dims.width} / ${dims.height}`,
                                     backgroundImage: `url(${dest.image})`,
@@ -105,11 +116,13 @@ const TopDestinations = () => {
                                 <div className="absolute inset-0 bg-linear-to-b from-black/40 via-black/0 to-black/10" />
 
                                 {/* Destination name */}
-                                <span className={cn(
-                                    fontPrimary,
-                                    "absolute left-0 right-0 text-center font-medium text-white",
-                                    "text-xl-2xl top-6"
-                                )}>
+                                <span
+                                    className={cn(
+                                        fontPrimary,
+                                        'absolute right-0 left-0 text-center font-medium text-white',
+                                        'text-xl-2xl top-6',
+                                    )}
+                                >
                                     {dest.name}
                                 </span>
                             </div>
