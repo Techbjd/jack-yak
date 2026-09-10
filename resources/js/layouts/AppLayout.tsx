@@ -5,11 +5,11 @@ import Footer from '@/pages/components/shared/Footer';
 
 interface AppLayoutProps {
     children: ReactNode;
-    
+
     title?: string;
-    
+
     shellClassName?: string;
-    
+
     header?: ReactNode;
 }
 
