@@ -29,9 +29,8 @@ export default function AboutHero() {
                 </div>
             </div>
 
-            {/* Desktop — navy header on canvas, title straddling the image top edge */}
-            <div className="bg-canvas hidden w-full flex-col md:flex">
-                <Header tone="onLight" />
+            {/* Desktop — white nav + title over the sky, image full-bleed from the top */}
+            <div className="hidden w-full flex-col bg-canvas md:flex">
                 <div className="relative w-full">
                     <img
                         src={IMAGES.about.hero}
@@ -39,20 +38,24 @@ export default function AboutHero() {
                         loading="eager"
                         className="h-auto w-full object-cover"
                     />
-                    {/* Sky scrim — gives the upper half a sky tone so the white title reads */}
+                    {/* Sky scrim — covers nav + title so white ink reads */}
                     <div
                         aria-hidden
-                        className="from-navy-gradient/80 absolute inset-x-0 top-0 h-1/2 bg-linear-to-b to-transparent"
+                        className="absolute inset-x-0 top-0 h-1/2 bg-linear-to-b from-navy-gradient/80 to-transparent"
                     />
+                    <div className="absolute inset-x-0 top-0">
+                        <Header tone="onDark" />
+                    </div>
                     <h1
                         className={cn(
                             aboutHeroTitle,
-                            'absolute inset-x-0 top-10 px-12 text-center drop-shadow-md lg:px-24',
+                            'absolute inset-x-0 top-52 px-12 text-center drop-shadow-md lg:px-24',
                         )}
                     >
                         ABOUT US
                     </h1>
                 </div>
+            </div>
             </div>
         </div>
     );
