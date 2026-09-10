@@ -17,7 +17,6 @@ const DiscoverNepal = () => {
         <section
             className={cn('relative w-full overflow-hidden', sectionPadding)}
         >
-
             <div className="max-w-container bg-surface-warm mx-auto flex flex-col items-center gap-5 px-8 md:flex-row md:gap-16 md:bg-transparent md:px-12 lg:px-24">
                 <div className="order-2 w-full md:hidden">
                     <img
