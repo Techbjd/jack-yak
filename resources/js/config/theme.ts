@@ -218,6 +218,74 @@ export const aboutNote =
     'font-manrope text-xs-sm leading-snug font-medium text-black md:text-xl-2xl';
 
 // --------------------------------------------
+// User: profile section patterns (Figma mobile + desktop, token-only)
+// --------------------------------------------
+
+/** User name — 16px mobile, 32px desktop ink */
+export const userName =
+    'font-manrope text-md-lg leading-snug font-medium text-ink md:text-2xl-3xl';
+
+/** User email + card subtitles — 12px mobile, 20px desktop haze */
+export const userMuted =
+    'font-manrope text-xs-md leading-snug font-medium text-haze md:text-lg-xl';
+
+/** User Saved title — 16px mobile, 24px desktop, black on desktop */
+export const userSectionTitle =
+    'font-manrope text-md-lg leading-snug font-medium text-ink md:text-xl-2xl md:text-black';
+
+/** User settings title + row labels — 12px mobile, 16px desktop, black on desktop */
+export const userRowDark =
+    'font-manrope text-xs-md leading-snug font-medium text-ink md:text-black md:text-md-lg';
+
+/** User saved rows + counts — 12px mobile, 20px desktop ink */
+export const userRow =
+    'font-manrope text-xs-md leading-snug font-medium text-ink md:text-lg-xl';
+
+/** User edit-profile button — orange pill mobile, teal bar desktop */
+export const userEditButton =
+    'font-manrope flex h-7 w-32 items-center justify-center gap-2 rounded-md bg-cta-accent text-xs-sm font-medium text-white md:h-14 md:w-61.5 md:gap-3 md:bg-cta md:text-lg-xl';
+
+/** User sign-out label — ember semibold */
+export const userSignOut =
+    'font-manrope text-xs-md leading-snug font-semibold text-cta-ember md:text-md-lg';
+
+// --------------------------------------------
+// Modals: dialog form patterns (token-only)
+// --------------------------------------------
+
+/** Modal title — 40px semibold ink */
+export const modalTitle =
+    'font-manrope text-modal leading-tight font-semibold text-ink';
+
+/** Modal subtitle — 16px medium ink */
+export const modalSubtitle =
+    'font-manrope text-md-lg leading-relaxed font-medium text-ink';
+
+/** Modal field label — 16px medium midnight */
+export const modalLabel =
+    'font-manrope text-md-lg leading-snug font-medium text-midnight';
+
+/** Modal text input / select — 68px, 6px radius, quiz-line border */
+export const modalInput =
+    'font-manrope h-17 w-full rounded-md border border-quiz-line bg-white px-4 text-md-lg font-medium text-ink outline-none placeholder:text-mist focus:border-ink';
+
+/** Modal hint + counter — 16px/14px mist */
+export const modalHint =
+    'font-manrope text-md-lg leading-snug font-medium text-mist';
+
+/** Modal textarea — haze border, 8px radius */
+export const modalTextarea =
+    'font-manrope h-38 w-full rounded-lg border border-haze bg-white p-4 text-md-lg leading-snug font-medium text-ink outline-none placeholder:text-mist focus:border-ink';
+
+/** Modal primary button — ink fill, 143x38 */
+export const modalPrimary =
+    'font-manrope flex h-9.5 w-36 items-center justify-center rounded-lg bg-ink text-base-md font-bold text-white transition-opacity hover:opacity-90';
+
+/** Modal ghost button — black outline, pine text */
+export const modalGhost =
+    'font-manrope flex h-9.5 w-36 items-center justify-center rounded-lg border border-black bg-white text-base-md font-bold text-pine transition-opacity hover:opacity-80';
+
+// --------------------------------------------
 // Colors: For inline styles (SVG, dynamic)
 // --------------------------------------------
 // For runtime access, use useColors() hook from @/config/colors.
