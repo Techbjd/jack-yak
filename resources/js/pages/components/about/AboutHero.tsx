@@ -29,9 +29,8 @@ export default function AboutHero() {
                 </div>
             </div>
 
-            {/* Desktop — navy header on canvas, composite photo, title straddling the photo top edge */}
-            <div className="bg-canvas hidden w-full flex-col md:flex">
-                <Header tone="onLight" />
+            {/* Desktop — Figma hero: full-bleed composite, white nav + title overlaid */}
+            <div className="hidden w-full md:block">
                 <div className="relative w-full">
                     {/* Base sky photo */}
                     <img
@@ -53,14 +52,19 @@ export default function AboutHero() {
                         loading="eager"
                         className="absolute inset-x-0 top-32 h-auto w-full object-cover"
                     />
+                    {/* Title paints above the overlay — sandwich test showed the haze swallows it */}
                     <h1
                         className={cn(
                             aboutHeroTitle,
-                            'absolute inset-x-0 -top-8 px-12 text-center drop-shadow-md lg:px-24',
+                            'absolute inset-x-0 top-52 px-12 text-center drop-shadow-md lg:px-24',
                         )}
                     >
                         ABOUT US
                     </h1>
+                    {/* Figma Group 23 at top:68 — white nav over the sky */}
+                    <div className="absolute inset-x-0 top-0">
+                        <Header tone="onDark" />
+                    </div>
                 </div>
             </div>
         </div>
