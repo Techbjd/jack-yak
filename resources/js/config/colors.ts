@@ -28,6 +28,7 @@ import { createContext, useContext } from 'react';
 // - quiz-line     → quiz input/select/segment borders (border-quiz-line)
 // - hairline      → quiz row dividers (bg-hairline)
 // - subtle        → quiz helper note (text-subtle)
+// - haze          → user email + card subtitles (text-haze)
 // Primitives (navy, teal, …) remain for decorative blends (gradients, map).
 // ============================================
 
@@ -67,6 +68,7 @@ export interface Colors {
     quiz_line: string;
     hairline: string;
     subtle: string;
+    haze: string;
 }
 
 export const COLORS: Colors = {
@@ -104,6 +106,7 @@ export const COLORS: Colors = {
     quiz_line: '#E2E5EA',
     hairline: '#F1F3F5',
     subtle: '#858D99',
+    haze: '#989EAD',
 };
 
 export const ColorsContext = createContext<Colors>(COLORS);
@@ -147,4 +150,5 @@ export function setRootColors(colors: Colors): void {
     root.style.setProperty('--color-quiz-line', colors.quiz_line);
     root.style.setProperty('--color-hairline', colors.hairline);
     root.style.setProperty('--color-subtle', colors.subtle);
+    root.style.setProperty('--color-haze', colors.haze);
 }
