@@ -67,7 +67,7 @@ export const featuredTabs: string[] = [
     'Lakes',
 ];
 
-/** Featured tab icons — Figma artwork (@/config/images registry) */
+/** Featured tab icons (see @/config/images registry) */
 export const featuredTabIcons: Record<string, string> = {
     All: IMAGES.destination.icons.all,
     Trekking: IMAGES.destination.icons.trekking,
@@ -80,7 +80,7 @@ export const featuredTabIcons: Record<string, string> = {
 export interface FeaturedCard {
     src: string;
     label: string;
-    /** Desktop card portrait ratio from Figma */
+    /** Desktop card portrait ratio */
     ratio: string;
     /** Desktop mosaic span (full literal so Tailwind scans it) */
     span: string;
@@ -94,7 +94,7 @@ export interface ViewAllDestination {
     image: string;
 }
 
-/** View-all listing — 15 cards (5 rows × 3 on mobile Figma) */
+/** View-all listing — 15 cards (5 rows × 3 on mobile) */
 export const viewAllDestinations: ViewAllDestination[] = [
     {
         name: 'Mount Everest',
