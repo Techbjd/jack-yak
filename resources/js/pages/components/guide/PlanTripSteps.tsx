@@ -58,8 +58,8 @@ const PlanTripSteps = () => {
                     </h2>
                 </div>
 
-                {/* 400px+: Figma side-by-side (image column narrower); below 400px: image shifts below steps */}
-                {/* ms+ (600px): tablet sizing step-up, photo stretches to full steps height; lg: equal halves like desktop Figma */}
+                {/* 400px+: side-by-side (image column narrower); below 400px: image shifts below steps */}
+                {/* ms+ (600px): tablet sizing step-up, photo stretches to full steps height; lg: equal halves */}
                 <div className="xs:flex-row xs:items-start xs:gap-3 ms:items-stretch flex flex-col gap-4 md:flex-row md:gap-8 lg:grid lg:grid-cols-2">
                     {/* Steps — vertical timeline */}
                     <ol className="flex min-w-0 flex-1 flex-col md:gap-2">
