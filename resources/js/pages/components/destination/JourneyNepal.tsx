@@ -1,4 +1,9 @@
-import { eyebrow, fontPrimary, imagePlaceholder } from '@/config/theme';
+import {
+    coverImageAbsolute,
+    eyebrow,
+    fontPrimary,
+    imagePlaceholder,
+} from '@/config/theme';
 import { IMAGES } from '@/config/images';
 import { cn } from '@/lib/utils';
 
@@ -7,7 +12,7 @@ function MaskLabel({ name }: { name: string }) {
         <span
             className={cn(
                 fontPrimary,
-                'px-2 text-center text-2xs font-medium text-white/80',
+                'text-2xs px-2 text-center font-medium text-white/80',
             )}
         >
             {name}
@@ -20,18 +25,17 @@ export default function JourneyNepal() {
         <section className="flex w-full flex-col gap-0 px-6 py-8 md:px-12 md:py-12 lg:px-24">
             {/* Row 1 — heading + tall image */}
             <div className="-mx-6 -my-0.5 grid grid-cols-2 items-stretch gap-0 md:mx-0 lg:-mx-24 lg:grid-cols-12">
-                <div className="flex flex-col gap-4 pl-6 md:gap-6 md:pl-0 xs:pl-8 lg:col-span-5 lg:justify-center lg:pl-20">
+                <div className="xs:pl-8 flex flex-col gap-4 pl-6 md:gap-6 md:pl-0 lg:col-span-5 lg:justify-center lg:pl-20">
                     <img
                         src={IMAGES.destination.yakMascot}
                         alt="JackYak mascot"
                         className="w-9 lg:w-28"
                     />
 
-
                     <p
                         className={cn(
                             eyebrow,
-                            'leading-snug md:text-2xl-3xl lg:whitespace-nowrap',
+                            'md:text-2xl-3xl leading-snug lg:whitespace-nowrap',
                         )}
                     >
                         DISCOVER NEPAL
@@ -39,7 +43,7 @@ export default function JourneyNepal() {
                     <h2
                         className={cn(
                             fontPrimary,
-                            'text-2xl-3xl leading-none font-bold tracking-wide text-text-primary md:text-journey md:leading-journey md:text-teal xl:relative xl:whitespace-nowrap',
+                            'text-2xl-3xl text-text-primary md:text-journey md:leading-journey md:text-teal leading-none font-bold tracking-wide xl:relative xl:whitespace-nowrap',
                         )}
                     >
                         Journey Beyond{' '}
@@ -54,7 +58,7 @@ export default function JourneyNepal() {
                     <p
                         className={cn(
                             fontPrimary,
-                            'mt-4 max-w-40 text-xs-md leading-snug font-medium text-text-primary md:mt-0 md:max-w-content md:text-md-lg',
+                            'text-xs-md text-text-primary md:max-w-content md:text-md-lg mt-4 max-w-40 leading-snug font-medium md:mt-0',
                         )}
                     >
                         JackYak is your gateway to Nepal&apos;s breathtaking
@@ -73,27 +77,27 @@ export default function JourneyNepal() {
                     <img
                         src={IMAGES.destination.journeyMobile}
                         alt="Journey Nepal"
-                        className="absolute inset-0 h-full w-full object-cover"
+                        className={cn(coverImageAbsolute)}
                     />
                 </div>
                 {/* Desktop only — journey wide */}
                 <div
                     className={cn(
                         imagePlaceholder,
-                        'relative hidden h-full w-full items-center justify-center overflow-hidden md:flex md:h-auto md:aspect-893/548 lg:col-span-7',
+                        'relative hidden h-full w-full items-center justify-center overflow-hidden md:flex md:aspect-893/548 md:h-auto lg:col-span-7',
                     )}
                 >
                     <img
                         src={IMAGES.destination.journey}
                         alt="Journey Nepal"
-                        className="absolute inset-0 h-full w-full object-cover"
+                        className={cn(coverImageAbsolute)}
                     />
                 </div>
             </div>
 
             {/* Row 2 — teal card + image + yak panel */}
-            <div className="-mx-6 grid grid-cols-3 items-stretch gap-0 xs:grid-cols-2 md:mx-0 lg:-mx-24 lg:grid-cols-12 lg:gap-0 lg:min-h-71.5">
-                <div className="col-span-2 flex flex-col justify-center gap-5 bg-cta-ember px-8 py-10 text-white xs:col-span-1 md:gap-3 md:bg-cta md:p-6 lg:col-span-3 lg:justify-start lg:px-16 lg:pt-12">
+            <div className="xs:grid-cols-2 -mx-6 grid grid-cols-3 items-stretch gap-0 md:mx-0 lg:-mx-24 lg:min-h-71.5 lg:grid-cols-12 lg:gap-0">
+                <div className="bg-cta-ember xs:col-span-1 md:bg-cta col-span-2 flex flex-col justify-center gap-5 px-8 py-10 text-white md:gap-3 md:p-6 lg:col-span-3 lg:justify-start lg:px-16 lg:pt-12">
                     <h3
                         className={cn(
                             fontPrimary,
@@ -105,7 +109,7 @@ export default function JourneyNepal() {
                     <p
                         className={cn(
                             fontPrimary,
-                            'text-xs-sm leading-snug font-medium md:text-md-lg',
+                            'text-xs-sm md:text-md-lg leading-snug font-medium',
                         )}
                     >
                         Explore Nepal through cinematic destination stories,
@@ -123,7 +127,7 @@ export default function JourneyNepal() {
                     <img
                         src={IMAGES.destination.journeyMobileMountain}
                         alt="Journey Nepal"
-                        className="absolute inset-0 h-full w-full object-cover"
+                        className={cn(coverImageAbsolute)}
                     />
                 </div>
                 {/* Desktop only — single mountain image */}
@@ -136,7 +140,7 @@ export default function JourneyNepal() {
                     <img
                         src={IMAGES.destination.journeyMountain}
                         alt="Journey Nepal"
-                        className="absolute inset-0 h-full w-full object-cover"
+                        className={cn(coverImageAbsolute)}
                     />
                 </div>
                 {/* Desktop only — Meet the Yak panel */}
@@ -144,7 +148,7 @@ export default function JourneyNepal() {
                     <h3
                         className={cn(
                             fontPrimary,
-                            'text-lg-xl leading-snug font-bold text-text-primary lg:tracking-wide',
+                            'text-lg-xl text-text-primary leading-snug font-bold lg:tracking-wide',
                         )}
                     >
                         Meet the Yak
@@ -152,7 +156,7 @@ export default function JourneyNepal() {
                     <p
                         className={cn(
                             fontPrimary,
-                            'text-xs-sm leading-snug font-medium text-text-primary md:text-md-lg lg:tracking-wide',
+                            'text-xs-sm text-text-primary md:text-md-lg leading-snug font-medium lg:tracking-wide',
                         )}
                     >
                         For centuries, the Himalayan yak has been a symbol of
@@ -163,8 +167,6 @@ export default function JourneyNepal() {
                     </p>
                 </div>
             </div>
-
-
         </section>
     );
 }
