@@ -31,7 +31,7 @@ const TAB_ICON_SIZE: Record<string, string> = {
     Lakes: 'h-8.5 w-8.5',
 };
 
-/** Figma icon artwork with Lucide fallback until the uploads land */
+/** Icon artwork with Lucide fallback until the uploads land */
 function TabIcon({ tab }: { tab: string }) {
     const [ready, setReady] = useState(false);
     const [failed, setFailed] = useState(false);
