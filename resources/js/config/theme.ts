@@ -19,10 +19,10 @@ export const fontPrimary = 'font-manrope';
 /** Display serif for destination titles (EB Garamond) */
 export const fontDisplay = 'font-display';
 
-/** Quote body for testimonial cards (Poppins) — Figma Travel Stories */
+/** Quote body for testimonial cards (Poppins) */
 export const fontQuote = 'font-poppins';
 
-/** Quote mark glyph for testimonial cards (Roboto) — Figma Travel Stories */
+/** Quote mark glyph for testimonial cards (Roboto) */
 export const fontQuoteMark = 'font-roboto';
 
 /** Eyebrow label — tiny bold label above headings */
@@ -133,7 +133,7 @@ export const cardMobileImage = 'h-card-h w-card-w';
 export const cardMobileContent = 'h-[37px] w-card-w';
 
 // --------------------------------------------
-// Auth: Login patterns (Figma mobile + desktop)
+// Auth: Login patterns
 // --------------------------------------------
 
 /** Login heading — 24px bold ink */
@@ -158,7 +158,7 @@ export const authSocialButton =
 export const authDividerLine = 'h-px flex-1 bg-divider';
 
 // --------------------------------------------
-// Quiz: Destination-finder form patterns (Figma desktop)
+// Quiz: Destination-finder form patterns
 // --------------------------------------------
 
 /** Quiz field label / question — 15px medium midnight */
@@ -183,12 +183,12 @@ export const quizNote =
 export const quizError = 'font-manrope pt-1.5 text-xs font-medium text-red-500';
 
 // --------------------------------------------
-// About: page patterns (Figma mobile + desktop, token-only)
+// About: page patterns (token-only)
 // --------------------------------------------
 
-/** About hero title — EB Garamond navy on mobile, giant white on desktop */
+/** About hero title — 36px below 400px, 64px up to xl, giant white at xl (no mid-range overflow) */
 export const aboutHeroTitle =
-    'font-display text-display leading-about font-medium text-ink md:text-about-display md:leading-about-display md:text-white';
+    'font-display text-3xl-4xl leading-tight font-medium text-ink xs:text-display xs:leading-about md:text-white xl:text-about-display xl:leading-about-display';
 
 /** About centered section title — 16px mobile, 60px desktop */
 export const aboutSectionTitle =
@@ -218,7 +218,7 @@ export const aboutNote =
     'font-manrope text-xs-sm leading-snug font-medium text-black md:text-xl-2xl';
 
 // --------------------------------------------
-// User: profile section patterns (Figma mobile + desktop, token-only)
+// User: profile section patterns (token-only)
 // --------------------------------------------
 
 /** User name — 16px mobile, 32px desktop ink */
