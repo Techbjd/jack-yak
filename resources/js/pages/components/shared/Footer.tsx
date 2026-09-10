@@ -1,7 +1,8 @@
 import { FaInstagram, FaFacebookF, FaWhatsapp } from 'react-icons/fa';
 import type { IconType } from 'react-icons';
-import { fontPrimary } from '@/config/theme';
+import { fontPrimary, sectionInner } from '@/config/theme';
 import { IMAGES } from '@/config/images';
+import { cn } from '@/lib/utils';
 
 interface FooterColumnData {
     title: string;
@@ -71,33 +72,35 @@ const SocialIcon: React.FC<SocialIconProps> = ({ label, Icon, href = '#' }) => {
 
 const Footer: React.FC = () => {
     return (
-        <footer className="w-full bg-brand text-white">
+        <footer className="bg-brand w-full text-white">
             {/* Torn-edge trekker panorama */}
             <div className="-mb-1 w-full overflow-hidden">
-                <div className="flex aspect-1440/470 w-full items-center justify-center bg-bg-placeholder select-none">
-
+                <div className="bg-bg-placeholder flex aspect-1440/470 w-full items-center justify-center select-none">
                     <img
                         src={IMAGES.home.trekkerYak}
                         alt="JackYak Logo"
                         className="h-full w-full object-contain"
                     />
-
                 </div>
             </div>
-            <div className="mx-auto max-w-container px-6 md:px-16 lg:px-24">
+            <div className={cn(sectionInner, 'md:px-16')}>
                 {/* MOBILE: logo + tagline + 2x2 grid of columns */}
                 <div className="flex flex-col gap-8 md:hidden">
                     {/* Brand */}
                     <div className="flex flex-col gap-4">
-
-                        <div className="flex h-logo w-logo-w items-center justify-center ">
+                        <div className="h-logo w-logo-w flex items-center justify-center">
                             <img
                                 src={IMAGES.logo.jackYak}
                                 alt="JackYak Logo"
                                 className="h-full w-full object-contain"
                             />
                         </div>
-                        <p className={`${fontPrimary} text-xs-sm leading-[1.05] font-normal text-white`}>
+                        <p
+                            className={cn(
+                                fontPrimary,
+                                'text-xs-sm leading-[1.05] font-normal text-white',
+                            )}
+                        >
                             Helping travelers explore Nepal with trusted
                             information.
                         </p>
@@ -106,8 +109,16 @@ const Footer: React.FC = () => {
                     {/* 2x2 grid of columns */}
                     <div className="grid grid-cols-2 gap-x-8 gap-y-8">
                         {footerColumns.map((col) => (
-                            <div key={col.title} className="flex flex-col gap-4">
-                                <span className={`${fontPrimary} text-md-lg font-bold text-white`}>
+                            <div
+                                key={col.title}
+                                className="flex flex-col gap-4"
+                            >
+                                <span
+                                    className={cn(
+                                        fontPrimary,
+                                        'text-md-lg font-bold text-white',
+                                    )}
+                                >
                                     {col.title}
                                 </span>
                                 <ul className="flex flex-col gap-0">
@@ -115,7 +126,10 @@ const Footer: React.FC = () => {
                                         <li key={link}>
                                             <a
                                                 href="#"
-                                                className={`${fontPrimary} text-md-lg leading-[163%] font-light text-white`}
+                                                className={cn(
+                                                    fontPrimary,
+                                                    'text-md-lg leading-[163%] font-light text-white',
+                                                )}
                                             >
                                                 {link}
                                             </a>
@@ -130,16 +144,21 @@ const Footer: React.FC = () => {
                 {/* DESKTOP: original layout */}
                 <div className="hidden flex-col gap-10 md:flex md:flex-row md:justify-between md:gap-8">
                     {/* Brand */}
-                    <div className="flex max-w-content-sm flex-col gap-4">
+                    <div className="max-w-content-sm flex flex-col gap-4">
                         {/* Logo */}
-                        <div className="flex h-20 w-20 items-center justify-center ">
+                        <div className="flex h-20 w-20 items-center justify-center">
                             <img
                                 src={IMAGES.logo.jackYak}
                                 alt="JackYak Logo"
                                 className="h-full w-full object-contain"
                             />
                         </div>
-                        <p className={`${fontPrimary} text-sm leading-[1.05] font-normal text-white md:text-base`}>
+                        <p
+                            className={cn(
+                                fontPrimary,
+                                'text-sm-base md:text-md-lg leading-[1.05] font-normal text-white',
+                            )}
+                        >
                             Helping travelers explore Nepal with trusted
                             information.
                         </p>
@@ -148,9 +167,17 @@ const Footer: React.FC = () => {
                     {/* Columns */}
                     <div className="grid flex-1 grid-cols-1 gap-x-8 md:grid-cols-4">
                         {footerColumns.map((col) => (
-                            <div key={col.title} className="border-b border-white/10 md:border-none">
+                            <div
+                                key={col.title}
+                                className="border-b border-white/10 md:border-none"
+                            >
                                 <div className="mb-4">
-                                    <span className={`${fontPrimary} text-base font-bold text-white`}>
+                                    <span
+                                        className={cn(
+                                            fontPrimary,
+                                            'text-base-md font-bold text-white',
+                                        )}
+                                    >
                                         {col.title}
                                     </span>
                                 </div>
@@ -159,7 +186,10 @@ const Footer: React.FC = () => {
                                         <li key={link}>
                                             <a
                                                 href="#"
-                                                className={`${fontPrimary} text-base leading-[2.56] font-medium text-white/80 transition-colors hover:text-white`}
+                                                className={cn(
+                                                    fontPrimary,
+                                                    'text-base-md leading-[2.56] font-medium text-white/80 transition-colors hover:text-white',
+                                                )}
                                             >
                                                 {link}
                                             </a>
@@ -175,7 +205,12 @@ const Footer: React.FC = () => {
                 <div className="mt-12 flex flex-col items-center gap-4 border-t border-white/10 pt-6 md:mt-16 md:grid md:grid-cols-3">
                     <div className="hidden md:block" />
 
-                    <p className={`${fontPrimary} order-2 text-center text-md-lg font-medium text-white/54 md:order-0 md:text-base`}>
+                    <p
+                        className={cn(
+                            fontPrimary,
+                            'text-md-lg md:text-base-md order-2 text-center font-medium text-white/60 md:order-0',
+                        )}
+                    >
                         © 2026 JackYak. All rights reserved.
                     </p>
 
