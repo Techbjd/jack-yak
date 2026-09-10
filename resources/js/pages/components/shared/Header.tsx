@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Search, User, Heart, X } from 'lucide-react';
 import { fontPrimary } from '@/config/theme';
 import { desktopNav, mobileNav } from '@/config/navigation';
@@ -15,6 +15,20 @@ interface HeaderProps {
 
 const Header = ({ tone = 'onDark' }: HeaderProps) => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+    useEffect(() => {
+        if (!isMobileMenuOpen) {
+            return;
+        }
+        const onKey = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') {
+                setIsMobileMenuOpen(false);
+            }
+        };
+        document.addEventListener('keydown', onKey);
+        return () => document.removeEventListener('keydown', onKey);
+    }, [isMobileMenuOpen]);
+
     const onLight = tone === 'onLight';
     const ink = onLight ? 'text-ink' : 'text-white';
     const stripe = onLight ? 'bg-ink' : 'bg-white';
@@ -86,10 +100,11 @@ const Header = ({ tone = 'onDark' }: HeaderProps) => {
                     </button>
                 </div>
 
-                {/* Mobile Hamburger Button */}
+                {/* Mobile Hamburger Button — padded to a 39x34 tap target, layout unchanged */}
                 <button
                     aria-label="Open menu"
-                    className="w-hamburger flex h-2.5 flex-col items-center justify-center gap-1 md:hidden"
+                    aria-expanded={isMobileMenuOpen}
+                    className="w-hamburger -m-3 flex h-2.5 cursor-pointer flex-col items-center justify-center gap-1 p-3 active:opacity-60 md:hidden"
                     onClick={() => setIsMobileMenuOpen(true)}
                 >
                     <span className={`h-[1.5px] w-full ${stripe}`}></span>
@@ -100,7 +115,12 @@ const Header = ({ tone = 'onDark' }: HeaderProps) => {
 
             {/* Mobile Sidebar Overlay */}
             {isMobileMenuOpen && (
-                <div className="fixed inset-0 z-100 md:hidden">
+                <div
+                    role="dialog"
+                    aria-modal="true"
+                    aria-label="Site menu"
+                    className="fixed inset-0 z-100 md:hidden"
+                >
                     {/* Backdrop */}
                     <div
                         className="absolute inset-0 bg-black/50"

@@ -10,7 +10,7 @@ import {
     sectionPadding,
 } from '@/config/theme';
 
-// Staggered pair share one ratio from Figma (257 x 387 == 328 x 494)
+// Staggered pair share one ratio (257 x 387 == 328 x 494)
 const STAGGERED_RATIO = '257 / 387';
 
 const DiscoverNepal = () => {
@@ -20,7 +20,7 @@ const DiscoverNepal = () => {
         >
             {/* Decorative patch3 — re-add <img src="/patch3.png" className="pointer-events-none absolute top-1/2 right-0 -z-10 w-70 -translate-y-1/2 rotate-[89.27deg] opacity-90 select-none md:w-105 lg:w-130"> once the asset lands in public/ */}
 
-            <div className="mx-auto flex max-w-container flex-col items-center gap-5 bg-surface-warm px-8 md:flex-row md:gap-16 md:bg-transparent md:px-12 lg:px-24">
+            <div className="max-w-container bg-surface-warm mx-auto flex flex-col items-center gap-5 px-8 md:flex-row md:gap-16 md:bg-transparent md:px-12 lg:px-24">
                 {/* Mobile second: single image (336 x 229) */}
                 <div className="order-2 w-full md:hidden">
                     <img
@@ -35,7 +35,7 @@ const DiscoverNepal = () => {
                 </div>
 
                 {/* Text — unwrapped on mobile via contents, column on desktop */}
-                <div className="contents md:flex md:max-w-content-lg md:flex-1 md:flex-col md:items-start md:gap-6 md:text-left">
+                <div className="md:max-w-content-lg contents md:flex md:flex-1 md:flex-col md:items-start md:gap-6 md:text-left">
                     <h2
                         className={cn(
                             headingSubsection,
@@ -47,7 +47,7 @@ const DiscoverNepal = () => {
                     <p
                         className={cn(
                             bodyTextSmall,
-                            'order-3 text-center md:order-2 md:text-left md:text-xl-2xl',
+                            'md:text-xl-2xl order-3 text-center md:order-2 md:text-left',
                         )}
                     >
                         From snow-capped peaks and peaceful lakes to ancient
@@ -59,7 +59,7 @@ const DiscoverNepal = () => {
                     <button
                         className={cn(
                             ctaMobile,
-                            'order-4 text-xs-md md:hidden',
+                            'text-xs-md order-4 md:hidden',
                         )}
                     >
                         <span className="px-2">Start Your Journey</span>
@@ -69,7 +69,7 @@ const DiscoverNepal = () => {
                     <button
                         className={cn(
                             fontPrimary,
-                            'hidden h-10.5 w-52 items-center justify-center rounded-full bg-cta text-md-lg font-bold text-white md:order-3 md:mt-5 md:flex',
+                            'bg-cta text-md-lg hidden h-10.5 w-52 items-center justify-center rounded-full font-bold text-white md:order-3 md:mt-5 md:flex',
                         )}
                     >
                         Start Your Journey
@@ -78,7 +78,7 @@ const DiscoverNepal = () => {
 
                 {/* Desktop: staggered image pair */}
                 <div className="hidden w-full min-w-0 flex-1 items-start justify-center gap-5 md:flex lg:justify-end">
-                    {/* Rectangle 36 — shorter, sits lower */}
+                    {/* Shorter image, sits lower */}
                     <img
                         src={IMAGES.home.discoverNepal1}
                         alt="Stone cairn before snowy peaks"
@@ -90,7 +90,7 @@ const DiscoverNepal = () => {
                         style={{ aspectRatio: STAGGERED_RATIO }}
                     />
 
-                    {/* Rectangle 37 — taller, sits higher */}
+                    {/* Taller image, sits higher */}
                     <img
                         src={IMAGES.home.discoverNepal2}
                         alt="Himalayan peak at dusk"

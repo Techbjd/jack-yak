@@ -18,7 +18,7 @@ export default function DifferenceSection() {
             />
             <img
                 src={IMAGES.about.difference}
-                alt="Decorated yaks by a mountain lake"
+                alt="Snowy Himalayan peak under a clear sky"
                 loading="lazy"
                 className="hidden aspect-video w-full object-cover md:block"
             />
