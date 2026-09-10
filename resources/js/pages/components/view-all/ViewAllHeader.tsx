@@ -2,7 +2,7 @@ import { ArrowLeft } from 'lucide-react';
 import { fontPrimary } from '@/config/theme';
 import { cn } from '@/lib/utils';
 
-/** View-all title row — Back link left, centered title (Figma) */
+/** View-all title row — Back link left, centered title */
 export default function ViewAllHeader() {
     return (
         <div className="grid grid-cols-[1fr_auto_1fr] items-center">
