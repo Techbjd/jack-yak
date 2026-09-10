@@ -13,7 +13,6 @@ export default function DestinationHero() {
             <Header tone="onLight" />
 
             <div className="flex flex-col items-center px-6 pt-2 text-center md:px-12 lg:px-12">
-
                 <div className={cn('relative mt-4 w-full', imagePlaceholder)}>
                     <div className="rounded-dest-card relative flex aspect-video w-full items-center justify-center overflow-hidden lg:aspect-1464/958">
                         <img
