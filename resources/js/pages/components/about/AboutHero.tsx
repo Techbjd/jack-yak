@@ -3,11 +3,11 @@ import { aboutHeroTitle } from '@/config/theme';
 import { IMAGES } from '@/config/images';
 import Header from '../shared/Header';
 
-/** About hero — navy title above image on mobile, giant serif over image on desktop */
+/** About hero — navy title above image on mobile; title straddling the image top edge on desktop */
 export default function AboutHero() {
     return (
         <div className="w-full">
-            {/* Mobile — title on canvas, image below with fade */}
+            {/* Mobile — navy title on canvas, image below with fade */}
             <div className="bg-canvas flex flex-col items-center md:hidden">
                 <div className="w-full">
                     <Header tone="onLight" />
@@ -17,7 +17,7 @@ export default function AboutHero() {
                 </h1>
                 <div className="relative mt-4 w-full">
                     <img
-                        src={IMAGES.home.aboutJackyak}
+                        src={IMAGES.about.hero}
                         alt="Terraced hills beneath snowy Himalayan peaks"
                         loading="eager"
                         className="h-56 w-full object-cover"
@@ -29,20 +29,20 @@ export default function AboutHero() {
                 </div>
             </div>
 
-            {/* Desktop — header + giant title overlaid on panorama */}
-            <div className="relative hidden w-full md:block">
-                <img
-                    src={IMAGES.home.aboutJackyak}
-                    alt="Terraced hills beneath snowy Himalayan peaks"
-                    loading="eager"
-                    className="absolute inset-0 h-full w-full object-cover"
-                />
-                <div className="relative z-10 flex h-250 flex-col">
-                    <Header tone="onDark" />
+            {/* Desktop — navy header on canvas, title straddling the image top edge */}
+            <div className="bg-canvas hidden w-full flex-col md:flex">
+                <Header tone="onLight" />
+                <div className="relative w-full">
+                    <img
+                        src={IMAGES.about.hero}
+                        alt="Terraced hills beneath snowy Himalayan peaks"
+                        loading="eager"
+                        className="h-auto w-full object-cover"
+                    />
                     <h1
                         className={cn(
                             aboutHeroTitle,
-                            'px-12 pt-16 text-center drop-shadow-md lg:px-24 lg:pt-24',
+                            'absolute inset-x-0 -top-32 px-12 text-center drop-shadow-md lg:px-24',
                         )}
                     >
                         ABOUT US
