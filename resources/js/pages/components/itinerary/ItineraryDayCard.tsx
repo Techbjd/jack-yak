@@ -4,6 +4,7 @@ import {
     itinDayLabel,
     itinDayPlace,
     itinDaySub,
+    itinDayText,
     itinDayThumb,
 } from '@/config/theme';
 import type { ItineraryDay } from '@/config/itinerary';
@@ -25,12 +26,13 @@ export default function ItineraryDayCard({ day }: ItineraryDayCardProps) {
                 loading="lazy"
                 className={itinDayThumb}
             />
-            <div className="flex min-w-0 flex-1 flex-col justify-center gap-1">
+            <div className={itinDayText}>
                 <p className={itinDayLabel}>{day.day}</p>
                 <h3 className={itinDayPlace}>{day.place}</h3>
                 <p className={itinDaySub}>{day.subtitle}</p>
             </div>
-            <div className="flex shrink-0 items-center gap-2.5 pr-1">
+            {/* -ml cancels the card gap: icons butt against the text column (Figma x288), not the card edge */}
+            <div className="-ml-3.5 flex shrink-0 items-center gap-2.75">
                 <BedDouble
                     aria-label="Hotel included"
                     role="img"

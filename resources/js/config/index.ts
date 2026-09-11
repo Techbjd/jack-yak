@@ -158,6 +158,7 @@ export {
     itinCard,
     itinDayCard,
     itinDayThumb,
+    itinDayText,
     itinDayLabel,
     itinDayPlace,
     itinDaySub,

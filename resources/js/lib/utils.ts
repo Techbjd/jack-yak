@@ -134,6 +134,7 @@ const twMerge = extendTailwindMerge({
                 'itinerary-thumb-h',
                 'day-thumb-w',
                 'day-thumb-h',
+                'day-text-w',
                 'day-card-h',
             ],
         },

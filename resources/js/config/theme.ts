@@ -364,13 +364,19 @@ export const itinBody =
 export const itinCard =
     'rounded-2xl border border-line-soft bg-white shadow-card';
 
-/** Day card — fixed 127px, 26px radius, snap point in the scroll panel */
+/** Day card — fixed 127px, 26px radius, snap point in the scroll panel.
+ *  16px left padding puts the thumb at Figma x26; icons flow after the
+ *  fixed text column (not right-aligned), leaving Figma's trailing space. */
 export const itinDayCard =
-    'rounded-itinerary-card flex h-day-card-h snap-start items-center gap-3.5 bg-white p-2.5 shadow-card';
+    'rounded-itinerary-card flex h-day-card-h snap-start items-center gap-3.5 bg-white p-2.5 pl-4 shadow-card';
 
 /** Day thumbnail — 103x101, 15px radius */
 export const itinDayThumb =
     'rounded-itinerary-thumb h-day-thumb-h w-day-thumb-w shrink-0 object-cover';
+
+/** Day text column — fixed 145px so icons sit at Figma x288, not the edge */
+export const itinDayText =
+    'flex w-day-text-w shrink-0 flex-col justify-center gap-1';
 
 /** Day label — 16px/22 bold orange Manrope */
 export const itinDayLabel =
