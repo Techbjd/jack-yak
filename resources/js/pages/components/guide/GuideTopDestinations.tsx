@@ -1,6 +1,17 @@
 import { useRef } from 'react';
 import { ArrowRight, Clock, MapPin } from 'lucide-react';
-import { fontPrimary } from '@/config/theme';
+import {
+    destCardBadge,
+    destCardBadgeText,
+    destCardExplore,
+    destCardImage,
+    destCardMetaRow,
+    destCardMetaText,
+    destCardPanel,
+    destCardTagline,
+    destCardName,
+    fontPrimary,
+} from '@/config/theme';
 import { IMAGES } from '@/config/images';
 import { cn } from '@/lib/utils';
 import CarouselDots from '../shared/CarouselDots';
@@ -40,9 +51,11 @@ const topDestinations: TopDestination[] = [
 
 const DestinationCard = ({ dest }: { dest: TopDestination }) => {
     return (
-        <article className="basis-card-w ms:basis-55 mx-auto flex w-full max-w-[396px] shrink-0 grow snap-start flex-col items-center md:basis-65 lg:w-full lg:basis-auto">
-            {/* Image — 396×306, joined on mobile, 7px radius on md+ */}
-            <div className="bg-bg-placeholder rounded-t-card md:shadow-card relative aspect-[396/306] w-full overflow-hidden md:rounded-[7px]">
+        // Carousel widths are a deliberate responsive ramp, not drift:
+        // 117px base → 220px ≥ms → 260px ≥md (capped by max-w-dest-card).
+        <article className="basis-card-w ms:basis-55 max-w-dest-card mx-auto flex w-full shrink-0 grow snap-start flex-col items-center md:basis-65 lg:w-full lg:basis-auto">
+            {/* Image — 396:306 every breakpoint, 7px radius on md+ */}
+            <div className={destCardImage}>
                 <img
                     src={dest.image}
                     alt={dest.name}
@@ -50,51 +63,27 @@ const DestinationCard = ({ dest }: { dest: TopDestination }) => {
                     className="absolute inset-0 h-full w-full object-cover"
                 />
                 {/* Province badge — compact on mobile, 184×40 on md+ */}
-                <span className="bg-canvas absolute top-1.5 left-1.5 flex h-6 w-auto max-w-[calc(100%-12px)] items-center gap-1 rounded-md px-1.5 md:top-[18px] md:left-[16px] md:h-[40px] md:w-[184px] md:max-w-[calc(100%-32px)] md:gap-[5px] md:rounded-[10px] md:px-[11px]">
+                <span className={destCardBadge}>
                     <MapPin className="text-ink size-3 shrink-0 md:size-4" />
-                    <span
-                        className={cn(
-                            fontPrimary,
-                            'text-midnight truncate text-[10px] leading-tight font-bold tracking-[0.03em] md:text-[16px] md:leading-[22px]',
-                        )}
-                    >
+                    <span className={cn(destCardBadgeText)}>
                         {dest.province}
                     </span>
                 </span>
             </div>
 
-            {/* Info panel — joined 5px box on mobile, overlapping 18px panel on md+ */}
-            <div className="shadow-card rounded-b-card relative z-10 w-full bg-white px-2 pt-1.5 pb-1.5 md:-mt-2 md:w-[calc(100%-4px)] md:rounded-[18px] md:px-[27px] md:pt-[28px] md:pb-5">
-                <h3
-                    className={cn(
-                        fontPrimary,
-                        'text-ink text-[10px] leading-[14px] font-bold tracking-[0.03em] md:text-[24px] md:leading-[33px]',
-                    )}
-                >
-                    {dest.name}
-                </h3>
-                <p
-                    className={cn(
-                        fontPrimary,
-                        'text-ink mt-0.5 text-[8px] leading-[11px] font-normal tracking-[0.03em] md:mt-[10px] md:text-[16px] md:leading-[22px] md:font-semibold',
-                    )}
-                >
-                    {dest.subtitle}
-                </p>
-                <div className="mt-1.5 flex items-center gap-1 md:mt-5 md:gap-1.5">
+            {/* Info panel — joined box on mobile, overlapping panel on md+ */}
+            <div className={destCardPanel}>
+                <h3 className={cn(destCardName)}>{dest.name}</h3>
+                <p className={cn(destCardTagline)}>{dest.subtitle}</p>
+                <div className={destCardMetaRow}>
                     <Clock
-                        className="text-ink size-2.5 shrink-0 md:size-[21px]"
+                        className="text-ink size-2.5 shrink-0 md:size-5.25"
                         strokeWidth={2}
                     />
-                    <span
-                        className={cn(
-                            fontPrimary,
-                            'text-ink text-[8px] leading-[11px] font-bold tracking-[0.03em] md:text-[16px] md:leading-[22px]',
-                        )}
-                    >
+                    <span className={cn(destCardMetaText)}>
                         {dest.duration}
                     </span>
-                    <ViewAllLink className="md:text-cta ml-auto leading-[11px] md:leading-[22px]">
+                    <ViewAllLink className={destCardExplore}>
                         Explore
                     </ViewAllLink>
                 </div>

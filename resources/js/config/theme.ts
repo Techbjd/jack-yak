@@ -116,6 +116,53 @@ export const panelRounded = 'rounded-immersive';
 export const viewAllLink =
     'font-manrope flex items-center gap-1 text-2xs font-bold tracking-wide text-cta-accent md:text-md-lg md:text-ink';
 
+// --------------------------------------------
+// Cards: Destination card pattern (view-all + guide share one design)
+// --------------------------------------------
+// Every value here resolves to a named Tailwind utility (see @theme in
+// app.css). Exception: viewport-relative `calc()` widths, which no static
+// token can express — change the token, both cards update.
+
+/** Destination card shell — centered 396px column */
+export const destCard =
+    'mx-auto flex w-full max-w-dest-card flex-col items-center';
+
+/** Card image — 396:306 at every breakpoint, joined top on mobile, 7px radius + shadow on md+ */
+export const destCardImage =
+    'bg-bg-placeholder rounded-t-card md:shadow-card relative aspect-dest-card w-full overflow-hidden md:rounded-dest-image';
+
+/** Province badge — compact on mobile, 184×40 on md+ */
+export const destCardBadge =
+    'bg-canvas absolute top-1.5 left-1.5 flex h-6 w-auto max-w-[calc(100%-12px)] items-center gap-1 rounded-md px-1.5 md:top-4.5 md:left-4 md:h-10 md:w-46 md:max-w-[calc(100%-32px)] md:gap-1.25 md:rounded-dest-badge md:px-2.75';
+
+/** Province badge text — 10px midnight mobile, 16px on md+ */
+export const destCardBadgeText =
+    'font-manrope text-midnight truncate text-xs-sm leading-tight font-bold tracking-card md:text-md-lg md:leading-card-desktop';
+
+/** Info panel — joined box on mobile, overlapping 18px panel on md+ */
+export const destCardPanel =
+    'shadow-card rounded-b-card relative z-10 w-full bg-white px-2 pt-1.5 pb-1.5 md:-mt-2 md:w-[calc(100%-4px)] md:rounded-dest-panel md:px-6.75 md:pt-7 md:pb-5';
+
+/** Card name — 10px mobile, 24px display on md+ */
+export const destCardName =
+    'font-manrope text-ink text-xs-sm leading-card-title font-bold tracking-card md:text-xl-2xl md:leading-card-display';
+
+/** Card tagline — 8px mobile, 16px semibold on md+ */
+export const destCardTagline =
+    'font-manrope text-ink mt-0.5 text-2xs leading-card-meta font-normal tracking-card md:mt-2.5 md:text-md-lg md:leading-card-desktop md:font-semibold';
+
+/** Duration + Explore row */
+export const destCardMetaRow =
+    'mt-1.5 flex items-center gap-1 md:mt-5 md:gap-1.5';
+
+/** Duration text — 8px mobile, 16px on md+ */
+export const destCardMetaText =
+    'font-manrope text-ink text-2xs leading-card-meta font-bold tracking-card md:text-md-lg md:leading-card-desktop';
+
+/** Explore link override inside destination cards */
+export const destCardExplore =
+    'md:text-cta ml-auto leading-card-meta md:leading-card-desktop';
+
 /** Carousel dot row — shared flex wrapper */
 export const carouselDotsWrap = 'flex items-center justify-center gap-2';
 

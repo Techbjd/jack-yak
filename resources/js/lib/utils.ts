@@ -13,6 +13,7 @@ const twMerge = extendTailwindMerge({
             text: [
                 '2xs',
                 'xs-sm',
+                'xs-md',
                 'sm-base',
                 'base-md',
                 'md-lg',
@@ -35,6 +36,10 @@ const twMerge = extendTailwindMerge({
                 'about-display',
                 'section-xl',
                 'about',
+                'card-meta',
+                'card-title',
+                'card-desktop',
+                'card-display',
             ],
             font: ['manrope', 'display', 'poppins', 'roboto'],
             color: [
@@ -74,7 +79,16 @@ const twMerge = extendTailwindMerge({
                 'subtle',
                 'haze',
             ],
-            radius: ['card', 'image', 'dest-card', 'card-sm'],
+            radius: [
+                'card',
+                'image',
+                'dest-card',
+                'card-sm',
+                'dest-image',
+                'dest-badge',
+                'dest-panel',
+                'immersive',
+            ],
             blur: ['hero-sm', 'hero-lg'],
             shadow: ['card'],
             spacing: [

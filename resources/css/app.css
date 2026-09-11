@@ -119,26 +119,22 @@
     --sidebar-nav-top: 140px;
     --sidebar-logo-left: 20px;
 
-    /* ── Top Destinations tokens ── */
-    /* Card sizes */
-    --card-dest-sm-w: 258px;
-    --card-dest-sm-h: 391px;
-    --card-dest-lg-w: 284px;
-    --card-dest-lg-h: 424px;
-    --aspect-card-dest-sm: 258 / 391;
-    --aspect-card-dest-lg: 284 / 424;
+    /* ── Destination card pattern (view-all + guide share one design) ── */
+    /* NOTE: image ratio is identical at every breakpoint — a single token
+       keeps mobile/desktop from drifting apart. */
+    --container-dest-card: 396px;
+    --aspect-dest-card: 396 / 306;
+    --radius-dest-image: 7px;
+    --radius-dest-badge: 10px;
+    --radius-dest-panel: 18px;
+    --leading-card-meta: 11px;
+    --leading-card-title: 14px;
+    --leading-card-desktop: 22px;
+    --leading-card-display: 33px;
+    --tracking-card: 0.03em;
 
-    /* Card text */
-    --text-dest-name: 24px;
-    --leading-dest-name: 1.0545;
-
-    /* Section */
+    /* Section (shared with home TopDestination) */
     --container-dest-title: 342px;
-
-    /* Patch rotation */
-    --rotate-patch: 89.27deg;
-    --patch-dest-w: 968.88px;
-    --patch-dest-h: 594.14px;
 
     /* ── Destination page tokens (mobile-first, team-shared) ── */
     --font-display: 'EB Garamond', Georgia, serif;
