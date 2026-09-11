@@ -146,11 +146,11 @@
     --text-xs-md: 12px;
     --text-display: 64px;
     --text-about-display: 200px;
-    --leading-about-display: 261px;
+    --leading-about-display: 209px;
     --text-section-xl: 60px;
     --text-modal: 40px;
     --leading-section-xl: 82px;
-    --leading-about: 84px;
+    --leading-about: 49px;
     --text-journey: 60px;
     --leading-journey: 82px;
     --text-display-lg: 250px;
@@ -189,7 +189,7 @@
         width: 100%;
         margin: 0;
         padding: 0;
-        overflow-x: hidden; /* optional dev safety net — remove once you trust the layout */
+        overflow-x: clip; /* optional dev safety net — remove once you trust the layout */
         scrollbar-width: none; /* hide the page scrollbar; wheel/touch/keyboard scroll still works */
         -ms-overflow-style: none;
     }
