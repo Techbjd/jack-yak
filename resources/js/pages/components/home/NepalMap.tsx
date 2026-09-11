@@ -12,7 +12,9 @@ const NepalMap = () => {
             )}
         >
             <div className="max-w-container relative mx-auto w-full">
-                <div className="max-w-map relative mx-auto w-full">
+                {/* Mobile top offset clears the hero watercolor bleed (overhang ≈ 25.6vw).
+                    Desktop relies on the Home wrapper's md:py-70 + section md:py-24 instead. */}
+                <div className="max-w-map relative mx-auto w-full pt-[calc(25.6vw-3rem)] md:pt-0">
                     <p
                         className={cn(
                             fontPrimary,
