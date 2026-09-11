@@ -368,15 +368,16 @@ export const itinCard =
  *  16px left padding puts the thumb at Figma x26; icons flow after the
  *  fixed text column (not right-aligned), leaving Figma's trailing space. */
 export const itinDayCard =
-    'rounded-itinerary-card flex h-day-card-h snap-start items-center gap-3.5 bg-white p-2.5 pl-4 shadow-card';
+    'rounded-itinerary-card flex h-day-card-h shrink-0 snap-start items-center gap-3.5 bg-white p-2.5 pl-4 shadow-card';
 
 /** Day thumbnail — 103x101, 15px radius */
 export const itinDayThumb =
     'rounded-itinerary-thumb h-day-thumb-h w-day-thumb-w shrink-0 object-cover';
 
-/** Day text column — fixed 145px so icons sit at Figma x288, not the edge */
+/** Day text column — fixed 145px so icons sit at Figma x288, not the edge.
+ *  10px row gaps spread Day/place/subtitle over Figma's ~81px text block. */
 export const itinDayText =
-    'flex w-day-text-w shrink-0 flex-col justify-center gap-1';
+    'flex w-day-text-w shrink-0 flex-col justify-center gap-2.5';
 
 /** Day label — 16px/22 bold orange Manrope */
 export const itinDayLabel =
