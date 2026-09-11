@@ -333,6 +333,54 @@ export const modalGhost =
     'font-manrope flex h-9.5 w-36 items-center justify-center rounded-lg border border-black bg-white text-base-md font-bold text-pine transition-opacity hover:opacity-80';
 
 // --------------------------------------------
+// Itinerary page: mobile 402px Figma, Manrope throughout, flow layout only
+// (no page-level absolute positioning — rails stretch via flex)
+// --------------------------------------------
+
+/** Itinerary page column — 402px cap, centered, canvas gutters */
+export const itinPage =
+    'font-manrope mx-auto flex w-full max-w-100.5 flex-col bg-canvas px-2.5 pb-10';
+
+/** Orange timeline rail (about section) */
+export const itinRailOrange =
+    'w-1 shrink-0 self-stretch rounded-full bg-cta-accent';
+
+/** Teal timeline rail (altitude + reviews sections) */
+export const itinRailTeal = 'w-1 shrink-0 self-stretch rounded-full bg-cta';
+
+/** Section heading — 16px/36 bold ink, tight tracking */
+export const itinH2 =
+    'font-manrope text-md-lg leading-9 font-bold tracking-itinerary-tight text-ink';
+
+/** Body copy — 12px/20 regular abyss */
+export const itinBody =
+    'font-manrope text-xs-md leading-5 font-normal text-abyss';
+
+/** White bordered card shell — 16px radius, soft border, card shadow */
+export const itinCard =
+    'rounded-2xl border border-line-soft bg-white shadow-card';
+
+/** Day card — fixed 127px, 26px radius, snap point in the scroll panel */
+export const itinDayCard =
+    'rounded-itinerary-card flex h-day-card-h snap-start items-center gap-3.5 bg-white p-2.5 shadow-card';
+
+/** Day thumbnail — 103x101, 15px radius */
+export const itinDayThumb =
+    'rounded-itinerary-thumb h-day-thumb-h w-day-thumb-w shrink-0 object-cover';
+
+/** Day label — 16px/22 bold orange Manrope */
+export const itinDayLabel =
+    'font-manrope text-md-lg leading-itinerary-22 font-bold text-cta-accent';
+
+/** Day place — 16px/22 bold ink, wide tracking */
+export const itinDayPlace =
+    'font-manrope text-md-lg leading-itinerary-22 font-bold tracking-card text-ink';
+
+/** Day subtitle — 12px/16 bold ink */
+export const itinDaySub =
+    'font-manrope text-xs-md leading-4 font-bold text-ink';
+
+// --------------------------------------------
 // Colors: For inline styles (SVG, dynamic)
 // --------------------------------------------
 // For runtime access, use useColors() hook from @/config/colors.

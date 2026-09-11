@@ -158,6 +158,44 @@
     --spacing-dest-card-h: 192px;
     --spacing-feat-card-h: 140px;
     --radius-immersive: 10px;
+
+    /* ── Itinerary page tokens (mobile 402px Figma, Manrope throughout) ── */
+    --color-abyss: #243044;
+    --color-slate-text: #475569;
+    --color-pale: #94a3b8;
+    --color-strike: #b6c2d1;
+    --color-star-empty: #e6e6e6;
+    --color-deep-teal: #307e80;
+    --color-line-soft: #e8edf4;
+    --color-sky-tint: #e8f8fe;
+    --color-sky-line: rgba(0, 174, 239, 0.3);
+    --color-wa: #25d366;
+    --color-badge-teal: #62a7a7;
+    --color-card-line: #e2e8f0;
+    --color-ash: #a9a9b4;
+    --color-review-ink: #0f172a;
+    --color-review-body: #3f4b5e;
+    --tracking-price: -1.08px;
+    --radius-itinerary-card: 26px;
+    --radius-itinerary-thumb: 15px;
+    --radius-itinerary-cta: 6px;
+    --spacing-itinerary-hero-h: 261px;
+    --spacing-itinerary-thumb-h: 93px;
+    --spacing-day-thumb-w: 103px;
+    --spacing-day-thumb-h: 101px;
+    --spacing-day-card-h: 127px;
+    --leading-itinerary-19: 19px;
+    --leading-itinerary-22: 22px;
+    --leading-itinerary-23: 23px;
+    --leading-itinerary-25: 25px;
+    --leading-itinerary-26: 26px;
+    --leading-itinerary-27: 27px;
+    --leading-itinerary-28: 28px;
+    --leading-itinerary-33: 33px;
+    --tracking-itinerary-tight: -0.608px;
+    --tracking-itinerary-wide: 0.691px;
+    --tracking-itinerary-label: 0.576px;
+    --tracking-review: -0.36px;
 }
 
 @utility no-scrollbar {
