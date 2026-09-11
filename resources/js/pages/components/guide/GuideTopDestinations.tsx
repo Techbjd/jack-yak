@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { ArrowRight, Clock, MapPin } from 'lucide-react';
-import { coverImageAbsolute, fontPrimary } from '@/config/theme';
+import { fontPrimary } from '@/config/theme';
 import { IMAGES } from '@/config/images';
 import { cn } from '@/lib/utils';
 import CarouselDots from '../shared/CarouselDots';
@@ -38,30 +38,24 @@ const topDestinations: TopDestination[] = [
     },
 ];
 
-const DESKTOP_IMAGE_RATIO = '396 / 306';
-
 const DestinationCard = ({ dest }: { dest: TopDestination }) => {
     return (
-        <article className="basis-card-w ms:basis-[220px] flex shrink-0 grow snap-start flex-col md:basis-[260px] lg:w-full lg:basis-auto">
-            <div
-                className="h-card-h w-card-w rounded-t-card bg-bg-placeholder ms:h-auto ms:w-full md:rounded-card-sm md:shadow-card relative overflow-hidden"
-                style={{ aspectRatio: DESKTOP_IMAGE_RATIO }}
-            >
+        <article className="basis-card-w ms:basis-55 mx-auto flex w-full max-w-[396px] shrink-0 grow snap-start flex-col items-center md:basis-65 lg:w-full lg:basis-auto">
+            {/* Image — 396×306, joined on mobile, 7px radius on md+ */}
+            <div className="bg-bg-placeholder rounded-t-card md:shadow-card relative aspect-[396/306] w-full overflow-hidden md:rounded-[7px]">
                 <img
                     src={dest.image}
                     alt={dest.name}
                     loading="lazy"
-                    className={cn(
-                        coverImageAbsolute,
-                        'bg-bg-placeholder text-2xs text-text-primary object-center',
-                    )}
+                    className="absolute inset-0 h-full w-full object-cover"
                 />
-                <span className="bg-surface-cream md:rounded-immersive absolute top-2 left-2 flex max-w-full items-center gap-1 overflow-hidden rounded-full py-0.5 pr-2 pl-1.5 md:top-4 md:left-4 md:px-4 md:py-2">
-                    <MapPin className="text-ink h-2.5 w-2.5 shrink-0 md:h-4 md:w-4" />
+                {/* Province badge — compact on mobile, 184×40 on md+ */}
+                <span className="bg-canvas absolute top-1.5 left-1.5 flex h-6 w-auto max-w-[calc(100%-12px)] items-center gap-1 rounded-md px-1.5 md:top-[18px] md:left-[16px] md:h-[40px] md:w-[184px] md:max-w-[calc(100%-32px)] md:gap-[5px] md:rounded-[10px] md:px-[11px]">
+                    <MapPin className="text-ink size-3 shrink-0 md:size-4" />
                     <span
                         className={cn(
                             fontPrimary,
-                            'text-2xs text-ink md:text-md-lg truncate font-bold tracking-wide',
+                            'text-midnight truncate text-[10px] leading-tight font-bold tracking-[0.03em] md:text-[16px] md:leading-[22px]',
                         )}
                     >
                         {dest.province}
@@ -69,11 +63,12 @@ const DestinationCard = ({ dest }: { dest: TopDestination }) => {
                 </span>
             </div>
 
-            <div className="w-card-w rounded-b-card shadow-card ms:w-full md:rounded-image flex flex-col gap-1 bg-white p-2 md:-mt-2 md:gap-2 md:p-4">
+            {/* Info panel — joined 5px box on mobile, overlapping 18px panel on md+ */}
+            <div className="shadow-card rounded-b-card relative z-10 w-full bg-white px-2 pt-1.5 pb-1.5 md:-mt-2 md:w-[calc(100%-4px)] md:rounded-[18px] md:px-[27px] md:pt-[28px] md:pb-5">
                 <h3
                     className={cn(
                         fontPrimary,
-                        'text-xs-sm text-ink md:text-xl-2xl leading-tight font-bold tracking-wide',
+                        'text-ink text-[10px] leading-[14px] font-bold tracking-[0.03em] md:text-[24px] md:leading-[33px]',
                     )}
                 >
                     {dest.name}
@@ -81,22 +76,25 @@ const DestinationCard = ({ dest }: { dest: TopDestination }) => {
                 <p
                     className={cn(
                         fontPrimary,
-                        'text-2xs text-ink md:text-md-lg leading-tight tracking-wide md:font-semibold',
+                        'text-ink mt-0.5 text-[8px] leading-[11px] font-normal tracking-[0.03em] md:mt-[10px] md:text-[16px] md:leading-[22px] md:font-semibold',
                     )}
                 >
                     {dest.subtitle}
                 </p>
-                <div className="flex items-center gap-1 md:gap-2">
-                    <Clock className="text-ink h-2.5 w-2.5 md:h-5 md:w-5" />
+                <div className="mt-1.5 flex items-center gap-1 md:mt-5 md:gap-1.5">
+                    <Clock
+                        className="text-ink size-2.5 shrink-0 md:size-[21px]"
+                        strokeWidth={2}
+                    />
                     <span
                         className={cn(
                             fontPrimary,
-                            'text-2xs text-ink md:text-md-lg font-bold tracking-wide',
+                            'text-ink text-[8px] leading-[11px] font-bold tracking-[0.03em] md:text-[16px] md:leading-[22px]',
                         )}
                     >
                         {dest.duration}
                     </span>
-                    <ViewAllLink className="md:text-cta ml-auto">
+                    <ViewAllLink className="md:text-cta ml-auto leading-[11px] md:leading-[22px]">
                         Explore
                     </ViewAllLink>
                 </div>

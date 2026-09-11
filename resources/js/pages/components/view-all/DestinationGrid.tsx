@@ -9,7 +9,7 @@ export default function DestinationGrid({
     destinations,
 }: DestinationGridProps) {
     return (
-        <div className="grid grid-cols-3 gap-x-1.25 gap-y-4.75 sm:grid-cols-4 lg:grid-cols-5">
+        <div className="mx-auto grid w-full max-w-full grid-cols-3 gap-x-2 gap-y-4 md:gap-x-6 md:gap-y-8">
             {destinations.map((destination) => (
                 <DestinationCard
                     key={destination.name}
