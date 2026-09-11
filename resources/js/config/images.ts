@@ -91,12 +91,12 @@ export const IMAGES = {
     // hero: landscape 384x261 (~3:2, min 768x522),
     // galleryThumbs[3]: landscape 124x93 (~4:3),
     // dayThumb: portrait-ish 103x101 (square-ish, min 400x400),
-    // altitudeChart: wide chart export (~16:9, min 1200x675),
     // reviewerAvatar: square (min 200x200; faces stay centered),
     // reviewPhotos[6]: square-ish 48px thumbs (min 400x400).
     // USER UPLOAD MAP: drop files into public/images/itinerary/ with these
-    // names — hero.png, thumb-1..3.png, day.png, altitude-chart.png,
+    // names — hero.png, thumb-1..3.png, day.png,
     // reviewer.png, review-1..6.png — then point the keys below at them.
+    // NOTE: the altitude chart is a live SVG (AltitudeChart.tsx), no image needed.
     // TEMP: keys below reuse existing assets so the page renders until then.
     itinerary: {
         hero: '/images/destination/mount-everest.png',
@@ -106,7 +106,6 @@ export const IMAGES = {
             '/images/destination/pokhara-lake.png',
         ],
         dayThumb: '/images/destination/kathmandu-temple.png',
-        altitudeChart: '/images/destination/journey-mobile-mountain.png',
         reviewerAvatar: '/images/about/traveler-avatar.png',
         reviewPhotos: [
             '/images/destination/featured/elephant_safari.png',

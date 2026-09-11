@@ -352,6 +352,10 @@ export const itinRailTeal = 'w-1 shrink-0 self-stretch rounded-full bg-cta';
 export const itinH2 =
     'font-manrope text-md-lg leading-9 font-bold tracking-itinerary-tight text-ink';
 
+/** Altitude heading — Figma 16px/36 bold ink, -0.608px tracking */
+export const itinAltTitle =
+    'font-manrope text-base leading-9 font-bold tracking-itinerary-tight text-ink';
+
 /** Body copy — 12px/20 regular abyss */
 export const itinBody =
     'font-manrope text-xs-md leading-5 font-normal text-abyss';

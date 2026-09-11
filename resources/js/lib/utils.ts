@@ -101,6 +101,8 @@ const twMerge = extendTailwindMerge({
                 'ash',
                 'review-ink',
                 'review-body',
+                'chart-line',
+                'chart-fill',
             ],
             radius: [
                 'card',

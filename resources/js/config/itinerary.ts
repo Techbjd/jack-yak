@@ -122,6 +122,27 @@ export const galleryFilters = {
     videos: 'Videos',
 };
 
+/** Altitude profile stops (meters) — rendered as a live SVG area chart */
+export const altitudeProfile = {
+    unitMeter: 'Meter',
+    unitFeet: 'Feet',
+    download: 'Download',
+    downloadFile: 'altitude-profile.svg',
+    stops: [
+        { place: 'Kathmandu', meters: 1400 },
+        { place: 'Phakding', meters: 2650 },
+        { place: 'Namche Bazaar', meters: 3440 },
+        { place: 'Tengboche', meters: 3860 },
+        { place: 'Dingboche', meters: 4280 },
+        { place: 'Lobuche', meters: 4440 },
+        { place: 'Kalapatthar', meters: 5545 },
+        { place: 'Everest Base Camp', meters: 5364 },
+        { place: 'Pangboche', meters: 3860 },
+        { place: 'Lukla', meters: 2840 },
+        { place: 'Kathmandu', meters: 1400 },
+    ],
+};
+
 /** Featured review */
 export const featuredReview = {
     name: 'Madeline Thomson',

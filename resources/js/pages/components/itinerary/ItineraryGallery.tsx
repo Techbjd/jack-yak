@@ -1,8 +1,8 @@
-import { ChevronRight } from 'lucide-react';
 import { IMAGES } from '@/config/images';
 import CarouselDots from '../shared/CarouselDots';
 
-/** Photo gallery — hero + 3 thumbs + dot nav + next arrow (flow layout) */
+/** Photo gallery — hero + 3 thumbs + dot nav (flow layout, no overlay arrow:
+ *  a video thumb renders its own player play button automatically) */
 export default function ItineraryGallery() {
     return (
         <section
@@ -22,7 +22,7 @@ export default function ItineraryGallery() {
                     dotClassName="h-1.5 w-1.5"
                 />
             </div>
-            <div className="relative grid w-full grid-cols-3 gap-1.5">
+            <div className="grid w-full grid-cols-3 gap-1.5">
                 {IMAGES.itinerary.galleryThumbs.map((src, i) => (
                     <img
                         key={src}
@@ -31,13 +31,6 @@ export default function ItineraryGallery() {
                         className="h-itinerary-thumb-h rounded-immersive w-full object-cover"
                     />
                 ))}
-                <button
-                    type="button"
-                    aria-label="Next photo"
-                    className="shadow-card absolute right-2 bottom-2 flex size-7 cursor-pointer items-center justify-center rounded-full bg-white"
-                >
-                    <ChevronRight aria-hidden className="text-ink size-4" />
-                </button>
             </div>
         </section>
     );

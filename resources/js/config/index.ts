@@ -153,6 +153,7 @@ export {
     itinRailOrange,
     itinRailTeal,
     itinH2,
+    itinAltTitle,
     itinBody,
     itinCard,
     itinDayCard,
