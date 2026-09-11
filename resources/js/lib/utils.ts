@@ -49,6 +49,7 @@ const twMerge = extendTailwindMerge({
                 'bg-cream',
                 'bg-warm',
                 'bg-placeholder',
+                'progress',
                 'ember',
                 'brand',
                 'ink',

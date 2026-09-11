@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import { Link, useForm, usePage } from '@inertiajs/react';
 import { Star, ChevronDown, CircleCheck, ImagePlus, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
@@ -19,10 +20,12 @@ import {
     reviewPlaces,
 } from '@/config/review';
 import Modal from '../shared/Modal';
+import type { PageProps } from '@/types';
 
 interface ReviewPhoto {
     url: string;
     name: string;
+    file: File;
 }
 
 interface GiveReviewProps {
@@ -31,29 +34,43 @@ interface GiveReviewProps {
 }
 
 export default function GiveReview({ open, onClose }: GiveReviewProps) {
+    const { auth, flash } = usePage<PageProps>().props;
+    const user = auth?.user ?? null;
     const today = new Date().toISOString().split('T')[0];
     const fileInputRef = useRef<HTMLInputElement>(null);
     const starRefs = useRef<(HTMLButtonElement | null)[]>([]);
-    const [rating, setRating] = useState(0);
-    const [hovered, setHovered] = useState(0);
-    const [review, setReview] = useState('');
-    const [photos, setPhotos] = useState<ReviewPhoto[]>([]);
+
+    const { data, setData, post, processing, errors, clearErrors, reset } =
+        useForm({
+            rating: 0,
+            body: '',
+            place: '',
+            visit_date: '',
+            name: user?.name ?? '',
+            photos: [] as File[],
+        });
+
+    const [previews, setPreviews] = useState<ReviewPhoto[]>([]);
     const [photoError, setPhotoError] = useState('');
     const [dragging, setDragging] = useState(false);
-    const [place, setPlace] = useState('');
-    const [visitDate, setVisitDate] = useState('');
-    const [name, setName] = useState('');
+    const [hovered, setHovered] = useState(0);
     const [agreed, setAgreed] = useState(false);
-    const [errors, setErrors] = useState<Record<string, string>>({});
-    const [done, setDone] = useState(false);
+    const [agreedError, setAgreedError] = useState('');
 
-    const lit = hovered || rating;
+    const lit = hovered || data.rating;
+    const done = Boolean(flash?.success && !processing);
 
     const close = () => {
-        setErrors({});
+        previews.forEach((p) => URL.revokeObjectURL(p.url));
+        setPreviews([]);
         setPhotoError('');
-        setDone(false);
+        setAgreedError('');
         setHovered(0);
+        reset();
+        clearErrors();
+        if (user?.name) {
+            setData('name', user.name);
+        }
         onClose();
     };
 
@@ -86,25 +103,32 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
             setPhotoError('Please choose image files.');
             return;
         }
-        if (photos.length + images.length > MAX_REVIEW_PHOTOS) {
+        if (
+            previews.length + images.length > MAX_REVIEW_PHOTOS ||
+            data.photos.length + images.length > MAX_REVIEW_PHOTOS
+        ) {
             setPhotoError(`You can add up to ${MAX_REVIEW_PHOTOS} photos.`);
             return;
         }
         setPhotoError('');
-        setPhotos((prev) => [
-            ...prev,
-            ...images.map((f) => ({
-                url: URL.createObjectURL(f),
-                name: f.name,
-            })),
-        ]);
+        const next = images.map((f) => ({
+            url: URL.createObjectURL(f),
+            name: f.name,
+            file: f,
+        }));
+        setPreviews((prev) => [...prev, ...next]);
+        setData('photos', [...data.photos, ...images]);
     };
 
     const removePhoto = (url: string) => {
-        setPhotos((prev) => {
+        setPreviews((prev) => {
             const target = prev.find((p) => p.url === url);
             if (target) {
                 URL.revokeObjectURL(target.url);
+                setData(
+                    'photos',
+                    data.photos.filter((f) => f.name !== target.name),
+                );
             }
             return prev.filter((p) => p.url !== url);
         });
@@ -112,39 +136,20 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const next: Record<string, string> = {};
-        if (rating === 0) {
-            next.rating = 'Please tap a star to rate your experience.';
-        }
-        if (!review.trim()) {
-            next.review = 'Please write a few words about your trip.';
-        }
-        if (!place) {
-            next.place = 'Please choose the place this review is about.';
-        }
-        if (!visitDate) {
-            next.visitDate = 'Please choose when you visited.';
-        }
-        if (!name.trim()) {
-            next.name = 'Please enter your name.';
-        }
-        if (!agreed) {
-            next.agreed = 'Please agree to the Community Guidelines.';
-        }
-        setErrors(next);
-        const firstBad = [
-            'rating',
-            'review',
-            'place',
-            'visitDate',
-            'name',
-            'agreed',
-        ].find((key) => next[key]);
-        if (firstBad) {
-            document.getElementById(`review-${firstBad}`)?.focus();
+        if (data.rating === 0) {
+            document.getElementById('review-rating')?.focus();
             return;
         }
-        setDone(true);
+        if (!agreed) {
+            setAgreedError('Please agree to the Community Guidelines.');
+            document.getElementById('review-agree')?.focus();
+            return;
+        }
+        setAgreedError('');
+        post('/reviews', {
+            forceFormData: true,
+            preserveScroll: true,
+        });
     };
 
     return (
@@ -157,16 +162,39 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                     />
                     <h2 className={modalTitle}>Thank you!</h2>
                     <p className={modalSubtitle}>
-                        Your {rating}-star review helps others discover the best
-                        of Nepal.
+                        Your {data.rating}-star review helps others discover the
+                        best of Nepal.
                     </p>
-                    <button
-                        type="button"
-                        onClick={close}
-                        className={cn(modalPrimary, 'mt-2 cursor-pointer')}
-                    >
-                        Done
-                    </button>
+                    {flash?.success && (
+                        <p
+                            className={cn(
+                                modalSubtitle,
+                                'text-cta font-semibold',
+                            )}
+                        >
+                            {flash.success}
+                        </p>
+                    )}
+                    <div className="mt-2 flex flex-wrap justify-center gap-3">
+                        <button
+                            type="button"
+                            onClick={close}
+                            className={cn(modalPrimary, 'cursor-pointer')}
+                        >
+                            Done
+                        </button>
+                        <Link
+                            href={user ? '/user' : '/login'}
+                            className={cn(
+                                fontPrimary,
+                                'text-cta-accent text-sm font-bold underline-offset-4 hover:underline',
+                            )}
+                        >
+                            {user
+                                ? 'View my reviews'
+                                : 'Sign in to track reviews'}
+                        </Link>
+                    </div>
                 </div>
             ) : (
                 <form
@@ -179,17 +207,27 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                         Share your experience and help others discover the best
                         of Nepal.
                     </p>
+                    {!user && (
+                        <p className={cn(modalSubtitle, 'pt-2')}>
+                            <Link
+                                href="/login"
+                                className="text-cta-accent font-bold underline-offset-4 hover:underline"
+                            >
+                                Sign in
+                            </Link>{' '}
+                            to track this review in your profile, or continue as
+                            guest.
+                        </p>
+                    )}
                     <hr className="border-hairline mt-6 border-t" />
 
                     <p className={cn(modalLabel, 'pt-6')}>
                         1. Rate Your Experience
                     </p>
                     <div
+                        id="review-rating"
                         role="radiogroup"
                         aria-label="Star rating"
-                        aria-describedby={
-                            errors.rating ? 'review-rating-error' : undefined
-                        }
                         className="flex gap-4 pt-3 md:gap-6"
                         onMouseLeave={() => setHovered(0)}
                     >
@@ -201,14 +239,11 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                                 }}
                                 type="button"
                                 role="radio"
-                                aria-checked={rating === star}
+                                aria-checked={data.rating === star}
                                 aria-label={`Rate ${star} star${star > 1 ? 's' : ''}`}
                                 onClick={() => {
-                                    setRating(star);
-                                    setErrors((prev) => ({
-                                        ...prev,
-                                        rating: '',
-                                    }));
+                                    setData('rating', star);
+                                    clearErrors('rating' as never);
                                 }}
                                 onMouseEnter={() => setHovered(star)}
                                 onFocus={() => setHovered(star)}
@@ -227,16 +262,12 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                         ))}
                     </div>
                     <p className={cn(modalHint, 'pt-3')}>
-                        {rating > 0
-                            ? `You rated ${rating} star${rating > 1 ? 's' : ''}.`
+                        {data.rating > 0
+                            ? `You rated ${data.rating} star${data.rating > 1 ? 's' : ''}.`
                             : 'Tap a star to rate.'}
                     </p>
                     {errors.rating && (
-                        <p
-                            id="review-rating-error"
-                            role="alert"
-                            className={quizError}
-                        >
+                        <p role="alert" className={quizError}>
                             {errors.rating}
                         </p>
                     )}
@@ -252,52 +283,38 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                         rows={5}
                         maxLength={MAX_REVIEW_LENGTH}
                         placeholder="Write your review here...."
-                        value={review}
+                        value={data.body}
                         onChange={(e) => {
-                            setReview(e.target.value);
-                            if (errors.review && e.target.value.trim()) {
-                                setErrors((prev) => ({
-                                    ...prev,
-                                    review: '',
-                                }));
-                            }
+                            setData('body', e.target.value);
+                            clearErrors('body' as never);
                         }}
-                        aria-invalid={errors.review ? true : undefined}
-                        aria-describedby="review-counter review-text-error"
+                        aria-invalid={errors.body ? true : undefined}
                         className={cn(
                             modalTextarea,
-                            errors.review && 'border-red-400',
+                            errors.body && 'border-red-400',
                         )}
                     />
                     <div className="flex items-center justify-between pt-1.5">
                         <span>
-                            {errors.review && (
-                                <span
-                                    id="review-text-error"
-                                    role="alert"
-                                    className={cn(
-                                        fontPrimary,
-                                        'text-xs font-medium text-red-500',
-                                    )}
-                                >
-                                    {errors.review}
+                            {errors.body && (
+                                <span role="alert" className={quizError}>
+                                    {errors.body}
                                 </span>
                             )}
                         </span>
                         <span
-                            id="review-counter"
                             aria-live="polite"
                             className={cn(
                                 fontPrimary,
                                 'text-base-md text-mist font-medium',
                             )}
                         >
-                            {review.length}/{MAX_REVIEW_LENGTH}
+                            {data.body.length}/{MAX_REVIEW_LENGTH}
                         </span>
                     </div>
 
                     <p className={cn(modalLabel, 'pt-5 pb-2')}>
-                        3. Add Photos (Optional)
+                        3. Add Photos (Optional, max {MAX_REVIEW_PHOTOS})
                     </p>
                     <div
                         role="button"
@@ -373,9 +390,9 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                             {photoError}
                         </p>
                     )}
-                    {photos.length > 0 && (
+                    {previews.length > 0 && (
                         <ul className="flex flex-wrap gap-3 pt-3">
-                            {photos.map((photo) => (
+                            {previews.map((photo) => (
                                 <li
                                     key={photo.url}
                                     className="relative size-16 overflow-hidden rounded-md md:size-20"
@@ -409,28 +426,18 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                             <div className="relative">
                                 <select
                                     id="review-place"
-                                    value={place}
+                                    value={data.place}
                                     onChange={(e) => {
-                                        setPlace(e.target.value);
-                                        if (errors.place) {
-                                            setErrors((prev) => ({
-                                                ...prev,
-                                                place: '',
-                                            }));
-                                        }
+                                        setData('place', e.target.value);
+                                        clearErrors('place' as never);
                                     }}
                                     aria-invalid={
                                         errors.place ? true : undefined
                                     }
-                                    aria-describedby={
-                                        errors.place
-                                            ? 'review-place-error'
-                                            : undefined
-                                    }
                                     className={cn(
                                         modalInput,
                                         'cursor-pointer appearance-none pr-10',
-                                        !place && 'text-mist',
+                                        !data.place && 'text-mist',
                                         errors.place && 'border-red-400',
                                     )}
                                 >
@@ -449,11 +456,7 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                                 />
                             </div>
                             {errors.place && (
-                                <p
-                                    id="review-place-error"
-                                    role="alert"
-                                    className={quizError}
-                                >
+                                <p role="alert" className={quizError}>
                                     {errors.place}
                                 </p>
                             )}
@@ -470,37 +473,23 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                                 id="review-visit"
                                 type="date"
                                 max={today}
-                                value={visitDate}
+                                value={data.visit_date}
                                 onChange={(e) => {
-                                    setVisitDate(e.target.value);
-                                    if (errors.visitDate) {
-                                        setErrors((prev) => ({
-                                            ...prev,
-                                            visitDate: '',
-                                        }));
-                                    }
+                                    setData('visit_date', e.target.value);
+                                    clearErrors('visit_date' as never);
                                 }}
                                 aria-invalid={
-                                    errors.visitDate ? true : undefined
-                                }
-                                aria-describedby={
-                                    errors.visitDate
-                                        ? 'review-visit-error'
-                                        : undefined
+                                    errors.visit_date ? true : undefined
                                 }
                                 className={cn(
                                     modalInput,
-                                    !visitDate && 'text-mist',
-                                    errors.visitDate && 'border-red-400',
+                                    !data.visit_date && 'text-mist',
+                                    errors.visit_date && 'border-red-400',
                                 )}
                             />
-                            {errors.visitDate && (
-                                <p
-                                    id="review-visit-error"
-                                    role="alert"
-                                    className={quizError}
-                                >
-                                    {errors.visitDate}
+                            {errors.visit_date && (
+                                <p role="alert" className={quizError}>
+                                    {errors.visit_date}
                                 </p>
                             )}
                         </div>
@@ -517,31 +506,19 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                         type="text"
                         autoComplete="name"
                         placeholder="Enter Your Name"
-                        value={name}
+                        value={data.name}
                         onChange={(e) => {
-                            setName(e.target.value);
-                            if (errors.name && e.target.value.trim()) {
-                                setErrors((prev) => ({
-                                    ...prev,
-                                    name: '',
-                                }));
-                            }
+                            setData('name', e.target.value);
+                            clearErrors('name' as never);
                         }}
                         aria-invalid={errors.name ? true : undefined}
-                        aria-describedby={
-                            errors.name ? 'review-name-error' : undefined
-                        }
                         className={cn(
                             modalInput,
                             errors.name && 'border-red-400',
                         )}
                     />
                     {errors.name && (
-                        <p
-                            id="review-name-error"
-                            role="alert"
-                            className={quizError}
-                        >
+                        <p role="alert" className={quizError}>
                             {errors.name}
                         </p>
                     )}
@@ -558,11 +535,8 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                                     checked={agreed}
                                     onChange={(e) => {
                                         setAgreed(e.target.checked);
-                                        if (errors.agreed) {
-                                            setErrors((prev) => ({
-                                                ...prev,
-                                                agreed: '',
-                                            }));
+                                        if (e.target.checked) {
+                                            setAgreedError('');
                                         }
                                     }}
                                     className="accent-ink size-4.5 shrink-0 cursor-pointer"
@@ -576,9 +550,9 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                                     I agree to the Community Guidelines
                                 </span>
                             </label>
-                            {errors.agreed && (
+                            {agreedError && (
                                 <p role="alert" className={quizError}>
-                                    {errors.agreed}
+                                    {agreedError}
                                 </p>
                             )}
                         </div>
@@ -592,9 +566,13 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                             </button>
                             <button
                                 type="submit"
-                                className={cn(modalPrimary, 'cursor-pointer')}
+                                disabled={processing}
+                                className={cn(
+                                    modalPrimary,
+                                    'cursor-pointer disabled:opacity-60',
+                                )}
                             >
-                                Submit
+                                {processing ? 'Sending…' : 'Submit'}
                             </button>
                         </div>
                     </div>

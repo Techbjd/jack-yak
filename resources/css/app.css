@@ -35,6 +35,7 @@
     --color-bg-cream: #f7f2ee;
     --color-bg-warm: #f9f4f0;
     --color-bg-placeholder: #d9d9d9;
+    --color-progress: #4b5563;
 
     /* ── Semantic aliases (part-named, edit these to retheme a part) ── */
     /* Start as copies of the primitives above — diverge freely. */

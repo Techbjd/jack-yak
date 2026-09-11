@@ -129,6 +129,7 @@ export function setRootColors(colors: Colors): void {
     root.style.setProperty('--color-bg-cream', colors.bg_cream);
     root.style.setProperty('--color-bg-warm', colors.bg_warm);
     root.style.setProperty('--color-bg-placeholder', colors.bg_placeholder);
+    root.style.setProperty('--color-progress', colors.progress);
     root.style.setProperty('--color-brand', colors.brand);
     root.style.setProperty('--color-ink', colors.ink);
     root.style.setProperty('--color-cta', colors.cta);

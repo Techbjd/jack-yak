@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Link, useForm, usePage } from '@inertiajs/react';
 import { ChevronDown, Minus, Plus, CircleCheck } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
@@ -13,6 +13,7 @@ import {
 } from '@/config/theme';
 import { quizSelectQuestions } from '@/config/quiz';
 import Modal from '../shared/Modal';
+import type { PageProps } from '@/types';
 
 const MAX_TRAVELERS = 16;
 
@@ -30,30 +31,39 @@ export default function CheckAvailability({
     open,
     onClose,
 }: CheckAvailabilityProps) {
+    const { auth, flash } = usePage<PageProps>().props;
+    const user = auth?.user ?? null;
     const today = new Date().toISOString().split('T')[0];
-    const [date, setDate] = useState('');
-    const [travelers, setTravelers] = useState(1);
-    const [duration, setDuration] = useState('');
-    const [lookingFor, setLookingFor] = useState('');
-    const [dateError, setDateError] = useState('');
-    const [done, setDone] = useState(false);
+
+    const { data, setData, post, processing, errors, clearErrors, reset } =
+        useForm({
+            date: '',
+            travelers: 1,
+            duration: '',
+            looking_for: '',
+        });
 
     const close = () => {
-        setDateError('');
-        setDone(false);
+        reset();
+        clearErrors();
         onClose();
     };
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if (!date) {
-            setDateError('Please choose a date.');
+        if (!data.date) {
             document.getElementById('availability-date')?.focus();
             return;
         }
-        setDateError('');
-        setDone(true);
+        post('/availability', {
+            preserveScroll: true,
+            onError: () => {
+                document.getElementById('availability-date')?.focus();
+            },
+        });
     };
+
+    const done = Boolean(flash?.success && !processing);
 
     return (
         <Modal open={open} onClose={close} label="Check availability">
@@ -65,18 +75,42 @@ export default function CheckAvailability({
                     />
                     <h2 className={modalTitle}>Request received!</h2>
                     <p className={modalSubtitle}>
-                        {travelers} traveller{travelers > 1 ? 's' : ''} · {date}
-                        {duration ? ` · ${duration}` : ''}
-                        {lookingFor ? ` · ${lookingFor}` : ''}. We&rsquo;ll
-                        confirm availability by email.
+                        {data.travelers} traveller
+                        {data.travelers > 1 ? 's' : ''} · {data.date}
+                        {data.duration ? ` · ${data.duration}` : ''}
+                        {data.looking_for ? ` · ${data.looking_for}` : ''}.
+                        We&rsquo;ll confirm availability by email.
                     </p>
-                    <button
-                        type="button"
-                        onClick={close}
-                        className={cn(modalPrimary, 'mt-2 cursor-pointer')}
-                    >
-                        Done
-                    </button>
+                    {flash?.success && (
+                        <p
+                            className={cn(
+                                modalSubtitle,
+                                'text-cta font-semibold',
+                            )}
+                        >
+                            {flash.success}
+                        </p>
+                    )}
+                    <div className="mt-2 flex flex-wrap justify-center gap-3">
+                        <button
+                            type="button"
+                            onClick={close}
+                            className={cn(modalPrimary, 'cursor-pointer')}
+                        >
+                            Done
+                        </button>
+                        <Link
+                            href={user ? '/user' : '/login'}
+                            className={cn(
+                                fontPrimary,
+                                'text-cta-accent text-sm font-bold underline-offset-4 hover:underline',
+                            )}
+                        >
+                            {user
+                                ? 'View my requests'
+                                : 'Sign in to track requests'}
+                        </Link>
+                    </div>
                 </div>
             ) : (
                 <form
@@ -89,6 +123,18 @@ export default function CheckAvailability({
                         Select your dates and number of travelers to check
                         availability.
                     </p>
+                    {!user && (
+                        <p className={cn(modalSubtitle, 'pt-2')}>
+                            <Link
+                                href="/login"
+                                className="text-cta-accent font-bold underline-offset-4 hover:underline"
+                            >
+                                Sign in
+                            </Link>{' '}
+                            to track this request in your profile, or continue
+                            as guest.
+                        </p>
+                    )}
                     <hr className="border-hairline mt-6 border-t" />
 
                     <label
@@ -101,30 +147,33 @@ export default function CheckAvailability({
                         id="availability-date"
                         type="date"
                         min={today}
-                        value={date}
+                        value={data.date}
                         onChange={(e) => {
-                            setDate(e.target.value);
-                            if (dateError) {
-                                setDateError('');
-                            }
+                            setData('date', e.target.value);
+                            clearErrors('date' as never);
                         }}
-                        aria-invalid={dateError ? true : undefined}
+                        aria-invalid={errors.date ? true : undefined}
                         aria-describedby={
-                            dateError ? 'availability-date-error' : undefined
+                            errors.date ? 'availability-date-error' : undefined
                         }
                         className={cn(
                             modalInput,
-                            !date && 'text-mist',
-                            dateError && 'border-red-400',
+                            !data.date && 'text-mist',
+                            errors.date && 'border-red-400',
                         )}
                     />
-                    {dateError && (
+                    {errors.date && (
                         <p
                             id="availability-date-error"
                             role="alert"
                             className={quizError}
                         >
-                            {dateError}
+                            {errors.date}
+                        </p>
+                    )}
+                    {errors.travelers && (
+                        <p role="alert" className={quizError}>
+                            {errors.travelers}
                         </p>
                     )}
 
@@ -147,9 +196,12 @@ export default function CheckAvailability({
                                 <button
                                     type="button"
                                     aria-label="One fewer traveler"
-                                    disabled={travelers <= 1}
+                                    disabled={data.travelers <= 1}
                                     onClick={() =>
-                                        setTravelers((n) => Math.max(1, n - 1))
+                                        setData(
+                                            'travelers',
+                                            Math.max(1, data.travelers - 1),
+                                        )
                                     }
                                     className="text-cta flex size-10 cursor-pointer items-center justify-center rounded-full transition-opacity hover:opacity-70 disabled:cursor-not-allowed disabled:opacity-30"
                                 >
@@ -162,18 +214,23 @@ export default function CheckAvailability({
                                         'text-md-lg font-medium',
                                     )}
                                 >
-                                    {travelers}{' '}
+                                    {data.travelers}{' '}
                                     <span className="text-mist">
-                                        Traveller{travelers > 1 ? 's' : ''}
+                                        Traveller
+                                        {data.travelers > 1 ? 's' : ''}
                                     </span>
                                 </span>
                                 <button
                                     type="button"
                                     aria-label="One more traveler"
-                                    disabled={travelers >= MAX_TRAVELERS}
+                                    disabled={data.travelers >= MAX_TRAVELERS}
                                     onClick={() =>
-                                        setTravelers((n) =>
-                                            Math.min(MAX_TRAVELERS, n + 1),
+                                        setData(
+                                            'travelers',
+                                            Math.min(
+                                                MAX_TRAVELERS,
+                                                data.travelers + 1,
+                                            ),
                                         )
                                     }
                                     className="text-cta flex size-10 cursor-pointer items-center justify-center rounded-full transition-opacity hover:opacity-70 disabled:cursor-not-allowed disabled:opacity-30"
@@ -193,14 +250,14 @@ export default function CheckAvailability({
                             <div className="relative">
                                 <select
                                     id="availability-duration"
-                                    value={duration}
+                                    value={data.duration}
                                     onChange={(e) =>
-                                        setDuration(e.target.value)
+                                        setData('duration', e.target.value)
                                     }
                                     className={cn(
                                         modalInput,
                                         'cursor-pointer appearance-none pr-10',
-                                        !duration && 'text-mist',
+                                        !data.duration && 'text-mist',
                                     )}
                                 >
                                     <option value="" disabled>
@@ -217,6 +274,11 @@ export default function CheckAvailability({
                                     className="text-mist pointer-events-none absolute top-1/2 right-4 size-5 -translate-y-1/2"
                                 />
                             </div>
+                            {errors.duration && (
+                                <p role="alert" className={quizError}>
+                                    {errors.duration}
+                                </p>
+                            )}
                         </div>
                     </div>
 
@@ -229,12 +291,14 @@ export default function CheckAvailability({
                     <div className="relative">
                         <select
                             id="availability-looking-for"
-                            value={lookingFor}
-                            onChange={(e) => setLookingFor(e.target.value)}
+                            value={data.looking_for}
+                            onChange={(e) =>
+                                setData('looking_for', e.target.value)
+                            }
                             className={cn(
                                 modalInput,
                                 'cursor-pointer appearance-none pr-10',
-                                !lookingFor && 'text-mist',
+                                !data.looking_for && 'text-mist',
                             )}
                         >
                             <option value="" disabled>
@@ -251,6 +315,11 @@ export default function CheckAvailability({
                             className="text-mist pointer-events-none absolute top-1/2 right-4 size-5 -translate-y-1/2"
                         />
                     </div>
+                    {errors.looking_for && (
+                        <p role="alert" className={quizError}>
+                            {errors.looking_for}
+                        </p>
+                    )}
 
                     <hr className="border-hairline mt-6 border-t" />
 
@@ -269,9 +338,13 @@ export default function CheckAvailability({
                             </button>
                             <button
                                 type="submit"
-                                className={cn(modalPrimary, 'cursor-pointer')}
+                                disabled={processing}
+                                className={cn(
+                                    modalPrimary,
+                                    'cursor-pointer disabled:opacity-60',
+                                )}
                             >
-                                Submit
+                                {processing ? 'Sending…' : 'Submit'}
                             </button>
                         </div>
                     </div>

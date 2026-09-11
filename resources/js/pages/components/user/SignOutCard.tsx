@@ -1,3 +1,4 @@
+import { router } from '@inertiajs/react';
 import { LogOut } from 'lucide-react';
 import { userSignOut } from '@/config/theme';
 
@@ -6,6 +7,7 @@ export default function SignOutCard() {
         <section className="shadow-card w-full rounded-xl bg-white p-5 md:rounded-none md:p-10">
             <button
                 type="button"
+                onClick={() => router.post('/logout')}
                 className="flex cursor-pointer items-center gap-3"
             >
                 <LogOut

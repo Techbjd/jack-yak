@@ -1,15 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { Search, User, Heart, X } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Link, usePage } from '@inertiajs/react';
+import { Heart, Menu, Search, User as UserIcon, X } from 'lucide-react';
 import { fontPrimary } from '@/config/theme';
 import { desktopNav, mobileNav } from '@/config/navigation';
 import { IMAGES } from '@/config/images';
 import { cn } from '@/lib/utils';
+import type { PageProps } from '@/types';
 
 interface HeaderProps {
     tone?: 'onDark' | 'onLight';
 }
 
 const Header = ({ tone = 'onDark' }: HeaderProps) => {
+    const { auth } = usePage<PageProps>().props;
+    const user = auth?.user ?? null;
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     useEffect(() => {
@@ -27,15 +31,20 @@ const Header = ({ tone = 'onDark' }: HeaderProps) => {
 
     const onLight = tone === 'onLight';
     const ink = onLight ? 'text-ink' : 'text-white';
-    const stripe = onLight ? 'bg-ink' : 'bg-white';
     const ring = onLight
         ? 'focus-visible:ring-ink'
         : 'focus-visible:ring-white';
 
+    const profileHref = user ? '/user' : '/login';
+
     return (
         <>
             <header className="max-w-container relative z-50 mx-auto flex w-full items-center justify-between bg-transparent px-6 pt-6 md:px-12 md:pt-10 lg:px-24">
-                <div className="flex shrink-0 items-center justify-center">
+                <Link
+                    href="/home"
+                    aria-label="JackYak home"
+                    className="flex shrink-0 items-center justify-center rounded-sm focus-visible:ring-2 focus-visible:outline-none"
+                >
                     <img
                         src={IMAGES.logo.jackYak}
                         alt="Jack Yak Logo"
@@ -44,9 +53,12 @@ const Header = ({ tone = 'onDark' }: HeaderProps) => {
                             onLight && 'brightness-0',
                         )}
                     />
-                </div>
+                </Link>
 
-                <nav className="hidden items-center justify-center md:flex">
+                <nav
+                    aria-label="Primary"
+                    className="hidden items-center justify-center md:flex"
+                >
                     <ul
                         className={cn(
                             fontPrimary,
@@ -56,12 +68,12 @@ const Header = ({ tone = 'onDark' }: HeaderProps) => {
                     >
                         {desktopNav.map((item) => (
                             <li key={item.href}>
-                                <a
+                                <Link
                                     href={item.href}
                                     className="transition-opacity hover:opacity-80"
                                 >
                                     {item.label}
-                                </a>
+                                </Link>
                             </li>
                         ))}
                     </ul>
@@ -73,41 +85,48 @@ const Header = ({ tone = 'onDark' }: HeaderProps) => {
                         ink,
                     )}
                 >
-                    <button
-                        aria-label="Favorites"
+                    <Link
+                        href="/user"
+                        aria-label="Saved"
                         className={`p-1 transition-opacity hover:opacity-80 focus-visible:ring-2 focus-visible:outline-none ${ring}`}
                     >
                         <Heart className="h-5 w-5 lg:h-6 lg:w-6" />
-                    </button>
-                    <button
-                        aria-label="Search"
+                    </Link>
+                    <Link
+                        href="/view-all"
+                        aria-label="Search destinations"
                         className={`p-1 transition-opacity hover:opacity-80 focus-visible:ring-2 focus-visible:outline-none ${ring}`}
                     >
                         <Search className="h-5 w-5 rotate-[9.82deg] lg:h-6 lg:w-6" />
-                    </button>
-                    <button
-                        aria-label="Profile"
-                        className={`p-1 transition-opacity hover:opacity-80 focus-visible:ring-2 focus-visible:outline-none ${ring}`}
+                    </Link>
+                    <Link
+                        href={profileHref}
+                        aria-label={
+                            user ? `Profile for ${user.name}` : 'Sign in'
+                        }
+                        className={`relative p-1 transition-opacity hover:opacity-80 focus-visible:ring-2 focus-visible:outline-none ${ring}`}
                     >
-                        <User className="drop-shadow-card h-5 w-5 lg:h-6 lg:w-6" />
-                    </button>
+                        <UserIcon className="drop-shadow-card h-5 w-5 lg:h-6 lg:w-6" />
+                        {user && (
+                            <span
+                                aria-hidden
+                                className="bg-cta-ember absolute top-0 right-0 size-2.5 rounded-full"
+                            />
+                        )}
+                    </Link>
                 </div>
 
                 <button
                     aria-label="Open menu"
                     aria-expanded={isMobileMenuOpen}
-                    className="w-hamburger -m-3 flex h-2.5 cursor-pointer flex-col items-center justify-center gap-1 p-3 active:opacity-60 md:hidden"
+                    className={cn(
+                        'cursor-pointer p-3 transition-opacity hover:opacity-80 focus-visible:ring-2 focus-visible:outline-none md:hidden',
+                        ink,
+                        ring,
+                    )}
                     onClick={() => setIsMobileMenuOpen(true)}
                 >
-                    <span
-                        className={`h-0.5 w-full drop-shadow-sm ${stripe}`}
-                    ></span>
-                    <span
-                        className={`h-0.5 w-full drop-shadow-sm ${stripe}`}
-                    ></span>
-                    <span
-                        className={`h-0.5 w-full drop-shadow-sm ${stripe}`}
-                    ></span>
+                    <Menu className="h-6 w-6" />
                 </button>
             </header>
 
@@ -135,14 +154,44 @@ const Header = ({ tone = 'onDark' }: HeaderProps) => {
                         </div>
 
                         <div className="px-5 pt-2 pb-6">
-                            <img
-                                src={IMAGES.logo.jackYak}
-                                alt="Jack Yak Logo"
-                                className="h-logo w-logo object-contain brightness-0"
-                            />
+                            <Link
+                                href="/home"
+                                onClick={() => setIsMobileMenuOpen(false)}
+                                aria-label="JackYak home"
+                            >
+                                <img
+                                    src={IMAGES.logo.jackYak}
+                                    alt="Jack Yak Logo"
+                                    className="h-logo w-logo object-contain brightness-0"
+                                />
+                            </Link>
+                            {user ? (
+                                <p
+                                    className={cn(
+                                        fontPrimary,
+                                        'text-ink pt-4 text-sm font-semibold',
+                                    )}
+                                >
+                                    Hi, {user.name}
+                                </p>
+                            ) : (
+                                <Link
+                                    href="/login"
+                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    className={cn(
+                                        fontPrimary,
+                                        'text-cta-accent pt-4 text-sm font-bold underline-offset-4 hover:underline',
+                                    )}
+                                >
+                                    Sign in to plan your trip
+                                </Link>
+                            )}
                         </div>
 
-                        <nav className="flex-1 overflow-y-auto px-5 py-2">
+                        <nav
+                            aria-label="Mobile"
+                            className="flex-1 overflow-y-auto px-5 py-2"
+                        >
                             <ul
                                 className={cn(
                                     fontPrimary,
@@ -151,9 +200,23 @@ const Header = ({ tone = 'onDark' }: HeaderProps) => {
                             >
                                 {mobileNav.map((item) => (
                                     <li key={item.href} className="py-2">
-                                        <a href={item.href}>{item.label}</a>
+                                        <Link
+                                            href={item.href}
+                                            onClick={() =>
+                                                setIsMobileMenuOpen(false)
+                                            }
+                                        >
+                                            {item.label}
+                                        </Link>
                                     </li>
                                 ))}
+                                <li className="py-2">
+                                    {user ? (
+                                        <Link href="/user">My account</Link>
+                                    ) : (
+                                        <Link href="/login">Sign in</Link>
+                                    )}
+                                </li>
                             </ul>
                         </nav>
                     </div>

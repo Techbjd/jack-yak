@@ -240,3 +240,65 @@ export const destinationFeaturedCards: FeaturedCard[] = [
         span: 'md:col-span-3',
     },
 ];
+
+export interface GuideTopDestination {
+    name: string;
+    subtitle: string;
+    province: string;
+    duration: string;
+    image: string;
+}
+
+/** Guide page top destinations carousel */
+export const guideTopDestinations: GuideTopDestination[] = [
+    {
+        name: 'Mount Everest',
+        subtitle: 'Highest Peak on Earth',
+        province: 'Koshi Province',
+        duration: '12–16 Days',
+        image: IMAGES.about.mountEverest,
+    },
+    {
+        name: 'Pokhara',
+        subtitle: 'Lakeside Paradise',
+        province: 'Gandaki Province',
+        duration: '2–5 Days',
+        image: IMAGES.about.pokharaLakeside,
+    },
+    {
+        name: 'Chitwan',
+        subtitle: 'Wildlife Safari',
+        province: 'Bagmati Province',
+        duration: '2–3 Days',
+        image: IMAGES.about.chitwanSafari,
+    },
+];
+
+export interface HomeTopDestination {
+    name: string;
+    subtitle: string;
+    image: string;
+    variant: 'sm' | 'lg';
+}
+
+/** Home page top destinations strip */
+export const homeTopDestinations: HomeTopDestination[] = [
+    {
+        name: 'Tilicho Lake',
+        subtitle: 'Scenic Lake',
+        image: IMAGES.featured.tilichoLake,
+        variant: 'sm',
+    },
+    {
+        name: 'Mount Everest',
+        subtitle: 'Highest Peak',
+        image: IMAGES.featured.everestPrayerFlags,
+        variant: 'lg',
+    },
+    {
+        name: 'Gokyo Lake',
+        subtitle: 'Sacred Lake',
+        image: IMAGES.featured.gokyoLake,
+        variant: 'sm',
+    },
+];

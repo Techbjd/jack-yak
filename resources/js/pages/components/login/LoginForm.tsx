@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Link, useForm } from '@inertiajs/react';
 import { cn } from '@/lib/utils';
 import {
     authButton,
@@ -12,10 +12,11 @@ import {
 import GoogleIcon from './GoogleIcon';
 
 export default function LoginForm() {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [emailError, setEmailError] = useState('');
-    const [passwordError, setPasswordError] = useState('');
+    const { data, setData, post, processing, errors, clearErrors } = useForm({
+        email: '',
+        password: '',
+        remember: false as boolean,
+    });
 
     const checkEmail = (value: string): string => {
         if (!value.trim()) {
@@ -27,14 +28,22 @@ export default function LoginForm() {
         return '';
     };
 
+    const clientEmailError = data.email ? checkEmail(data.email) : '';
+    const emailError = errors.email ?? clientEmailError;
+    const passwordError = errors.password;
+
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const nextEmailError = checkEmail(email);
-        setEmailError(nextEmailError);
+        const nextEmailError = checkEmail(data.email);
         if (nextEmailError) {
             document.getElementById('login-email')?.focus();
             return;
         }
+        if (!data.password) {
+            document.getElementById('login-password')?.focus();
+            return;
+        }
+        post('/login');
     };
 
     return (
@@ -61,14 +70,13 @@ export default function LoginForm() {
                         type="email"
                         autoComplete="email"
                         placeholder="Enter Your Email"
-                        value={email}
+                        value={data.email}
                         onChange={(e) => {
-                            setEmail(e.target.value);
-                            if (emailError) {
-                                setEmailError(checkEmail(e.target.value));
+                            setData('email', e.target.value);
+                            if (errors.email) {
+                                clearErrors('email');
                             }
                         }}
-                        onBlur={() => setEmailError(checkEmail(email))}
                         aria-invalid={emailError ? true : undefined}
                         aria-describedby={
                             emailError ? 'login-email-error' : undefined
@@ -102,11 +110,11 @@ export default function LoginForm() {
                         type="password"
                         autoComplete="current-password"
                         placeholder="Enter Your Password"
-                        value={password}
+                        value={data.password}
                         onChange={(e) => {
-                            setPassword(e.target.value);
-                            if (passwordError) {
-                                setPasswordError('');
+                            setData('password', e.target.value);
+                            if (errors.password) {
+                                clearErrors('password');
                             }
                         }}
                         aria-invalid={passwordError ? true : undefined}
@@ -131,20 +139,45 @@ export default function LoginForm() {
                         </p>
                     )}
 
-                    <div className="flex justify-end pt-2.5">
-                        <a
-                            href="#"
+                    <div className="flex items-center justify-between pt-2.5">
+                        <label
+                            htmlFor="login-remember"
+                            className={cn(
+                                fontPrimary,
+                                'flex cursor-pointer items-center gap-2 text-xs font-medium',
+                            )}
+                        >
+                            <input
+                                id="login-remember"
+                                type="checkbox"
+                                checked={data.remember}
+                                onChange={(e) =>
+                                    setData('remember', e.target.checked)
+                                }
+                                className="accent-ink size-4 cursor-pointer"
+                            />
+                            Remember me
+                        </label>
+                        <Link
+                            href="/register"
                             className={cn(
                                 fontPrimary,
                                 'text-cta-accent text-xs font-bold',
                             )}
                         >
                             Forgot Password?
-                        </a>
+                        </Link>
                     </div>
 
-                    <button type="submit" className={cn(authButton, 'mt-5')}>
-                        Sign In
+                    <button
+                        type="submit"
+                        disabled={processing}
+                        className={cn(
+                            authButton,
+                            'mt-5 cursor-pointer disabled:opacity-60',
+                        )}
+                    >
+                        {processing ? 'Signing in…' : 'Sign In'}
                     </button>
                 </form>
 
@@ -154,16 +187,26 @@ export default function LoginForm() {
                     <span className={authDividerLine} />
                 </div>
 
-                <button type="button" className={cn(authSocialButton, 'mt-4')}>
+                <Link
+                    href="/form"
+                    className={cn(authSocialButton, 'mt-4')}
+                    aria-label="Continue as guest to find your destination"
+                >
                     <GoogleIcon />
-                    Sign in with Google
-                </button>
+                    Continue to explore destinations
+                </Link>
 
                 <p className={cn(authLabel, 'pt-5 text-center')}>
-                    Don&rsquo;t you have an account?
-                    <a href="#" className="text-cta-accent">
+                    Don&rsquo;t you have an account?{' '}
+                    <Link href="/register" className="text-cta-accent">
                         Sign up
-                    </a>
+                    </Link>
+                </p>
+                <p className={cn(authLabel, 'pt-2 text-center')}>
+                    Just looking around?{' '}
+                    <Link href="/destinations" className="text-cta-accent">
+                        Browse destinations
+                    </Link>
                 </p>
             </div>
 
