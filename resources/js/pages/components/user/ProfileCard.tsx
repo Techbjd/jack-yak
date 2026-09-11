@@ -5,6 +5,20 @@ import { userEditButton, userMuted, userName } from '@/config/theme';
 import { IMAGES } from '@/config/images';
 import type { PageProps } from '@/types';
 
+function EditProfileContent() {
+    return (
+        <>
+            <Pencil aria-hidden className="hidden size-5 text-white md:block" />
+            <span>Edit Profile</span>
+            <ArrowRight
+                aria-hidden
+                className="size-3 text-white md:size-5"
+                strokeWidth={2}
+            />
+        </>
+    );
+}
+
 export default function ProfileCard() {
     const { auth } = usePage<PageProps>().props;
     const user = auth?.user;
@@ -12,29 +26,30 @@ export default function ProfileCard() {
     const email = user?.email ?? 'Sign in to sync your profile';
 
     return (
-        <section className="shadow-card flex w-full flex-col gap-4 rounded-xl bg-white p-5 md:flex-row md:items-center md:justify-between md:rounded-none md:p-10">
-            <div className="flex items-center gap-4">
-                <img
-                    src={IMAGES.about.travelerAvatar}
-                    alt={name}
-                    className="bg-bg-placeholder size-16 shrink-0 rounded-full object-cover object-top md:size-36"
-                />
-                <div className="flex flex-col gap-1">
-                    <h2 className={userName}>{name}</h2>
-                    <p className={userMuted}>{email}</p>
-                </div>
+        <section className="shadow-card flex w-full flex-row items-center gap-4 rounded-xl bg-white p-5 md:justify-between md:rounded-none md:p-10">
+            <img
+                src={IMAGES.about.travelerAvatar}
+                alt={name}
+                className="bg-bg-placeholder size-18 shrink-0 rounded-full object-cover object-top md:size-36"
+            />
+            <div className="flex min-w-0 flex-1 flex-col gap-1">
+                <h2 className={cn(userName, 'truncate')} title={name}>
+                    {name}
+                </h2>
+                <p className={cn(userMuted, 'truncate')} title={email}>
+                    {email}
+                </p>
+                <span
+                    className={cn(
+                        userEditButton,
+                        'mt-2 shrink-0 self-start md:hidden',
+                    )}
+                >
+                    <EditProfileContent />
+                </span>
             </div>
-            <span className={cn(userEditButton, 'shrink-0 opacity-60')}>
-                <Pencil
-                    aria-hidden
-                    className="hidden size-5 text-white md:block"
-                />
-                <span>{user ? 'Member' : 'Guest'}</span>
-                <ArrowRight
-                    aria-hidden
-                    className="size-3 text-white md:size-5"
-                    strokeWidth={2}
-                />
+            <span className={cn(userEditButton, 'hidden shrink-0 md:flex')}>
+                <EditProfileContent />
             </span>
         </section>
     );

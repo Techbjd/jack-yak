@@ -188,7 +188,7 @@ export const quizError = 'font-manrope pt-1.5 text-xs font-medium text-red-500';
 
 /** About hero title — 36px below 400px, 64px up to xl, giant white at xl (no mid-range overflow) */
 export const aboutHeroTitle =
-    'font-display text-3xl-4xl leading-tight font-medium text-ink xs:text-display xs:leading-about md:text-white xl:text-about-display xl:leading-about-display';
+    'font-display text-3xl-4xl  font-medium text-ink xs:text-display xs:leading-about md:text-white xl:text-about-display xl:leading-about-display';
 
 /** About centered section title — 16px mobile, 60px desktop */
 export const aboutSectionTitle =
@@ -241,9 +241,9 @@ export const userRowDark =
 export const userRow =
     'font-manrope text-xs-md leading-snug font-medium text-ink md:text-lg-xl';
 
-/** User edit-profile button — orange pill mobile, teal bar desktop */
+/** User edit-profile button — orange 134×29 mobile, teal bar desktop */
 export const userEditButton =
-    'font-manrope flex h-7 w-32 items-center justify-center gap-2 rounded-md bg-cta-accent text-xs-sm font-medium text-white md:h-14 md:w-61.5 md:gap-3 md:bg-cta md:text-lg-xl';
+    'font-manrope flex h-[29px] w-[134px] items-center justify-center gap-2 rounded-md bg-cta-accent text-xs-sm font-medium text-white md:h-14 md:w-61.5 md:gap-3 md:bg-cta md:text-lg-xl';
 
 /** User sign-out label — ember semibold */
 export const userSignOut =
