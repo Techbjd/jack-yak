@@ -157,10 +157,10 @@ export default function WeatherCard() {
 
     const unitPill = (active: boolean): string =>
         cn(
-            'font-manrope text-xs-md md:text-slate-mute flex h-6.75 cursor-pointer items-center justify-center rounded-full border px-3 uppercase md:h-8',
+            'font-manrope text-xs-md text-slate-text md:text-slate-mute flex h-6.75 cursor-pointer items-center justify-center rounded-full border px-3 uppercase md:h-8',
             active
-                ? 'border-sky-line bg-sky-tint text-slate-text font-bold'
-                : 'border-ash text-slate-text bg-white font-medium',
+                ? 'border-sky-line bg-sky-tint font-bold'
+                : 'border-ash bg-white font-medium',
         );
 
     return (
@@ -206,7 +206,7 @@ export default function WeatherCard() {
                     </button>
                 </div>
 
-                <div aria-hidden className="bg-line-soft h-px w-full" />
+                <div className="bg-line-soft h-px w-full" />
 
                 <div className="hidden w-full flex-wrap items-center gap-2 md:flex">
                     <h3 className="font-manrope text-lg-xl text-ink md:text-md-xl md:text-graph-title md:tracking-review font-medium">
@@ -305,7 +305,7 @@ export default function WeatherCard() {
                         </LineChart>
                     </ResponsiveContainer>
                     {tab === 'daily' && (
-                        <span className="absolute right-3.5 bottom-3.5 hidden gap-2.5 md:flex">
+                        <span className="absolute right-3.5 bottom-3.5 gap-2.5 md:flex">
                             <button
                                 type="button"
                                 onClick={prev}
@@ -359,7 +359,7 @@ export default function WeatherCard() {
                             </button>
                         </span>
                     </div>
-                    <div className="relative h-[300px] w-full">
+                    <div className="relative h-75 w-full">
                         <AltitudeChart unit={altUnit} height={300} />
                     </div>
                 </div>

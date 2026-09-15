@@ -40,7 +40,7 @@ function FilterPill({
             <span
                 aria-label={`${count} items`}
                 className={cn(
-                    'text-xs-sm md:text-base-md flex h-4 w-4.75 items-center justify-center rounded-full leading-none font-bold md:h-6 md:min-w-6 md:px-1.5',
+                    'text-xs-sm md:text-base-md flex h-4 min-w-4.75 items-center justify-center rounded-full leading-none font-bold md:h-6 md:min-w-6 md:px-1.5',
                     active
                         ? 'bg-count-overlay-active text-white'
                         : 'bg-count-overlay text-slate-text',
@@ -58,7 +58,7 @@ export default function GalleryFilterPills() {
         <div
             role="group"
             aria-label="Photo filters"
-            className="no-scrollbar flex w-full items-center justify-start gap-1.5 overflow-x-auto md:justify-center md:gap-3"
+            className="no-scrollbar flex w-full items-center gap-1.5 overflow-x-auto md:justify-center md:gap-3"
         >
             <FilterPill
                 active

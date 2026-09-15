@@ -136,7 +136,7 @@ export default function ReviewCard() {
                     <span aria-hidden className={itinRailTeal} />
                     <h2
                         id="reviews-heading"
-                        className={`${itinH2} md:text-review-ink`}
+                        className={cn(itinH2, 'md:text-review-ink')}
                     >
                         Reviews
                     </h2>

@@ -1,4 +1,5 @@
 import { LayoutGrid, Play, Users } from 'lucide-react';
+import { cn } from '@/lib/utils';
 import { IMAGES } from '@/config/images';
 import { galleryTiles } from '@/config/itinerary';
 import CarouselDots from '../shared/CarouselDots';
@@ -6,6 +7,20 @@ import CarouselDots from '../shared/CarouselDots';
 /** White frosted pill pinned to a tile corner (Figma desktop mosaic) */
 const frostedPill =
     'flex items-center gap-1.5 rounded-full bg-white/95 shadow-card backdrop-blur-sm';
+
+/** Top-left badge on traveller-photo cells (Figma desktop mosaic) */
+function TravellerBadge() {
+    return (
+        <span
+            className={cn(frostedPill, 'absolute top-2.5 left-2.5 px-2.5 py-1')}
+        >
+            <Users aria-hidden className="text-review-ink size-3 shrink-0" />
+            <span className="font-manrope text-xs-sm text-review-ink leading-none font-bold">
+                {galleryTiles.travellerPhoto}
+            </span>
+        </span>
+    );
+}
 
 /** Photo gallery — mobile + tablet: hero + 3 thumbs stack (roomier at
  *  md via wider gaps + aspect-ratio tiles); desktop (lg+): 3-col mosaic
@@ -30,7 +45,7 @@ export default function ItineraryGallery() {
                 <CarouselDots
                     count={5}
                     activeIndex={0}
-                    className="absolute right-4 bottom-2 justify-end gap-0.75"
+                    className="absolute right-4 bottom-2 gap-0.75"
                     dotClassName="h-1.5 w-1.5"
                 />
             </div>
@@ -58,15 +73,13 @@ export default function ItineraryGallery() {
                         className="absolute inset-0 h-full w-full object-cover"
                     />
                     <figcaption className="absolute bottom-4 left-4">
-                        <span className={frostedPill}>
-                            <span className="flex items-center gap-2 px-4 py-2">
-                                <LayoutGrid
-                                    aria-hidden
-                                    className="text-review-ink size-4 shrink-0"
-                                />
-                                <span className="font-manrope text-sm-base text-review-ink leading-none font-semibold">
-                                    {galleryTiles.viewAllPhotos}
-                                </span>
+                        <span className={cn(frostedPill, 'gap-2 px-4 py-2')}>
+                            <LayoutGrid
+                                aria-hidden
+                                className="text-review-ink size-4 shrink-0"
+                            />
+                            <span className="font-manrope text-sm-base text-review-ink leading-none font-semibold">
+                                {galleryTiles.viewAllPhotos}
                             </span>
                         </span>
                     </figcaption>
@@ -77,17 +90,7 @@ export default function ItineraryGallery() {
                         alt="Trek gallery photo 1"
                         className="absolute inset-0 h-full w-full object-cover"
                     />
-                    <span
-                        className={`${frostedPill} absolute top-2.5 left-2.5 px-2.5 py-1`}
-                    >
-                        <Users
-                            aria-hidden
-                            className="text-review-ink size-3 shrink-0"
-                        />
-                        <span className="font-manrope text-xs-sm text-review-ink leading-none font-bold">
-                            {galleryTiles.travellerPhoto}
-                        </span>
-                    </span>
+                    <TravellerBadge />
                 </figure>
                 <figure className="rounded-gallery-tile relative aspect-square overflow-hidden">
                     <img
@@ -95,17 +98,7 @@ export default function ItineraryGallery() {
                         alt="Trek gallery photo 2"
                         className="absolute inset-0 h-full w-full object-cover"
                     />
-                    <span
-                        className={`${frostedPill} absolute top-2.5 left-2.5 px-2.5 py-1`}
-                    >
-                        <Users
-                            aria-hidden
-                            className="text-review-ink size-3 shrink-0"
-                        />
-                        <span className="font-manrope text-xs-sm text-review-ink leading-none font-bold">
-                            {galleryTiles.travellerPhoto}
-                        </span>
-                    </span>
+                    <TravellerBadge />
                 </figure>
                 <figure className="rounded-gallery-tile relative aspect-square overflow-hidden">
                     <img
@@ -121,17 +114,7 @@ export default function ItineraryGallery() {
                             {galleryTiles.morePhotosLabel}
                         </span>
                     </span>
-                    <span
-                        className={`${frostedPill} absolute top-2.5 left-2.5 px-2.5 py-1`}
-                    >
-                        <Users
-                            aria-hidden
-                            className="text-review-ink size-3 shrink-0"
-                        />
-                        <span className="font-manrope text-xs-sm text-review-ink leading-none font-bold">
-                            {galleryTiles.travellerPhoto}
-                        </span>
-                    </span>
+                    <TravellerBadge />
                 </figure>
                 <button
                     type="button"

@@ -27,7 +27,7 @@ export default function ItineraryDayList() {
             {/* Mobile: heading + screen-height snap-scroll panel of all 12 days */}
             <div
                 role="list"
-                aria-label={`12-day plan, ${itineraryDays.length} days`}
+                aria-label="12-day plan"
                 className="flex max-h-dvh w-full snap-y snap-proximity flex-col gap-3.5 overflow-y-auto pb-1 md:hidden"
             >
                 {itineraryDays.map((day) => (
@@ -41,7 +41,7 @@ export default function ItineraryDayList() {
                 cards. Rail hidden — no center geometry fits one column. */}
             <div
                 role="list"
-                aria-label={`12-day plan, ${itineraryDays.length} days`}
+                aria-label="12-day plan"
                 className="hidden w-full flex-col gap-6 md:flex xl:hidden"
             >
                 {itineraryDays.map((day) => (
@@ -59,14 +59,14 @@ export default function ItineraryDayList() {
                 heights are. Card padding (py-3) sets the 24px rhythm. */}
             <div
                 role="list"
-                aria-label={`12-day plan, ${itineraryDays.length} days`}
+                aria-label="12-day plan"
                 className="hidden w-full flex-col xl:flex"
             >
                 {rows.map(([left, right]) => (
                     <div
                         key={left.day}
                         role="listitem"
-                        className="grid w-full grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-stretch gap-x-6"
+                        className="grid w-full grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] gap-x-6"
                     >
                         <div className="min-w-0 py-3">
                             <ItineraryDayCard day={left} />

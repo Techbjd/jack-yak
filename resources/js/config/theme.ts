@@ -354,9 +354,9 @@ export const itinRailTeal =
 export const itinH2 =
     'font-manrope text-md-lg leading-9 font-bold tracking-itinerary-tight text-ink md:text-2xl-3xl';
 
-/** Altitude heading — Figma 16px/36 bold ink, -0.608px tracking; 30px desktop */
+/** Altitude heading — Figma 16px/36 bold ink, -0.608px tracking; 32px desktop */
 export const itinAltTitle =
-    'font-manrope text-base leading-9 font-bold tracking-itinerary-tight text-ink md:text-2xl-3xl md:leading-9';
+    'font-manrope text-base leading-9 font-bold tracking-itinerary-tight text-ink md:text-2xl-3xl';
 
 /** Teal underline bar under section titles — desktop only (Figma 48x4).
  *  ml aligns the bar with the title text past the rail + gap. */
@@ -371,7 +371,7 @@ export const itinBody =
 export const itinCard =
     'rounded-2xl border border-line-soft bg-white shadow-card';
 
-/** Day card — fixed 127px mobile; desktop 594x144 flow card.
+/** Day card — fixed 127px mobile; fluid desktop card (min-h 144).
  *  16px left padding puts the thumb at Figma x26; desktop uses a 4px
  *  inset (144 - 136) / 2 with a 16px thumb-to-text gap (Figma x779→x984). */
 export const itinDayCard =
@@ -383,9 +383,10 @@ export const itinDayThumb =
 
 /** Day text column — fixed 145px so icons sit at Figma x288, not the edge.
  *  10px row gaps spread Day/place/subtitle over Figma's ~81px text block.
- *  Desktop flexes between the thumb and the Hotel/meals meta column. */
+ *  Desktop flexes between the thumb and the Hotel/meals meta column
+ *  (md:shrink re-enables shrinking that base shrink-0 disables). */
 export const itinDayText =
-    'flex w-day-text-w shrink-0 flex-col justify-center gap-2.5 md:min-w-0 md:flex-1 md:gap-5';
+    'flex w-day-text-w shrink-0 flex-col justify-center gap-2.5 md:min-w-0 md:flex-1 md:shrink md:gap-5';
 
 /** Day label — 16px/22 bold orange mobile; teal on desktop (Figma #2D8A8A) */
 export const itinDayLabel =

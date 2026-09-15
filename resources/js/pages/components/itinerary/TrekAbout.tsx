@@ -3,6 +3,9 @@ import { cn } from '@/lib/utils';
 import { itinBody, itinH2, itinRailOrange } from '@/config/theme';
 import { trekAbout } from '@/config/itinerary';
 
+/** Desktop paragraph treatment (type already comes from itinBody) */
+const desktopPara = 'md:leading-about-32 md:text-review-body md:block';
+
 export default function TrekAbout() {
     const [expanded, setExpanded] = useState(false);
     const extra = expanded ? 'block' : 'hidden';
@@ -10,7 +13,7 @@ export default function TrekAbout() {
     return (
         <section
             aria-labelledby="trek-about-heading"
-            className="md:max-w-content-lg flex w-full flex-col gap-2 md:gap-4 xl:max-w-none justify-center items-center"
+            className="md:max-w-content-lg mx-auto flex w-full flex-col gap-2 md:gap-4 xl:max-w-none"
         >
             <div className="flex w-full items-stretch gap-2.5">
                 <span aria-hidden className={itinRailOrange} />
@@ -18,42 +21,17 @@ export default function TrekAbout() {
                     {trekAbout.title}
                 </h2>
             </div>
-            <p className={cn(itinBody, 'md:text-md-lg md:leading-about-30')}>
+            <p className={cn(itinBody, 'md:leading-about-30')}>
                 {trekAbout.intro}
             </p>
-            <p
-                className={cn(
-                    itinBody,
-                    extra,
-                    'md:text-md-lg md:leading-about-32 md:text-review-body md:block',
-                )}
-            >
+            <p className={cn(itinBody, extra, desktopPara)}>
                 {trekAbout.belief}
             </p>
-            <p
-                className={cn(
-                    itinBody,
-                    'md:text-md-lg md:leading-about-32 md:text-review-body',
-                )}
-            >
-                {trekAbout.body}
-            </p>
-            <p
-                className={cn(
-                    itinBody,
-                    extra,
-                    'md:text-about-highlight md:leading-about-32 md:text-review-body md:block md:font-bold',
-                )}
-            >
+            <p className={cn(itinBody, desktopPara)}>{trekAbout.body}</p>
+            <p className={cn(itinBody, extra, desktopPara, 'md:font-bold')}>
                 {trekAbout.highlight}
             </p>
-            <p
-                className={cn(
-                    itinBody,
-                    extra,
-                    'md:text-md-lg md:leading-about-32 md:text-review-body md:block',
-                )}
-            >
+            <p className={cn(itinBody, extra, desktopPara)}>
                 {trekAbout.closing}
             </p>
             <button

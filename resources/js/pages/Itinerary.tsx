@@ -44,7 +44,7 @@ export default function Itinerary() {
                     free-scroll row (no snap, so it rests exactly at the
                     start/end) — no inner chart scrollers; stacked
                     full-width below md */}
-                <div className="no-scrollbar mt-6 flex w-full flex-col gap-6 overscroll-x-contain md:mt-10 md:flex-row md:gap-8 md:overflow-x-auto">
+                <div className="no-scrollbar mt-6 flex w-full flex-col gap-6 md:mt-10 md:flex-row md:gap-8 md:overflow-x-auto md:overscroll-x-contain">
                     <div className="md:w-graph-card-w w-full shrink-0">
                         <AltitudeProfile title={ALTITUDE_TITLE} />
                     </div>

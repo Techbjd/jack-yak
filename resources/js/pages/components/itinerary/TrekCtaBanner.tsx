@@ -7,7 +7,7 @@ import { trekCta } from '@/config/itinerary';
  */
 export default function TrekCtaBanner() {
     return (
-        <section aria-label={trekCta.title} className="hidden w-full md:block">
+        <section aria-label={trekCta.title} className="w-full">
             {/* Mobile stack */}
             <div className="bg-ink shadow-card flex w-full flex-col overflow-hidden rounded-2xl md:hidden">
                 <div className="relative h-44 w-full shrink-0 overflow-hidden">
@@ -19,7 +19,7 @@ export default function TrekCtaBanner() {
                     />
                     <span aria-hidden className="bg-ink/20 absolute inset-0" />
                 </div>
-                <div className="flex w-full flex-1 flex-col items-start justify-center gap-3 p-6">
+                <div className="flex w-full flex-col items-start gap-3 p-6">
                     <h2 className="font-manrope text-lg-xl leading-snug font-bold text-white">
                         {trekCta.title}
                     </h2>

@@ -70,7 +70,7 @@ export default function BookingCard() {
                 <p className="font-manrope text-xs-sm tracking-card text-ink leading-3 font-bold">
                     {trekBooking.operator}
                 </p>
-                <label className="relative inline-flex items-center">
+                <label className="relative inline-flex">
                     <span className="sr-only">Currency</span>
                     <select
                         aria-label="Currency"
@@ -90,7 +90,7 @@ export default function BookingCard() {
                 </label>
             </div>
 
-            <div className="flex w-full flex-col">
+            <div className="w-full">
                 <p className="font-manrope text-xs-md tracking-itinerary-wide text-pale leading-5 font-semibold uppercase">
                     {trekBooking.priceLabel}
                 </p>

@@ -57,11 +57,11 @@ export default function AltitudeProfile({
 
     const pill = (active: boolean, size: string): string =>
         cn(
-            'font-manrope text-xs-md leading-itinerary-19 md:text-slate-mute flex items-center justify-center rounded-full border uppercase md:h-8',
+            'font-manrope text-xs-md text-slate-text leading-itinerary-19 md:text-slate-mute flex items-center justify-center rounded-full border uppercase md:h-8',
             size,
             active
-                ? 'border-sky-line bg-sky-tint text-slate-text font-bold'
-                : 'border-ash text-slate-text bg-white font-medium',
+                ? 'border-sky-line bg-sky-tint font-bold'
+                : 'border-ash bg-white font-medium',
         );
 
     return (
