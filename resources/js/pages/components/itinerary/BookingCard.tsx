@@ -18,7 +18,6 @@ const RATING = 5;
 
 const perkIcons = [Medal, MapPin, MessageCircleCheck];
 
-/** Five-star row — gray base with orange overlay clipped to the rating */
 function StarRow() {
     const row = (filled: boolean) => (
         <span aria-hidden className="flex items-center gap-0.5">
@@ -62,7 +61,10 @@ export default function BookingCard() {
     return (
         <section
             aria-label="Booking"
-            className={cn(itinCard, 'flex w-full flex-col gap-4 p-5')}
+            className={cn(
+                itinCard,
+                'md:max-w-content-md flex w-full flex-col gap-4 p-5 md:mx-auto xl:mx-0 xl:max-w-none',
+            )}
         >
             <div className="flex w-full items-center justify-between gap-3">
                 <p className="font-manrope text-xs-sm tracking-card text-ink leading-3 font-bold">

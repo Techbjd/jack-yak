@@ -148,8 +148,9 @@ interface AltitudeChartProps {
     /** Render height in px — must match the wrapper's CSS height so the
      *  value-label math lands on the dots (240 mobile, 400 desktop). */
     height?: number;
-    /** Inner plot width estimate for the label stagger (402px mobile
-     *  cap, ~720px desktop card). */
+    /** Inner plot width estimate for the label stagger (342px mobile,
+     *  1080px inside the 1150px track card from md up — tablet renders
+     *  at desktop width, so keep the md switch, not lg). */
     plotWidth?: number;
 }
 

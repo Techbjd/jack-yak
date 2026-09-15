@@ -197,7 +197,8 @@
     --spacing-day-text-w: 145px;
     --spacing-day-card-h: 127px;
     /* ── Itinerary desktop (1440px Figma, flow grid, no page absolute) ── */
-    --spacing-day-card-desktop-w: 594px;
+    /* NOTE: desktop day cards are fluid (grid columns govern width) —
+       no fixed width token, so 1024–1280px never squeezes. */
     --spacing-day-card-desktop-h: 144px;
     /* ── CTA banner desktop (1440px Figma: white 158px card, 268x119 thumb, 283px button) ── */
     --spacing-cta-thumb-w: 268px;

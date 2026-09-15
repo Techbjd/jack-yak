@@ -7,7 +7,7 @@ import { trekCta } from '@/config/itinerary';
  */
 export default function TrekCtaBanner() {
     return (
-        <section aria-label={trekCta.title} className="w-full">
+        <section aria-label={trekCta.title} className="hidden w-full md:block">
             {/* Mobile stack */}
             <div className="bg-ink shadow-card flex w-full flex-col overflow-hidden rounded-2xl md:hidden">
                 <div className="relative h-44 w-full shrink-0 overflow-hidden">
@@ -36,7 +36,7 @@ export default function TrekCtaBanner() {
             </div>
 
             {/* Desktop white card */}
-            <div className="rounded-dest-panel shadow-card hidden w-full items-center gap-10 bg-white py-5 pr-30 pl-11 md:flex">
+            <div className="rounded-dest-panel shadow-card hidden w-full flex-col gap-6 bg-white p-6 md:flex xl:flex-row xl:items-center xl:gap-10 xl:py-5 xl:pr-30 xl:pl-11">
                 <img
                     src={trekCta.image}
                     alt=""
@@ -53,7 +53,7 @@ export default function TrekCtaBanner() {
                 </div>
                 <button
                     type="button"
-                    className="font-manrope rounded-card-sm bg-cta shadow-card text-lg-xl w-cta-button-w h-13 shrink-0 cursor-pointer font-bold text-white uppercase transition-opacity hover:opacity-90"
+                    className="font-manrope rounded-card-sm bg-cta shadow-card text-lg-xl xl:w-cta-button-w h-13 w-full shrink-0 cursor-pointer font-bold text-white uppercase transition-opacity hover:opacity-90"
                 >
                     {trekCta.button}
                 </button>

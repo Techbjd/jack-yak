@@ -25,7 +25,9 @@ export default function AltitudeProfile({
     const [unit, setUnit] = useState<AltitudeUnit>('m');
     const chartRef = useRef<HTMLDivElement>(null);
     /** Figma desktop chart is 400px tall (240 mobile) — track the md
-     *  breakpoint so the label math matches the rendered height. */
+     *  breakpoint so the label math matches the rendered height.
+     *  Keep at md: the section track is w-graph-card-w from md up,
+     *  so tablet renders at full desktop width. */
     const [isDesktop, setIsDesktop] = useState(false);
 
     useEffect(() => {

@@ -3,10 +3,6 @@ import { cn } from '@/lib/utils';
 import { itinBody, itinH2, itinRailOrange } from '@/config/theme';
 import { trekAbout } from '@/config/itinerary';
 
-/** About section — orange rail beside heading, full Figma copy.
- *  Mobile (done): intro + body visible, rest behind Read More.
- *  Desktop (Figma 1440): all five paragraphs visible — 16px/30 abyss
- *  opener, 16px/32 review-body paragraphs, 18px/32 bold highlight. */
 export default function TrekAbout() {
     const [expanded, setExpanded] = useState(false);
     const extra = expanded ? 'block' : 'hidden';
@@ -14,7 +10,7 @@ export default function TrekAbout() {
     return (
         <section
             aria-labelledby="trek-about-heading"
-            className="flex w-full flex-col gap-2 md:gap-4"
+            className="md:max-w-content-lg flex w-full flex-col gap-2 md:gap-4 xl:max-w-none justify-center items-center"
         >
             <div className="flex w-full items-stretch gap-2.5">
                 <span aria-hidden className={itinRailOrange} />

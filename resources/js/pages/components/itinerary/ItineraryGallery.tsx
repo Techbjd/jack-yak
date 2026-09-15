@@ -7,7 +7,8 @@ import CarouselDots from '../shared/CarouselDots';
 const frostedPill =
     'flex items-center gap-1.5 rounded-full bg-white/95 shadow-card backdrop-blur-sm';
 
-/** Photo gallery — mobile: hero + 3 thumbs; desktop (md+): 3-col mosaic
+/** Photo gallery — mobile + tablet: hero + 3 thumbs stack (roomier at
+ *  md via wider gaps + aspect-ratio tiles); desktop (lg+): 3-col mosaic
  *  (hero spans 2 rows, 2x2 cells right) with flow-layout overlay rows
  *  instead of Figma's absolute export positions */
 export default function ItineraryGallery() {
@@ -18,12 +19,13 @@ export default function ItineraryGallery() {
             aria-label="Trek photos"
             className="flex w-full flex-col gap-2 md:gap-3"
         >
-            {/* Mobile stack */}
-            <div className="relative w-full md:hidden">
+            {/* Mobile + tablet stack (lg:hidden keeps the roomy stacked
+                layout through md; the mosaic below takes over at lg) */}
+            <div className="relative w-full lg:hidden">
                 <img
                     src={IMAGES.itinerary.hero}
                     alt="Everest Base Camp trek panorama"
-                    className="h-itinerary-hero-h rounded-dest-image w-full object-cover"
+                    className="h-itinerary-hero-h rounded-dest-image w-full object-cover md:aspect-video md:h-auto"
                 />
                 <CarouselDots
                     count={5}
@@ -32,22 +34,23 @@ export default function ItineraryGallery() {
                     dotClassName="h-1.5 w-1.5"
                 />
             </div>
-            <div className="grid w-full grid-cols-3 gap-1.5 md:hidden">
+            <div className="grid w-full grid-cols-3 gap-1.5 md:gap-2.5 lg:hidden">
                 {IMAGES.itinerary.galleryThumbs.map((src, i) => (
                     <img
                         key={src}
                         src={src}
                         alt={`Trek gallery photo ${i + 1}`}
-                        className="h-itinerary-thumb-h rounded-immersive w-full object-cover"
+                        className="h-itinerary-thumb-h rounded-immersive w-full object-cover md:aspect-square md:h-auto"
                     />
                 ))}
             </div>
 
-            {/* Desktop mosaic (Figma 1440): wide hero tile left spanning
-                both rows, 2x2 cells right. Columns follow Figma's
-                704 | 348 | 348 widths; tiles are ~square so rows size
-                themselves — no fixed heights, no page absolute. */}
-            <div className="hidden w-full grid-cols-[2fr_1fr_1fr] grid-rows-2 gap-2.5 md:grid">
+            {/* Desktop mosaic (Figma 1440, lg+ only — cramped at md widths):
+                wide hero tile left spanning both rows, 2x2 cells right.
+                Columns follow Figma's 704 | 348 | 348 widths; tiles are
+                ~square so rows size themselves — no fixed heights,
+                no page absolute. */}
+            <div className="hidden w-full grid-cols-[2fr_1fr_1fr] grid-rows-2 gap-2.5 lg:grid">
                 <figure className="rounded-gallery-tile relative row-span-2 overflow-hidden">
                     <img
                         src={IMAGES.itinerary.hero}

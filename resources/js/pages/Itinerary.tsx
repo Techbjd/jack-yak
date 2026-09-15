@@ -23,12 +23,13 @@ export default function Itinerary() {
                 <div className="mt-2.5 w-full md:mt-5">
                     <GalleryFilterPills />
                 </div>
-                {/* About copy + sticky booking sidebar on desktop */}
-                <div className="mt-4.5 grid w-full grid-cols-1 gap-6 md:mt-10 md:grid-cols-[minmax(0,1fr)_360px] md:items-start md:gap-10">
+                {/* About copy + sticky booking sidebar on desktop (stacked
+                    full-width below xl, side-by-side from xl) */}
+                <div className="mt-4.5 grid w-full grid-cols-1 gap-6 md:mt-10 xl:grid-cols-[minmax(0,1fr)_360px] xl:items-start xl:gap-10">
                     <TrekAbout />
                     <div
                         id="booking"
-                        className="w-full scroll-mt-4 md:sticky md:top-6"
+                        className="w-full scroll-mt-4 xl:sticky xl:top-6"
                     >
                         <BookingCard />
                     </div>

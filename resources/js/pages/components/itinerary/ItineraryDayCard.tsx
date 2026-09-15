@@ -18,8 +18,11 @@ interface ItineraryDayCardProps {
 /**
  * Single day card — thumb + Day/place/subtitle + stay/meals meta.
  * Mobile (done): icons-only row pinned to the subtitle baseline.
- * Desktop (Figma 1440): middle text column flexes, right meta column
- * stacks Hotel over B•L•D with 27px outline icons (Figma x1239/y2491).
+ * Tablet (md): fluid full-width card, keeps desktop text/meta
+ * arrangement. Desktop (xl+, Figma 1440): same fluid card inside the
+ * 2-col grid (~580px columns) — no fixed width, so 1024–1280px never
+ * squeezes; middle text column flexes, right meta column stacks Hotel
+ * over B•L•D with 27px outline icons (Figma x1239/y2491).
  */
 export default function ItineraryDayCard({ day }: ItineraryDayCardProps) {
     return (

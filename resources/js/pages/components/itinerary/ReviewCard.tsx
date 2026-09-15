@@ -4,12 +4,15 @@ import { itinCard, itinH2, itinRailTeal, itinTitleBar } from '@/config/theme';
 import { trekReviews, type TrekReview } from '@/config/itinerary';
 
 /**
- * Single review card — mobile (done): compact stack, 6-thumb grid.
- * Desktop (reference screenshot): near-full-width peek card (~11/12, so
- * a sliver of the next card shows), 40px padding, 64px avatar, 20px
- * name/title, 16px country/date, 24px stars, grey meta with dark
- * underlined "Book this trek" link, 18px body, wrapping photo grid
- * of ~128px thumbs (8 per row).
+ * Single review card — mobile: peek card (~10/12, so a sliver of the
+ * next card shows) in a horizontal scroll row, 6-thumb grid.
+ * Tablet (md): same 11/12 peek ratio (a ~56px+ sliver stays visible),
+ * but roomier md:p-6 padding, stacked stars/title (row only fits at lg),
+ * and 96px thumbs (~5 per row instead of 3 ragged 128px ones).
+ * Desktop (lg reference screenshot): near-full-width peek card (~11/12),
+ * 40px padding, 64px avatar, 20px name/title, 16px country/date,
+ * 24px stars, grey meta with dark underlined "Book this trek" link,
+ * 18px body, wrapping photo grid of ~128px thumbs (8 per row).
  */
 function ReviewArticle({ review }: { review: TrekReview }) {
     return (
@@ -17,7 +20,7 @@ function ReviewArticle({ review }: { review: TrekReview }) {
             aria-label={`Review by ${review.name}`}
             className={cn(
                 itinCard,
-                'md:border-card-line flex w-full flex-col gap-1.5 p-4 md:w-11/12 md:shrink-0 md:gap-2 md:p-10',
+                'md:border-card-line flex w-10/12 shrink-0 flex-col gap-1.5 p-4 md:w-11/12 md:gap-2 md:p-6 lg:p-10',
             )}
         >
             <div className="flex w-full items-center gap-2.5 md:gap-4">
@@ -42,7 +45,7 @@ function ReviewArticle({ review }: { review: TrekReview }) {
                 </div>
             </div>
 
-            <div className="flex w-full flex-col gap-1.5 md:mt-4 md:flex-row md:items-center md:gap-3">
+            <div className="flex w-full flex-col gap-1.5 md:mt-4 lg:flex-row lg:items-center lg:gap-3">
                 <span
                     role="img"
                     aria-label="Rated 5 out of 5 stars"
@@ -108,7 +111,7 @@ function ReviewArticle({ review }: { review: TrekReview }) {
                         src={src}
                         alt={`${review.photosLabel} ${i + 1}`}
                         loading="lazy"
-                        className="h-32 w-32 shrink-0 rounded-2xl object-cover"
+                        className="h-24 w-24 shrink-0 rounded-2xl object-cover lg:h-32 lg:w-32"
                     />
                 ))}
             </div>
@@ -117,9 +120,9 @@ function ReviewArticle({ review }: { review: TrekReview }) {
 }
 
 /**
- * Reviews — teal rail heading + stacked mobile list / peek row desktop.
- * Each card spans ~11/12 of the row so a sliver of the next card shows;
- * adding entries to trekReviews later just works — the row scrolls.
+ * Reviews — teal rail heading + horizontal scroll row on all screens
+ * (mobile ~10/12 peek, desktop ~11/12 peek); adding entries to
+ * trekReviews later just works — the row scrolls.
  */
 export default function ReviewCard() {
     return (
@@ -140,7 +143,7 @@ export default function ReviewCard() {
                 </div>
                 <span aria-hidden className={itinTitleBar} />
             </div>
-            <div className="no-scrollbar grid w-full grid-cols-1 gap-4 overscroll-x-contain md:flex md:gap-6 md:overflow-x-auto md:pb-2">
+            <div className="no-scrollbar flex w-full gap-4 overflow-x-auto overscroll-x-contain md:gap-6 md:pb-2">
                 {trekReviews.map((review) => (
                     <ReviewArticle
                         key={`${review.name}-${review.country}`}

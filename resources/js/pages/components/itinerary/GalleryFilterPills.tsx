@@ -28,7 +28,7 @@ function FilterPill({
             type="button"
             aria-pressed={active}
             className={cn(
-                'flex h-8 cursor-pointer items-center justify-center gap-1 rounded-full border md:h-12 md:gap-2 md:px-5',
+                'flex h-8 shrink-0 cursor-pointer items-center justify-center gap-1 rounded-full border md:h-12 md:gap-2 md:px-5',
                 widthClass,
                 active
                     ? 'border-deep-teal bg-deep-teal text-white'
@@ -58,7 +58,7 @@ export default function GalleryFilterPills() {
         <div
             role="group"
             aria-label="Photo filters"
-            className="flex w-full items-center gap-1.5 md:gap-3"
+            className="no-scrollbar flex w-full items-center justify-start gap-1.5 overflow-x-auto md:justify-center md:gap-3"
         >
             <FilterPill
                 active

@@ -147,7 +147,6 @@ const twMerge = extendTailwindMerge({
                 'day-thumb-h',
                 'day-text-w',
                 'day-card-h',
-                'day-card-desktop-w',
                 'day-card-desktop-h',
                 'day-thumb-desktop-w',
                 'day-thumb-desktop-h',

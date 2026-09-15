@@ -375,7 +375,7 @@ export const itinCard =
  *  16px left padding puts the thumb at Figma x26; desktop uses a 4px
  *  inset (144 - 136) / 2 with a 16px thumb-to-text gap (Figma x779→x984). */
 export const itinDayCard =
-    'rounded-itinerary-card flex h-day-card-h shrink-0 snap-start items-center gap-3.5 bg-white p-2.5 pl-4 shadow-card md:h-day-card-desktop-h md:w-day-card-desktop-w md:max-w-full md:flex-1 md:snap-align-none md:gap-4 md:p-1 md:shadow-none md:ring-1 md:ring-line-soft';
+    'rounded-itinerary-card flex h-day-card-h shrink-0 snap-start items-center gap-3.5 bg-white p-2.5 pl-4 shadow-card md:h-auto md:min-h-day-card-desktop-h md:snap-align-none md:gap-4 md:p-1 md:shadow-none md:ring-1 md:ring-line-soft';
 
 /** Day thumbnail — 103x101 mobile, 15px radius; desktop 189x136, 26px radius */
 export const itinDayThumb =

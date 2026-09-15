@@ -91,9 +91,12 @@ export default function WeatherCard() {
     /** Mobile shows a copy of the elevation chart (the temperature plot
      *  is too cramped at 402px) with its own local m/ft toggle. */
     const [altUnit, setAltUnit] = useState<AltitudeUnit>('m');
-    /** Figma desktop plot is 1100px wide inside the 400px scroller —
-     *  track the md breakpoint so the chart gets a numeric pixel width
-     *  instead of a nested min-width div (single graph div structure). */
+    /** Desktop plot is 1100px wide inside the 1150px track card (the
+     *  section row fixes cards at w-graph-card-w from md up, so tablet
+     *  renders at full desktop width too) — track the md breakpoint so
+     *  the chart gets a numeric pixel width instead of a nested
+     *  min-width div (single graph div structure). Keep at md: the
+     *  switch follows the track width, not sibling sections. */
     const [isDesktop, setIsDesktop] = useState(false);
 
     useEffect(() => {

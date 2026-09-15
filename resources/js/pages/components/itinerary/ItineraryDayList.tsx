@@ -1,14 +1,17 @@
 import { itineraryDays } from '@/config/itinerary';
 import ItineraryDayCard from './ItineraryDayCard';
 
-/** Day list — mobile: snap-scroll panel; desktop: 2-col flow grid with a
- *  center timeline rail (Figma: 1px #D9D9D9 line + 42px white nodes,
- *  one per row) between the columns */
+/** Day list — mobile: snap-scroll panel; tablet/laptop (md–xl): single
+ *  full-width column of fluid cards, rail hidden; desktop (xl+): rows
+ *  of two fluid cards with a center timeline rail (Figma: 1px #D9D9D9
+ *  line + 42px white nodes, one per row). Rows (not columns) keep each
+ *  node glued to its row center in pure flow even when a card wraps to
+ *  two lines — no fixed-height coupling. */
 export default function ItineraryDayList() {
     const midpoint = Math.ceil(itineraryDays.length / 2);
     const leftColumn = itineraryDays.slice(0, midpoint);
     const rightColumn = itineraryDays.slice(midpoint);
-    const rowCount = Math.max(leftColumn.length, rightColumn.length);
+    const rows = leftColumn.map((left, i) => [left, rightColumn[i]] as const);
 
     return (
         <section
@@ -34,44 +37,54 @@ export default function ItineraryDayList() {
                 ))}
             </div>
 
-            {/* Desktop: two flow columns with a center timeline rail */}
+            {/* Tablet/laptop (md–xl): single full-width column of fluid
+                cards. Rail hidden — no center geometry fits one column. */}
             <div
                 role="list"
                 aria-label={`12-day plan, ${itineraryDays.length} days`}
-                className="hidden w-full items-stretch gap-6 md:flex"
+                className="hidden w-full flex-col gap-6 md:flex xl:hidden"
             >
-                <div className="flex min-w-0 flex-1 flex-col gap-6">
-                    {leftColumn.map((day) => (
-                        <div key={day.day} role="listitem">
-                            <ItineraryDayCard day={day} />
+                {itineraryDays.map((day) => (
+                    <div key={day.day} role="listitem">
+                        <ItineraryDayCard day={day} />
+                    </div>
+                ))}
+            </div>
+
+            {/* Desktop (xl+): one grid row per day-pair — left card,
+                rail node, right card. The rail line is rebuilt per row
+                (each middle cell carries its own segment) so segments
+                touch across rows into one continuous line, and every
+                node stays at its own row center whatever the card
+                heights are. Card padding (py-3) sets the 24px rhythm. */}
+            <div
+                role="list"
+                aria-label={`12-day plan, ${itineraryDays.length} days`}
+                className="hidden w-full flex-col xl:flex"
+            >
+                {rows.map(([left, right]) => (
+                    <div
+                        key={left.day}
+                        role="listitem"
+                        className="grid w-full grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-stretch gap-x-6"
+                    >
+                        <div className="min-w-0 py-3">
+                            <ItineraryDayCard day={left} />
                         </div>
-                    ))}
-                </div>
-                {/* Center rail — continuous gray line with one white node
-                    per row. Each slot matches the card height + column gap
-                    (h-day-card-desktop-h + gap-6), so nodes sit at row
-                    centers in pure flow, no absolute page positions. */}
-                <div
-                    aria-hidden
-                    className="relative flex shrink-0 flex-col gap-6 self-stretch"
-                >
-                    <span className="bg-bg-placeholder absolute inset-y-0 left-1/2 w-px -translate-x-1/2" />
-                    {Array.from({ length: rowCount }).map((_, i) => (
                         <div
-                            key={`rail-node-${i}`}
-                            className="h-day-card-desktop-h flex items-center justify-center"
+                            aria-hidden
+                            className="relative flex items-center justify-center"
                         >
-                            <span className="shadow-card size-10.5 rounded-full bg-white" />
+                            <span className="bg-bg-placeholder absolute inset-y-0 left-1/2 w-px -translate-x-1/2" />
+                            <span className="shadow-card relative size-10.5 shrink-0 rounded-full bg-white" />
                         </div>
-                    ))}
-                </div>
-                <div className="flex min-w-0 flex-1 flex-col gap-6">
-                    {rightColumn.map((day) => (
-                        <div key={day.day} role="listitem">
-                            <ItineraryDayCard day={day} />
+                        <div className="min-w-0 py-3">
+                            {right !== undefined && (
+                                <ItineraryDayCard day={right} />
+                            )}
                         </div>
-                    ))}
-                </div>
+                    </div>
+                ))}
             </div>
         </section>
     );
