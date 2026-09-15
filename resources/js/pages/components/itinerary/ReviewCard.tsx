@@ -4,17 +4,6 @@ import { trekReviews, type TrekReview } from '@/config/itinerary';
 import Stars from '../shared/Stars';
 import SectionHeading from './SectionHeading';
 
-/**
- * Single review card — mobile: peek card (~10/12, so a sliver of the
- * next card shows) in a horizontal scroll row, 6-thumb grid.
- * Tablet (md): same 11/12 peek ratio (a ~56px+ sliver stays visible),
- * but roomier md:p-6 padding, stacked stars/title (row only fits at lg),
- * and 96px thumbs (~5 per row instead of 3 ragged 128px ones).
- * Desktop (lg reference screenshot): near-full-width peek card (~11/12),
- * 40px padding, 64px avatar, 20px name/title, 16px country/date,
- * 24px stars, grey meta with dark underlined "Book this trek" link,
- * 18px body, wrapping photo grid of ~128px thumbs (8 per row).
- */
 function ReviewArticle({ review }: { review: TrekReview }) {
     return (
         <article
@@ -77,7 +66,7 @@ function ReviewArticle({ review }: { review: TrekReview }) {
                 {review.seeMore}
             </button>
 
-            {/* Mobile photo grid */}
+            {}
             <div
                 role="group"
                 aria-label={review.photosLabel}
@@ -89,12 +78,12 @@ function ReviewArticle({ review }: { review: TrekReview }) {
                         src={src}
                         alt={`${review.photosLabel} ${i + 1}`}
                         loading="lazy"
-                        className="h-12 w-full rounded-xl object-cover"
+                        className="aspect-square w-full rounded-xl object-cover"
                     />
                 ))}
             </div>
 
-            {/* Desktop wrapping photo grid (reference: 8 thumbs per row) */}
+            {}
             <div
                 role="group"
                 aria-label={review.photosLabel}
@@ -114,11 +103,6 @@ function ReviewArticle({ review }: { review: TrekReview }) {
     );
 }
 
-/**
- * Reviews — teal rail heading + horizontal scroll row on all screens
- * (mobile ~10/12 peek, desktop ~11/12 peek); adding entries to
- * trekReviews later just works — the row scrolls.
- */
 export default function ReviewCard() {
     return (
         <section

@@ -1,11 +1,3 @@
-// ============================================
-// Itinerary Page Data — Single Source of Truth
-// ============================================
-// Edit content here → all itinerary components update.
-// Image URLs come from @/config/images (IMAGES.itinerary registry).
-// Heading uses the corrected spelling "Itinerary" (Figma: "Itenary").
-// ============================================
-
 import { IMAGES } from './images';
 
 export interface ItineraryDay {
@@ -13,13 +5,10 @@ export interface ItineraryDay {
     place: string;
     subtitle: string;
     image: string;
-    /** Overnight stay label (Figma right column, e.g. "Hotel") */
     stay: string;
-    /** Meal plan label (Figma right column, e.g. "B • L • D") */
     meals: string;
 }
 
-/** 12-day Everest Base Camp trek plan */
 export const itineraryDays: ItineraryDay[] = [
     {
         day: 'Day 01',
@@ -119,9 +108,6 @@ export const itineraryDays: ItineraryDay[] = [
     },
 ];
 
-/** About section copy — full Figma desktop text (5 paragraphs).
- *  Mobile shows intro + body with the rest behind Read More;
- *  desktop shows everything. */
 export const trekAbout = {
     title: 'About the Everest Base Camp Trek',
     intro: 'Most people planning a trip to Nepal start with the same question: “Is Nepal really for me?”',
@@ -134,7 +120,6 @@ export const trekAbout = {
     readLess: 'Read Less',
 };
 
-/** Booking card data */
 export const trekBooking = {
     operator: 'Himalayan Adventure Treks',
     currencies: ['USD ($)', 'EUR (€)', 'GBP (£)'],
@@ -148,7 +133,6 @@ export const trekBooking = {
     whatsapp: 'Get Instant Response: +977-98******** (WhatsApp)',
 };
 
-/** Gallery filter pills */
 export const galleryFilters = {
     gallery: 'Trek gallery',
     galleryCount: 26,
@@ -158,7 +142,6 @@ export const galleryFilters = {
     videosCount: 3,
 };
 
-/** Desktop gallery mosaic tiles (flow grid: hero spans 2 rows + 4 cells) */
 export const galleryTiles = {
     viewAllPhotos: 'View all photos',
     travellerPhoto: 'Traveller photo',
@@ -167,7 +150,6 @@ export const galleryTiles = {
     watchVideos: 'Watch 3 traveller videos ›',
 };
 
-/** CTA banner below the day plan */
 export const trekCta = {
     title: 'Ready to take your journey to new heights?',
     subtitle: 'Let the Himalayas change you forever.',
@@ -175,7 +157,6 @@ export const trekCta = {
     image: IMAGES.itinerary.dayThumb,
 };
 
-/** Weather card (right of altitude profile on desktop) */
 export const trekWeather = {
     title: 'Weather on the Everest Base Camp Trek',
     dailyTab: 'Daily Temperature Variation',
@@ -185,9 +166,6 @@ export const trekWeather = {
     unitFahrenheit: 'Fahrenheit',
     prevSlide: 'Previous slide',
     nextSlide: 'Next slide',
-    /** Base daily profile for January (screenshot reference).
-     *  Day label + altitude in meters; min/max in °C at that stop.
-     *  Other months shift this profile by their average-temperature offset. */
     daily: [
         { day: 'Day 1', meters: 1300, min: 5, max: 19 },
         { day: 'Day 2', meters: 2651, min: -10, max: 11 },
@@ -218,13 +196,11 @@ export const trekWeather = {
     ],
 };
 
-/** One altitude stop — matches the backend trek-leg shape ({ place, meters }). */
 export interface AltitudeStop {
     place: string;
     meters: number;
 }
 
-/** Altitude profile stops (meters) — rendered as a live SVG area chart */
 export const altitudeProfile: {
     unitMeter: string;
     unitFeet: string;
@@ -251,7 +227,6 @@ export const altitudeProfile: {
     ],
 };
 
-/** Featured review */
 export const featuredReview = {
     name: 'Madeline Thomson',
     country: '· AUSTRALIA',
@@ -271,9 +246,7 @@ export interface TrekReview {
     country: string;
     date: string;
     title: string;
-    /** Non-link part of the meta line (Figma grey text) */
     metaPrefix: string;
-    /** Linked part of the meta line (Figma dark underlined "Book this trek") */
     metaLink: string;
     body: string;
     seeMore: string;
@@ -282,11 +255,6 @@ export interface TrekReview {
     photosLabel: string;
 }
 
-/**
- * Reviews row — desktop shows near-full-width peek cards (~11/12, a sliver
- * of the next card visible; Figma reference: single wide card, wrapping
- * photo grid). To add more later, just push entries here; the row scrolls.
- */
 export const trekReviews: TrekReview[] = [
     { ...featuredReview },
     {

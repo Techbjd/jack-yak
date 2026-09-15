@@ -1,10 +1,3 @@
-// ============================================
-// Review — form content
-// ============================================
-// Durations + activities reuse config/quiz.ts (single source).
-// Only review-specific lists live here.
-// ============================================
-
 export const reviewPlaces: string[] = [
     'Mount Everest',
     'Pokhara',
@@ -20,5 +13,4 @@ export const MAX_REVIEW_LENGTH = 1000;
 
 export const MAX_REVIEW_PHOTOS = 5;
 
-/** Number of stars in the GiveReview rating input (options are 1..N) */
 export const REVIEW_STAR_COUNT = 5;

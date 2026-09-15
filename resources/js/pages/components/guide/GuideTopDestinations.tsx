@@ -23,18 +23,16 @@ import ViewAllLink from '../shared/ViewAllLink';
 
 const DestinationCard = ({ dest }: { dest: GuideTopDestination }) => {
     return (
-        // Carousel widths are a deliberate responsive ramp, not drift:
-        // 117px base → 220px ≥ms → 260px ≥md (capped by max-w-dest-card).
-        <article className="basis-card-w ms:basis-55 max-w-dest-card mx-auto flex w-full shrink-0 grow snap-start flex-col items-center md:basis-65 lg:w-full lg:basis-auto">
-            {/* Image — 396:306 every breakpoint, 7px radius on md+ */}
-            <div className={destCardImage}>
+        <article className="basis-card-w ms:basis-55 max-w-dest-card mx-auto flex w-full shrink-0 grow snap-start flex-col items-center md:basis-65 lg:w-full lg:basis-auto bg-white">
+            {}
+            <div className={cn(destCardImage)}>
                 <img
                     src={dest.image}
                     alt={dest.name}
                     loading="lazy"
                     className="absolute inset-0 h-full w-full object-cover"
                 />
-                {/* Province badge — compact on mobile, 184×40 on md+ */}
+                {}
                 <span className={destCardBadge}>
                     <MapPin className="text-ink size-3 shrink-0 md:size-4" />
                     <span className={cn(destCardBadgeText)}>
@@ -43,7 +41,7 @@ const DestinationCard = ({ dest }: { dest: GuideTopDestination }) => {
                 </span>
             </div>
 
-            {/* Info panel — joined box on mobile, overlapping panel on md+ */}
+            {}
             <div className={destCardPanel}>
                 <h3 className={cn(destCardName)}>{dest.name}</h3>
                 <p className={cn(destCardTagline)}>{dest.subtitle}</p>
@@ -89,7 +87,7 @@ const GuideTopDestinations = () => {
     };
 
     return (
-        <section className={guideSectionShell}>
+        <section className='w-full'>
             <div className="max-w-container mx-auto flex w-full flex-col gap-4 px-6 py-6 md:gap-8 md:px-12 lg:px-24">
                 <div className="flex items-end justify-between gap-4">
                     <div className="flex flex-col gap-1">

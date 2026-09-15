@@ -1,14 +1,9 @@
 import { trekCta } from '@/config/itinerary';
 
-/**
- * CTA banner — mobile (done): dark split card, image top + text below.
- * Desktop (Figma 1440): white 158px card (radius 18), 268x119 thumb,
- * ink title/subtitle middle, 283x52 teal button right — flow flex row.
- */
 export default function TrekCtaBanner() {
     return (
         <section aria-label={trekCta.title} className="w-full">
-            {/* Mobile stack */}
+            {}
             <div className="bg-ink shadow-card flex w-full flex-col overflow-hidden rounded-2xl md:hidden">
                 <div className="relative h-44 w-full shrink-0 overflow-hidden">
                     <img
@@ -35,7 +30,7 @@ export default function TrekCtaBanner() {
                 </div>
             </div>
 
-            {/* Desktop white card */}
+            {}
             <div className="rounded-dest-panel shadow-card hidden w-full flex-col gap-6 bg-white p-6 md:flex xl:flex-row xl:items-center xl:gap-10 xl:py-5 xl:pr-30 xl:pl-11">
                 <img
                     src={trekCta.image}

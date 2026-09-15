@@ -304,9 +304,7 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                     <div className="flex items-center justify-between pt-1.5">
                         <span>
                             {errors.body && (
-                                <ModalFieldError>
-                                    {errors.body}
-                                </ModalFieldError>
+                                <ModalFieldError>{errors.body}</ModalFieldError>
                             )}
                         </span>
                         <span
@@ -554,9 +552,7 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                                 </span>
                             </label>
                             {agreedError && (
-                                <ModalFieldError>
-                                    {agreedError}
-                                </ModalFieldError>
+                                <ModalFieldError>{agreedError}</ModalFieldError>
                             )}
                         </div>
                         <div className="flex gap-3">

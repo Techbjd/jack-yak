@@ -6,8 +6,6 @@ interface SectionProps {
     className?: string;
 }
 
-/** Page-composition section wrapper — full-width shell shared by
- *  Home, Destination, About + Guide pages (single truth for `w-full`). */
 export default function Section({ children, className }: SectionProps) {
     return <div className={cn('w-full', className)}>{children}</div>;
 }

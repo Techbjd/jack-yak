@@ -9,7 +9,7 @@ export default function Quiz() {
         <>
             <Head title="Find Your Destination" />
             <main className="flex min-h-screen w-full flex-col bg-white lg:flex-row">
-                <div className="relative h-64 w-full shrink-0 overflow-hidden sm:h-72 lg:h-auto lg:min-h-screen lg:w-[398px]">
+                <div className="relative min-h-64 w-full shrink-0 overflow-hidden sm:min-h-72 lg:h-auto lg:min-h-screen lg:w-[398px]">
                     <img
                         src={IMAGES.destination.langtangMountain}
                         alt="Snow-covered Langtang peaks under a clear sky"

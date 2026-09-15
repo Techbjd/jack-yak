@@ -3,7 +3,6 @@ import { cn } from '@/lib/utils';
 import { itinBody, itinH2, itinRailOrange } from '@/config/theme';
 import { trekAbout } from '@/config/itinerary';
 
-/** Desktop paragraph treatment (type already comes from itinBody) */
 const desktopPara = 'md:leading-about-32 md:text-review-body md:block';
 
 export default function TrekAbout() {

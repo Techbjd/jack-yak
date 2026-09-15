@@ -5,7 +5,7 @@ import { guideSectionShell, planSteps } from '@/config/guide';
 
 const PlanTripSteps = () => {
     return (
-        <section className={guideSectionShell}>
+        <section className='w-full'>
             <div className="max-w-container ms:gap-8 ms:px-8 mx-auto flex w-full flex-col gap-4 px-6 py-6 md:px-12 lg:px-24">
                 <div className="ms:gap-2 flex flex-col gap-1">
                     <p

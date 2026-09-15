@@ -1,12 +1,6 @@
 import { clsx, type ClassValue } from 'clsx';
 import { extendTailwindMerge } from 'tailwind-merge';
 
-// Mirror of the custom tokens in resources/css/app.css (@theme).
-// tailwind-merge only knows default Tailwind utilities — without this,
-// our custom `text-*` sizes fall in the same bucket as `text-*` colors
-// and silently eat each other inside cn(), e.g.
-// cn('text-2xl-3xl', 'text-text-primary') → 'text-text-primary' (size lost).
-// Keep this list in sync with @theme when adding new tokens.
 const twMerge = extendTailwindMerge({
     extend: {
         theme: {
@@ -19,7 +13,6 @@ const twMerge = extendTailwindMerge({
                 'base-md',
                 'sm-md',
                 'md-lg',
-                'md-xl',
                 'lg-xl',
                 'xl-2xl',
                 '2xl-3xl',
@@ -30,19 +23,23 @@ const twMerge = extendTailwindMerge({
                 'section-xl',
                 'modal',
                 'journey',
-                'display-lg',
             ],
             leading: [
                 'hero',
                 'journey',
-                'display-lg',
                 'about-display',
                 'section-xl',
                 'about',
+                'display-tight',
+                'story-title',
+                'story-quote',
+                'quote',
+                'footer-link',
                 'card-meta',
                 'card-title',
                 'card-desktop',
                 'card-display',
+                'card-overlay',
                 'itinerary-19',
                 'itinerary-22',
                 'itinerary-23',
@@ -113,6 +110,7 @@ const twMerge = extendTailwindMerge({
                 'chart-fill',
                 'slate-mute',
                 'graph-title',
+                'bubble',
             ],
             radius: [
                 'card',
@@ -127,6 +125,7 @@ const twMerge = extendTailwindMerge({
                 'itinerary-thumb',
                 'itinerary-cta',
                 'gallery-tile',
+                'auth',
             ],
             blur: ['hero-sm', 'hero-lg'],
             shadow: ['card'],
@@ -136,11 +135,9 @@ const twMerge = extendTailwindMerge({
                 'logo',
                 'logo-w',
                 'sidebar',
-                'hamburger',
+                'user-hero-h',
                 'hero-line',
                 'dest-card-w',
-                'dest-card-h',
-                'feat-card-h',
                 'itinerary-hero-h',
                 'itinerary-thumb-h',
                 'day-thumb-w',
@@ -155,6 +152,7 @@ const twMerge = extendTailwindMerge({
                 'cta-button-w',
                 'graph-h',
                 'graph-card-w',
+                'carousel-dot',
             ],
         },
     },

@@ -10,11 +10,11 @@ import GiveReview from '../review/GiveReview';
 const TravelStories = () => {
     const [reviewOpen, setReviewOpen] = useState(false);
     return (
-        <section className={guideSectionShell}>
+        <section className='w-full'>
             <div className="max-w-container mx-auto w-full px-6 pb-8 md:px-12 md:pb-12 lg:px-24">
                 <figure className="rounded-card-sm bg-surface-warm shadow-card md:rounded-image p-3 md:p-10">
                     <div className="flex items-start gap-3 md:items-center md:gap-8">
-                        <div className="md:max-w-content-sm flex w-[38%] shrink-0 flex-col gap-1.5 md:w-auto md:gap-4">
+                        <div className="md:max-w-content-sm flex min-w-0 shrink-0 basis-[38%] flex-col gap-1.5 md:w-auto md:basis-auto md:gap-4">
                             <p
                                 className={cn(
                                     fontPrimary,
@@ -26,7 +26,7 @@ const TravelStories = () => {
                             <h2
                                 className={cn(
                                     fontPrimary,
-                                    'text-base-md text-text-primary md:text-3xl-4xl leading-[116.56%] font-bold tracking-[0.03em] md:leading-tight md:tracking-wide',
+                                    'text-base-md text-text-primary md:text-3xl-4xl leading-story-title tracking-card font-bold md:leading-tight md:tracking-wide',
                                 )}
                             >
                                 What Travelers Love About Nepal
@@ -48,7 +48,7 @@ const TravelStories = () => {
                                 <blockquote
                                     className={cn(
                                         fontQuote,
-                                        'text-xs-sm text-ink md:font-manrope md:text-xl-2xl leading-[169.73%] font-normal md:leading-relaxed',
+                                        'text-xs-sm text-ink md:font-manrope md:text-xl-2xl leading-story-quote font-normal md:leading-relaxed',
                                     )}
                                 >
                                     Watching the sunrise over the Himalayas from
@@ -63,7 +63,7 @@ const TravelStories = () => {
                                         src={IMAGES.about.travelerAvatar}
                                         alt="Ken San"
                                         loading="lazy"
-                                        className="bg-bg-placeholder text-2xs text-text-primary md:shadow-card size-3.75 overflow-hidden rounded-full object-cover object-top drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)] md:h-16 md:w-16 md:drop-shadow-none"
+                                        className="bg-bg-placeholder text-2xs text-text-primary md:shadow-card shadow-card size-3.75 overflow-hidden rounded-full object-cover object-top md:h-16 md:w-16 md:drop-shadow-none"
                                     />
                                     <span className="flex flex-col leading-none md:gap-1">
                                         <span
@@ -87,7 +87,7 @@ const TravelStories = () => {
 
                                 <CarouselDots
                                     className="gap-1 md:order-2 md:gap-2"
-                                    dotClassName="size-[2.64px] md:size-2.5"
+                                    dotClassName="size-carousel-dot md:size-2.5"
                                 />
                             </div>
                             <div className="flex justify-center pt-2 md:justify-start md:pt-4">

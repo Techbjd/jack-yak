@@ -1,11 +1,3 @@
-// ============================================
-// Quiz — Destination-finder form content
-// ============================================
-// Dropdown choices are sensible defaults — edit freely or replace with
-// backend data later.
-// Components stay pure UI: they map over these arrays.
-// ============================================
-
 export interface QuizSelectQuestion {
     id: 'experience' | 'companion' | 'duration';
     question: string;

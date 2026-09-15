@@ -13,9 +13,6 @@ interface FilterPillProps {
     widthClass: string;
 }
 
-/** Single gallery filter pill — Figma desktop: teal filled when active
- *  (white-translucent count overlay), white with #E2E8F0 border otherwise
- *  (dark-translucent count overlay). */
 function FilterPill({
     active = false,
     icon: Icon,
@@ -28,7 +25,7 @@ function FilterPill({
             type="button"
             aria-pressed={active}
             className={cn(
-                'flex h-8 shrink-0 cursor-pointer items-center justify-center gap-1 rounded-full border md:h-12 md:gap-2 md:px-5',
+                'flex h-8 shrink-0 cursor-pointer items-center justify-center gap-1 rounded-full border px-3 md:h-12 md:gap-2 md:px-5',
                 widthClass,
                 active
                     ? 'border-deep-teal bg-deep-teal text-white'
@@ -52,7 +49,6 @@ function FilterPill({
     );
 }
 
-/** Trek gallery / Traveller photos / Videos filter row */
 export default function GalleryFilterPills() {
     return (
         <div
@@ -65,19 +61,19 @@ export default function GalleryFilterPills() {
                 icon={Image}
                 label={galleryFilters.gallery}
                 count={galleryFilters.galleryCount}
-                widthClass="w-31 md:w-auto"
+                widthClass="w-auto md:w-auto"
             />
             <FilterPill
                 icon={Users}
                 label={galleryFilters.photos}
                 count={galleryFilters.photosCount}
-                widthClass="w-36.75 md:w-auto"
+                widthClass="w-auto md:w-auto"
             />
             <FilterPill
                 icon={SquarePlay}
                 label={galleryFilters.videos}
                 count={galleryFilters.videosCount}
-                widthClass="w-24.75 md:w-auto"
+                widthClass="w-auto md:w-auto"
             />
         </div>
     );

@@ -4,7 +4,7 @@ import { guideSectionShell, trustItems } from '@/config/guide';
 
 const TrustStrip = () => {
     return (
-        <section className={guideSectionShell}>
+        <section className='w-full'>
             <div className="max-w-container mx-auto w-full px-6 md:px-12 lg:px-24">
                 <div className="border-bg-placeholder grid grid-cols-3 gap-x-4 gap-y-6 border-t py-6 md:grid-cols-6 md:gap-0 md:py-0">
                     {trustItems.map(({ label, image }, i) => (

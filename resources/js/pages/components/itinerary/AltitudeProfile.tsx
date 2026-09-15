@@ -14,22 +14,15 @@ import useDesktop from './useDesktop';
 
 interface AltitudeProfileProps {
     title: string;
-    /** Trek stops — omit for config defaults; pass backend legs later
-     *  (e.g. <AltitudeProfile title={t} stops={apiLegs} />). */
     stops?: AltitudeStop[];
 }
 
-/** Altitude profile — Figma 16px rail heading, working unit pills, live data-driven chart */
 export default function AltitudeProfile({
     title,
     stops,
 }: AltitudeProfileProps) {
     const [unit, setUnit] = useState<AltitudeUnit>('m');
     const chartRef = useRef<HTMLDivElement>(null);
-    /** Figma desktop chart is 400px tall (240 mobile) — track the md
-     *  breakpoint so the label math matches the rendered height.
-     *  Keep at md: the section track is w-graph-card-w from md up,
-     *  so tablet renders at full desktop width. */
     const isDesktop = useDesktop();
 
     const downloadSvg = (): void => {
@@ -76,7 +69,7 @@ export default function AltitudeProfile({
                         onClick={() => setUnit('m')}
                         className={pill(
                             unit === 'm',
-                            'h-6.75 w-15.25 cursor-pointer',
+                            'h-6.75 w-auto cursor-pointer px-3',
                         )}
                     >
                         {altitudeProfile.unitMeter}
@@ -87,7 +80,7 @@ export default function AltitudeProfile({
                         onClick={() => setUnit('ft')}
                         className={pill(
                             unit === 'ft',
-                            'h-6.5 w-11.75 cursor-pointer',
+                            'h-6.5 w-auto cursor-pointer px-3',
                         )}
                     >
                         {altitudeProfile.unitFeet}
@@ -106,7 +99,7 @@ export default function AltitudeProfile({
                         </span>
                     </button>
                 </div>
-                {/* Figma desktop chart is 400px tall (240 mobile) */}
+                {}
                 <div ref={chartRef} className="md:h-graph-h h-60 w-full">
                     <AltitudeChart
                         unit={unit}

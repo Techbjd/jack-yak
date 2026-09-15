@@ -24,7 +24,6 @@ export interface FooterColumnData {
     links: string[];
 }
 
-/** Footer link columns (used by shared/Footer, mobile + desktop) */
 export const footerColumns: FooterColumnData[] = [
     {
         title: 'Explore',

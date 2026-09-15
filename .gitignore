@@ -30,6 +30,8 @@ yarn-error.log
 /.for.zip
 SKILL.md
 skill.md
+# Local-only frontend handbook (conventions doc, not for fresh clones)
+/docs
 # Agent skill docs (auto-generated, local only) — all markdown inside any skills folder
 **/skills/*.md
 **/skills/**/*.md

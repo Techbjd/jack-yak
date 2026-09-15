@@ -39,7 +39,6 @@ const toUnit = (celsius: number, unit: Unit): number =>
 
 const unitSuffix = (unit: Unit): string => (unit === 'c' ? '° C' : '° F');
 
-/** Blue Min/Max bubble above each dot (matches Figma screenshot) */
 function WeatherTooltip(props: {
     active?: boolean;
     payload?: Array<{ payload: ChartRow }>;
@@ -51,7 +50,7 @@ function WeatherTooltip(props: {
         return null;
     }
     return (
-        <div className="font-manrope shadow-card rounded-md bg-[#29a9e1] px-2.5 py-1.5 text-xs leading-5 font-semibold whitespace-nowrap text-white">
+        <div className="font-manrope shadow-card bg-bubble rounded-md px-2.5 py-1.5 text-xs leading-5 font-semibold whitespace-nowrap text-white">
             <p>
                 Min: {toUnit(row.min, unit)}
                 {unitSuffix(unit)}
@@ -64,7 +63,6 @@ function WeatherTooltip(props: {
     );
 }
 
-/** Angled day/altitude tick under each dot (matches Figma screenshot) */
 function DayTick(props: {
     x?: number;
     y?: number;
@@ -85,28 +83,17 @@ function DayTick(props: {
     );
 }
 
-/** Weather card — pill tabs + month heading + daily/monthly line chart (flow layout) */
 export default function WeatherCard() {
     const [tab, setTab] = useState<Tab>('daily');
     const [unit, setUnit] = useState<Unit>('c');
     const [monthIndex, setMonthIndex] = useState(0);
-    /** Mobile shows a copy of the elevation chart (the temperature plot
-     *  is too cramped at 402px) with its own local m/ft toggle. */
     const [altUnit, setAltUnit] = useState<AltitudeUnit>('m');
-    /** Desktop plot is 1100px wide inside the 1150px track card (the
-     *  section row fixes cards at w-graph-card-w from md up, so tablet
-     *  renders at full desktop width too) — track the md breakpoint so
-     *  the chart gets a numeric pixel width instead of a nested
-     *  min-width div (single graph div structure). Keep at md: the
-     *  switch follows the track width, not sibling sections. */
     const isDesktop = useDesktop();
 
     const count = trekWeather.months.length;
     const prev = (): void => setMonthIndex((i) => (i - 1 + count) % count);
     const next = (): void => setMonthIndex((i) => (i + 1) % count);
 
-    /** January is the base daily profile; other months shift it by their
-     *  average-temperature delta so the heading month visibly moves the line. */
     const dailyRows: ChartRow[] = useMemo(() => {
         const avg = (m: { high: number; low: number }): number =>
             (m.high + m.low) / 2;
@@ -196,7 +183,7 @@ export default function WeatherCard() {
                 <div className="bg-line-soft h-px w-full" />
 
                 <div className="hidden w-full flex-wrap items-center gap-2 md:flex">
-                    <h3 className="font-manrope text-lg-xl text-ink md:text-md-xl md:text-graph-title md:tracking-review font-medium">
+                    <h3 className="font-manrope text-lg-xl text-ink md:text-about-highlight md:text-graph-title md:tracking-review font-medium">
                         {heading}
                     </h3>
                     <span className="ml-auto flex items-center gap-2">
@@ -222,12 +209,7 @@ export default function WeatherCard() {
                     </span>
                 </div>
 
-                {/* Single graph div (Figma Container): 400px tall on desktop,
-                    plot renders full-size with no inner scroller — the whole
-                    card scrolls in the section snap row instead. Square
-                    prev/next buttons overlay bottom-right; mobile keeps the
-                    full-width fixed chart with no buttons. */}
-                <div className="md:h-graph-h relative hidden h-[300px] w-full md:block">
+                <div className="md:h-graph-h relative hidden h-75 w-full md:block">
                     <ResponsiveContainer
                         width={isDesktop ? 1100 : '100%'}
                         height="100%"
@@ -319,9 +301,6 @@ export default function WeatherCard() {
                         </span>
                     )}
                 </div>
-                {/* Mobile-only elevation copy — same AltitudeChart as the
-                    altitude card (single graph div, no new logic). Desktop
-                    keeps the temperature chart above. */}
                 <div className="flex w-full flex-col gap-2 md:hidden">
                     <div className="flex w-full flex-wrap items-center gap-2">
                         <span className="font-manrope text-xs-sm tracking-itinerary-label text-pale font-semibold uppercase">

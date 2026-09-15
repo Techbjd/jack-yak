@@ -29,27 +29,6 @@ export default function SavedCard() {
         usePage<SavedPageProps>().props;
 
     const rows = [
-        // {
-        //     id: 'availability',
-        //     label: 'Availability requests',
-        //     count: stats?.availabilityRequests ?? 0,
-        //     href: '/destinations',
-        //     Icon: CalendarCheck,
-        // },
-        // {
-        //     id: 'reviews',
-        //     label: 'My reviews',
-        //     count: stats?.reviews ?? 0,
-        //     href: '/guide',
-        //     Icon: Star,
-        // },
-        // {
-        //     id: 'quiz',
-        //     label: 'Trip finder submissions',
-        //     count: stats?.quizSubmissions ?? 0,
-        //     href: '/form',
-        //     Icon: Compass,
-        // },
         {
             id: 'destinations',
             label: 'Saved Destinations',

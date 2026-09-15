@@ -1,10 +1,3 @@
-// ============================================
-// About — page content
-// ============================================
-// Copy lives here so components stay pure UI.
-// Backend can replace these arrays later without touching components.
-// ============================================
-
 export interface AboutPillar {
     title: string;
     body: string;

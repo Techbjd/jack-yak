@@ -1,37 +1,3 @@
-// ============================================
-// Config — Single Import Entry (barrel)
-// ============================================
-// Import everything content-related from ONE place:
-//
-//   import { popularDestinations, aboutPillars } from '@/config';
-//
-// This file only RE-EXPORTS. It changes no runtime behaviour.
-// The real values still live in the files listed below —
-// edit the source file, never this barrel.
-// ============================================
-//
-// WHAT TO EDIT (safe for content/design teammates):
-//   ./destination  → destination cards, tabs, view-all listing,
-//                    home top strip, guide top carousel
-//   ./guide        → guide page: explore cards, plan steps, trust strip
-//   ./home         → home page: about-jackyak info blocks
-//   ./about        → about page copy (pillars, story, newsletter)
-//   ./quiz         → quiz questions + options
-//   ./review       → review places, photo/length limits
-//   ./user         → user profile placeholder copy + counts
-//   ./navigation   → header / mobile nav items
-//
-// DO NOT EDIT for content changes (design system / assets):
-//   ./images       → asset URL registry (moving a file? edit here only)
-//   ./colors       → palette + useColors() hook
-//   ./theme        → reusable Tailwind class strings
-//
-// Backend note: these are frontend-owned static defaults. When the
-// backend starts sending the same shapes via Inertia props (see
-// `@/types/page-props`), components will prefer props and fall back
-// to these constants — so keep the SHAPES in sync, not the values.
-// ============================================
-
 export {
     popularDestinations,
     featuredTabs,

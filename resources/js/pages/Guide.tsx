@@ -11,7 +11,7 @@ export default function Guide() {
     return (
         <AppLayout
             title="guide"
-            shellClassName="bg-surface-warm"
+            shellClassName="bg-white"
             header={<Header tone="onLight" />}
         >
             <Section>

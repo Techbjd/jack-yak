@@ -47,7 +47,7 @@ export default function PopularDestinations() {
                             <img
                                 className={cn(
                                     imagePlaceholder,
-                                    'h-dest-card-h rounded-dest-card w-full object-cover',
+                                    'rounded-dest-card aspect-[109/192] h-auto w-full object-cover',
                                 )}
                                 src={dest.image}
                                 alt={dest.name}

@@ -4,11 +4,9 @@ import { IMAGES } from '@/config/images';
 import { galleryTiles } from '@/config/itinerary';
 import CarouselDots from '../shared/CarouselDots';
 
-/** White frosted pill pinned to a tile corner (Figma desktop mosaic) */
 const frostedPill =
     'flex items-center gap-1.5 rounded-full bg-white/95 shadow-card backdrop-blur-sm';
 
-/** Top-left badge on traveller-photo cells (Figma desktop mosaic) */
 function TravellerBadge() {
     return (
         <span
@@ -22,10 +20,6 @@ function TravellerBadge() {
     );
 }
 
-/** Photo gallery — mobile + tablet: hero + 3 thumbs stack (roomier at
- *  md via wider gaps + aspect-ratio tiles); desktop (lg+): 3-col mosaic
- *  (hero spans 2 rows, 2x2 cells right) with flow-layout overlay rows
- *  instead of Figma's absolute export positions */
 export default function ItineraryGallery() {
     const [cellA, cellB, cellC] = IMAGES.itinerary.galleryThumbs;
 
@@ -34,8 +28,6 @@ export default function ItineraryGallery() {
             aria-label="Trek photos"
             className="flex w-full flex-col gap-2 md:gap-3"
         >
-            {/* Mobile + tablet stack (lg:hidden keeps the roomy stacked
-                layout through md; the mosaic below takes over at lg) */}
             <div className="relative w-full lg:hidden">
                 <img
                     src={IMAGES.itinerary.hero}
@@ -60,11 +52,6 @@ export default function ItineraryGallery() {
                 ))}
             </div>
 
-            {/* Desktop mosaic (Figma 1440, lg+ only — cramped at md widths):
-                wide hero tile left spanning both rows, 2x2 cells right.
-                Columns follow Figma's 704 | 348 | 348 widths; tiles are
-                ~square so rows size themselves — no fixed heights,
-                no page absolute. */}
             <div className="hidden w-full grid-cols-[2fr_1fr_1fr] grid-rows-2 gap-2.5 lg:grid">
                 <figure className="rounded-gallery-tile relative row-span-2 overflow-hidden">
                     <img

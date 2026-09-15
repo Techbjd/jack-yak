@@ -4,12 +4,9 @@ import { itinAltTitle, itinRailTeal, itinTitleBar } from '@/config/theme';
 interface SectionHeadingProps {
     title: string;
     id?: string;
-    /** Override the h2 classes (e.g. Reviews tints it at md) */
     titleClassName?: string;
 }
 
-/** Itinerary section heading — teal rail + title + desktop underline bar.
- *  Shared by the altitude, weather + reviews sections (single truth). */
 export default function SectionHeading({
     title,
     id,

@@ -13,13 +13,10 @@
     --font-poppins: 'Poppins', ui-sans-serif, system-ui, sans-serif;
     --font-roboto: 'Roboto', ui-sans-serif, system-ui, sans-serif;
 
-    /* ── Custom breakpoint: xs ≥ 400px (compact layouts below 400px) ── */
     --breakpoint-xs: 25rem;
 
-    /* ── Custom breakpoint: ms ≥ 600px (mid-small: steps up from mobile sizing) ── */
     --breakpoint-ms: 37.5rem;
 
-    /* ── Brand colors ── */
     --color-navy: #0e1b2b;
     --color-navy-light: #253a55;
     --color-navy-gradient: #5180bb;
@@ -27,18 +24,14 @@
     --color-orange: #ff7a00;
     --color-blue-icon: #60a5fa;
 
-    /* ── Text colors ── */
     --color-text-primary: #334155;
     --color-text-white: #ffffff;
 
-    /* ── Background colors ── */
     --color-bg-cream: #f7f2ee;
     --color-bg-warm: #f9f4f0;
     --color-bg-placeholder: #d9d9d9;
     --color-progress: #4b5563;
 
-    /* ── Semantic aliases (part-named, edit these to retheme a part) ── */
-    /* Start as copies of the primitives above — diverge freely. */
     --color-brand: #0e1b2b;
     --color-ink: #253a55;
     --color-cta: #2d8a8a;
@@ -62,18 +55,15 @@
     --color-subtle: #858d99;
     --color-haze: #989ead;
 
-    /* ── Border radius ── */
     --radius-card: 5px;
     --radius-image: 17px;
 
-    /* ── Font sizes (design tokens) ── */
     --text-2xs: 8px;
     --text-xs-sm: 10px;
     --text-sm-base: 13px;
     --text-base-md: 14px;
     --text-sm-md: 15px;
     --text-md-lg: 16px;
-    --text-md-xl: 18px;
     --text-lg-xl: 20px;
     --text-xl-2xl: 24px;
     --text-2xl-3xl: 32px;
@@ -81,49 +71,28 @@
     --text-hero: 96px;
     --leading-hero: 101px;
 
-    /* ── Max widths (content containers) ── */
-    /* NOTE: Tailwind v4 max-width utilities read --container-*, NOT --max-w-* */
     --container-content-sm: 300px;
-    --container-content: 342px;
     --container-content-md: 575px;
     --container-content-lg: 605px;
     --container-map: 900px;
-    --container-quote: 1011px;
-    --container-page: 1200px;
     --container-container: 1440px;
 
-    /* ── Spacing (named dimensions) ── */
     --spacing-card-w: 117px;
     --spacing-card-h: 97px;
     --spacing-logo: 91px;
     --spacing-logo-w: 91.84px;
     --spacing-sidebar: 183px;
-    --spacing-hamburger: 15px;
+    --spacing-user-hero-h: 1000px;
+    --spacing-carousel-dot: 2.64px;
 
-    /* ── Border widths ── */
     --border-width-hero-line: 3px;
 
-    /* ── Shadows ── */
     --shadow-card: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
-    /* ── Hero specific tokens ── */
     --spacing-hero-line: 3px;
     --blur-hero-sm: 70px;
     --blur-hero-lg: 100.9px;
 
-    /* ── Hamburger tokens ── */
-    --hamburger-height: 10px;
-    --hamburger-gap: 4px;
-    --hamburger-stripe: 1.5px;
-
-    /* ── Sidebar tokens ── */
-    --sidebar-logo-top: 67px;
-    --sidebar-nav-top: 140px;
-    --sidebar-logo-left: 20px;
-
-    /* ── Destination card pattern (view-all + guide share one design) ── */
-    /* NOTE: image ratio is identical at every breakpoint — a single token
-       keeps mobile/desktop from drifting apart. */
     --container-dest-card: 396px;
     --aspect-dest-card: 396 / 306;
     --radius-dest-image: 7px;
@@ -133,12 +102,11 @@
     --leading-card-title: 14px;
     --leading-card-desktop: 22px;
     --leading-card-display: 33px;
+    --leading-card-overlay: 25px;
     --tracking-card: 0.03em;
 
-    /* Section (shared with home TopDestination) */
     --container-dest-title: 342px;
 
-    /* ── Destination page tokens (mobile-first, team-shared) ── */
     --font-display: 'EB Garamond', Georgia, serif;
     --color-ember: #ff5728;
     --text-xs-md: 12px;
@@ -150,19 +118,19 @@
     --text-modal: 40px;
     --leading-section-xl: 82px;
     --leading-about: 49px;
+    --leading-display-tight: 1.05;
+    --leading-story-title: 1.1656;
+    --leading-story-quote: 1.6973;
+    --leading-quote: 1.3;
+    --leading-footer-link: 2.56;
     --text-journey: 60px;
     --leading-journey: 82px;
-    --text-display-lg: 250px;
-    --leading-display-lg: 326px;
-    --container-content-xl: 733px;
     --radius-dest-card: 13px;
     --radius-card-sm: 7px;
+    --radius-auth: 9px;
     --spacing-dest-card-w: 109px;
-    --spacing-dest-card-h: 192px;
-    --spacing-feat-card-h: 140px;
     --radius-immersive: 10px;
 
-    /* ── Itinerary page tokens (mobile 402px Figma, Manrope throughout) ── */
     --color-abyss: #243044;
     --color-slate-text: #475569;
     --color-pale: #94a3b8;
@@ -183,6 +151,7 @@
     --color-review-body: #3f4b5e;
     --color-chart-line: #00aeef;
     --color-chart-fill: #d7eefa;
+    --color-bubble: #29a9e1;
     --color-slate-mute: #64748b;
     --color-graph-title: #30393d;
     --tracking-price: -1.08px;
@@ -196,23 +165,14 @@
     --spacing-day-thumb-h: 101px;
     --spacing-day-text-w: 145px;
     --spacing-day-card-h: 127px;
-    /* ── Itinerary desktop (1440px Figma, flow grid, no page absolute) ── */
-    /* NOTE: desktop day cards are fluid (grid columns govern width) —
-       no fixed width token, so 1024–1280px never squeezes. */
     --spacing-day-card-desktop-h: 144px;
-    /* ── CTA banner desktop (1440px Figma: white 158px card, 268x119 thumb, 283px button) ── */
     --spacing-cta-thumb-w: 268px;
     --spacing-cta-thumb-h: 119px;
     --spacing-cta-button-w: 283px;
     --spacing-day-thumb-desktop-w: 189px;
     --spacing-day-thumb-desktop-h: 136px;
     --spacing-graph-h: 400px;
-    /* Wide graph cards scroll as whole units in a snap row (no inner
-       scrollers): 1150px fits the 1100px desktop plot + 2x24 card padding. */
     --spacing-graph-card-w: 1150px;
-    /* NOTE: the 1100px desktop plot width lives as a numeric
-       ResponsiveContainer prop in WeatherCard.tsx (single graph div) —
-       no spacing token needed for a one-off JS value. */
     --leading-itinerary-19: 19px;
     --leading-itinerary-22: 22px;
     --leading-itinerary-23: 23px;
@@ -238,10 +198,6 @@
     }
 }
 
-/* ===== Global overflow-prevention reset ===== */
-/* NOTE: must live in @layer base — unlayered author CSS beats ALL
-   layered utilities (h-12, w-full, …) regardless of specificity. */
-
 @layer base {
     *,
     *::before,
@@ -254,8 +210,8 @@
         width: 100%;
         margin: 0;
         padding: 0;
-        overflow-x: clip; /* optional dev safety net — remove once you trust the layout */
-        scrollbar-width: none; /* hide the page scrollbar; wheel/touch/keyboard scroll still works */
+        overflow-x: clip;
+        scrollbar-width: none;
         -ms-overflow-style: none;
     }
 
@@ -272,7 +228,6 @@
         display: block;
     }
 
-    /* Prevent flex/grid children from refusing to shrink below content width */
     .flex > *,
     .grid > * {
         min-width: 0;
