@@ -5,7 +5,6 @@ import { IMAGES } from '@/config/images';
 import { footerColumns } from '@/config/navigation';
 import { cn } from '@/lib/utils';
 
-/** Footer logo image — dedupes the contain-fit logo pattern (banner + mobile + desktop) */
 export const footerLogoImage = 'h-full w-full object-contain';
 
 interface SocialIconProps {
@@ -51,7 +50,7 @@ const Footer: React.FC = () => {
                         <p
                             className={cn(
                                 fontPrimary,
-                                'text-xs-sm leading-[1.05] font-normal text-white',
+                                'text-xs-sm leading-display-tight font-normal text-white',
                             )}
                         >
                             Helping travelers explore Nepal with trusted
@@ -108,7 +107,7 @@ const Footer: React.FC = () => {
                         <p
                             className={cn(
                                 fontPrimary,
-                                'text-sm-base md:text-md-lg leading-[1.05] font-normal text-white',
+                                'text-sm-base md:text-md-lg leading-display-tight font-normal text-white',
                             )}
                         >
                             Helping travelers explore Nepal with trusted
@@ -142,7 +141,7 @@ const Footer: React.FC = () => {
                                                 href="#"
                                                 className={cn(
                                                     fontPrimary,
-                                                    'text-base-md leading-[2.56] font-medium text-white/80 transition-colors outline-none hover:text-white focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-white',
+                                                    'text-base-md leading-footer-link font-medium text-white/80 transition-colors outline-none hover:text-white focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-white',
                                                 )}
                                             >
                                                 {link}

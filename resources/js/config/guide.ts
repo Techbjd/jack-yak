@@ -1,14 +1,3 @@
-// ============================================
-// Guide — page content
-// ============================================
-// Copy + card data live here so components stay pure UI.
-// Backend can replace these arrays later without touching components.
-//
-// NOTE: exploreCards / planSteps reference Lucide icon components
-// directly (same imports the components used before — values moved,
-// nothing added). If a card needs no icon, use image + imageAlt instead.
-// ============================================
-
 import type { LucideIcon } from 'lucide-react';
 import { ClipboardList, Compass, Map, Mountain } from 'lucide-react';
 import { IMAGES } from './images';
@@ -18,10 +7,8 @@ export interface TrustItem {
     image: string;
 }
 
-/** Guide section shell — warm background, full-width block (one per section) */
 export const guideSectionShell = 'bg-surface-warm w-full';
 
-/** Trust strip — partner/category badges under the stories section */
 export const trustItems: TrustItem[] = [
     {
         label: 'UNESCO Heritage Sites',
@@ -42,7 +29,6 @@ export interface ExploreCard {
     imageAlt?: string;
 }
 
-/** Why-explore cards — 2 icon cards + 2 image cards, order matters */
 export const exploreCards: ExploreCard[] = [
     {
         title: 'Mountain Guides',
@@ -79,7 +65,6 @@ export interface PlanStep {
     Icon: LucideIcon;
 }
 
-/** Plan-trip steps — numbered 01–03, order matters */
 export const planSteps: PlanStep[] = [
     {
         index: '01',
@@ -103,7 +88,3 @@ export const planSteps: PlanStep[] = [
         Icon: Compass,
     },
 ];
-
-// NOTE: guide top-destination data lives in `@/config/destination`
-// (`guideTopDestinations`, re-exported via `@/config`) — kept single-source
-// with the barrel + page-props contract. Do not add a second copy here.

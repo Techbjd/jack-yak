@@ -1,11 +1,3 @@
-// ============================================
-// Images — Single Asset Registry
-// ============================================
-// Every image URL in the app lives here (public/images/**, kebab-case,
-// grouped by feature). Components import IMAGES instead of hardcoding
-// strings → moving or renaming an asset means editing one line.
-// ============================================
-
 export const IMAGES = {
     logo: {
         jackYak: '/images/logo/jack-yak-logo.png',
@@ -61,12 +53,6 @@ export const IMAGES = {
         everestPrayerFlags: '/images/featured/everest-prayer-flags.png',
         gokyoLake: '/images/featured/gokyo-lake.png',
     },
-    // About page slots use object-cover: frames have fixed ratios, so upload
-    // matching shapes to avoid heavy cropping —
-    // destinations: landscape ~4:3 (e.g. 800x600),
-    // luklaFlight: large landscape, min 1200x800 (crops hardest, spans full
-    // steps height from 600px up),
-    // travelerAvatar: square (e.g. 400x400; object-top keeps faces).
     about: {
         mountEverest: '/images/destination/mount-everest.png',
         pokharaLakeside: '/images/about/pokhara.png',
@@ -86,26 +72,8 @@ export const IMAGES = {
         travelling: '/images/about/icons/traveling.png',
         wildlife: '/images/about/icons/wildlife_experience.png',
     },
-    // Itinerary page slots use object-cover: frames have fixed ratios, so
-    // upload matching shapes to avoid heavy cropping —
-    // hero: landscape 384x261 (~3:2, min 768x522),
-    // galleryThumbs[3]: landscape 124x93 (~4:3),
-    // dayThumb: portrait-ish 103x101 (square-ish, min 400x400),
-    // reviewerAvatar: square (min 200x200; faces stay centered),
-    // reviewPhotos[6]: square-ish 48px thumbs (min 400x400).
-    // USER UPLOAD MAP: drop files into public/images/itinerary/ with these
-    // names — hero.png, thumb-1..3.png, day.png,
-    // reviewer.png, review-1..6.png — then point the keys below at them.
-    // NOTE: the altitude chart is a live data-driven graph
-    // (AltitudeChart.tsx reads altitudeProfile.stops), no image needed.
-    // TEMP: keys below reuse existing assets so the page renders until then.
     itinerary: {
         icons: {
-            // Drop downloaded Figma icons here (27x27 PNG/SVG):
-            //   public/images/itinerary/icons/icon-stay.png
-            //   public/images/itinerary/icons/icon-meals.png
-            // Day cards render these <img>s when the files exist and fall
-            // back to Lucide outline icons otherwise.
             stay: '/images/itinerary/icons/icon-stay.png',
             meals: '/images/itinerary/icons/icon-meals.png',
         },
@@ -125,8 +93,6 @@ export const IMAGES = {
             '/images/destination/featured/birdwatching_safari.png',
             '/images/destination/featured/crocodilewatching.png',
             '/images/destination/featured/tiger_watching.png',
-            // TEMP: Figma shows 10 thumbs across 2 scrollable rows —
-            // reusing destination assets until traveller photos are uploaded.
             '/images/destination/kathmandu-temple.png',
             '/images/destination/pokhara-lake.png',
             '/images/destination/langtang-mountain.png',

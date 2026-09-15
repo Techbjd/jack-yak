@@ -23,8 +23,6 @@ export default function Itinerary() {
                 <div className="mt-2.5 w-full md:mt-5">
                     <GalleryFilterPills />
                 </div>
-                {/* About copy + sticky booking sidebar on desktop (stacked
-                    full-width below xl, side-by-side from xl) */}
                 <div className="mt-4.5 grid w-full grid-cols-1 gap-6 md:mt-10 xl:grid-cols-[minmax(0,1fr)_360px] xl:items-start xl:gap-10">
                     <TrekAbout />
                     <div
@@ -40,10 +38,6 @@ export default function Itinerary() {
                 <div className="mt-6 w-full md:mt-10">
                     <TrekCtaBanner />
                 </div>
-                {/* Altitude + weather scroll as whole full-size cards in a
-                    free-scroll row (no snap, so it rests exactly at the
-                    start/end) — no inner chart scrollers; stacked
-                    full-width below md */}
                 <div className="no-scrollbar mt-6 flex w-full flex-col gap-6 md:mt-10 md:flex-row md:gap-8 md:overflow-x-auto md:overscroll-x-contain">
                     <div className="md:w-graph-card-w w-full shrink-0">
                         <AltitudeProfile title={ALTITUDE_TITLE} />

@@ -20,7 +20,7 @@ const cardDimensions: Record<
 const TopDestinations = () => {
     return (
         <section className="w-full px-6 py-16 md:px-12 md:py-24 lg:px-24">
-            <div className="max-w-page mx-auto flex flex-col items-center gap-16 md:gap-24">
+            <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-16 md:gap-24">
                 <h2
                     className={cn(
                         fontPrimary,
@@ -78,7 +78,7 @@ const TopDestinations = () => {
                     </div>
                 </div>
 
-                <div className="hidden md:grid md:grid-cols-3 md:gap-6">
+                <div className="hidden md:mx-auto md:grid md:w-full md:max-w-[846px] md:grid-cols-3 md:items-center md:gap-6">
                     {homeTopDestinations.map((dest) => {
                         const dims = cardDimensions[dest.variant];
                         return (
@@ -96,7 +96,7 @@ const TopDestinations = () => {
                                     className={cn(
                                         fontPrimary,
                                         'absolute right-0 left-0 text-center font-medium text-white',
-                                        'text-xl-2xl top-6',
+                                        'text-xl-2xl top-6 leading-card-overlay',
                                     )}
                                 >
                                     {dest.name}

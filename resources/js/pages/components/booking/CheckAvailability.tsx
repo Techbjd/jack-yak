@@ -173,9 +173,7 @@ export default function CheckAvailability({
                         </ModalFieldError>
                     )}
                     {errors.travelers && (
-                        <ModalFieldError>
-                            {errors.travelers}
-                        </ModalFieldError>
+                        <ModalFieldError>{errors.travelers}</ModalFieldError>
                     )}
 
                     <div className="grid grid-cols-1 gap-5 pt-5 md:grid-cols-2">
@@ -317,9 +315,7 @@ export default function CheckAvailability({
                         />
                     </div>
                     {errors.looking_for && (
-                        <ModalFieldError>
-                            {errors.looking_for}
-                        </ModalFieldError>
+                        <ModalFieldError>{errors.looking_for}</ModalFieldError>
                     )}
 
                     <hr className={modalDivider} />

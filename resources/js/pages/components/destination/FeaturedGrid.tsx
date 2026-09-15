@@ -173,10 +173,7 @@ export default function FeaturedGrid() {
                 {destinationFeaturedCards.map((card, i) => (
                     <div
                         key={`${card.src}-${i}`}
-                        className={cn(
-                            'h-feat-card-h relative w-full md:h-auto',
-                            card.span,
-                        )}
+                        className={cn('relative h-auto w-full', card.span)}
                         style={{ aspectRatio: card.ratio }}
                     >
                         <img

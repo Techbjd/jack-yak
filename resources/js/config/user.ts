@@ -1,10 +1,3 @@
-// ============================================
-// User — profile section content
-// ============================================
-// Copy + counts live here so components stay pure UI.
-// Backend replaces these with the authenticated user later.
-// ============================================
-
 export interface UserSavedRow {
     id: string;
     label: string;

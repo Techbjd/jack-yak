@@ -12,9 +12,6 @@ import { altitudeProfile, type AltitudeStop } from '@/config/itinerary';
 
 export type AltitudeUnit = 'm' | 'ft';
 
-/** Chart frame pieces — height/plot width come from props (240 mobile,
- *  400 desktop per Figma); the wrapper sets the CSS height and the chart
- *  fills it, so the label math always matches what is on screen. */
 const MARGIN_TOP = 16;
 const XAXIS_H = 62;
 
@@ -30,11 +27,6 @@ interface ChartRow {
     value: number;
 }
 
-/**
- * Absolute y for each value label, staggered so adjacent labels never
- * collide (up on the ascent, down onto the fill on the descent).
- * Pure function of the data — works for any stops array from the backend.
- */
 function labelPositions(
     values: number[],
     d0: number,
@@ -81,7 +73,6 @@ function PlaceTick({
     );
 }
 
-/** Blue hover bubble (matches the temperature chart) — place + altitude. */
 function AltitudeTooltip({
     active = false,
     payload,
@@ -96,7 +87,7 @@ function AltitudeTooltip({
         return null;
     }
     return (
-        <div className="font-manrope shadow-card rounded-md bg-[#29a9e1] px-2.5 py-1.5 text-xs leading-5 font-semibold whitespace-nowrap text-white">
+        <div className="font-manrope shadow-card bg-bubble rounded-md px-2.5 py-1.5 text-xs leading-5 font-semibold whitespace-nowrap text-white">
             <p>{row.place}</p>
             <p>{formatValue(row.value, unit)}</p>
         </div>
@@ -142,23 +133,11 @@ function ValueLabel({
 
 interface AltitudeChartProps {
     unit: AltitudeUnit;
-    /** Trek stops — defaults to config; pass backend legs later and the
-     *  scales, dots and staggered labels adapt automatically. */
     stops?: AltitudeStop[];
-    /** Render height in px — must match the wrapper's CSS height so the
-     *  value-label math lands on the dots (240 mobile, 400 desktop). */
     height?: number;
-    /** Inner plot width estimate for the label stagger (342px mobile,
-     *  1080px inside the 1150px track card from md up — tablet renders
-     *  at desktop width, so keep the md switch, not lg). */
     plotWidth?: number;
 }
 
-/**
- * Altitude area chart (live Recharts graph, NOT a static image) — feed it
- * ANY {place, meters}[] from the backend; scales, dots and staggered
- * labels adapt automatically.
- */
 export default function AltitudeChart({
     unit,
     stops = altitudeProfile.stops,

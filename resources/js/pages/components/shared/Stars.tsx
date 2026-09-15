@@ -3,18 +3,12 @@ import { REVIEW_STAR_COUNT } from '@/config/review';
 import { cn } from '@/lib/utils';
 
 interface StarsProps {
-    /** Accessible rating label (e.g. "Rated 5 out of 5 stars") */
     label: string;
-    /** 0–5 fill; defaults to full (single truth: REVIEW_STAR_COUNT) */
     value?: number;
-    /** Star icon sizing (default matches booking/review display rows) */
     starClassName?: string;
-    /** Inner row gap (review cards widen it on desktop) */
     gapClassName?: string;
 }
 
-/** Display-only 5-star row — fractional fill via overlay clipping.
- *  (The GiveReview interactive input stays separate.) */
 export default function Stars({
     label,
     value = REVIEW_STAR_COUNT,

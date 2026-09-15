@@ -3,13 +3,13 @@ import ResponsiveHeader from '../shared/ResponsiveHeader';
 
 export default function UserHero() {
     return (
-        <div className="relative w-full">
+        <div className="md:min-h-user-hero relative w-full">
             <img
                 src={IMAGES.destination.journeyMountain}
                 alt=""
                 aria-hidden
                 loading="eager"
-                className="absolute inset-0 hidden h-250 w-full bg-transparent object-cover md:block"
+                className="absolute inset-0 hidden h-full w-full bg-transparent object-cover md:block"
             />
             <div
                 aria-hidden

@@ -7,7 +7,7 @@ export default function MapQuote() {
             <p
                 className={cn(
                     fontPrimary,
-                    'max-w-quote text-text-primary lg:text-2xl-3xl w-full text-center text-xl leading-[1.3] font-medium sm:text-2xl md:text-3xl md:leading-11',
+                    'text-text-primary lg:text-2xl-3xl leading-quote w-full max-w-[1011px] text-center text-xl font-medium sm:text-2xl md:text-3xl md:leading-11',
                 )}
             >
                 &ldquo;Between 80&deg;E and 88&deg;E longitude lies the

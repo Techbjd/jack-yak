@@ -45,7 +45,7 @@ export default function JourneyNepal() {
                     <p
                         className={cn(
                             fontPrimary,
-                            'text-xs-md text-text-primary md:max-w-content md:text-md-lg mt-4 max-w-40 leading-snug font-medium md:mt-0',
+                            'text-xs-md text-text-primary md:max-w-dest-title md:text-md-lg mt-4 max-w-xs leading-snug font-medium md:mt-0',
                         )}
                     >
                         JackYak is your gateway to Nepal&apos;s breathtaking
@@ -115,7 +115,7 @@ export default function JourneyNepal() {
                 <div
                     className={cn(
                         imagePlaceholder,
-                        'relative hidden h-full w-full items-center justify-center overflow-hidden md:flex lg:col-span-5',
+                        'relative hidden h-full w-full items-center justify-center overflow-hidden md:flex md:aspect-893/548 md:h-auto lg:col-span-5',
                     )}
                 >
                     <img

@@ -1,37 +1,5 @@
 import { createContext, useContext } from 'react';
 
-// ============================================
-// Palette — Frontend Source of Truth
-// ============================================
-// Hex values live here and in resources/css/app.css @theme (keep in sync).
-// Components read them via useColors(); Tailwind classes via bg-*/text-*.
-//
-// Usage map (which part owns which color):
-// - brand         → footer + dark surfaces (bg-brand)
-// - ink           → text/icons on light backgrounds (text-ink)
-// - cta           → desktop CTA buttons, rings, panels (bg-cta)
-// - cta-accent    → mobile CTAs + active accents (bg-cta-accent)
-// - cta-ember     → destination mobile CTA surfaces (bg-cta-ember)
-// - surface-warm  → alternating section backgrounds (bg-surface-warm)
-// - surface-cream → CTA icon circles (bg-surface-cream)
-// - icon-accent   → CTA glyph icons (text-icon-accent)
-// - quote-blush   → testimonial quote mark (text-quote-blush)
-// - canvas        → view-all page background (bg-canvas)
-// - steel         → pagination inactive text (text-steel)
-// - pine          → login sign-in button (bg-pine)
-// - frost         → login input background on desktop (bg-frost)
-// - frost-line    → login input border (border-frost-line)
-// - fog           → login input placeholder (placeholder:text-fog)
-// - divider       → login "Or" divider lines (bg-divider)
-// - midnight      → quiz labels + primary button (text-midnight, bg-midnight)
-// - mist          → quiz placeholder + option text (placeholder:text-mist)
-// - quiz-line     → quiz input/select/segment borders (border-quiz-line)
-// - hairline      → quiz row dividers (bg-hairline)
-// - subtle        → quiz helper note (text-subtle)
-// - haze          → user email + card subtitles (text-haze)
-// Primitives (navy, teal, …) remain for decorative blends (gradients, map).
-// ============================================
-
 export interface Colors {
     navy: string;
     navy_light: string;
@@ -46,7 +14,6 @@ export interface Colors {
     bg_warm: string;
     bg_placeholder: string;
     progress: string;
-    /** Semantic aliases — part-named mirrors of the primitives above */
     brand: string;
     ink: string;
     cta: string;

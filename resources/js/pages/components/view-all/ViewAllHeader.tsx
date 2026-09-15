@@ -9,7 +9,7 @@ export default function ViewAllHeader() {
                 href="/destinations"
                 className={cn(
                     fontPrimary,
-                    'text-md-lg text-text-primary flex items-center gap-1 font-bold tracking-[0.03em]',
+                    'text-md-lg text-text-primary tracking-card flex items-center gap-1 font-bold',
                 )}
             >
                 <ArrowLeft className="size-4.75 shrink-0" />
@@ -18,7 +18,7 @@ export default function ViewAllHeader() {
             <h1
                 className={cn(
                     fontPrimary,
-                    'text-md-lg text-text-primary text-center font-bold tracking-[0.03em]',
+                    'text-md-lg text-text-primary tracking-card text-center font-bold',
                 )}
             >
                 Top Destinations

@@ -36,7 +36,10 @@ export default function AuthField({
         <>
             <label
                 htmlFor={id}
-                className={cn(authLabel, first ? authLabelFirst : authLabelRest)}
+                className={cn(
+                    authLabel,
+                    first ? authLabelFirst : authLabelRest,
+                )}
             >
                 {label}
             </label>
@@ -48,9 +51,7 @@ export default function AuthField({
                 value={value}
                 onChange={(e) => onChange(e.target.value)}
                 aria-invalid={error ? true : undefined}
-                aria-describedby={
-                    error && errorId ? errorId : undefined
-                }
+                aria-describedby={error && errorId ? errorId : undefined}
                 className={cn(authInput, error && authErrorBorder)}
             />
             {error && (

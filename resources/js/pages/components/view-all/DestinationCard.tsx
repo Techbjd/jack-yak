@@ -24,7 +24,7 @@ export default function DestinationCard({ destination }: DestinationCardProps) {
 
     return (
         <article className={destCard}>
-            {/* Image — 396:306 every breakpoint, 7px radius on md+ */}
+            {}
             <div className={destCardImage}>
                 <img
                     src={image}
@@ -32,14 +32,14 @@ export default function DestinationCard({ destination }: DestinationCardProps) {
                     loading="lazy"
                     className="absolute inset-0 h-full w-full object-cover"
                 />
-                {/* Province badge — compact on mobile, 184×40 on md+ */}
+                {}
                 <span className={destCardBadge}>
                     <MapPin className="text-ink size-3 shrink-0 md:size-4" />
                     <span className={cn(destCardBadgeText)}>{province}</span>
                 </span>
             </div>
 
-            {/* Info panel — joined box on mobile, overlapping panel on md+ */}
+            {}
             <div className={destCardPanel}>
                 <h3 className={cn(destCardName)}>{name}</h3>
                 <p className={cn(destCardTagline)}>{tagline}</p>

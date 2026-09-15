@@ -41,7 +41,7 @@ export default function Pagination({
     const pageButton = (active: boolean) =>
         cn(
             fontPrimary,
-            'text-xs-sm flex h-6.75 w-7.5 items-center justify-center rounded-[10px] font-medium',
+            'text-xs-sm rounded-immersive flex h-6.75 w-7.5 items-center justify-center font-medium',
             active
                 ? 'bg-ink text-white'
                 : 'border-bg-placeholder text-steel shadow-card border bg-white',

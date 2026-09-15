@@ -11,7 +11,6 @@ import GiveReview from '../review/GiveReview';
 
 const perkIcons = [Medal, MapPin, MessageCircleCheck];
 
-/** Booking card — operator, price, rating, perks, CTA buttons + modals */
 export default function BookingCard() {
     const [availabilityOpen, setAvailabilityOpen] = useState(false);
     const [reviewOpen, setReviewOpen] = useState(false);

@@ -6,7 +6,7 @@
 
 Before submitting code, verify:
 
-- [ ] Code follows project conventions (check `.ai/rules/`)
+- [ ] Code follows project conventions (check `docs/frontend-handbook.md`, local-only)
 - [ ] Tests pass (`php artisan test --compact`)
 - [ ] PHP code formatted (`vendor/bin/pint --dirty --format agent`)
 - [ ] TypeScript types are correct (`npm run types:check`)
@@ -21,7 +21,7 @@ Before submitting code, verify:
 
 ### Communication
 
-- Document architectural decisions in `.ai/rules/`
+- Document architectural decisions in `docs/frontend-handbook.md` (local-only)
 - Use `record-rule` to capture non-obvious patterns
 - Ask questions early - don't block on unclear requirements
 - Share context when reviewing others' code
@@ -29,7 +29,7 @@ Before submitting code, verify:
 ### Getting Started
 
 1. Run `composer setup` to initialize the project
-2. Check `.ai/rules/index.md` for coding conventions
+2. Check `docs/frontend-handbook.md` for coding conventions (local-only)
 3. Review existing components before creating new ones
 4. Use `php artisan make:test --pest {name}` for new tests
 

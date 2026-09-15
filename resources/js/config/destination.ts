@@ -1,22 +1,12 @@
-// ============================================
-// Destination Page Data — Single Source of Truth
-// ============================================
-// Edit content here → all destination components update.
-// Desktop shows the 5 shared cards; mobile scrolls all 7 (incl. 2 mobile-only extras).
-// Image URLs come from @/config/images (IMAGES registry).
-// ============================================
-
 import { IMAGES } from './images';
 
 export interface DestinationCard {
     name: string;
     province: string;
     image: string;
-    /** Mobile-only extras — hidden on desktop */
     mobileOnly?: boolean;
 }
 
-/** Popular destinations — 5 shared + 2 mobile-only extras */
 export const popularDestinations: DestinationCard[] = [
     {
         name: 'Mount Everest (Sagarmatha)',
@@ -57,7 +47,6 @@ export const popularDestinations: DestinationCard[] = [
     },
 ];
 
-/** Featured destinations filter tabs */
 export const featuredTabs: string[] = [
     'All',
     'Trekking',
@@ -67,7 +56,6 @@ export const featuredTabs: string[] = [
     'Lakes',
 ];
 
-/** Featured tab icons (see @/config/images registry) */
 export const featuredTabIcons: Record<string, string> = {
     All: IMAGES.destination.icons.all,
     Trekking: IMAGES.destination.icons.trekking,
@@ -80,9 +68,7 @@ export const featuredTabIcons: Record<string, string> = {
 export interface FeaturedCard {
     src: string;
     label: string;
-    /** Desktop card portrait ratio */
     ratio: string;
-    /** Desktop mosaic span (full literal so Tailwind scans it) */
     span: string;
 }
 
@@ -94,7 +80,6 @@ export interface ViewAllDestination {
     image: string;
 }
 
-/** View-all listing — 15 cards (5 rows × 3 on mobile) */
 export const viewAllDestinations: ViewAllDestination[] = [
     {
         name: 'Mount Everest',
@@ -249,7 +234,6 @@ export interface GuideTopDestination {
     image: string;
 }
 
-/** Guide page top destinations carousel */
 export const guideTopDestinations: GuideTopDestination[] = [
     {
         name: 'Mount Everest',
@@ -281,7 +265,6 @@ export interface HomeTopDestination {
     variant: 'sm' | 'lg';
 }
 
-/** Home page top destinations strip */
 export const homeTopDestinations: HomeTopDestination[] = [
     {
         name: 'Tilicho Lake',
@@ -303,9 +286,4 @@ export const homeTopDestinations: HomeTopDestination[] = [
     },
 ];
 
-// --------------------------------------------
-// Shared UI strings (deduped literals)
-// --------------------------------------------
-
-/** Journey section image alt text */
 export const journeyImageAlt = 'Journey Nepal';
