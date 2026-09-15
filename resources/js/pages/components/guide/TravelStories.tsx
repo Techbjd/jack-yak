@@ -1,16 +1,14 @@
 import { useState } from 'react';
-import { Quote } from 'lucide-react';
 import { fontPrimary, fontQuote, fontQuoteMark } from '@/config/theme';
 import { IMAGES } from '@/config/images';
 import { cn } from '@/lib/utils';
-import { guideSectionShell } from '@/config/guide';
 import CarouselDots from '../shared/CarouselDots';
 import GiveReview from '../review/GiveReview';
 
 const TravelStories = () => {
     const [reviewOpen, setReviewOpen] = useState(false);
     return (
-        <section className='w-full'>
+        <section className="w-full">
             <div className="max-w-container mx-auto w-full px-6 pb-8 md:px-12 md:pb-12 lg:px-24">
                 <figure className="rounded-card-sm bg-surface-warm shadow-card md:rounded-image p-3 md:p-10">
                     <div className="flex items-start gap-3 md:items-center md:gap-8">
@@ -44,11 +42,19 @@ const TravelStories = () => {
                                 >
                                     &ldquo;
                                 </span>
-                                <Quote className="fill-cta-accent/15 text-cta-accent hidden h-14 w-14 shrink-0 md:block" />
+                                <span
+                                    aria-hidden="true"
+                                    className={cn(
+                                        fontQuoteMark,
+                                        'text-quote-blush text-hero hidden shrink-0 leading-none font-bold md:block',
+                                    )}
+                                >
+                                    &ldquo;
+                                </span>
                                 <blockquote
                                     className={cn(
                                         fontQuote,
-                                        'text-xs-sm text-ink md:font-manrope md:text-xl-2xl leading-story-quote font-normal md:leading-relaxed',
+                                        'text-xs-sm text-ink md:text-xl-2xl leading-story-quote font-normal md:leading-relaxed',
                                     )}
                                 >
                                     Watching the sunrise over the Himalayas from
@@ -63,7 +69,7 @@ const TravelStories = () => {
                                         src={IMAGES.about.travelerAvatar}
                                         alt="Ken San"
                                         loading="lazy"
-                                        className="bg-bg-placeholder text-2xs text-text-primary md:shadow-card shadow-card size-3.75 overflow-hidden rounded-full object-cover object-top md:h-16 md:w-16 md:drop-shadow-none"
+                                        className="bg-bg-placeholder text-2xs text-text-primary shadow-card size-3.75 overflow-hidden rounded-full object-cover object-top md:h-17 md:w-17"
                                     />
                                     <span className="flex flex-col leading-none md:gap-1">
                                         <span

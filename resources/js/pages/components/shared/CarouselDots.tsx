@@ -22,9 +22,7 @@ export default function CarouselDots({
                     className={cn(
                         carouselDot,
                         'h-2 w-2 md:h-2.5 md:w-2.5',
-                        i === activeIndex
-                            ? 'bg-cta-accent'
-                            : 'bg-bg-placeholder',
+                        i === activeIndex ? 'bg-cta' : 'bg-bg-placeholder',
                         dotClassName,
                     )}
                 />
