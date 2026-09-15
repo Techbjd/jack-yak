@@ -29,7 +29,7 @@ const Footer: React.FC = () => {
     return (
         <footer className="bg-brand w-full text-white">
             <div className="-mb-1 w-full overflow-hidden">
-                <div className="bg-white flex aspect-1440/470 w-full items-center justify-center select-none">
+                <div className="flex aspect-1440/470 w-full items-center justify-center bg-white select-none">
                     <img
                         src={IMAGES.home.trekkerYak}
                         alt="JackYak Logo"

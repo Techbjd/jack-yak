@@ -7,8 +7,8 @@ const WhyExplore = () => {
     return (
         <section className="w-full">
             <div className="max-w-container mx-auto flex w-full flex-col gap-6 px-6 pt-6 md:gap-10 md:px-12 md:pt-10 lg:px-24">
-                <div className="grid grid-cols-3 items-start gap-4 md:items-center md:gap-8 md:justify-between">
-                    <div className="flex flex-col gap-2 ">
+                <div className="grid grid-cols-3 items-start gap-4 md:items-center md:justify-between md:gap-8">
+                    <div className="flex flex-col gap-2">
                         <p
                             className={cn(
                                 fontPrimary,
@@ -30,7 +30,7 @@ const WhyExplore = () => {
                     <p
                         className={cn(
                             fontPrimary,
-                            ' max-w-content-sm text-xs-sm text-ink md:text-md-lg leading-relaxed font-semibold md:justify-self-end md:leading-relaxed col-start-3',
+                            'max-w-content-sm text-xs-sm text-ink md:text-md-lg col-start-3 leading-relaxed font-semibold md:justify-self-end md:leading-relaxed',
                         )}
                     >
                         Helping you discover Nepal through trusted guides, local
