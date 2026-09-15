@@ -20,7 +20,7 @@ const cardDimensions: Record<
 const TopDestinations = () => {
     return (
         <section className="w-full px-6 py-16 md:px-12 md:py-24 lg:px-24">
-            <div className="mx-auto flex max-w-container flex-col items-center gap-16 md:gap-24">
+            <div className="max-w-container mx-auto flex flex-col items-center gap-16 md:gap-24">
                 <h2
                     className={cn(
                         fontPrimary,
