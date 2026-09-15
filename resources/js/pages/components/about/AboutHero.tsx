@@ -6,7 +6,7 @@ import Header from '../shared/Header';
 export default function AboutHero() {
     return (
         <div className="w-full">
-            <div className="bg-white flex flex-col items-center md:hidden">
+            <div className="flex flex-col items-center bg-white md:hidden">
                 <div className="w-full">
                     <Header tone="onLight" />
                 </div>
@@ -14,7 +14,7 @@ export default function AboutHero() {
                     <h1
                         className={cn(
                             aboutHeroTitle,
-                            'absolute inset-x-0 top-0  px-6 text-center drop-shadow-md',
+                            'absolute inset-x-0 top-0 px-6 text-center drop-shadow-md',
                         )}
                     >
                         ABOUT US
