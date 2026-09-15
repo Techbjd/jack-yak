@@ -12,7 +12,7 @@ export default function Login() {
                     <img
                         src={IMAGES.destination.mardiHimal}
                         alt="Machhapuchhre peak glowing at sunset"
-                        className="rounded-image aspect-605/803 w-full max-w-content-lg object-cover"
+                        className="rounded-image max-w-content-lg aspect-605/803 w-full object-cover"
                     />
                 </div>
             </main>

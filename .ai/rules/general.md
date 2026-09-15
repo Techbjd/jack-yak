@@ -1,18 +1,22 @@
 ---
 paths:
-  - '**/*'
+    - '**/*'
 ---
 
 # General
 
 ## Project Architecture Overview
+
 Laravel 13 + Inertia.js v3 + React 19 + Tailwind CSS v4 stack. Single-page app pattern: pages in `resources/js/pages/`, no Blade views except `app.blade.php`. Routes use `Route::inertia()` or controllers with `Inertia::render()`. No separate API layer. SQLite database. Vite 8 with vite-plus wrapper.
 
 ## Code Quality & CI Pipeline
+
 PHP: `vendor/bin/pint` for formatting (laravel preset), `phpstan analyse` (level 7). JS/TS: `npm run check` for linting, `npm run types:check` for TypeScript. Run `composer ci:check` for full pipeline. Always run Pint after modifying PHP files: `vendor/bin/pint --dirty --format agent`.
 
 ## Jack-Yak Project: Color System & Design Tokens
+
 **Brand Colors (resources/js/config/colors.ts COLORS + @theme — frontend truth):**
+
 - `navy`: #0E1B2B (primary dark)
 - `navy_light`: #253A55 (secondary dark)
 - `navy_gradient`: #5180BB (gradient endpoint)
@@ -21,31 +25,39 @@ PHP: `vendor/bin/pint` for formatting (laravel preset), `phpstan analyse` (level
 - `blue_icon`: #60A5FA (icon color)
 
 **Text Colors:**
+
 - `text_primary`: #334155 (main text)
 - `text_white`: #ffffff (on dark backgrounds)
 
 **Background Colors:**
+
 - `bg_cream`: #F7F2EE (light sections)
 - `bg_warm`: #F9F4F0 (alternating sections)
 - `bg_placeholder`: #D9D9D9 (image placeholders)
 
 **Font Sizes (design tokens):**
+
 - `2xs`: 8px, `xs-sm`: 10px, `sm-base`: 13px, `base-md`: 14px
 - `md-lg`: 16px, `lg-xl`: 20px, `xl-2xl`: 24px, `2xl-3xl`: 32px, `3xl-4xl`: 36px
 
 **Container Widths:**
+
 - `content-sm`: 300px, `content`: 342px, `content-md`: 575px
 - `content-lg`: 605px, `map`: 900px, `quote`: 1011px
 - `page`: 1200px, `container`: 1440px
 
 **Border Radius:**
+
 - `card`: 5px, `image`: 17px
 
 **Spacing:**
+
 - `card-w`: 117px, `card-h`: 97px, `logo`: 91px, `sidebar`: 183px
 
 ## Jack-Yak Project: Component Architecture
+
 **Page Structure:**
+
 ```
 Home.tsx
 ├── Hero.tsx (header + hero content)
@@ -59,6 +71,7 @@ Home.tsx
 ```
 
 **Component Patterns:**
+
 1. **Hero**: Full-width with background image, gradient overlay, CTA button
 2. **NepalMap**: Uses `useColors()` for dynamic SVG colors, Figma coordinate system
 3. **TopDestination**: Mobile horizontal scroll + desktop grid carousel
@@ -66,36 +79,49 @@ Home.tsx
 5. **DiscoverNepal**: Staggered image pair with decorative patches
 
 **Responsive Patterns:**
+
 - Mobile-first with `md:` breakpoints
 - Separate mobile/desktop layouts using `md:hidden` / `hidden md:block`
 - Horizontal scroll on mobile, grid on desktop
 - CTA buttons: orange (mobile) / teal (desktop)
 
 ## Jack-Yak Project: Data Structures & Navigation
+
 **Navigation Items (config/navigation.ts):**
+
 ```typescript
 interface NavItem {
-  label: string;
-  href: string;
+    label: string;
+    href: string;
 }
 
-desktopNav: ['Destination', 'Guides', 'About']
-mobileNav: ['Home', 'Destinations', 'Guides', 'About', 'Favorites', 'Search', 'Profile']
+desktopNav: ['Destination', 'Guides', 'About'];
+mobileNav: [
+    'Home',
+    'Destinations',
+    'Guides',
+    'About',
+    'Favorites',
+    'Search',
+    'Profile',
+];
 ```
 
 **Destination Data Structure:**
+
 ```typescript
 {
-  name: string;        // "Mount Everest"
-  subtitle: string;    // "Highest Peak"
-  image: string;       // "/images/featured/everest-prayer-flags.png"
-  ratio: string;       // "258 / 391"
-  raised: boolean;     // translate up on desktop
-  size: 'lg' | 'sm';  // card size variant
+    name: string; // "Mount Everest"
+    subtitle: string; // "Highest Peak"
+    image: string; // "/images/featured/everest-prayer-flags.png"
+    ratio: string; // "258 / 391"
+    raised: boolean; // translate up on desktop
+    size: 'lg' | 'sm'; // card size variant
 }
 ```
 
 **Theme Constants (config/theme.ts):**
+
 - `fontPrimary`: 'font-manrope'
 - `sectionPadding`: 'py-16 md:py-24'
 - `sectionContainer`: centered max-w-container
@@ -106,11 +132,14 @@ mobileNav: ['Home', 'Destinations', 'Guides', 'About', 'Favorites', 'Search', 'P
 - `imageRoundedXl`: 2xl rounded corners
 
 **Color Access:**
+
 - React: `useColors()` hook from `@/config/colors` (static `COLORS`, no provider needed)
 - CSS: `var(--color-navy)` or Tailwind `text-navy`
 
 ## Jack-Yak Project: Features & Business Logic
+
 **Core Features:**
+
 1. **Hero Section**: Full-screen hero with parallax background, gradient overlay, CTA
 2. **Nepal Map**: Interactive SVG map with leader lines, CHINA/INDIA labels
 3. **Map Quote**: Quote section with decorative elements
@@ -119,6 +148,7 @@ mobileNav: ['Home', 'Destinations', 'Guides', 'About', 'Favorites', 'Search', 'P
 6. **Top Destinations**: Carousel of destinations (Everest, etc.)
 
 **Image Assets (`public/images/`, kebab-case, grouped by feature):**
+
 - Logo: `/images/logo/jack-yak-logo.png`
 - Home: `/images/home/hero-bg.png`, `/images/home/hero-secondary.png`, `/images/home/mountain-divider.png`
 - Map: `/images/home/nepal-provinces-map.png`, leader lines SVG
@@ -129,17 +159,20 @@ mobileNav: ['Home', 'Destinations', 'Guides', 'About', 'Favorites', 'Search', 'P
 - Featured: `/images/featured/tilicho-lake.png`, `/images/featured/everest-prayer-flags.png`, `/images/featured/gokyo-lake.png`
 
 **UI Elements:**
+
 - Hamburger menu with mobile sidebar overlay
 - Search, Heart (favorites), User icons from lucide-react
 - Decorative rotated patches behind sections
 - Card shadows with `shadow-card` token
 
 **Responsive Breakpoints:**
+
 - Mobile: default (< md)
 - Tablet: `md:` (768px+)
 - Desktop: `lg:` (1024px+)
 
 ## Quick Reference - Where to Edit What
+
 **Want to change a color?**
 → Part-named alias in `resources/js/config/colors.ts` (`COLORS`) AND `resources/css/app.css` @theme (keep in sync)
 → Aliases: `brand`, `ink`, `cta`, `cta-accent`, `cta-ember`, `surface-warm`, `surface-cream`, `icon-accent`

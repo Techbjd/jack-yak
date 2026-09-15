@@ -3,7 +3,9 @@
 ## Team Collaboration
 
 ### Code Review Checklist
+
 Before submitting code, verify:
+
 - [ ] Code follows project conventions (check `.ai/rules/`)
 - [ ] Tests pass (`php artisan test --compact`)
 - [ ] PHP code formatted (`vendor/bin/pint --dirty --format agent`)
@@ -11,24 +13,28 @@ Before submitting code, verify:
 - [ ] No new warnings or errors in browser console
 
 ### Git Workflow
+
 1. Create feature branches from `main`
 2. Use conventional commits: `feat:`, `fix:`, `docs:`, `refactor:`, `test:`
 3. Keep commits focused and atomic
 4. Write descriptive PR titles and descriptions
 
 ### Communication
+
 - Document architectural decisions in `.ai/rules/`
 - Use `record-rule` to capture non-obvious patterns
 - Ask questions early - don't block on unclear requirements
 - Share context when reviewing others' code
 
 ### Getting Started
+
 1. Run `composer setup` to initialize the project
 2. Check `.ai/rules/index.md` for coding conventions
 3. Review existing components before creating new ones
 4. Use `php artisan make:test --pest {name}` for new tests
 
 ### Project Structure
+
 ```
 app/
 ├── Http/Controllers/    # Inertia controllers
@@ -47,6 +53,7 @@ tests/
 ```
 
 ### Common Commands
+
 ```bash
 # Development
 composer dev              # Start dev server
@@ -66,6 +73,7 @@ composer ci:check        # Full CI check
 ```
 
 ### Key Conventions
+
 - **PHP**: Use constructor property promotion, explicit return types, curly braces always
 - **React**: Co-locate components with pages, use `useColors()` for design tokens
 - **Tailwind**: Use theme.ts constants, mobile-first responsive design

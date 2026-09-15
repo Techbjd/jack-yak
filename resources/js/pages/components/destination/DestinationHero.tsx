@@ -19,7 +19,10 @@ export default function DestinationHero() {
                             src={IMAGES.destination.amaDablam}
                             alt="Ama Dablam"
                             loading="lazy"
-                            className={cn( coverImageAbsolute,"bg-contain bg-center bg-white")}
+                            className={cn(
+                                coverImageAbsolute,
+                                'bg-white bg-contain bg-center',
+                            )}
                         />
                     </div>
                 </div>
