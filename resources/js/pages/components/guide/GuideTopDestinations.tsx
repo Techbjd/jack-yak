@@ -13,7 +13,6 @@ import {
     fontPrimary,
 } from '@/config/theme';
 import { cn } from '@/lib/utils';
-import { guideSectionShell } from '@/config/guide';
 import {
     guideTopDestinations,
     type GuideTopDestination,
@@ -23,9 +22,9 @@ import ViewAllLink from '../shared/ViewAllLink';
 
 const DestinationCard = ({ dest }: { dest: GuideTopDestination }) => {
     return (
-        <article className="basis-card-w ms:basis-55 max-w-dest-card mx-auto flex w-full shrink-0 grow snap-start flex-col items-center md:basis-65 lg:w-full lg:basis-auto bg-white">
+        <article className="basis-card-w ms:basis-55 max-w-dest-card mx-auto flex w-full shrink-0 grow snap-start flex-col items-center md:basis-65 lg:w-full lg:basis-auto">
             {}
-            <div className={cn(destCardImage)}>
+            <div className={destCardImage}>
                 <img
                     src={dest.image}
                     alt={dest.name}
@@ -87,7 +86,7 @@ const GuideTopDestinations = () => {
     };
 
     return (
-        <section className='w-full'>
+        <section className="w-full">
             <div className="max-w-container mx-auto flex w-full flex-col gap-4 px-6 py-6 md:gap-8 md:px-12 lg:px-24">
                 <div className="flex items-end justify-between gap-4">
                     <div className="flex flex-col gap-1">
