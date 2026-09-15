@@ -10,6 +10,7 @@ import {
 import { IMAGES } from '@/config/images';
 import type { ItineraryDay } from '@/config/itinerary';
 import DayMetaIcon from './DayMetaIcon';
+import { cn } from '@/lib/utils';
 
 interface ItineraryDayCardProps {
     day: ItineraryDay;
@@ -19,7 +20,7 @@ export default function ItineraryDayCard({ day }: ItineraryDayCardProps) {
     return (
         <article
             aria-label={`${day.day}: ${day.place}`}
-            className={itinDayCard}
+            className={cn(itinDayCard)}
         >
             <img
                 src={day.image}
@@ -32,21 +33,20 @@ export default function ItineraryDayCard({ day }: ItineraryDayCardProps) {
                 <h3 className={itinDayPlace}>{day.place}</h3>
                 <p className={itinDaySub}>{day.subtitle}</p>
             </div>
-            <div className="mb-2.25 -ml-3.5 flex shrink-0 items-center gap-2.75 self-end md:hidden">
+            <div className="mb-1 flex shrink-0 items-center gap-2 self-end pl-1 min-[360px]:mb-2.25 min-[360px]:gap-2.75 min-[360px]:pl-0 md:hidden">
                 <DayMetaIcon
                     src={IMAGES.itinerary.icons.stay}
                     label={`${day.stay} included`}
                     Fallback={BedDouble}
-                    className="text-ink size-6.75 shrink-0"
+                    className="text-ink size-5.5 shrink-0 min-[360px]:size-6.75"
                 />
                 <DayMetaIcon
                     src={IMAGES.itinerary.icons.meals}
                     label={`${day.meals} included`}
                     Fallback={UtensilsCrossed}
-                    className="text-ink size-6.75 shrink-0"
+                    className="text-ink size-5.5 shrink-0 min-[360px]:size-6.75"
                 />
             </div>
-            {}
             <div className="ml-auto hidden shrink-0 flex-col justify-center gap-5 pr-5 md:flex">
                 <p className="flex items-center gap-2.5">
                     <DayMetaIcon

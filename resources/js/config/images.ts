@@ -75,7 +75,7 @@ export const IMAGES = {
     itinerary: {
         icons: {
             stay: '/images/itinerary/icons/icon-stay.png',
-            meals: '/images/itinerary/icons/icon-meals.png',
+            meals: '/images/itinerary/icons/dinner.png',
         },
         hero: '/images/destination/mount-everest.png',
         galleryThumbs: [
