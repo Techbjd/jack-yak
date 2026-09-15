@@ -11,6 +11,10 @@ interface HeaderProps {
     tone?: 'onDark' | 'onLight';
 }
 
+/** Header desktop icon link — dedupes the Saved/Search/Profile anchor pattern (3x) */
+export const headerIconLinkBase =
+    'p-1 transition-opacity hover:opacity-80 focus-visible:ring-2 focus-visible:outline-none';
+
 const Header = ({ tone = 'onDark' }: HeaderProps) => {
     const { auth } = usePage<PageProps>().props;
     const user = auth?.user ?? null;
@@ -88,14 +92,14 @@ const Header = ({ tone = 'onDark' }: HeaderProps) => {
                     <Link
                         href="/user"
                         aria-label="Saved"
-                        className={`p-1 transition-opacity hover:opacity-80 focus-visible:ring-2 focus-visible:outline-none ${ring}`}
+                        className={cn(headerIconLinkBase, ring)}
                     >
                         <Heart className="h-5 w-5 lg:h-6 lg:w-6" />
                     </Link>
                     <Link
                         href="/view-all"
                         aria-label="Search destinations"
-                        className={`p-1 transition-opacity hover:opacity-80 focus-visible:ring-2 focus-visible:outline-none ${ring}`}
+                        className={cn(headerIconLinkBase, ring)}
                     >
                         <Search className="h-5 w-5 rotate-[9.82deg] lg:h-6 lg:w-6" />
                     </Link>
@@ -104,7 +108,7 @@ const Header = ({ tone = 'onDark' }: HeaderProps) => {
                         aria-label={
                             user ? `Profile for ${user.name}` : 'Sign in'
                         }
-                        className={`relative p-1 transition-opacity hover:opacity-80 focus-visible:ring-2 focus-visible:outline-none ${ring}`}
+                        className={cn(headerIconLinkBase, 'relative', ring)}
                     >
                         <UserIcon className="drop-shadow-card h-5 w-5 lg:h-6 lg:w-6" />
                         {user && (

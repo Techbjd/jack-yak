@@ -1,57 +1,15 @@
 import { useState } from 'react';
 import { Link } from '@inertiajs/react';
-import {
-    Star,
-    ChevronDown,
-    Medal,
-    MapPin,
-    MessageCircleCheck,
-} from 'lucide-react';
+import { ChevronDown, Medal, MapPin, MessageCircleCheck } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 import { cn } from '@/lib/utils';
 import { itinCard } from '@/config/theme';
 import { trekBooking } from '@/config/itinerary';
+import Stars from '../shared/Stars';
 import CheckAvailability from '../booking/CheckAvailability';
 import GiveReview from '../review/GiveReview';
 
-const RATING = 5;
-
 const perkIcons = [Medal, MapPin, MessageCircleCheck];
-
-function StarRow() {
-    const row = (filled: boolean) => (
-        <span aria-hidden className="flex items-center gap-0.5">
-            {Array.from({ length: 5 }).map((_, i) => (
-                <Star
-                    key={i}
-                    className={cn(
-                        'size-4',
-                        filled
-                            ? 'fill-cta-accent text-cta-accent'
-                            : 'fill-star-empty text-star-empty',
-                    )}
-                />
-            ))}
-        </span>
-    );
-
-    return (
-        <span
-            role="img"
-            aria-label={`Rated ${RATING} out of 5 stars`}
-            className="relative inline-flex"
-        >
-            {row(false)}
-            <span
-                aria-hidden
-                className="absolute inset-0 overflow-hidden"
-                style={{ width: `${(RATING / 5) * 100}%` }}
-            >
-                {row(true)}
-            </span>
-        </span>
-    );
-}
 
 /** Booking card — operator, price, rating, perks, CTA buttons + modals */
 export default function BookingCard() {
@@ -107,7 +65,7 @@ export default function BookingCard() {
             <hr className="border-line-soft border-t" />
 
             <p className="flex w-full flex-wrap items-center gap-x-2">
-                <StarRow />
+                <Stars label="Rated 5 out of 5 stars" />
                 <Link
                     href="#reviews"
                     className="font-manrope text-base-md leading-itinerary-25 text-ink font-semibold underline-offset-4 hover:underline"

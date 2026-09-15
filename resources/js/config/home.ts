@@ -25,3 +25,4 @@ export const aboutJackyakInfoBlocks: AboutJackyakInfoBlock[] = [
         body: 'Find essential information on the best seasons to visit, packing guides, permits, transportation, budgeting, and safety tips before you travel.',
     },
 ];
+

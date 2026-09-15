@@ -1,7 +1,8 @@
-import { Star } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { itinCard, itinH2, itinRailTeal, itinTitleBar } from '@/config/theme';
+import { itinCard, itinH2 } from '@/config/theme';
 import { trekReviews, type TrekReview } from '@/config/itinerary';
+import Stars from '../shared/Stars';
+import SectionHeading from './SectionHeading';
 
 /**
  * Single review card — mobile: peek card (~10/12, so a sliver of the
@@ -46,18 +47,12 @@ function ReviewArticle({ review }: { review: TrekReview }) {
             </div>
 
             <div className="flex w-full flex-col gap-1.5 md:mt-4 lg:flex-row lg:items-center lg:gap-3">
-                <span
-                    role="img"
-                    aria-label="Rated 5 out of 5 stars"
-                    className="flex shrink-0 items-center gap-0.5 md:gap-1"
-                >
-                    {Array.from({ length: 5 }).map((_, i) => (
-                        <Star
-                            key={i}
-                            aria-hidden
-                            className="fill-cta-accent text-cta-accent size-4 md:size-6"
-                        />
-                    ))}
+                <span className="shrink-0">
+                    <Stars
+                        label="Rated 5 out of 5 stars"
+                        starClassName="size-4 md:size-6"
+                        gapClassName="gap-0.5 md:gap-1"
+                    />
                 </span>
                 <h3 className="font-manrope text-xs-md md:text-lg-xl leading-itinerary-28 tracking-review text-review-ink font-semibold md:font-bold">
                     {review.title}
@@ -131,18 +126,11 @@ export default function ReviewCard() {
             aria-labelledby="reviews-heading"
             className="flex w-full scroll-mt-4 flex-col gap-2.5 md:gap-5"
         >
-            <div className="flex w-full flex-col gap-2">
-                <div className="flex w-full items-stretch gap-2.5">
-                    <span aria-hidden className={itinRailTeal} />
-                    <h2
-                        id="reviews-heading"
-                        className={cn(itinH2, 'md:text-review-ink')}
-                    >
-                        Reviews
-                    </h2>
-                </div>
-                <span aria-hidden className={itinTitleBar} />
-            </div>
+            <SectionHeading
+                title="Reviews"
+                id="reviews-heading"
+                titleClassName={cn(itinH2, 'md:text-review-ink')}
+            />
             <div className="no-scrollbar flex w-full gap-4 overflow-x-auto overscroll-x-contain md:gap-6 md:pb-2">
                 {trekReviews.map((review) => (
                     <ReviewArticle

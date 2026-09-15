@@ -2,55 +2,11 @@ import { FaInstagram, FaFacebookF, FaWhatsapp } from 'react-icons/fa';
 import type { IconType } from 'react-icons';
 import { fontPrimary, sectionInner } from '@/config/theme';
 import { IMAGES } from '@/config/images';
+import { footerColumns } from '@/config/navigation';
 import { cn } from '@/lib/utils';
 
-interface FooterColumnData {
-    title: string;
-    links: string[];
-}
-
-const footerColumns: FooterColumnData[] = [
-    {
-        title: 'Explore',
-        links: [
-            'Destinations',
-            'Trek Routes',
-            'National Parks',
-            'Glacier Lakes',
-            'Hidden Gems',
-        ],
-    },
-    {
-        title: 'Travel Guide',
-        links: [
-            'Travel Safety',
-            'Permits & Regulations',
-            'Weather & Seasons',
-            'Packing Guide',
-            'Transportation',
-        ],
-    },
-    {
-        title: 'Regions',
-        links: [
-            'Himalayas',
-            'Hilly Region',
-            'Terai',
-            'UNESCO Heritage Sites',
-            'Wildlife & Nature',
-        ],
-    },
-    {
-        title: 'Company',
-        links: [
-            'About JackYak',
-            'Contact',
-            'Privacy Policy',
-            'Terms & Conditions',
-            'FAQs',
-        ],
-    },
-];
+/** Footer logo image — dedupes the contain-fit logo pattern (banner + mobile + desktop) */
+export const footerLogoImage = 'h-full w-full object-contain';
 
 interface SocialIconProps {
     label: string;
@@ -78,7 +34,7 @@ const Footer: React.FC = () => {
                     <img
                         src={IMAGES.home.trekkerYak}
                         alt="JackYak Logo"
-                        className="h-full w-full object-contain"
+                        className={footerLogoImage}
                     />
                 </div>
             </div>
@@ -89,7 +45,7 @@ const Footer: React.FC = () => {
                             <img
                                 src={IMAGES.logo.jackYak}
                                 alt="JackYak Logo"
-                                className="h-full w-full object-contain"
+                                className={footerLogoImage}
                             />
                         </div>
                         <p
@@ -146,7 +102,7 @@ const Footer: React.FC = () => {
                             <img
                                 src={IMAGES.logo.jackYak}
                                 alt="JackYak Logo"
-                                className="h-full w-full object-contain"
+                                className={footerLogoImage}
                             />
                         </div>
                         <p

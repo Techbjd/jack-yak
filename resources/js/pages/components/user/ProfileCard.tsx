@@ -2,6 +2,7 @@ import { usePage } from '@inertiajs/react';
 import { Pencil, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { userEditButton, userMuted, userName } from '@/config/theme';
+import { userCard } from './tokens';
 import { IMAGES } from '@/config/images';
 import type { PageProps } from '@/types';
 
@@ -26,7 +27,12 @@ export default function ProfileCard() {
     const email = user?.email ?? 'Sign in to sync your profile';
 
     return (
-        <section className="shadow-card flex w-full flex-row items-center gap-4 rounded-xl bg-white p-5 md:justify-between md:rounded-none md:p-10">
+        <section
+            className={cn(
+                userCard,
+                'flex flex-row items-center gap-4 md:justify-between',
+            )}
+        >
             <img
                 src={IMAGES.about.travelerAvatar}
                 alt={name}

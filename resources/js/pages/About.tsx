@@ -1,5 +1,6 @@
 import AppLayout from '@/layouts/AppLayout';
 import AboutHero from './components/about/AboutHero';
+import Section from './components/shared/Section';
 import DifferenceSection from './components/about/DifferenceSection';
 import JourneyStory from './components/about/JourneyStory';
 import NewsletterCta from './components/about/NewsletterCta';
@@ -7,18 +8,18 @@ import NewsletterCta from './components/about/NewsletterCta';
 export default function About() {
     return (
         <AppLayout title="About" shellClassName="bg-canvas">
-            <div className="w-full">
+            <Section>
                 <AboutHero />
-            </div>
-            <div className="w-full">
+            </Section>
+            <Section>
                 <DifferenceSection />
-            </div>
-            <div className="w-full">
+            </Section>
+            <Section>
                 <JourneyStory />
-            </div>
-            <div className="w-full">
+            </Section>
+            <Section>
                 <NewsletterCta />
-            </div>
+            </Section>
         </AppLayout>
     );
 }

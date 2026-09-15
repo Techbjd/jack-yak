@@ -5,20 +5,8 @@ import {
     imagePlaceholder,
 } from '@/config/theme';
 import { IMAGES } from '@/config/images';
+import { journeyImageAlt } from '@/config/destination';
 import { cn } from '@/lib/utils';
-
-function MaskLabel({ name }: { name: string }) {
-    return (
-        <span
-            className={cn(
-                fontPrimary,
-                'text-2xs px-2 text-center font-medium text-white/80',
-            )}
-        >
-            {name}
-        </span>
-    );
-}
 
 export default function JourneyNepal() {
     return (
@@ -73,7 +61,7 @@ export default function JourneyNepal() {
                 >
                     <img
                         src={IMAGES.destination.journeyMobile}
-                        alt="Journey Nepal"
+                        alt={journeyImageAlt}
                         className={cn(coverImageAbsolute)}
                     />
                 </div>
@@ -85,7 +73,7 @@ export default function JourneyNepal() {
                 >
                     <img
                         src={IMAGES.destination.journey}
-                        alt="Journey Nepal"
+                        alt={journeyImageAlt}
                         className={cn(coverImageAbsolute)}
                     />
                 </div>
@@ -120,7 +108,7 @@ export default function JourneyNepal() {
                 >
                     <img
                         src={IMAGES.destination.journeyMobileMountain}
-                        alt="Journey Nepal"
+                        alt={journeyImageAlt}
                         className={cn(coverImageAbsolute)}
                     />
                 </div>
@@ -132,7 +120,7 @@ export default function JourneyNepal() {
                 >
                     <img
                         src={IMAGES.destination.journeyMountain}
-                        alt="Journey Nepal"
+                        alt={journeyImageAlt}
                         className={cn(coverImageAbsolute)}
                     />
                 </div>

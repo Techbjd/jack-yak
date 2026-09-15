@@ -1,11 +1,8 @@
 import { useState } from 'react';
-import {
-    coverImageAbsolute,
-    fontPrimary,
-    imagePlaceholder,
-} from '@/config/theme';
+import { fontPrimary, imagePlaceholder } from '@/config/theme';
 import { IMAGES } from '@/config/images';
 import { cn } from '@/lib/utils';
+import CoverImage from '../shared/CoverImage';
 import CheckAvailability from '../booking/CheckAvailability';
 
 export default function ImmersivePlan() {
@@ -53,15 +50,17 @@ export default function ImmersivePlan() {
                         'relative flex min-h-40 w-full items-center justify-center overflow-hidden md:col-span-7 md:min-h-81.5',
                     )}
                 >
-                    <img
+                    <CoverImage
                         src={IMAGES.destination.swayambhuStupa}
                         alt="Temple image"
-                        className={cn(coverImageAbsolute, 'md:hidden')}
+                        className="md:hidden"
+                        eager
                     />
-                    <img
+                    <CoverImage
                         src={IMAGES.destination.stupaPanorama}
                         alt="Temple image"
-                        className={cn(coverImageAbsolute, 'hidden md:block')}
+                        className="hidden md:block"
+                        eager
                     />
                 </div>
             </div>

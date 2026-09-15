@@ -2,23 +2,13 @@ import {
     sectionPadding,
     sectionContainer,
     headingSection,
-    headingSubsection,
     bodyText,
     imageRoundedLg,
 } from '@/config/theme';
+import { aboutJackyakInfoBlocks } from '@/config/home';
 import { cn } from '@/lib/utils';
 import { IMAGES } from '@/config/images';
-
-const INFO_BLOCKS = [
-    {
-        title: 'Popular Destinations',
-        body: 'Discover breathtaking mountains, serene lakes, ancient heritage sites, lush national parks, and vibrant cities across Nepal. Every destination offers a unique adventure waiting to be explored.',
-    },
-    {
-        title: 'Travel Tips',
-        body: 'Find essential information on the best seasons to visit, packing guides, permits, transportation, budgeting, and safety tips before you travel.',
-    },
-] as const;
+import HomeInfoBlock from './HomeInfoBlock';
 
 const AboutJackyak = () => {
     return (
@@ -55,17 +45,12 @@ const AboutJackyak = () => {
                 </div>
 
                 <div className="flex flex-col items-center gap-10 md:hidden">
-                    <div className="max-w-content-md flex flex-col gap-4 text-center">
-                        <h3
-                            className={cn(
-                                headingSubsection,
-                                'text-lg-xl md:text-3xl-4xl',
-                            )}
-                        >
-                            {INFO_BLOCKS[0].title}
-                        </h3>
-                        <p className={bodyText}>{INFO_BLOCKS[0].body}</p>
-                    </div>
+                    <HomeInfoBlock
+                        title={aboutJackyakInfoBlocks[0].title}
+                        body={aboutJackyakInfoBlocks[0].body}
+                        align="center"
+                        titleClassName="text-lg-xl md:text-3xl-4xl"
+                    />
 
                     <div
                         className={cn(
@@ -77,23 +62,21 @@ const AboutJackyak = () => {
                         }}
                     />
 
-                    <div className="max-w-content-md flex flex-col gap-4 text-center">
-                        <h3 className={headingSubsection}>
-                            {INFO_BLOCKS[1].title}
-                        </h3>
-                        <p className={bodyText}>{INFO_BLOCKS[1].body}</p>
-                    </div>
+                    <HomeInfoBlock
+                        title={aboutJackyakInfoBlocks[1].title}
+                        body={aboutJackyakInfoBlocks[1].body}
+                        align="center"
+                    />
                 </div>
 
                 <div className="hidden md:grid md:grid-cols-2 md:gap-16">
-                    {INFO_BLOCKS.map((block) => (
-                        <div
+                    {aboutJackyakInfoBlocks.map((block) => (
+                        <HomeInfoBlock
                             key={block.title}
-                            className="max-w-content-md flex flex-col gap-4 text-left"
-                        >
-                            <h3 className={headingSubsection}>{block.title}</h3>
-                            <p className={bodyText}>{block.body}</p>
-                        </div>
+                            title={block.title}
+                            body={block.body}
+                            align="left"
+                        />
                     ))}
                 </div>
             </div>

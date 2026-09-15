@@ -3,30 +3,31 @@ import JourneyNepal from './components/destination/JourneyNepal';
 import PopularDestinations from './components/destination/PopularDestinations';
 import ImmersivePlan from './components/destination/ImmersivePlan';
 import FeaturedGrid from './components/destination/FeaturedGrid';
+import Section from './components/shared/Section';
 import DiscoverNepal from './components/home/DiscoverNepal';
 import AppLayout from '@/layouts/AppLayout';
 
 export default function Destination() {
     return (
         <AppLayout title="Destinations">
-            <div className="w-full">
+            <Section>
                 <DestinationHero />
-            </div>
-            <div className="w-full">
+            </Section>
+            <Section>
                 <JourneyNepal />
-            </div>
-            <div className="w-full">
+            </Section>
+            <Section>
                 <PopularDestinations />
-            </div>
-            <div className="w-full">
+            </Section>
+            <Section>
                 <ImmersivePlan />
-            </div>
-            <div className="w-full">
+            </Section>
+            <Section>
                 <FeaturedGrid />
-            </div>
-            <div className="w-full">
+            </Section>
+            <Section>
                 <DiscoverNepal />
-            </div>
+            </Section>
         </AppLayout>
     );
 }

@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { userRow, userRowDark } from '@/config/theme';
+import { userCard } from './tokens';
 import { userSettings } from '@/config/user';
 
 const SETTING_ICONS: Record<string, typeof UserIcon> = {
@@ -19,7 +20,7 @@ const SETTING_ICONS: Record<string, typeof UserIcon> = {
 
 export default function SettingsCard() {
     return (
-        <section className="shadow-card flex w-full flex-col gap-2 rounded-xl bg-white p-5 md:rounded-none md:p-10">
+        <section className={cn(userCard, 'flex flex-col gap-2')}>
             <div className="flex items-center gap-3">
                 <SettingsIcon
                     aria-hidden

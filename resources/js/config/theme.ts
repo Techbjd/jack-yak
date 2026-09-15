@@ -205,6 +205,17 @@ export const authSocialButton =
 export const authDividerLine = 'h-px flex-1 bg-divider';
 
 // --------------------------------------------
+// Forms: shared error patterns (single truth —
+// login, quiz, booking + review modals compose these)
+// --------------------------------------------
+
+/** Form inline error — small red alert text */
+export const formError = 'font-manrope pt-1.5 text-xs font-medium text-red-500';
+
+/** Form error border — invalid-state override for inputs */
+export const formErrorBorder = 'border-red-400';
+
+// --------------------------------------------
 // Quiz: Destination-finder form patterns
 // --------------------------------------------
 
@@ -226,8 +237,8 @@ export const quizButton =
 /** Quiz helper note — 15px subtle */
 export const quizNote =
     'font-manrope text-[15px] leading-5 font-medium text-subtle';
-/** Quiz inline error — small red, mirrors login errors */
-export const quizError = 'font-manrope pt-1.5 text-xs font-medium text-red-500';
+/** Quiz inline error — alias of the shared form error (do not diverge) */
+export const quizError = formError;
 
 // --------------------------------------------
 // About: page patterns (token-only)
@@ -399,6 +410,17 @@ export const itinDayPlace =
 /** Day subtitle — 12px/16 bold ink mobile; 16px/22 desktop (Figma Arrival) */
 export const itinDaySub =
     'font-manrope text-xs-md leading-4 font-bold text-ink md:text-md-lg md:leading-itinerary-22';
+
+/** Itinerary unit pill base — m/ft + °C/°F toggles (WeatherCard + AltitudeProfile).
+ *  Sizes stay at the call site; only the shared visuals live here. */
+export const itinUnitPillBase =
+    'font-manrope text-xs-md text-slate-text md:text-slate-mute flex items-center justify-center rounded-full border uppercase md:h-8';
+
+/** Unit pill active state — sky tint fill, bold label */
+export const itinUnitPillActive = 'border-sky-line bg-sky-tint font-bold';
+
+/** Unit pill idle state — white fill, medium label */
+export const itinUnitPillIdle = 'border-ash bg-white font-medium';
 
 // --------------------------------------------
 // Colors: For inline styles (SVG, dynamic)

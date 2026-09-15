@@ -1,49 +1,11 @@
-import type { LucideIcon } from 'lucide-react';
-import { ClipboardList, Mountain, MoveRight } from 'lucide-react';
+import { MoveRight } from 'lucide-react';
 import { fontPrimary } from '@/config/theme';
-import { IMAGES } from '@/config/images';
 import { cn } from '@/lib/utils';
-
-interface ExploreCard {
-    title: string;
-    description: string;
-    Icon?: LucideIcon;
-    image?: string;
-    imageAlt?: string;
-}
-
-const exploreCards: ExploreCard[] = [
-    {
-        title: 'Mountain Guides',
-        description:
-            "Explore Everest, Annapurna, Langtang, and Nepal's most spectacular Himalayan trails.",
-        Icon: Mountain,
-    },
-    {
-        title: 'Travel Planning',
-        description:
-            'Find destinations based on your interests, season, budget, and travel style.',
-        Icon: ClipboardList,
-    },
-    {
-        title: 'Culture & Heritage',
-        description:
-            "Learn about Nepal's ancient temples, festivals, local traditions, and UNESCO sites.",
-        image: IMAGES.destination.icons.heritage,
-        imageAlt: 'Heritage site icon',
-    },
-    {
-        title: 'Wildlife & Nature',
-        description:
-            'Discover jungle safaris, national parks, rare wildlife, and peaceful natural escapes.',
-        image: IMAGES.destination.icons.safari,
-        imageAlt: 'Safari icon',
-    },
-];
+import { exploreCards, guideSectionShell } from '@/config/guide';
 
 const WhyExplore = () => {
     return (
-        <section className="bg-surface-warm w-full">
+        <section className={guideSectionShell}>
             <div className="max-w-container mx-auto flex w-full flex-col gap-6 px-6 pt-6 md:gap-10 md:px-12 md:pt-10 lg:px-24">
                 <div className="grid grid-cols-2 items-start gap-4 md:items-center md:gap-8">
                     <div className="flex flex-col gap-2">

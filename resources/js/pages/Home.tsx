@@ -4,6 +4,7 @@ import MapQuote from './components/home/MapQuote';
 import AboutJackyak from './components/home/AboutJackyak';
 import DiscoverNepal from './components/home/DiscoverNepal';
 import TopDestinations from './components/home/TopDestination';
+import Section from './components/shared/Section';
 import AppLayout from '@/layouts/AppLayout';
 import { IMAGES } from '@/config/images';
 
@@ -15,9 +16,9 @@ export default function Home() {
                 <NepalMap />
                 <MapQuote />
             </div>
-            <div className="relative z-10 w-full">
+            <Section className="relative z-10">
                 <AboutJackyak />
-            </div>
+            </Section>
             <div className="relative z-10 hidden w-full md:block">
                 <img
                     src={IMAGES.home.mountainDivider}
@@ -25,12 +26,12 @@ export default function Home() {
                     className="m-auto h-auto w-full object-cover px-2"
                 />
             </div>
-            <div className="relative z-10 w-full">
+            <Section className="relative z-10">
                 <DiscoverNepal />
-            </div>
-            <div className="relative z-10 w-full">
+            </Section>
+            <Section className="relative z-10">
                 <TopDestinations />
-            </div>
+            </Section>
         </AppLayout>
     );
 }

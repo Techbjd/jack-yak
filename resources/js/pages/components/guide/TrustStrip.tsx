@@ -1,27 +1,10 @@
-import { IMAGES } from '@/config/images';
 import { fontPrimary } from '@/config/theme';
 import { cn } from '@/lib/utils';
-
-interface TrustItem {
-    label: string;
-    image: string;
-}
-
-const trustItems: TrustItem[] = [
-    {
-        label: 'UNESCO Heritage Sites',
-        image: IMAGES.destination.icons.heritage,
-    },
-    { label: 'Nepal Tourism', image: IMAGES.icons.travelling },
-    { label: 'National Parks', image: IMAGES.icons.nationalPark },
-    { label: 'Adventure Activities', image: IMAGES.icons.advanture },
-    { label: 'Wildlife Experiences', image: IMAGES.icons.wildlife },
-    { label: 'Local Communities', image: IMAGES.icons.localCommunication },
-];
+import { guideSectionShell, trustItems } from '@/config/guide';
 
 const TrustStrip = () => {
     return (
-        <section className="bg-surface-warm w-full">
+        <section className={guideSectionShell}>
             <div className="max-w-container mx-auto w-full px-6 md:px-12 lg:px-24">
                 <div className="border-bg-placeholder grid grid-cols-3 gap-x-4 gap-y-6 border-t py-6 md:grid-cols-6 md:gap-0 md:py-0">
                     {trustItems.map(({ label, image }, i) => (

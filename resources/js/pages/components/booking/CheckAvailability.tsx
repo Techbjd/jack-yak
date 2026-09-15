@@ -9,10 +9,15 @@ import {
     modalPrimary,
     modalSubtitle,
     modalTitle,
-    quizError,
 } from '@/config/theme';
 import { quizSelectQuestions } from '@/config/quiz';
-import Modal from '../shared/Modal';
+import Modal, {
+    ModalFieldError,
+    modalDivider,
+    modalInputErrorBorder,
+    modalSelectChevron,
+    modalSelectTrigger,
+} from '../shared/Modal';
 import type { PageProps } from '@/types';
 
 const MAX_TRAVELERS = 16;
@@ -135,7 +140,7 @@ export default function CheckAvailability({
                             as guest.
                         </p>
                     )}
-                    <hr className="border-hairline mt-6 border-t" />
+                    <hr className={modalDivider} />
 
                     <label
                         htmlFor="availability-date"
@@ -159,22 +164,18 @@ export default function CheckAvailability({
                         className={cn(
                             modalInput,
                             !data.date && 'text-mist',
-                            errors.date && 'border-red-400',
+                            errors.date && modalInputErrorBorder,
                         )}
                     />
                     {errors.date && (
-                        <p
-                            id="availability-date-error"
-                            role="alert"
-                            className={quizError}
-                        >
+                        <ModalFieldError id="availability-date-error">
                             {errors.date}
-                        </p>
+                        </ModalFieldError>
                     )}
                     {errors.travelers && (
-                        <p role="alert" className={quizError}>
+                        <ModalFieldError>
                             {errors.travelers}
-                        </p>
+                        </ModalFieldError>
                     )}
 
                     <div className="grid grid-cols-1 gap-5 pt-5 md:grid-cols-2">
@@ -256,7 +257,7 @@ export default function CheckAvailability({
                                     }
                                     className={cn(
                                         modalInput,
-                                        'cursor-pointer appearance-none pr-10',
+                                        modalSelectTrigger,
                                         !data.duration && 'text-mist',
                                     )}
                                 >
@@ -271,13 +272,13 @@ export default function CheckAvailability({
                                 </select>
                                 <ChevronDown
                                     aria-hidden
-                                    className="text-mist pointer-events-none absolute top-1/2 right-4 size-5 -translate-y-1/2"
+                                    className={modalSelectChevron}
                                 />
                             </div>
                             {errors.duration && (
-                                <p role="alert" className={quizError}>
+                                <ModalFieldError>
                                     {errors.duration}
-                                </p>
+                                </ModalFieldError>
                             )}
                         </div>
                     </div>
@@ -297,7 +298,7 @@ export default function CheckAvailability({
                             }
                             className={cn(
                                 modalInput,
-                                'cursor-pointer appearance-none pr-10',
+                                modalSelectTrigger,
                                 !data.looking_for && 'text-mist',
                             )}
                         >
@@ -312,16 +313,16 @@ export default function CheckAvailability({
                         </select>
                         <ChevronDown
                             aria-hidden
-                            className="text-mist pointer-events-none absolute top-1/2 right-4 size-5 -translate-y-1/2"
+                            className={modalSelectChevron}
                         />
                     </div>
                     {errors.looking_for && (
-                        <p role="alert" className={quizError}>
+                        <ModalFieldError>
                             {errors.looking_for}
-                        </p>
+                        </ModalFieldError>
                     )}
 
-                    <hr className="border-hairline mt-6 border-t" />
+                    <hr className={modalDivider} />
 
                     <div className="flex flex-col gap-4 pt-5 md:flex-row md:items-center md:justify-between">
                         <p className={cn(modalSubtitle, 'font-semibold')}>

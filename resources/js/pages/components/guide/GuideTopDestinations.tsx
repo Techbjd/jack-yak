@@ -12,44 +12,16 @@ import {
     destCardName,
     fontPrimary,
 } from '@/config/theme';
-import { IMAGES } from '@/config/images';
 import { cn } from '@/lib/utils';
+import { guideSectionShell } from '@/config/guide';
+import {
+    guideTopDestinations,
+    type GuideTopDestination,
+} from '@/config/destination';
 import CarouselDots from '../shared/CarouselDots';
 import ViewAllLink from '../shared/ViewAllLink';
 
-interface TopDestination {
-    name: string;
-    subtitle: string;
-    province: string;
-    duration: string;
-    image: string;
-}
-
-const topDestinations: TopDestination[] = [
-    {
-        name: 'Mount Everest',
-        subtitle: 'Highest Peak on Earth',
-        province: 'Koshi Province',
-        duration: '12–16 Days',
-        image: IMAGES.about.mountEverest,
-    },
-    {
-        name: 'Pokhara',
-        subtitle: 'Lakeside Paradise',
-        province: 'Gandaki Province',
-        duration: '2–5 Days',
-        image: IMAGES.about.pokharaLakeside,
-    },
-    {
-        name: 'Chitwan',
-        subtitle: 'Wildlife Safari',
-        province: 'Bagmati Province',
-        duration: '2–3 Days',
-        image: IMAGES.about.chitwanSafari,
-    },
-];
-
-const DestinationCard = ({ dest }: { dest: TopDestination }) => {
+const DestinationCard = ({ dest }: { dest: GuideTopDestination }) => {
     return (
         // Carousel widths are a deliberate responsive ramp, not drift:
         // 117px base → 220px ≥ms → 260px ≥md (capped by max-w-dest-card).
@@ -117,7 +89,7 @@ const GuideTopDestinations = () => {
     };
 
     return (
-        <section className="bg-surface-warm w-full">
+        <section className={guideSectionShell}>
             <div className="max-w-container mx-auto flex w-full flex-col gap-4 px-6 py-6 md:gap-8 md:px-12 lg:px-24">
                 <div className="flex items-end justify-between gap-4">
                     <div className="flex flex-col gap-1">
@@ -149,7 +121,7 @@ const GuideTopDestinations = () => {
                         className="no-scrollbar scroll-px-6 overflow-x-auto scroll-smooth md:scroll-px-12"
                     >
                         <div className="flex w-full min-w-max snap-x snap-mandatory gap-2 px-6 md:gap-4 md:px-12">
-                            {topDestinations.map((dest, i) => (
+                            {guideTopDestinations.map((dest, i) => (
                                 <DestinationCard
                                     key={`${dest.name}-${i}`}
                                     dest={dest}
@@ -172,7 +144,7 @@ const GuideTopDestinations = () => {
 
                 <div className="relative hidden lg:block">
                     <div className="grid gap-6 lg:grid-cols-3">
-                        {topDestinations.map((dest, i) => (
+                        {guideTopDestinations.map((dest, i) => (
                             <DestinationCard
                                 key={`${dest.name}-${i}`}
                                 dest={dest}

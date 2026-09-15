@@ -302,3 +302,10 @@ export const homeTopDestinations: HomeTopDestination[] = [
         variant: 'sm',
     },
 ];
+
+// --------------------------------------------
+// Shared UI strings (deduped literals)
+// --------------------------------------------
+
+/** Journey section image alt text */
+export const journeyImageAlt = 'Journey Nepal';

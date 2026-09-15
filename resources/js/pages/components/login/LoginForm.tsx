@@ -3,13 +3,14 @@ import { cn } from '@/lib/utils';
 import {
     authButton,
     authDividerLine,
-    authInput,
     authLabel,
     authSocialButton,
     authTitle,
     fontPrimary,
 } from '@/config/theme';
 import GoogleIcon from './GoogleIcon';
+import AuthField from './AuthField';
+import { authLink } from './tokens';
 
 export default function LoginForm() {
     const { data, setData, post, processing, errors, clearErrors } = useForm({
@@ -59,85 +60,40 @@ export default function LoginForm() {
                     onSubmit={handleSubmit}
                     noValidate
                 >
-                    <label
-                        htmlFor="login-email"
-                        className={cn(authLabel, 'pt-5 pb-1.5')}
-                    >
-                        Email
-                    </label>
-                    <input
+                    <AuthField
                         id="login-email"
+                        label="Email"
                         type="email"
                         autoComplete="email"
                         placeholder="Enter Your Email"
                         value={data.email}
-                        onChange={(e) => {
-                            setData('email', e.target.value);
+                        onChange={(value) => {
+                            setData('email', value);
                             if (errors.email) {
                                 clearErrors('email');
                             }
                         }}
-                        aria-invalid={emailError ? true : undefined}
-                        aria-describedby={
-                            emailError ? 'login-email-error' : undefined
-                        }
-                        className={cn(
-                            authInput,
-                            emailError && 'border-red-400',
-                        )}
+                        error={emailError}
+                        errorId="login-email-error"
+                        first
                     />
-                    {emailError && (
-                        <p
-                            id="login-email-error"
-                            role="alert"
-                            className={cn(
-                                fontPrimary,
-                                'pt-1.5 text-xs font-medium text-red-500',
-                            )}
-                        >
-                            {emailError}
-                        </p>
-                    )}
 
-                    <label
-                        htmlFor="login-password"
-                        className={cn(authLabel, 'pt-4 pb-1.5')}
-                    >
-                        Password
-                    </label>
-                    <input
+                    <AuthField
                         id="login-password"
+                        label="Password"
                         type="password"
                         autoComplete="current-password"
                         placeholder="Enter Your Password"
                         value={data.password}
-                        onChange={(e) => {
-                            setData('password', e.target.value);
+                        onChange={(value) => {
+                            setData('password', value);
                             if (errors.password) {
                                 clearErrors('password');
                             }
                         }}
-                        aria-invalid={passwordError ? true : undefined}
-                        aria-describedby={
-                            passwordError ? 'login-password-error' : undefined
-                        }
-                        className={cn(
-                            authInput,
-                            passwordError && 'border-red-400',
-                        )}
+                        error={passwordError}
+                        errorId="login-password-error"
                     />
-                    {passwordError && (
-                        <p
-                            id="login-password-error"
-                            role="alert"
-                            className={cn(
-                                fontPrimary,
-                                'pt-1.5 text-xs font-medium text-red-500',
-                            )}
-                        >
-                            {passwordError}
-                        </p>
-                    )}
 
                     <div className="flex items-center justify-between pt-2.5">
                         <label
@@ -162,7 +118,8 @@ export default function LoginForm() {
                             href="/register"
                             className={cn(
                                 fontPrimary,
-                                'text-cta-accent text-xs font-bold',
+                                authLink,
+                                'text-xs font-bold',
                             )}
                         >
                             Forgot Password?
@@ -198,13 +155,13 @@ export default function LoginForm() {
 
                 <p className={cn(authLabel, 'pt-5 text-center')}>
                     Don&rsquo;t you have an account?{' '}
-                    <Link href="/register" className="text-cta-accent">
+                    <Link href="/register" className={authLink}>
                         Sign up
                     </Link>
                 </p>
                 <p className={cn(authLabel, 'pt-2 text-center')}>
                     Just looking around?{' '}
-                    <Link href="/destinations" className="text-cta-accent">
+                    <Link href="/destinations" className={authLink}>
                         Browse destinations
                     </Link>
                 </p>

@@ -12,14 +12,20 @@ import {
     modalSubtitle,
     modalTextarea,
     modalTitle,
-    quizError,
 } from '@/config/theme';
 import {
     MAX_REVIEW_LENGTH,
     MAX_REVIEW_PHOTOS,
+    REVIEW_STAR_COUNT,
     reviewPlaces,
 } from '@/config/review';
-import Modal from '../shared/Modal';
+import Modal, {
+    ModalFieldError,
+    modalDivider,
+    modalInputErrorBorder,
+    modalSelectChevron,
+    modalSelectTrigger,
+} from '../shared/Modal';
 import type { PageProps } from '@/types';
 
 interface ReviewPhoto {
@@ -84,16 +90,16 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
     ) => {
         if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
             e.preventDefault();
-            focusStar((index + 1) % 5);
+            focusStar((index + 1) % REVIEW_STAR_COUNT);
         } else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
             e.preventDefault();
-            focusStar((index + 4) % 5);
+            focusStar((index + REVIEW_STAR_COUNT - 1) % REVIEW_STAR_COUNT);
         } else if (e.key === 'Home') {
             e.preventDefault();
             focusStar(0);
         } else if (e.key === 'End') {
             e.preventDefault();
-            focusStar(4);
+            focusStar(REVIEW_STAR_COUNT - 1);
         }
     };
 
@@ -219,7 +225,7 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                             guest.
                         </p>
                     )}
-                    <hr className="border-hairline mt-6 border-t" />
+                    <hr className={modalDivider} />
 
                     <p className={cn(modalLabel, 'pt-6')}>
                         1. Rate Your Experience
@@ -231,7 +237,10 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                         className="flex gap-4 pt-3 md:gap-6"
                         onMouseLeave={() => setHovered(0)}
                     >
-                        {[1, 2, 3, 4, 5].map((star, i) => (
+                        {Array.from(
+                            { length: REVIEW_STAR_COUNT },
+                            (_, i) => i + 1,
+                        ).map((star, i) => (
                             <button
                                 key={star}
                                 ref={(el) => {
@@ -267,9 +276,7 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                             : 'Tap a star to rate.'}
                     </p>
                     {errors.rating && (
-                        <p role="alert" className={quizError}>
-                            {errors.rating}
-                        </p>
+                        <ModalFieldError>{errors.rating}</ModalFieldError>
                     )}
 
                     <label
@@ -291,15 +298,15 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                         aria-invalid={errors.body ? true : undefined}
                         className={cn(
                             modalTextarea,
-                            errors.body && 'border-red-400',
+                            errors.body && modalInputErrorBorder,
                         )}
                     />
                     <div className="flex items-center justify-between pt-1.5">
                         <span>
                             {errors.body && (
-                                <span role="alert" className={quizError}>
+                                <ModalFieldError>
                                     {errors.body}
-                                </span>
+                                </ModalFieldError>
                             )}
                         </span>
                         <span
@@ -386,9 +393,7 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                         }}
                     />
                     {photoError && (
-                        <p role="alert" className={quizError}>
-                            {photoError}
-                        </p>
+                        <ModalFieldError>{photoError}</ModalFieldError>
                     )}
                     {previews.length > 0 && (
                         <ul className="flex flex-wrap gap-3 pt-3">
@@ -436,9 +441,9 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                                     }
                                     className={cn(
                                         modalInput,
-                                        'cursor-pointer appearance-none pr-10',
+                                        modalSelectTrigger,
                                         !data.place && 'text-mist',
-                                        errors.place && 'border-red-400',
+                                        errors.place && modalInputErrorBorder,
                                     )}
                                 >
                                     <option value="" disabled>
@@ -452,13 +457,13 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                                 </select>
                                 <ChevronDown
                                     aria-hidden
-                                    className="text-mist pointer-events-none absolute top-1/2 right-4 size-5 -translate-y-1/2"
+                                    className={modalSelectChevron}
                                 />
                             </div>
                             {errors.place && (
-                                <p role="alert" className={quizError}>
+                                <ModalFieldError>
                                     {errors.place}
-                                </p>
+                                </ModalFieldError>
                             )}
                         </div>
 
@@ -484,13 +489,13 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                                 className={cn(
                                     modalInput,
                                     !data.visit_date && 'text-mist',
-                                    errors.visit_date && 'border-red-400',
+                                    errors.visit_date && modalInputErrorBorder,
                                 )}
                             />
                             {errors.visit_date && (
-                                <p role="alert" className={quizError}>
+                                <ModalFieldError>
                                     {errors.visit_date}
-                                </p>
+                                </ModalFieldError>
                             )}
                         </div>
                     </div>
@@ -514,13 +519,11 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                         aria-invalid={errors.name ? true : undefined}
                         className={cn(
                             modalInput,
-                            errors.name && 'border-red-400',
+                            errors.name && modalInputErrorBorder,
                         )}
                     />
                     {errors.name && (
-                        <p role="alert" className={quizError}>
-                            {errors.name}
-                        </p>
+                        <ModalFieldError>{errors.name}</ModalFieldError>
                     )}
 
                     <div className="flex flex-col gap-4 pt-6 md:flex-row md:items-center md:justify-between">
@@ -551,9 +554,9 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                                 </span>
                             </label>
                             {agreedError && (
-                                <p role="alert" className={quizError}>
+                                <ModalFieldError>
                                     {agreedError}
-                                </p>
+                                </ModalFieldError>
                             )}
                         </div>
                         <div className="flex gap-3">

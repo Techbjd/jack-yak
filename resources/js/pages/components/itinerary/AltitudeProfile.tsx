@@ -1,14 +1,16 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Download } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
-    itinAltTitle,
     itinCard,
-    itinRailTeal,
-    itinTitleBar,
+    itinUnitPillActive,
+    itinUnitPillBase,
+    itinUnitPillIdle,
 } from '@/config/theme';
 import { altitudeProfile, type AltitudeStop } from '@/config/itinerary';
 import AltitudeChart, { type AltitudeUnit } from './AltitudeChart';
+import SectionHeading from './SectionHeading';
+import useDesktop from './useDesktop';
 
 interface AltitudeProfileProps {
     title: string;
@@ -28,15 +30,7 @@ export default function AltitudeProfile({
      *  breakpoint so the label math matches the rendered height.
      *  Keep at md: the section track is w-graph-card-w from md up,
      *  so tablet renders at full desktop width. */
-    const [isDesktop, setIsDesktop] = useState(false);
-
-    useEffect(() => {
-        const mq = window.matchMedia('(min-width: 768px)');
-        const sync = (): void => setIsDesktop(mq.matches);
-        sync();
-        mq.addEventListener('change', sync);
-        return () => mq.removeEventListener('change', sync);
-    }, []);
+    const isDesktop = useDesktop();
 
     const downloadSvg = (): void => {
         const node = chartRef.current?.querySelector('svg');
@@ -57,22 +51,15 @@ export default function AltitudeProfile({
 
     const pill = (active: boolean, size: string): string =>
         cn(
-            'font-manrope text-xs-md text-slate-text leading-itinerary-19 md:text-slate-mute flex items-center justify-center rounded-full border uppercase md:h-8',
+            itinUnitPillBase,
+            'leading-itinerary-19',
             size,
-            active
-                ? 'border-sky-line bg-sky-tint font-bold'
-                : 'border-ash bg-white font-medium',
+            active ? itinUnitPillActive : itinUnitPillIdle,
         );
 
     return (
         <section aria-label={title} className="flex w-full flex-col gap-2.5">
-            <div className="flex w-full flex-col gap-2">
-                <div className="flex w-full items-stretch gap-2.5">
-                    <span aria-hidden className={itinRailTeal} />
-                    <h2 className={itinAltTitle}>{title}</h2>
-                </div>
-                <span aria-hidden className={itinTitleBar} />
-            </div>
+            <SectionHeading title={title} />
             <div
                 className={cn(
                     itinCard,

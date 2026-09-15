@@ -3,33 +3,16 @@ import {
     cardMobileImage,
     cardMobileContent,
 } from '@/config/theme';
-import { IMAGES } from '@/config/images';
+import {
+    homeTopDestinations,
+    type HomeTopDestination,
+} from '@/config/destination';
 import { cn } from '@/lib/utils';
 
-const destinations = [
-    {
-        name: 'Tilicho Lake',
-        subtitle: 'Scenic Lake',
-        image: IMAGES.featured.tilichoLake,
-        variant: 'sm' as const,
-    },
-    {
-        name: 'Mount Everest',
-        subtitle: 'Highest Peak',
-        image: IMAGES.featured.everestPrayerFlags,
-        variant: 'lg' as const,
-    },
-    {
-        name: 'Gokyo Lake',
-        subtitle: 'Sacred Lake',
-        image: IMAGES.featured.gokyoLake,
-        variant: 'sm' as const,
-    },
-];
-
-type CardVariant = 'sm' | 'lg';
-
-const cardDimensions: Record<CardVariant, { width: number; height: number }> = {
+const cardDimensions: Record<
+    HomeTopDestination['variant'],
+    { width: number; height: number }
+> = {
     sm: { width: 258, height: 391 },
     lg: { width: 284, height: 424 },
 };
@@ -51,7 +34,7 @@ const TopDestinations = () => {
 
                 <div className="no-scrollbar w-full overflow-x-auto md:hidden">
                     <div className="flex w-max snap-x snap-mandatory gap-5 pr-5 pl-5">
-                        {destinations.map((dest, i) => (
+                        {homeTopDestinations.map((dest, i) => (
                             <div
                                 key={i}
                                 className="flex shrink-0 snap-start flex-col"
@@ -96,7 +79,7 @@ const TopDestinations = () => {
                 </div>
 
                 <div className="hidden md:grid md:grid-cols-3 md:gap-6">
-                    {destinations.map((dest) => {
+                    {homeTopDestinations.map((dest) => {
                         const dims = cardDimensions[dest.variant];
                         return (
                             <div

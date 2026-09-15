@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { userMuted, userRow, userSectionTitle } from '@/config/theme';
+import { userCard } from './tokens';
 import type {
     PageProps,
     RecentAvailability,
@@ -66,7 +67,7 @@ export default function SavedCard() {
     ];
 
     return (
-        <section className="shadow-card flex w-full flex-col gap-4 rounded-xl bg-white p-5 md:rounded-none md:p-10">
+        <section className={cn(userCard, 'flex flex-col gap-4')}>
             <div className="flex items-center gap-3">
                 <Bookmark
                     aria-hidden

@@ -1,43 +1,11 @@
-import type { LucideIcon } from 'lucide-react';
-import { Compass, Map, Mountain } from 'lucide-react';
 import { fontPrimary, imageRoundedLg } from '@/config/theme';
 import { IMAGES } from '@/config/images';
 import { cn } from '@/lib/utils';
-
-interface PlanStep {
-    index: string;
-    title: string;
-    description: string;
-    Icon: LucideIcon;
-}
-
-const planSteps: PlanStep[] = [
-    {
-        index: '01',
-        title: 'Choose Your Travel Style',
-        description:
-            'Adventure, wildlife, culture, photography, or relaxation — you decide.',
-        Icon: Mountain,
-    },
-    {
-        index: '02',
-        title: 'Discover Perfect Destinations',
-        description:
-            'Receive personalized recommendations based on your preferences.',
-        Icon: Map,
-    },
-    {
-        index: '03',
-        title: 'Explore with Confidence',
-        description:
-            'Access guides, travel tips, permits, weather, and local insights before your journey.',
-        Icon: Compass,
-    },
-];
+import { guideSectionShell, planSteps } from '@/config/guide';
 
 const PlanTripSteps = () => {
     return (
-        <section className="bg-surface-warm w-full">
+        <section className={guideSectionShell}>
             <div className="max-w-container ms:gap-8 ms:px-8 mx-auto flex w-full flex-col gap-4 px-6 py-6 md:px-12 lg:px-24">
                 <div className="ms:gap-2 flex flex-col gap-1">
                     <p

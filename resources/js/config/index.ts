@@ -70,7 +70,12 @@ export type {
     QuizAnswers,
 } from './quiz';
 
-export { reviewPlaces, MAX_REVIEW_LENGTH, MAX_REVIEW_PHOTOS } from './review';
+export {
+    reviewPlaces,
+    MAX_REVIEW_LENGTH,
+    MAX_REVIEW_PHOTOS,
+    REVIEW_STAR_COUNT,
+} from './review';
 
 export { userProfile, userSaved, userSettings } from './user';
 export type { UserSavedRow, UserSettingRow } from './user';
@@ -126,6 +131,8 @@ export {
     quizButton,
     quizNote,
     quizError,
+    formError,
+    formErrorBorder,
     aboutHeroTitle,
     aboutSectionTitle,
     aboutHeading,

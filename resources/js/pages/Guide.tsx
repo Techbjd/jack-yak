@@ -1,6 +1,7 @@
 import Header from './components/shared/Header';
 import WhyExplore from './components/guide/WhyExplore';
 import GuideTopDestinations from './components/guide/GuideTopDestinations';
+import Section from './components/shared/Section';
 import PlanTripSteps from './components/guide/PlanTripSteps';
 import TravelStories from './components/guide/TravelStories';
 import TrustStrip from './components/guide/TrustStrip';
@@ -13,21 +14,21 @@ export default function Guide() {
             shellClassName="bg-surface-warm"
             header={<Header tone="onLight" />}
         >
-            <div className="w-full">
+            <Section>
                 <WhyExplore />
-            </div>
-            <div className="w-full">
+            </Section>
+            <Section>
                 <GuideTopDestinations />
-            </div>
-            <div className="w-full">
+            </Section>
+            <Section>
                 <PlanTripSteps />
-            </div>
-            <div className="w-full">
+            </Section>
+            <Section>
                 <TravelStories />
-            </div>
-            <div className="hidden w-full sm:block">
+            </Section>
+            <Section className="hidden sm:block">
                 <TrustStrip />
-            </div>
+            </Section>
         </AppLayout>
     );
 }

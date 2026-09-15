@@ -3,13 +3,14 @@ import { Quote } from 'lucide-react';
 import { fontPrimary, fontQuote, fontQuoteMark } from '@/config/theme';
 import { IMAGES } from '@/config/images';
 import { cn } from '@/lib/utils';
+import { guideSectionShell } from '@/config/guide';
 import CarouselDots from '../shared/CarouselDots';
 import GiveReview from '../review/GiveReview';
 
 const TravelStories = () => {
     const [reviewOpen, setReviewOpen] = useState(false);
     return (
-        <section className="bg-surface-warm w-full">
+        <section className={guideSectionShell}>
             <div className="max-w-container mx-auto w-full px-6 pb-8 md:px-12 md:pb-12 lg:px-24">
                 <figure className="rounded-card-sm bg-surface-warm shadow-card md:rounded-image p-3 md:p-10">
                     <div className="flex items-start gap-3 md:items-center md:gap-8">

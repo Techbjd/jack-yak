@@ -1,5 +1,6 @@
 import { useEffect, useRef, type ReactNode } from 'react';
 import { X } from 'lucide-react';
+import { formError } from '@/config/theme';
 
 interface ModalProps {
     open: boolean;
@@ -7,6 +8,36 @@ interface ModalProps {
 
     label: string;
     children: ReactNode;
+}
+
+/** Modal divider rule — dedupes `border-hairline mt-6 border-t` (booking + review forms) */
+export const modalDivider = 'border-hairline mt-6 border-t';
+
+/** Modal select tweak — layers native-select affordances over `modalInput` */
+export const modalSelectTrigger = 'cursor-pointer appearance-none pr-10';
+
+/** Modal select chevron — dedupes the absolute ChevronDown positioning (booking + review selects) */
+export const modalSelectChevron =
+    'text-mist pointer-events-none absolute top-1/2 right-4 size-5 -translate-y-1/2';
+
+/** Modal input error border — re-exported from theme.ts (single truth) */
+export { formErrorBorder as modalInputErrorBorder } from '@/config/theme';
+
+interface ModalFieldErrorProps {
+    children: ReactNode;
+    id?: string;
+}
+
+/** Modal inline field error — dedupes `role="alert"` + `formError` paragraphs (booking + review forms) */
+export function ModalFieldError({
+    children,
+    id,
+}: ModalFieldErrorProps): ReactNode {
+    return (
+        <p role="alert" className={formError} id={id}>
+            {children}
+        </p>
+    );
 }
 
 export default function Modal({ open, onClose, label, children }: ModalProps) {

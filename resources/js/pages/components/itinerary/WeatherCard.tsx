@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import {
     CartesianGrid,
@@ -11,13 +11,15 @@ import {
 } from 'recharts';
 import { cn } from '@/lib/utils';
 import {
-    itinAltTitle,
     itinCard,
-    itinRailTeal,
-    itinTitleBar,
+    itinUnitPillActive,
+    itinUnitPillBase,
+    itinUnitPillIdle,
 } from '@/config/theme';
 import { altitudeProfile, trekWeather } from '@/config/itinerary';
 import AltitudeChart, { type AltitudeUnit } from './AltitudeChart';
+import SectionHeading from './SectionHeading';
+import useDesktop from './useDesktop';
 
 type Tab = 'daily' | 'monthly';
 type Unit = 'c' | 'f';
@@ -97,15 +99,7 @@ export default function WeatherCard() {
      *  the chart gets a numeric pixel width instead of a nested
      *  min-width div (single graph div structure). Keep at md: the
      *  switch follows the track width, not sibling sections. */
-    const [isDesktop, setIsDesktop] = useState(false);
-
-    useEffect(() => {
-        const mq = window.matchMedia('(min-width: 768px)');
-        const sync = (): void => setIsDesktop(mq.matches);
-        sync();
-        mq.addEventListener('change', sync);
-        return () => mq.removeEventListener('change', sync);
-    }, []);
+    const isDesktop = useDesktop();
 
     const count = trekWeather.months.length;
     const prev = (): void => setMonthIndex((i) => (i - 1 + count) % count);
@@ -157,10 +151,9 @@ export default function WeatherCard() {
 
     const unitPill = (active: boolean): string =>
         cn(
-            'font-manrope text-xs-md text-slate-text md:text-slate-mute flex h-6.75 cursor-pointer items-center justify-center rounded-full border px-3 uppercase md:h-8',
-            active
-                ? 'border-sky-line bg-sky-tint font-bold'
-                : 'border-ash bg-white font-medium',
+            itinUnitPillBase,
+            'h-6.75 cursor-pointer px-3',
+            active ? itinUnitPillActive : itinUnitPillIdle,
         );
 
     return (
@@ -168,13 +161,7 @@ export default function WeatherCard() {
             aria-label={trekWeather.title}
             className="flex w-full flex-col gap-2.5"
         >
-            <div className="flex w-full flex-col gap-2">
-                <div className="flex w-full items-stretch gap-2.5">
-                    <span aria-hidden className={itinRailTeal} />
-                    <h2 className={itinAltTitle}>{trekWeather.title}</h2>
-                </div>
-                <span aria-hidden className={itinTitleBar} />
-            </div>
+            <SectionHeading title={trekWeather.title} />
             <div
                 className={cn(
                     itinCard,

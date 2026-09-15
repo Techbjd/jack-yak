@@ -18,6 +18,9 @@ export interface TrustItem {
     image: string;
 }
 
+/** Guide section shell — warm background, full-width block (one per section) */
+export const guideSectionShell = 'bg-surface-warm w-full';
+
 /** Trust strip — partner/category badges under the stories section */
 export const trustItems: TrustItem[] = [
     {
@@ -100,3 +103,7 @@ export const planSteps: PlanStep[] = [
         Icon: Compass,
     },
 ];
+
+// NOTE: guide top-destination data lives in `@/config/destination`
+// (`guideTopDestinations`, re-exported via `@/config`) — kept single-source
+// with the barrel + page-props contract. Do not add a second copy here.
