@@ -13,6 +13,10 @@ export interface ItineraryDay {
     place: string;
     subtitle: string;
     image: string;
+    /** Overnight stay label (Figma right column, e.g. "Hotel") */
+    stay: string;
+    /** Meal plan label (Figma right column, e.g. "B • L • D") */
+    meals: string;
 }
 
 /** 12-day Everest Base Camp trek plan */
@@ -22,81 +26,110 @@ export const itineraryDays: ItineraryDay[] = [
         place: 'Kathmandu',
         subtitle: 'Arrival . Welcome Dinner',
         image: IMAGES.itinerary.dayThumb,
+        stay: 'Hotel',
+        meals: 'Dinner',
     },
     {
         day: 'Day 02',
         place: 'Lukla → Phakding',
         subtitle: 'Arrival . Welcome Dinner',
         image: IMAGES.itinerary.dayThumb,
+        stay: 'Hotel',
+        meals: 'B • L • D',
     },
     {
         day: 'Day 03',
-        place: 'Kathmandu',
+        place: 'Namche Bazaar',
         subtitle: 'Arrival . Welcome Dinner',
         image: IMAGES.itinerary.dayThumb,
+        stay: 'Hotel',
+        meals: 'B • L • D',
     },
     {
         day: 'Day 04',
-        place: 'Kathmandu',
+        place: 'Acclimatization',
         subtitle: 'Arrival . Welcome Dinner',
         image: IMAGES.itinerary.dayThumb,
+        stay: 'Hotel',
+        meals: 'B • L • D',
     },
     {
         day: 'Day 05',
-        place: 'Kathmandu',
+        place: 'Tengboche',
         subtitle: 'Arrival . Welcome Dinner',
         image: IMAGES.itinerary.dayThumb,
+        stay: 'Hotel',
+        meals: 'B • L • D',
     },
     {
         day: 'Day 06',
-        place: 'Kathmandu',
+        place: 'Dingboche',
         subtitle: 'Arrival . Welcome Dinner',
         image: IMAGES.itinerary.dayThumb,
+        stay: 'Hotel',
+        meals: 'B • L • D',
     },
     {
         day: 'Day 07',
-        place: 'Kathmandu',
+        place: 'Acclimatization',
         subtitle: 'Arrival . Welcome Dinner',
         image: IMAGES.itinerary.dayThumb,
+        stay: 'Hotel',
+        meals: 'B • L • D',
     },
     {
         day: 'Day 08',
-        place: 'Kathmandu',
+        place: 'Lobuche',
         subtitle: 'Arrival . Welcome Dinner',
         image: IMAGES.itinerary.dayThumb,
+        stay: 'Hotel',
+        meals: 'B • L • D',
     },
     {
         day: 'Day 09',
-        place: 'Kathmandu',
+        place: 'Everest Base Camp',
         subtitle: 'Arrival . Welcome Dinner',
         image: IMAGES.itinerary.dayThumb,
+        stay: 'Hotel',
+        meals: 'B • L • D',
     },
     {
         day: 'Day 10',
-        place: 'Kathmandu',
+        place: 'Kala Patthar',
         subtitle: 'Arrival . Welcome Dinner',
         image: IMAGES.itinerary.dayThumb,
+        stay: 'Hotel',
+        meals: 'B • L • D',
     },
     {
         day: 'Day 11',
-        place: 'Kathmandu',
+        place: 'Return to Lukla',
         subtitle: 'Arrival . Welcome Dinner',
         image: IMAGES.itinerary.dayThumb,
+        stay: 'Hotel',
+        meals: 'B • L • D',
     },
     {
         day: 'Day 12',
         place: 'Kathmandu',
         subtitle: 'Arrival . Welcome Dinner',
         image: IMAGES.itinerary.dayThumb,
+        stay: 'Hotel',
+        meals: 'B • L • D',
     },
 ];
 
-/** About section copy (Read More reveals `more`) */
+/** About section copy — full Figma desktop text (5 paragraphs).
+ *  Mobile shows intro + body with the rest behind Read More;
+ *  desktop shows everything. */
 export const trekAbout = {
     title: 'About the Everest Base Camp Trek',
     intro: 'Most people planning a trip to Nepal start with the same question: “Is Nepal really for me?”',
+    belief: 'At JackYak, we believe Nepal isn’t just for experienced trekkers or adventure seekers. Whether you want to walk through mountain trails, explore ancient cities, discover peaceful lakes, experience jungle wildlife, or simply see the Himalayas up close, there’s a side of Nepal waiting for you.',
     body: 'You don’t need to climb Everest or spend weeks in the mountains to experience what makes Nepal special. You can stand beneath some of the world’s highest peaks, watch the sunrise over the Himalayas, wander through centuries-old streets, explore the jungles of Chitwan, or relax beside the lakes of Pokhara.',
-    more: 'From the vibrant streets of Kathmandu to the serene trails of the Annapurna region, every day brings a new landscape, a new culture, and a new story. Our local guides make sure you experience the very best of Nepal — safely and comfortably.',
+    highlight: 'What matters is choosing the right experience for you.',
+    closing:
+        'JackYak brings Nepal’s destinations, culture, people, trails, and travel information together in one place — helping you understand where to go, what to expect, and how to make your journey truly yours. Nepal is more than a destination on a map. It’s a journey you remember long after you leave.',
     readMore: 'Read More',
     readLess: 'Read Less',
 };
@@ -118,12 +151,87 @@ export const trekBooking = {
 /** Gallery filter pills */
 export const galleryFilters = {
     gallery: 'Trek gallery',
+    galleryCount: 26,
     photos: 'Traveller photos',
+    photosCount: 100,
     videos: 'Videos',
+    videosCount: 3,
 };
 
+/** Desktop gallery mosaic tiles (flow grid: hero spans 2 rows + 4 cells) */
+export const galleryTiles = {
+    viewAllPhotos: 'View all photos',
+    travellerPhoto: 'Traveller photo',
+    morePhotosCount: '+98',
+    morePhotosLabel: 'Photos',
+    watchVideos: 'Watch 3 traveller videos ›',
+};
+
+/** CTA banner below the day plan */
+export const trekCta = {
+    title: 'Ready to take your journey to new heights?',
+    subtitle: 'Let the Himalayas change you forever.',
+    button: 'PLAN YOUR ADVENTURE',
+    image: IMAGES.itinerary.dayThumb,
+};
+
+/** Weather card (right of altitude profile on desktop) */
+export const trekWeather = {
+    title: 'Weather on the Everest Base Camp Trek',
+    dailyTab: 'Daily Temperature Variation',
+    monthlyTab: 'Average Temperature (Month to Month)',
+    tempIn: 'Temperature in:',
+    unitCelsius: 'Celsius',
+    unitFahrenheit: 'Fahrenheit',
+    prevSlide: 'Previous slide',
+    nextSlide: 'Next slide',
+    /** Base daily profile for January (screenshot reference).
+     *  Day label + altitude in meters; min/max in °C at that stop.
+     *  Other months shift this profile by their average-temperature offset. */
+    daily: [
+        { day: 'Day 1', meters: 1300, min: 5, max: 19 },
+        { day: 'Day 2', meters: 2651, min: -10, max: 11 },
+        { day: 'Day 3', meters: 3440, min: -15, max: 6 },
+        { day: 'Day 4', meters: 3700, min: -15, max: 6 },
+        { day: 'Day 5', meters: 3956, min: -17, max: 5 },
+        { day: 'Day 6', meters: 4380, min: -18, max: 4 },
+        { day: 'Day 7', meters: 4600, min: -20, max: 2 },
+        { day: 'Day 8', meters: 4900, min: -22, max: 0 },
+        { day: 'Day 9', meters: 5364, min: -25, max: -2 },
+        { day: 'Day 10', meters: 5545, min: -26, max: -3 },
+        { day: 'Day 11', meters: 2840, min: -8, max: 10 },
+        { day: 'Day 12', meters: 1400, min: 4, max: 18 },
+    ],
+    months: [
+        { month: 'January', high: -4, low: -18 },
+        { month: 'February', high: -2, low: -16 },
+        { month: 'March', high: 3, low: -11 },
+        { month: 'April', high: 8, low: -6 },
+        { month: 'May', high: 12, low: -2 },
+        { month: 'June', high: 14, low: 1 },
+        { month: 'July', high: 14, low: 2 },
+        { month: 'August', high: 14, low: 2 },
+        { month: 'September', high: 12, low: -1 },
+        { month: 'October', high: 8, low: -7 },
+        { month: 'November', high: 3, low: -12 },
+        { month: 'December', high: -1, low: -16 },
+    ],
+};
+
+/** One altitude stop — matches the backend trek-leg shape ({ place, meters }). */
+export interface AltitudeStop {
+    place: string;
+    meters: number;
+}
+
 /** Altitude profile stops (meters) — rendered as a live SVG area chart */
-export const altitudeProfile = {
+export const altitudeProfile: {
+    unitMeter: string;
+    unitFeet: string;
+    download: string;
+    downloadFile: string;
+    stops: AltitudeStop[];
+} = {
     unitMeter: 'Meter',
     unitFeet: 'Feet',
     download: 'Download',
@@ -149,10 +257,40 @@ export const featuredReview = {
     country: '· AUSTRALIA',
     date: '16th June 2026',
     title: 'the BEST EBC trek experience ever',
-    meta: 'Review for Everest Base Camp Trek · Book this trek',
-    body: 'Our Everest Base Camp trek with JackYak went beyond every expectation we had.',
+    metaPrefix: 'Review for Everest Base Camp Trek · ',
+    metaLink: 'Book this trek',
+    body: 'Our Everest Base Camp trek with JackYak went beyond every expectation we had. What first pulled us towards them…',
     seeMore: 'See more',
     avatar: IMAGES.itinerary.reviewerAvatar,
     photos: IMAGES.itinerary.reviewPhotos,
     photosLabel: 'Review photos',
 };
+
+export interface TrekReview {
+    name: string;
+    country: string;
+    date: string;
+    title: string;
+    /** Non-link part of the meta line (Figma grey text) */
+    metaPrefix: string;
+    /** Linked part of the meta line (Figma dark underlined "Book this trek") */
+    metaLink: string;
+    body: string;
+    seeMore: string;
+    avatar: string;
+    photos: readonly string[];
+    photosLabel: string;
+}
+
+/**
+ * Reviews row — desktop shows near-full-width peek cards (~11/12, a sliver
+ * of the next card visible; Figma reference: single wide card, wrapping
+ * photo grid). To add more later, just push entries here; the row scrolls.
+ */
+export const trekReviews: TrekReview[] = [
+    { ...featuredReview },
+    {
+        ...featuredReview,
+        country: '· AMERICA',
+    },
+];

@@ -96,9 +96,19 @@ export const IMAGES = {
     // USER UPLOAD MAP: drop files into public/images/itinerary/ with these
     // names — hero.png, thumb-1..3.png, day.png,
     // reviewer.png, review-1..6.png — then point the keys below at them.
-    // NOTE: the altitude chart is a live SVG (AltitudeChart.tsx), no image needed.
+    // NOTE: the altitude chart is a live data-driven graph
+    // (AltitudeChart.tsx reads altitudeProfile.stops), no image needed.
     // TEMP: keys below reuse existing assets so the page renders until then.
     itinerary: {
+        icons: {
+            // Drop downloaded Figma icons here (27x27 PNG/SVG):
+            //   public/images/itinerary/icons/icon-stay.png
+            //   public/images/itinerary/icons/icon-meals.png
+            // Day cards render these <img>s when the files exist and fall
+            // back to Lucide outline icons otherwise.
+            stay: '/images/itinerary/icons/icon-stay.png',
+            meals: '/images/itinerary/icons/icon-meals.png',
+        },
         hero: '/images/destination/mount-everest.png',
         galleryThumbs: [
             '/images/destination/ama-dablam-panorama.png',
@@ -106,6 +116,7 @@ export const IMAGES = {
             '/images/destination/pokhara-lake.png',
         ],
         dayThumb: '/images/destination/kathmandu-temple.png',
+        videoPoster: '/images/destination/langtang-mountain.png',
         reviewerAvatar: '/images/about/traveler-avatar.png',
         reviewPhotos: [
             '/images/destination/featured/elephant_safari.png',
@@ -114,6 +125,12 @@ export const IMAGES = {
             '/images/destination/featured/birdwatching_safari.png',
             '/images/destination/featured/crocodilewatching.png',
             '/images/destination/featured/tiger_watching.png',
+            // TEMP: Figma shows 10 thumbs across 2 scrollable rows —
+            // reusing destination assets until traveller photos are uploaded.
+            '/images/destination/kathmandu-temple.png',
+            '/images/destination/pokhara-lake.png',
+            '/images/destination/langtang-mountain.png',
+            '/images/destination/mardi-himal.png',
         ],
     },
 } as const;

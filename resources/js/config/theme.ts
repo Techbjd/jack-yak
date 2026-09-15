@@ -337,59 +337,67 @@ export const modalGhost =
 // (no page-level absolute positioning — rails stretch via flex)
 // --------------------------------------------
 
-/** Itinerary page column — 402px cap, centered, canvas gutters */
+/** Itinerary page column — 402px cap, centered, canvas gutters;
+ *  desktop expands to the shared 1440 container with section gutters */
 export const itinPage =
-    'font-manrope mx-auto flex w-full max-w-100.5 flex-col bg-canvas px-2.5 pb-10';
+    'font-manrope mx-auto flex w-full max-w-100.5 flex-col bg-canvas px-2.5 pb-10 md:max-w-container md:px-12 md:pb-16 lg:px-24';
 
 /** Orange timeline rail (about section) */
 export const itinRailOrange =
-    'w-1 shrink-0 self-stretch rounded-full bg-cta-accent';
+    'w-1 shrink-0 self-stretch rounded-full bg-cta-accent md:w-1.5';
 
 /** Teal timeline rail (altitude + reviews sections) */
-export const itinRailTeal = 'w-1 shrink-0 self-stretch rounded-full bg-cta';
+export const itinRailTeal =
+    'w-1 shrink-0 self-stretch rounded-full bg-cta md:w-1.5';
 
-/** Section heading — 16px/36 bold ink, tight tracking */
+/** Section heading — 16px/36 bold ink, tight tracking; 32px on desktop */
 export const itinH2 =
-    'font-manrope text-md-lg leading-9 font-bold tracking-itinerary-tight text-ink';
+    'font-manrope text-md-lg leading-9 font-bold tracking-itinerary-tight text-ink md:text-2xl-3xl';
 
-/** Altitude heading — Figma 16px/36 bold ink, -0.608px tracking */
+/** Altitude heading — Figma 16px/36 bold ink, -0.608px tracking; 30px desktop */
 export const itinAltTitle =
-    'font-manrope text-base leading-9 font-bold tracking-itinerary-tight text-ink';
+    'font-manrope text-base leading-9 font-bold tracking-itinerary-tight text-ink md:text-2xl-3xl md:leading-9';
 
-/** Body copy — 12px/20 regular abyss */
+/** Teal underline bar under section titles — desktop only (Figma 48x4).
+ *  ml aligns the bar with the title text past the rail + gap. */
+export const itinTitleBar =
+    'bg-cta ml-3.5 hidden h-1 w-12 rounded-full md:ml-4 md:block';
+
+/** Body copy — 12px/20 regular abyss; 16px/26 on desktop */
 export const itinBody =
-    'font-manrope text-xs-md leading-5 font-normal text-abyss';
+    'font-manrope text-xs-md leading-5 font-normal text-abyss md:text-md-lg md:leading-itinerary-26';
 
 /** White bordered card shell — 16px radius, soft border, card shadow */
 export const itinCard =
     'rounded-2xl border border-line-soft bg-white shadow-card';
 
-/** Day card — fixed 127px, 26px radius, snap point in the scroll panel.
- *  16px left padding puts the thumb at Figma x26; icons flow after the
- *  fixed text column (not right-aligned), leaving Figma's trailing space. */
+/** Day card — fixed 127px mobile; desktop 594x144 flow card.
+ *  16px left padding puts the thumb at Figma x26; desktop uses a 4px
+ *  inset (144 - 136) / 2 with a 16px thumb-to-text gap (Figma x779→x984). */
 export const itinDayCard =
-    'rounded-itinerary-card flex h-day-card-h shrink-0 snap-start items-center gap-3.5 bg-white p-2.5 pl-4 shadow-card';
+    'rounded-itinerary-card flex h-day-card-h shrink-0 snap-start items-center gap-3.5 bg-white p-2.5 pl-4 shadow-card md:h-day-card-desktop-h md:w-day-card-desktop-w md:max-w-full md:flex-1 md:snap-align-none md:gap-4 md:p-1 md:shadow-none md:ring-1 md:ring-line-soft';
 
-/** Day thumbnail — 103x101, 15px radius */
+/** Day thumbnail — 103x101 mobile, 15px radius; desktop 189x136, 26px radius */
 export const itinDayThumb =
-    'rounded-itinerary-thumb h-day-thumb-h w-day-thumb-w shrink-0 object-cover';
+    'rounded-itinerary-thumb h-day-thumb-h w-day-thumb-w shrink-0 object-cover md:h-day-thumb-desktop-h md:w-day-thumb-desktop-w md:rounded-itinerary-card';
 
 /** Day text column — fixed 145px so icons sit at Figma x288, not the edge.
- *  10px row gaps spread Day/place/subtitle over Figma's ~81px text block. */
+ *  10px row gaps spread Day/place/subtitle over Figma's ~81px text block.
+ *  Desktop flexes between the thumb and the Hotel/meals meta column. */
 export const itinDayText =
-    'flex w-day-text-w shrink-0 flex-col justify-center gap-2.5';
+    'flex w-day-text-w shrink-0 flex-col justify-center gap-2.5 md:min-w-0 md:flex-1 md:gap-5';
 
-/** Day label — 16px/22 bold orange Manrope */
+/** Day label — 16px/22 bold orange mobile; teal on desktop (Figma #2D8A8A) */
 export const itinDayLabel =
-    'font-manrope text-md-lg leading-itinerary-22 font-bold text-cta-accent';
+    'font-manrope text-md-lg leading-itinerary-22 font-bold text-cta-accent md:text-cta';
 
-/** Day place — 16px/22 bold ink, wide tracking */
+/** Day place — 16px/22 bold ink mobile; 24px/33 desktop (Figma Kathmandu) */
 export const itinDayPlace =
-    'font-manrope text-md-lg leading-itinerary-22 font-bold tracking-card text-ink';
+    'font-manrope text-md-lg leading-itinerary-22 font-bold tracking-card text-ink md:text-xl-2xl md:leading-itinerary-33';
 
-/** Day subtitle — 12px/16 bold ink */
+/** Day subtitle — 12px/16 bold ink mobile; 16px/22 desktop (Figma Arrival) */
 export const itinDaySub =
-    'font-manrope text-xs-md leading-4 font-bold text-ink';
+    'font-manrope text-xs-md leading-4 font-bold text-ink md:text-md-lg md:leading-itinerary-22';
 
 // --------------------------------------------
 // Colors: For inline styles (SVG, dynamic)

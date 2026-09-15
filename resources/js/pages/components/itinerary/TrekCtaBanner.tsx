@@ -1,0 +1,63 @@
+import { trekCta } from '@/config/itinerary';
+
+/**
+ * CTA banner — mobile (done): dark split card, image top + text below.
+ * Desktop (Figma 1440): white 158px card (radius 18), 268x119 thumb,
+ * ink title/subtitle middle, 283x52 teal button right — flow flex row.
+ */
+export default function TrekCtaBanner() {
+    return (
+        <section aria-label={trekCta.title} className="w-full">
+            {/* Mobile stack */}
+            <div className="bg-ink shadow-card flex w-full flex-col overflow-hidden rounded-2xl md:hidden">
+                <div className="relative h-44 w-full shrink-0 overflow-hidden">
+                    <img
+                        src={trekCta.image}
+                        alt=""
+                        loading="lazy"
+                        className="absolute inset-0 h-full w-full object-cover"
+                    />
+                    <span aria-hidden className="bg-ink/20 absolute inset-0" />
+                </div>
+                <div className="flex w-full flex-1 flex-col items-start justify-center gap-3 p-6">
+                    <h2 className="font-manrope text-lg-xl leading-snug font-bold text-white">
+                        {trekCta.title}
+                    </h2>
+                    <p className="font-manrope text-sm-base leading-relaxed font-normal text-white/80">
+                        {trekCta.subtitle}
+                    </p>
+                    <button
+                        type="button"
+                        className="font-manrope rounded-itinerary-cta bg-cta text-base-md cursor-pointer px-6 py-3 font-bold tracking-wide text-white uppercase transition-opacity hover:opacity-90"
+                    >
+                        {trekCta.button}
+                    </button>
+                </div>
+            </div>
+
+            {/* Desktop white card */}
+            <div className="rounded-dest-panel shadow-card hidden w-full items-center gap-10 bg-white py-5 pr-30 pl-11 md:flex">
+                <img
+                    src={trekCta.image}
+                    alt=""
+                    loading="lazy"
+                    className="rounded-immersive h-cta-thumb-h w-cta-thumb-w shrink-0 object-cover"
+                />
+                <div className="flex min-w-0 flex-1 flex-col gap-2">
+                    <h2 className="font-manrope text-xl-2xl leading-itinerary-33 text-ink font-medium">
+                        {trekCta.title}
+                    </h2>
+                    <p className="font-manrope text-md-lg leading-itinerary-22 text-ink font-medium">
+                        {trekCta.subtitle}
+                    </p>
+                </div>
+                <button
+                    type="button"
+                    className="font-manrope rounded-card-sm bg-cta shadow-card text-lg-xl w-cta-button-w h-13 shrink-0 cursor-pointer font-bold text-white uppercase transition-opacity hover:opacity-90"
+                >
+                    {trekCta.button}
+                </button>
+            </div>
+        </section>
+    );
+}

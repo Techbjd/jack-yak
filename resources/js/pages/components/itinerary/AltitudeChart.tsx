@@ -4,19 +4,19 @@ import {
     AreaChart,
     LabelList,
     ResponsiveContainer,
+    Tooltip,
     XAxis,
     YAxis,
 } from 'recharts';
-import { altitudeProfile } from '@/config/itinerary';
+import { altitudeProfile, type AltitudeStop } from '@/config/itinerary';
 
 export type AltitudeUnit = 'm' | 'ft';
 
-/** Fixed chart frame — matches the h-60 wrapper + axis sizes below */
-const CHART_H = 240;
+/** Chart frame pieces — height/plot width come from props (240 mobile,
+ *  400 desktop per Figma); the wrapper sets the CSS height and the chart
+ *  fills it, so the label math always matches what is on screen. */
 const MARGIN_TOP = 16;
 const XAXIS_H = 62;
-/** Inner card width estimate for the label stagger (page caps at 402px) */
-const EST_PLOT_W = 342;
 
 const toFeet = (meters: number): number => Math.round(meters * 3.28084);
 
@@ -35,18 +35,24 @@ interface ChartRow {
  * collide (up on the ascent, down onto the fill on the descent).
  * Pure function of the data — works for any stops array from the backend.
  */
-function labelPositions(values: number[], d0: number, d1: number): number[] {
-    const plotH = CHART_H - MARGIN_TOP - XAXIS_H;
+function labelPositions(
+    values: number[],
+    d0: number,
+    d1: number,
+    height: number,
+    plotWidth: number,
+): number[] {
+    const plotH = height - MARGIN_TOP - XAXIS_H;
     const y = (v: number): number =>
         MARGIN_TOP + (1 - (v - d0) / (d1 - d0)) * plotH;
-    const gapX = EST_PLOT_W / Math.max(values.length - 1, 1);
+    const gapX = plotWidth / Math.max(values.length - 1, 1);
     const out: number[] = [];
     values.forEach((v, i) => {
         let ly = y(v) - 10;
         if (i > 0 && gapX < 40 && Math.abs(ly - out[i - 1]) < 12) {
             ly = v > values[i - 1] ? out[i - 1] - 12 : out[i - 1] + 12;
         }
-        out.push(Math.min(Math.max(ly, 4), CHART_H - XAXIS_H - 6));
+        out.push(Math.min(Math.max(ly, 4), height - XAXIS_H - 6));
     });
     return out;
 }
@@ -72,6 +78,28 @@ function PlaceTick({
         >
             {payload?.value}
         </text>
+    );
+}
+
+/** Blue hover bubble (matches the temperature chart) — place + altitude. */
+function AltitudeTooltip({
+    active = false,
+    payload,
+    unit,
+}: {
+    active?: boolean;
+    payload?: Array<{ payload: ChartRow }>;
+    unit: AltitudeUnit;
+}): React.JSX.Element | null {
+    const row = active === true ? payload?.[0]?.payload : undefined;
+    if (row === undefined) {
+        return null;
+    }
+    return (
+        <div className="font-manrope shadow-card rounded-md bg-[#29a9e1] px-2.5 py-1.5 text-xs leading-5 font-semibold whitespace-nowrap text-white">
+            <p>{row.place}</p>
+            <p>{formatValue(row.value, unit)}</p>
+        </div>
     );
 }
 
@@ -114,20 +142,35 @@ function ValueLabel({
 
 interface AltitudeChartProps {
     unit: AltitudeUnit;
+    /** Trek stops — defaults to config; pass backend legs later and the
+     *  scales, dots and staggered labels adapt automatically. */
+    stops?: AltitudeStop[];
+    /** Render height in px — must match the wrapper's CSS height so the
+     *  value-label math lands on the dots (240 mobile, 400 desktop). */
+    height?: number;
+    /** Inner plot width estimate for the label stagger (402px mobile
+     *  cap, ~720px desktop card). */
+    plotWidth?: number;
 }
 
 /**
- * Altitude area chart (Recharts SVG) — feed it ANY {place, meters}[]
- * from the backend; scales, dots and staggered labels adapt automatically.
+ * Altitude area chart (live Recharts graph, NOT a static image) — feed it
+ * ANY {place, meters}[] from the backend; scales, dots and staggered
+ * labels adapt automatically.
  */
-export default function AltitudeChart({ unit }: AltitudeChartProps) {
+export default function AltitudeChart({
+    unit,
+    stops = altitudeProfile.stops,
+    height = 240,
+    plotWidth = 342,
+}: AltitudeChartProps) {
     const rows: ChartRow[] = useMemo(
         () =>
-            altitudeProfile.stops.map((s) => ({
+            stops.map((s) => ({
                 place: s.place,
                 value: unit === 'm' ? s.meters : toFeet(s.meters),
             })),
-        [unit],
+        [unit, stops],
     );
 
     const { d0, d1, positions } = useMemo(() => {
@@ -137,11 +180,15 @@ export default function AltitudeChart({ unit }: AltitudeChartProps) {
         const range = Math.max(max - min, 1);
         const lo = min - range * 0.1;
         const hi = max + range * 0.15;
-        return { d0: lo, d1: hi, positions: labelPositions(values, lo, hi) };
-    }, [rows]);
+        return {
+            d0: lo,
+            d1: hi,
+            positions: labelPositions(values, lo, hi, height, plotWidth),
+        };
+    }, [rows, height, plotWidth]);
 
     return (
-        <ResponsiveContainer width="100%" height={CHART_H}>
+        <ResponsiveContainer width="100%" height="100%">
             <AreaChart
                 data={rows}
                 margin={{ top: MARGIN_TOP, right: 10, bottom: 0, left: 10 }}
@@ -156,6 +203,13 @@ export default function AltitudeChart({ unit }: AltitudeChartProps) {
                     tick={<PlaceTick />}
                 />
                 <YAxis hide domain={[d0, d1]} />
+                <Tooltip
+                    content={<AltitudeTooltip unit={unit} />}
+                    cursor={{
+                        stroke: 'var(--color-chart-line)',
+                        strokeOpacity: 0.3,
+                    }}
+                />
                 <Area
                     type="monotone"
                     dataKey="value"

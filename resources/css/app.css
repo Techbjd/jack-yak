@@ -71,7 +71,9 @@
     --text-xs-sm: 10px;
     --text-sm-base: 13px;
     --text-base-md: 14px;
+    --text-sm-md: 15px;
     --text-md-lg: 16px;
+    --text-md-xl: 18px;
     --text-lg-xl: 20px;
     --text-xl-2xl: 24px;
     --text-2xl-3xl: 32px;
@@ -140,6 +142,7 @@
     --font-display: 'EB Garamond', Georgia, serif;
     --color-ember: #ff5728;
     --text-xs-md: 12px;
+    --text-about-highlight: 18px;
     --text-display: 64px;
     --text-about-display: 200px;
     --leading-about-display: 209px;
@@ -172,21 +175,43 @@
     --color-wa: #25d366;
     --color-badge-teal: #62a7a7;
     --color-card-line: #e2e8f0;
+    --color-gallery-shade: rgba(8, 20, 30, 0.55);
+    --color-count-overlay: rgba(2, 32, 56, 0.08);
+    --color-count-overlay-active: rgba(255, 255, 255, 0.25);
     --color-ash: #a9a9b4;
     --color-review-ink: #0f172a;
     --color-review-body: #3f4b5e;
     --color-chart-line: #00aeef;
     --color-chart-fill: #d7eefa;
+    --color-slate-mute: #64748b;
+    --color-graph-title: #30393d;
     --tracking-price: -1.08px;
     --radius-itinerary-card: 26px;
     --radius-itinerary-thumb: 15px;
     --radius-itinerary-cta: 6px;
+    --radius-gallery-tile: 14px;
     --spacing-itinerary-hero-h: 261px;
     --spacing-itinerary-thumb-h: 93px;
     --spacing-day-thumb-w: 103px;
     --spacing-day-thumb-h: 101px;
     --spacing-day-text-w: 145px;
     --spacing-day-card-h: 127px;
+    /* ── Itinerary desktop (1440px Figma, flow grid, no page absolute) ── */
+    --spacing-day-card-desktop-w: 594px;
+    --spacing-day-card-desktop-h: 144px;
+    /* ── CTA banner desktop (1440px Figma: white 158px card, 268x119 thumb, 283px button) ── */
+    --spacing-cta-thumb-w: 268px;
+    --spacing-cta-thumb-h: 119px;
+    --spacing-cta-button-w: 283px;
+    --spacing-day-thumb-desktop-w: 189px;
+    --spacing-day-thumb-desktop-h: 136px;
+    --spacing-graph-h: 400px;
+    /* Wide graph cards scroll as whole units in a snap row (no inner
+       scrollers): 1150px fits the 1100px desktop plot + 2x24 card padding. */
+    --spacing-graph-card-w: 1150px;
+    /* NOTE: the 1100px desktop plot width lives as a numeric
+       ResponsiveContainer prop in WeatherCard.tsx (single graph div) —
+       no spacing token needed for a one-off JS value. */
     --leading-itinerary-19: 19px;
     --leading-itinerary-22: 22px;
     --leading-itinerary-23: 23px;
@@ -194,6 +219,8 @@
     --leading-itinerary-26: 26px;
     --leading-itinerary-27: 27px;
     --leading-itinerary-28: 28px;
+    --leading-about-30: 30px;
+    --leading-about-32: 32px;
     --leading-itinerary-33: 33px;
     --tracking-itinerary-tight: -0.608px;
     --tracking-itinerary-wide: 0.691px;
