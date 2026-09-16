@@ -1,7 +1,7 @@
 import { fontPrimary, imageRoundedLg } from '@/config/theme';
 import { IMAGES } from '@/config/images';
 import { cn } from '@/lib/utils';
-import { guideSectionShell, planSteps } from '@/config/guide';
+import { planSteps } from '@/config/guide';
 
 const PlanTripSteps = () => {
     return (

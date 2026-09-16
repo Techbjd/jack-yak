@@ -1,13 +1,5 @@
 import { Link, usePage } from '@inertiajs/react';
-import {
-    Bookmark,
-    Mountain,
-    ClipboardList,
-    ArrowRight,
-    CalendarCheck,
-    Star,
-    Compass,
-} from 'lucide-react';
+import { Bookmark, Mountain, ClipboardList, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { userMuted, userRow, userSectionTitle } from '@/config/theme';
 import { userCard } from './tokens';
@@ -25,7 +17,7 @@ interface SavedPageProps extends PageProps {
 }
 
 export default function SavedCard() {
-    const { stats, recentAvailability, recentReviews } =
+    const { recentAvailability, recentReviews } =
         usePage<SavedPageProps>().props;
 
     const rows = [

@@ -1,7 +1,7 @@
 import { MoveRight } from 'lucide-react';
 import { fontPrimary } from '@/config/theme';
 import { cn } from '@/lib/utils';
-import { exploreCards, guideSectionShell } from '@/config/guide';
+import { exploreCards } from '@/config/guide';
 
 const WhyExplore = () => {
     return (
