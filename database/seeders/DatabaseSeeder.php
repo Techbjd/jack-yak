@@ -23,13 +23,13 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
-        // Demo login profile — credentials live in .env (DEMO_USER_*).
+        // Demo login profile — credentials live in .env (DEMO_USER_*) via config/demo.php.
         User::updateOrCreate(
-            ['email' => env('DEMO_USER_EMAIL', 'jackyak.demo@gmail.com')],
+            ['email' => (string) config('demo.email', 'jackyak.demo@gmail.com')],
             [
-                'name' => env('DEMO_USER_NAME', 'Demo Traveler'),
+                'name' => (string) config('demo.name', 'Demo Traveler'),
                 'password' => Hash::make(
-                    env('DEMO_USER_PASSWORD', 'Demo12345!')
+                    (string) config('demo.password', 'Demo12345!')
                 ),
                 'email_verified_at' => now(),
             ]

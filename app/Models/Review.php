@@ -14,6 +14,7 @@ class Review extends Model
         return ['rating' => 'integer', 'visit_date' => 'date', 'photos' => 'array'];
     }
 
+    /** @return BelongsTo<User, $this> */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

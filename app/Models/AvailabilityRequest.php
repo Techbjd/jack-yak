@@ -14,6 +14,7 @@ class AvailabilityRequest extends Model
         return ['date' => 'date', 'travelers' => 'integer'];
     }
 
+    /** @return BelongsTo<User, $this> */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
