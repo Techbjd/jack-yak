@@ -14,8 +14,8 @@ export const mobileNav: NavItem[] = [
     { label: 'Destinations', href: '/destinations' },
     { label: 'Guides', href: '/guide' },
     { label: 'About', href: '/about' },
-    { label: 'Find My Trip', href: '/form' },
-    { label: 'View All', href: '/view-all' },
+    { label: 'Favorities', href: '/form' },
+    { label: 'Search', href: '/view-all' },
     { label: 'Profile', href: '/user' },
 ] as const;
 

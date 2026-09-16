@@ -198,7 +198,7 @@ const Header = ({ tone = 'onDark' }: HeaderProps) => {
                             <ul
                                 className={cn(
                                     fontPrimary,
-                                    'text-base-md text-ink flex flex-col leading-4.75 font-medium',
+                                    'text-base-md text-ink flex flex-col leading-itinerary-19 font-medium',
                                 )}
                             >
                                 {mobileNav.map((item) => (
