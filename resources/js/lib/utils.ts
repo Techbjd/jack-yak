@@ -150,6 +150,8 @@ const twMerge = extendTailwindMerge({
                 'cta-thumb-w',
                 'cta-thumb-h',
                 'cta-button-w',
+                'cta-thumb-compact-w',
+                'cta-thumb-compact-h',
                 'graph-h',
                 'graph-card-w',
                 'carousel-dot',

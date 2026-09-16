@@ -17,6 +17,8 @@
 
     --breakpoint-ms: 37.5rem;
 
+    --breakpoint-cta: 56.25rem;
+
     --color-navy: #0e1b2b;
     --color-navy-light: #253a55;
     --color-navy-gradient: #5180bb;
@@ -169,6 +171,8 @@
     --spacing-cta-thumb-w: 268px;
     --spacing-cta-thumb-h: 119px;
     --spacing-cta-button-w: 283px;
+    --spacing-cta-thumb-compact-w: 144px;
+    --spacing-cta-thumb-compact-h: 96px;
     --spacing-day-thumb-desktop-w: 189px;
     --spacing-day-thumb-desktop-h: 136px;
     --spacing-graph-h: 400px;
