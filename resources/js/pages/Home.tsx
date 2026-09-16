@@ -16,14 +16,14 @@ export default function Home() {
                 <NepalMap />
                 <MapQuote />
             </div>
-            <Section className="relative z-10">
+            <Section className="relative z-10 pb-3">
                 <AboutJackyak />
             </Section>
-            <div className="relative z-10 hidden w-full md:block">
+            <div className="relative z-10 hidden w-full md:block ">
                 <img
                     src={IMAGES.home.mountainDivider}
                     alt="Mountain Image"
-                    className="m-auto h-auto w-full object-cover px-2"
+                    className="m-auto h-auto w-full object-cover p-12"
                 />
             </div>
             <Section className="relative z-10">
