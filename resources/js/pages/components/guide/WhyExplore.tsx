@@ -38,14 +38,14 @@ const WhyExplore = () => {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
+                <div className="grid grid-cols-2 gap-x-2.5 gap-y-2 md:grid-cols-4 md:gap-6">
                     {exploreCards.map(
                         ({ title, description, Icon, image, imageAlt }) => (
                             <article
                                 key={title}
-                                className="group rounded-dest-card border-bg-placeholder md:hover:border-cta md:hover:bg-surface-warm md:hover:shadow-card flex flex-col gap-3 border bg-white p-4 transition md:gap-4 md:p-6"
+                                className="group rounded-dest-card border-ash md:hover:border-cta md:hover:bg-surface-warm md:hover:shadow-card flex min-h-[173px] flex-col gap-2.5 border bg-white p-2.5 transition md:min-h-0 md:gap-4 md:p-6"
                             >
-                                <span className="bg-surface-warm md:group-hover:border-ink flex h-10 w-10 items-center justify-center rounded-full md:h-20 md:w-20 md:group-hover:border">
+                                <span className="bg-surface-warm md:group-hover:border-ink flex h-[38px] w-[38px] items-center justify-center rounded-full md:h-20 md:w-20 md:group-hover:border">
                                     {image ? (
                                         <img
                                             src={image}

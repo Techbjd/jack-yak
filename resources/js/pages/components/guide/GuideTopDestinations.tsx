@@ -22,8 +22,7 @@ import ViewAllLink from '../shared/ViewAllLink';
 
 const DestinationCard = ({ dest }: { dest: GuideTopDestination }) => {
     return (
-        <article className="basis-card-w ms:basis-55 max-w-dest-card mx-auto flex w-full shrink-0 grow snap-start flex-col items-center md:basis-65 lg:w-full lg:basis-auto">
-            {}
+        <article className="ms:basis-55 max-w-dest-card mx-auto flex w-full shrink-0 grow basis-27 snap-start flex-col items-center md:basis-65 lg:w-full lg:basis-auto">
             <div className={destCardImage}>
                 <img
                     src={dest.image}
@@ -31,7 +30,7 @@ const DestinationCard = ({ dest }: { dest: GuideTopDestination }) => {
                     loading="lazy"
                     className="absolute inset-0 h-full w-full object-cover"
                 />
-                {}
+
                 <span className={destCardBadge}>
                     <MapPin className="text-ink size-3 shrink-0 md:size-4" />
                     <span className={cn(destCardBadgeText)}>
@@ -40,7 +39,6 @@ const DestinationCard = ({ dest }: { dest: GuideTopDestination }) => {
                 </span>
             </div>
 
-            {}
             <div className={destCardPanel}>
                 <h3 className={cn(destCardName)}>{dest.name}</h3>
                 <p className={cn(destCardTagline)}>{dest.subtitle}</p>
@@ -152,7 +150,7 @@ const GuideTopDestinations = () => {
                     <a
                         href="#"
                         aria-label="Next destinations"
-                        className="bg-cta shadow-card absolute top-[33%] right-4 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full text-white lg:flex"
+                        className="bg-cta shadow-card absolute top-[33%] -right-14 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full text-white lg:flex"
                     >
                         <ArrowRight className="h-6 w-6" />
                     </a>

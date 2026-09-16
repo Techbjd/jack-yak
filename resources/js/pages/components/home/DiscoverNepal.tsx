@@ -15,7 +15,10 @@ const STAGGERED_RATIO = '257 / 387';
 const DiscoverNepal = () => {
     return (
         <section
-            className={cn('relative w-full overflow-hidden', sectionPadding)}
+            className={cn(
+                'max-md:bg-surface-warm relative w-full overflow-hidden max-md:py-10',
+                sectionPadding,
+            )}
         >
             <div className="max-w-container bg-surface-warm mx-auto flex flex-col items-center gap-5 px-8 md:flex-row md:gap-16 md:bg-transparent md:px-12 lg:px-24">
                 <div className="order-2 w-full md:hidden">
@@ -34,7 +37,7 @@ const DiscoverNepal = () => {
                     <h2
                         className={cn(
                             headingSubsection,
-                            'order-1 text-center md:order-1 md:text-left',
+                            'max-md:text-lg-xl order-1 text-center max-md:leading-normal md:order-1 md:text-left',
                         )}
                     >
                         Discover the Beauty of Nepal
