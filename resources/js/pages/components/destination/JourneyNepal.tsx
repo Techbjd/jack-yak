@@ -79,8 +79,8 @@ export default function JourneyNepal() {
                 </div>
             </div>
 
-            <div className="xs:grid-cols-2 -mx-6 grid grid-cols-3 items-stretch gap-0 md:mx-0 lg:-mx-24 lg:min-h-71.5 lg:grid-cols-12 lg:gap-0">
-                <div className="bg-cta-ember xs:col-span-1 md:bg-cta col-span-2 flex flex-col justify-center gap-5 px-8 py-10 text-white md:gap-3 md:p-6 lg:col-span-3 lg:justify-start lg:px-16 lg:pt-12">
+            <div className="xs:grid-cols-2 -mx-6 grid grid-cols-2 items-stretch gap-0 md:mx-0 lg:-mx-24 lg:min-h-71.5 lg:grid-cols-12 lg:gap-0">
+                <div className="bg-cta-ember xs:col-span-1 md:bg-cta col-span-1 flex flex-col justify-center gap-5 px-8 py-10 text-white md:gap-3 md:p-6 lg:col-span-3 lg:justify-start lg:px-16 lg:pt-12">
                     <h3
                         className={cn(
                             fontPrimary,

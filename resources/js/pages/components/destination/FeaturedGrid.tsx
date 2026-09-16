@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, type CSSProperties } from 'react';
 import {
     ArrowUpRight,
     Binoculars,
@@ -173,8 +173,11 @@ export default function FeaturedGrid() {
                 {destinationFeaturedCards.map((card, i) => (
                     <div
                         key={`${card.src}-${i}`}
-                        className={cn('relative h-auto w-full', card.span)}
-                        style={{ aspectRatio: card.ratio }}
+                        className={cn(
+                            'relative aspect-square h-auto w-full md:[aspect-ratio:var(--card-ratio)]',
+                            card.span,
+                        )}
+                        style={{ '--card-ratio': card.ratio } as CSSProperties}
                     >
                         <img
                             src={card.src}

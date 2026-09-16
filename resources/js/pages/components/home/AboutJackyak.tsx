@@ -19,7 +19,7 @@ const AboutJackyak = () => {
                 className={cn(sectionContainer, 'bg-surface-warm sm:bg-white')}
             >
                 <div className="flex flex-col items-center gap-6 text-center md:flex-row md:items-center md:gap-16 md:text-left">
-                    <div className="max-w-content-md flex flex-1 flex-col gap-6">
+                    <div className="max-w-content-md flex flex-1 flex-col gap-6 py-4">
                         <h2 className={headingSection}>About Jackyak</h2>
                         <p className={bodyText}>
                             JackYak is your trusted travel companion for
@@ -52,21 +52,25 @@ const AboutJackyak = () => {
                         titleClassName="text-lg-xl md:text-3xl-4xl"
                     />
 
-                    <div
-                        className={cn(
-                            'rounded-image aspect-333/162 w-full max-w-83.25',
-                            imageRoundedLg,
-                        )}
-                        style={{
-                            backgroundImage: `url('${IMAGES.home.aboutJackyak}')`,
-                        }}
-                    />
+                    <div className="-mx-6 flex flex-col items-center gap-8 self-stretch bg-white px-6 py-8">
+                        <div
+                            className={cn(
+                                'rounded-image aspect-333/162 w-full max-w-83.25',
+                                imageRoundedLg,
+                                'bg-white',
+                            )}
+                            style={{
+                                backgroundImage: `url('${IMAGES.home.aboutJackyak}')`,
+                            }}
+                        />
 
-                    <HomeInfoBlock
-                        title={aboutJackyakInfoBlocks[1].title}
-                        body={aboutJackyakInfoBlocks[1].body}
-                        align="center"
-                    />
+                        <HomeInfoBlock
+                            title={aboutJackyakInfoBlocks[1].title}
+                            body={aboutJackyakInfoBlocks[1].body}
+                            align="center"
+                            titleClassName="text-lg-xl md:text-3xl-4xl"
+                        />
+                    </div>
                 </div>
 
                 <div className="hidden md:grid md:grid-cols-2 md:gap-16">

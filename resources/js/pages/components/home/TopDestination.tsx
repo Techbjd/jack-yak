@@ -32,53 +32,48 @@ const TopDestinations = () => {
                     Explore Nepal's Top Destinations
                 </h2>
 
-                <div className="no-scrollbar w-full overflow-x-auto md:hidden">
-                    <div className="flex w-max snap-x snap-mandatory gap-5 pr-5 pl-5">
-                        {homeTopDestinations.map((dest, i) => (
+                <div className="grid w-full grid-cols-3 gap-4 md:hidden">
+                    {homeTopDestinations.map((dest, i) => (
+                        <div key={i} className="flex min-w-0 flex-col">
                             <div
-                                key={i}
-                                className="flex shrink-0 snap-start flex-col"
+                                className={cn(
+                                    cardMobileImage,
+                                    'rounded-t-card bg-bg-placeholder aspect-117/97 h-auto w-full bg-cover bg-center',
+                                )}
+                                style={{
+                                    backgroundImage: `url(${dest.image})`,
+                                }}
+                            />
+                            <div
+                                className={cn(
+                                    cardMobileContent,
+                                    'rounded-b-card shadow-card flex h-auto min-h-9.25 w-full flex-col items-center justify-center bg-white px-1 py-1.5',
+                                )}
                             >
-                                <div
+                                <span
                                     className={cn(
-                                        cardMobileImage,
-                                        'rounded-t-card bg-bg-placeholder bg-cover bg-center',
-                                    )}
-                                    style={{
-                                        backgroundImage: `url(${dest.image})`,
-                                    }}
-                                />
-                                <div
-                                    className={cn(
-                                        cardMobileContent,
-                                        'rounded-b-card shadow-card flex flex-col items-center justify-center bg-white',
+                                        fontPrimary,
+                                        'text-ink warp-break-words w-full text-center font-bold',
+                                        'text-xs-sm leading-tight tracking-wide',
                                     )}
                                 >
-                                    <span
-                                        className={cn(
-                                            fontPrimary,
-                                            'text-ink font-bold',
-                                            'text-xs-sm leading-3 tracking-wide',
-                                        )}
-                                    >
-                                        {dest.name}
-                                    </span>
-                                    <span
-                                        className={cn(
-                                            fontPrimary,
-                                            'text-ink text-2xs font-semibold',
-                                            'leading-2.5 tracking-wide',
-                                        )}
-                                    >
-                                        {dest.subtitle}
-                                    </span>
-                                </div>
+                                    {dest.name}
+                                </span>
+                                <span
+                                    className={cn(
+                                        fontPrimary,
+                                        'text-ink text-2xs warp-break-words w-full text-center font-semibold',
+                                        'leading-tight tracking-wide',
+                                    )}
+                                >
+                                    {dest.subtitle}
+                                </span>
                             </div>
-                        ))}
-                    </div>
+                        </div>
+                    ))}
                 </div>
 
-                <div className="hidden md:mx-auto md:grid md:w-full md:max-w-211.5 md:grid-cols-[258fr_284fr_258fr] md:items-start md:gap-6">
+                <div className="hidden md:mx-auto md:grid md:w-full md:max-w-211.5 md:grid-cols-[9fr_10fr_9fr] md:items-start md:gap-6">
                     {homeTopDestinations.map((dest) => {
                         const dims = cardDimensions[dest.variant];
                         return (

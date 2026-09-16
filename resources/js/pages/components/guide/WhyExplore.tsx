@@ -1,14 +1,14 @@
 import { MoveRight } from 'lucide-react';
 import { fontPrimary } from '@/config/theme';
 import { cn } from '@/lib/utils';
-import { exploreCards, guideSectionShell } from '@/config/guide';
+import { exploreCards } from '@/config/guide';
 
 const WhyExplore = () => {
     return (
         <section className="w-full">
             <div className="max-w-container mx-auto flex w-full flex-col gap-6 px-6 pt-6 md:gap-10 md:px-12 md:pt-10 lg:px-24">
-                <div className="grid grid-cols-3 items-start gap-4 md:items-center md:gap-8 md:justify-between">
-                    <div className="flex flex-col gap-2 ">
+                <div className="grid grid-cols-3 items-start gap-4 md:items-center md:justify-between md:gap-8">
+                    <div className="flex flex-col gap-2">
                         <p
                             className={cn(
                                 fontPrimary,
@@ -30,7 +30,7 @@ const WhyExplore = () => {
                     <p
                         className={cn(
                             fontPrimary,
-                            ' max-w-content-sm text-xs-sm text-ink md:text-md-lg leading-relaxed font-semibold md:justify-self-end md:leading-relaxed col-start-3',
+                            'max-w-content-sm text-xs-sm text-ink md:text-md-lg col-start-3 leading-relaxed font-semibold md:justify-self-end md:leading-relaxed',
                         )}
                     >
                         Helping you discover Nepal through trusted guides, local
@@ -38,14 +38,14 @@ const WhyExplore = () => {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
+                <div className="grid grid-cols-2 gap-x-2.5 gap-y-2 md:grid-cols-4 md:gap-6">
                     {exploreCards.map(
                         ({ title, description, Icon, image, imageAlt }) => (
                             <article
                                 key={title}
-                                className="group rounded-dest-card border-bg-placeholder md:hover:border-cta md:hover:bg-surface-warm md:hover:shadow-card flex flex-col gap-3 border bg-white p-4 transition md:gap-4 md:p-6"
+                                className="group rounded-dest-card border-ash md:hover:border-cta md:hover:bg-surface-warm md:hover:shadow-card flex min-h-[173px] flex-col gap-2.5 border bg-white p-2.5 transition md:min-h-0 md:gap-4 md:p-6"
                             >
-                                <span className="bg-surface-warm md:group-hover:border-ink flex h-10 w-10 items-center justify-center rounded-full md:h-20 md:w-20 md:group-hover:border">
+                                <span className="bg-surface-warm md:group-hover:border-ink flex h-[38px] w-[38px] items-center justify-center rounded-full md:h-20 md:w-20 md:group-hover:border">
                                     {image ? (
                                         <img
                                             src={image}

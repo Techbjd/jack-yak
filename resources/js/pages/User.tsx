@@ -22,8 +22,10 @@ export default function User() {
     const { flash } = usePage<UserPageProps>().props;
 
     return (
-        <AppLayout title="User" shellClassName="bg-canvas">
-            <UserHero />
+        <AppLayout title="User" shellClassName="bg-canvas relative">
+            <div className="w-full sm:pb-30">
+                <UserHero />
+            </div>
             {flash?.success && (
                 <p
                     role="status"
@@ -32,7 +34,7 @@ export default function User() {
                     {flash.success}
                 </p>
             )}
-            <div className="max-w-map relative z-10 mx-auto flex w-full flex-col gap-6 px-6 pt-12 pb-10 md:gap-10 md:px-12 md:pt-36 md:pb-16">
+            <div className="max-w-map relative top-1 z-10 mx-auto flex w-full flex-col gap-6 px-6 pt-12 pb-10 md:gap-10 md:px-12 md:pt-36 md:pb-16">
                 <ProfileCard />
                 <SavedCard />
                 <SettingsCard />

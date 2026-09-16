@@ -3,7 +3,7 @@ import ResponsiveHeader from '../shared/ResponsiveHeader';
 
 export default function UserHero() {
     return (
-        <div className="md:min-h-user-hero relative w-full">
+        <div className="md:h-user-hero-h relative w-full md:absolute md:inset-x-0 md:top-0 md:min-h-0">
             <img
                 src={IMAGES.destination.journeyMountain}
                 alt=""
@@ -15,7 +15,7 @@ export default function UserHero() {
                 aria-hidden
                 className="to-canvas absolute inset-x-0 top-226 hidden h-24 bg-linear-to-b from-transparent md:block"
             />
-            <div className="relative z-10 w-full">
+            <div className="relative w-full">
                 <ResponsiveHeader />
             </div>
         </div>

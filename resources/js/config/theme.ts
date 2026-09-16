@@ -14,7 +14,7 @@ export const destCardTitle =
 export const pageShell =
     'mx-auto flex w-full max-w-container flex-col items-center';
 
-export const sectionPadding = 'py-0  md:py-24';
+export const sectionPadding = 'py-5  md:py-0';
 
 export const sectionMuted = 'w-full bg-surface-warm';
 

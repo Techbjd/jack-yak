@@ -37,7 +37,7 @@ export default function ItineraryGallery() {
                 <CarouselDots
                     count={5}
                     activeIndex={0}
-                    className="absolute right-4 bottom-2 gap-0.75"
+                    className="gap-hero-line absolute right-4 bottom-2"
                     dotClassName="h-1.5 w-1.5"
                 />
             </div>
