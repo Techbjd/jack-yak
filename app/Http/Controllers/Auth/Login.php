@@ -21,7 +21,7 @@ class Login extends Controller
         return Inertia::render('Login');
     }
 
-    public function __invoke(LoginRequest $request): RedirectResponse
+    public function __invoke(LoginRequest $request): RedirectResponse|SymfonyResponse
     {
         $credentials = $request->only('email', 'password');
         $remember = $request->boolean('remember');
