@@ -18,18 +18,18 @@ const SocialIcon: React.FC<SocialIconProps> = ({ label, Icon, href = '#' }) => {
         <a
             href={href}
             aria-label={label}
-            className="-m-2 flex h-6 w-6 items-center justify-center p-2 text-white transition-colors outline-none hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            className="-m-2 flex h-10 w-10 items-center justify-center p-2 text-white transition-colors outline-none hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
         >
             <Icon size={24} />
         </a>
     );
 };
 
-const Footer: React.FC = () => {
+export const Footer: React.FC = () => {
     return (
         <footer className="bg-brand w-full text-white">
             <div className="-mb-1 w-full overflow-hidden">
-                <div className="flex aspect-1440/470 w-full items-center justify-center bg-white select-none">
+                <div className="flex aspect-144/47 w-full items-center justify-center bg-white select-none">
                     <img
                         src={IMAGES.home.trekkerYak}
                         alt="JackYak Logo"
@@ -120,6 +120,7 @@ const Footer: React.FC = () => {
                         className="grid flex-1 grid-cols-1 gap-x-8 md:grid-cols-4"
                     >
                         {footerColumns.map((col) => (
+
                             <div
                                 key={col.title}
                                 className="border-b border-white/10 md:border-none"
