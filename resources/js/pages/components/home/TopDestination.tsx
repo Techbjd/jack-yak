@@ -5,6 +5,7 @@ import {
 } from '@/config/theme';
 import {
     homeTopDestinations,
+    topDestinationsHeading,
     type HomeTopDestination,
 } from '@/config/destination';
 import { cn } from '@/lib/utils';
@@ -29,12 +30,15 @@ const TopDestinations = () => {
                         'max-w-dest-title',
                     )}
                 >
-                    Explore Nepal's Top Destinations
+                    {topDestinationsHeading}
                 </h2>
 
                 <div className="grid w-full grid-cols-3 gap-4 md:hidden">
                     {homeTopDestinations.map((dest, i) => (
-                        <div key={i} className="flex min-w-0 flex-col">
+                        <div
+                            key={i}
+                            className="flex min-w-0 flex-col transition-transform duration-200 ease-out active:scale-[0.98]"
+                        >
                             <div
                                 className={cn(
                                     cardMobileImage,
@@ -73,18 +77,24 @@ const TopDestinations = () => {
                     ))}
                 </div>
 
-                <div className="hidden md:mx-auto md:grid md:w-full md:max-w-211.5 md:grid-cols-[9fr_10fr_9fr] md:items-start md:gap-6">
+                <div className="hidden md:mx-auto md:grid md:w-full md:max-w-240 md:grid-cols-[9fr_10fr_9fr] md:items-start md:gap-6">
                     {homeTopDestinations.map((dest) => {
                         const dims = cardDimensions[dest.variant];
                         return (
                             <div
                                 key={dest.name}
-                                className="rounded-image relative overflow-hidden bg-cover bg-center"
+                                className="rounded-image group relative overflow-hidden"
                                 style={{
                                     aspectRatio: `${dims.width} / ${dims.height}`,
-                                    backgroundImage: `url(${dest.image})`,
                                 }}
                             >
+                                <div
+                                    aria-hidden
+                                    className="absolute inset-0 bg-cover bg-center transition-transform duration-500 ease-out group-hover:scale-105"
+                                    style={{
+                                        backgroundImage: `url(${dest.image})`,
+                                    }}
+                                />
                                 <div className="absolute inset-0 bg-linear-to-b from-black/40 via-black/0 to-black/10" />
 
                                 <span

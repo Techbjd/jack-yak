@@ -1,7 +1,7 @@
 import { fontPrimary, fontQuote, fontQuoteMark } from '@/config/theme';
-import { IMAGES } from '@/config/images';
+import { travelStoriesCopy } from '@/config/guide';
 import { cn } from '@/lib/utils';
-import CarouselDots from '../shared/CarouselDots';
+import CarouselDots from '@/components/ui/CarouselDots';
 
 const TravelStories = () => {
     return (
@@ -16,7 +16,7 @@ const TravelStories = () => {
                                     'text-xs-sm text-ink md:text-md-lg font-bold tracking-wide uppercase',
                                 )}
                             >
-                                Travel Stories
+                                {travelStoriesCopy.eyebrow}
                             </p>
                             <h2
                                 className={cn(
@@ -24,7 +24,7 @@ const TravelStories = () => {
                                     'text-base-md text-text-primary md:text-3xl-4xl leading-story-title tracking-card font-bold md:leading-tight md:tracking-wide',
                                 )}
                             >
-                                What Travelers Love About Nepal
+                                {travelStoriesCopy.title}
                             </h2>
                         </div>
 
@@ -54,17 +54,15 @@ const TravelStories = () => {
                                         'text-xs-sm text-ink md:text-xl-2xl leading-story-quote font-normal md:leading-relaxed',
                                     )}
                                 >
-                                    Watching the sunrise over the Himalayas from
-                                    Poon Hill was one of the most unforgettable
-                                    moments of my life.
+                                    {travelStoriesCopy.quote}
                                 </blockquote>
                             </div>
 
                             <div className="relative flex items-center justify-center md:justify-between md:gap-2">
                                 <figcaption className="absolute top-1/2 right-0 flex -translate-y-1/2 items-center gap-1.5 md:static md:order-1 md:translate-none md:gap-4">
                                     <img
-                                        src={IMAGES.about.travelerAvatar}
-                                        alt="Ken San"
+                                        src={travelStoriesCopy.avatar}
+                                        alt={travelStoriesCopy.name}
                                         loading="lazy"
                                         className="bg-bg-placeholder text-2xs text-text-primary shadow-card size-3.75 overflow-hidden rounded-full object-cover object-top md:h-17 md:w-17"
                                     />
@@ -75,7 +73,7 @@ const TravelStories = () => {
                                                 'text-xs-sm text-ink md:text-md-lg font-medium md:font-bold',
                                             )}
                                         >
-                                            Ken San
+                                            {travelStoriesCopy.name}
                                         </span>
                                         <span
                                             className={cn(
@@ -83,7 +81,7 @@ const TravelStories = () => {
                                                 'text-ink md:text-md-lg text-2xs font-medium md:font-bold',
                                             )}
                                         >
-                                            Japan
+                                            {travelStoriesCopy.country}
                                         </span>
                                     </span>
                                 </figcaption>

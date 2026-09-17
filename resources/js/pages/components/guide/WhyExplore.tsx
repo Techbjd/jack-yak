@@ -1,40 +1,28 @@
 import { MoveRight } from 'lucide-react';
 import { fontPrimary } from '@/config/theme';
 import { cn } from '@/lib/utils';
-import { exploreCards } from '@/config/guide';
+import { exploreCards, whyExploreHeader } from '@/config/guide';
+import SectionHeading from '@/components/ui/SectionHeading';
 
 const WhyExplore = () => {
     return (
         <section className="w-full">
             <div className="max-w-container mx-auto flex w-full flex-col gap-6 px-6 pt-6 md:gap-10 md:px-12 md:pt-10 lg:px-24">
                 <div className="grid grid-cols-3 items-start gap-4 md:items-center md:justify-between md:gap-8">
-                    <div className="flex flex-col gap-2">
-                        <p
-                            className={cn(
-                                fontPrimary,
-                                'text-xs-sm text-ink md:text-md-lg font-bold',
-                            )}
-                        >
-                            Discover Nepal
-                        </p>
-
-                        <h2
-                            className={cn(
-                                fontPrimary,
-                                'text-md-lg text-ink md:text-journey leading-snug font-bold tracking-wide md:leading-tight',
-                            )}
-                        >
-                            Why Explore with Jackyak
-                        </h2>
-                    </div>
+                    <SectionHeading
+                        eyebrow={whyExploreHeader.eyebrow}
+                        title={whyExploreHeader.title}
+                        className="gap-2"
+                        eyebrowClassName="md:text-md-lg"
+                        titleClassName="text-ink md:text-journey md:leading-tight"
+                    />
                     <p
                         className={cn(
                             fontPrimary,
                             'max-w-content-sm text-xs-sm text-ink md:text-md-lg col-start-3 leading-relaxed font-semibold md:justify-self-end md:leading-relaxed',
                         )}
                     >
-                        Helping you discover Nepal through trusted guides, local
-                        insights, and unforgettable destinations.
+                        {whyExploreHeader.side}
                     </p>
                 </div>
 

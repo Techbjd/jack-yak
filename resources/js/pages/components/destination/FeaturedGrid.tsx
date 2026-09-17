@@ -9,13 +9,15 @@ import {
     Waves,
     type LucideIcon,
 } from 'lucide-react';
-import { coverImageAbsolute, eyebrow, fontPrimary } from '@/config/theme';
+import { coverImageAbsolute, fontPrimary } from '@/config/theme';
 import {
     destinationFeaturedCards,
+    featuredHeader,
     featuredTabIcons,
     featuredTabs,
 } from '@/config/destination';
 import { cn } from '@/lib/utils';
+import SectionHeading from '@/components/ui/SectionHeading';
 
 const TAB_ICONS: Record<string, LucideIcon> = {
     All: Globe,
@@ -58,46 +60,39 @@ function TabIcon({ tab }: { tab: string }) {
 }
 
 export default function FeaturedGrid() {
-    const [activeTab, setActiveTab] = useState<string>('Safari');
+    const [activeTab, setActiveTab] = useState<string>(
+        featuredHeader.defaultTab,
+    );
 
     return (
         <section className="flex w-full flex-col gap-6 px-4 py-8 md:gap-8 md:px-12 md:py-12 lg:px-24">
             <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-                <div className="flex flex-col gap-2">
-                    <p
-                        className={cn(
-                            eyebrow,
-                            'md:text-md-lg hidden tracking-wide md:block',
-                        )}
-                    >
-                        Discover
-                    </p>
-                    <h2
-                        className={cn(
-                            fontPrimary,
-                            'text-lg-xl text-text-primary lg:text-journey lg:leading-journey font-bold tracking-wide',
-                        )}
-                    >
-                        Featured Destinations
-                    </h2>
-                </div>
+                <SectionHeading
+                    eyebrow={featuredHeader.eyebrow}
+                    title={featuredHeader.title}
+                    className="gap-2"
+                    eyebrowClassName="text-xs-md text-text-primary tracking-wide max-md:hidden md:block md:text-md-lg"
+                    titleClassName="text-lg-xl lg:text-journey lg:leading-journey"
+                />
                 <p
                     className={cn(
                         fontPrimary,
                         'text-md-lg text-text-primary hidden font-medium lg:block lg:max-w-xs',
                     )}
                 >
-                    Discover the country&apos;s most remarkable destinations.
+                    {featuredHeader.side}
                 </p>
             </div>
 
             <div className="no-scrollbar flex gap-5 overflow-x-auto md:hidden">
                 {featuredTabs.map((tab) => {
-                    const isActive = tab === 'All';
+                    const isActive = tab === activeTab;
                     return (
                         <button
                             key={tab}
                             type="button"
+                            onClick={() => setActiveTab(tab)}
+                            aria-pressed={isActive}
                             className="flex shrink-0 cursor-pointer flex-col items-center gap-1"
                         >
                             <span
@@ -179,15 +174,21 @@ export default function FeaturedGrid() {
                         )}
                         style={{ '--card-ratio': card.ratio } as CSSProperties}
                     >
-                        <img
-                            src={card.src}
-                            alt={card.label}
-                            loading="lazy"
-                            className={cn(
-                                coverImageAbsolute,
-                                'rounded-card-sm',
-                            )}
-                        />
+                        <a
+                            href={card.href}
+                            aria-label={`Explore ${card.label}`}
+                            className="block h-full w-full"
+                        >
+                            <img
+                                src={card.src}
+                                alt={card.label}
+                                loading="lazy"
+                                className={cn(
+                                    coverImageAbsolute,
+                                    'rounded-card-sm',
+                                )}
+                            />
+                        </a>
                         <div
                             aria-hidden="true"
                             className="rounded-card-sm absolute inset-0 bg-black/0"
@@ -200,11 +201,15 @@ export default function FeaturedGrid() {
                         >
                             {card.label}
                         </p>
-                        <span className="absolute -right-1 -bottom-1.5 flex h-10 w-12 items-center justify-center rounded-full bg-white md:-right-4 md:-bottom-4 md:h-16 md:w-16">
+                        <a
+                            href={card.href}
+                            aria-label={`Explore ${card.label}`}
+                            className="absolute -right-1 -bottom-1.5 flex h-10 w-12 items-center justify-center rounded-full bg-white md:-right-4 md:-bottom-4 md:h-16 md:w-16"
+                        >
                             <span className="bg-text-primary md:bg-cta flex h-6.5 w-6.5 items-center justify-center rounded-full md:h-10 md:w-10">
                                 <ArrowUpRight className="h-3.5 w-3.5 text-white md:h-5 md:w-5" />
                             </span>
-                        </span>
+                        </a>
                     </div>
                 ))}
             </div>

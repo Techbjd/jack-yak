@@ -5,7 +5,7 @@ import {
     bodyText,
     imageRoundedLg,
 } from '@/config/theme';
-import { aboutJackyakInfoBlocks } from '@/config/home';
+import { aboutJackyakInfoBlocks, aboutJackyakIntro } from '@/config/home';
 import { cn } from '@/lib/utils';
 import { IMAGES } from '@/config/images';
 import HomeInfoBlock from './HomeInfoBlock';
@@ -20,15 +20,10 @@ const AboutJackyak = () => {
             >
                 <div className="flex flex-col items-center gap-6 text-center md:flex-row md:items-center md:gap-16 md:text-left">
                     <div className="max-w-content-md flex flex-1 flex-col gap-6 py-4">
-                        <h2 className={headingSection}>About Jackyak</h2>
-                        <p className={bodyText}>
-                            JackYak is your trusted travel companion for
-                            exploring Nepal. Discover curated trekking
-                            itineraries, hidden destinations, local culture, and
-                            unforgettable adventures—from the Himalayas to the
-                            Terai. From Everest to the Terai, experience Nepal
-                            through carefully crafted journeys.
-                        </p>
+                        <h2 className={headingSection}>
+                            {aboutJackyakIntro.heading}
+                        </h2>
+                        <p className={bodyText}>{aboutJackyakIntro.body}</p>
                     </div>
 
                     <div className="hidden w-full flex-1 justify-end md:block">

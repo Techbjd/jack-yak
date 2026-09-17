@@ -1,22 +1,21 @@
 import { useState } from 'react';
 import AppLayout from '@/layouts/AppLayout';
-import { viewAllDestinations } from '@/config/destination';
-import Header from './components/shared/Header';
+import { viewAllDestinations, viewAllPageSize } from '@/config/destination';
+import { pageTitles } from '@/config/site';
+import Header from '@/components/ui/Header';
 import ViewAllHeader from './components/view-all/ViewAllHeader';
 import DestinationGrid from './components/view-all/DestinationGrid';
 import Pagination from './components/view-all/Pagination';
-
-const PAGE_SIZE = 12;
 
 export default function ViewAll() {
     const [page, setPage] = useState(1);
     const totalPages = Math.max(
         1,
-        Math.ceil(viewAllDestinations.length / PAGE_SIZE),
+        Math.ceil(viewAllDestinations.length / viewAllPageSize),
     );
     const visibleDestinations = viewAllDestinations.slice(
-        (page - 1) * PAGE_SIZE,
-        page * PAGE_SIZE,
+        (page - 1) * viewAllPageSize,
+        page * viewAllPageSize,
     );
 
     const handlePageChange = (next: number) => {
@@ -28,7 +27,7 @@ export default function ViewAll() {
 
     return (
         <AppLayout
-            title="Top Destinations"
+            title={pageTitles.viewAll}
             header={<Header tone="onLight" />}
             shellClassName="bg-canvas"
         >

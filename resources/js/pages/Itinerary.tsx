@@ -1,5 +1,5 @@
 import AppLayout from '@/layouts/AppLayout';
-import Header from './components/shared/Header';
+import Header from '@/components/ui/Header';
 import { itinPage } from '@/config/theme';
 import ItineraryGallery from './components/itinerary/ItineraryGallery';
 import GalleryFilterPills from './components/itinerary/GalleryFilterPills';
@@ -10,12 +10,15 @@ import TrekCtaBanner from './components/itinerary/TrekCtaBanner';
 import AltitudeProfile from './components/itinerary/AltitudeProfile';
 import WeatherCard from './components/itinerary/WeatherCard';
 import ReviewCard from './components/itinerary/ReviewCard';
-
-const ALTITUDE_TITLE = 'Altitude Profile of Everest Base Camp Trek';
+import { altitudeTitle } from '@/config/itinerary';
+import { pageTitles } from '@/config/site';
 
 export default function Itinerary() {
     return (
-        <AppLayout title="Itinerary" header={<Header tone="onLight" />}>
+        <AppLayout
+            title={pageTitles.itinerary}
+            header={<Header tone="onLight" />}
+        >
             <div className={itinPage}>
                 <div className="mt-4 w-full md:mt-8">
                     <ItineraryGallery />
@@ -40,7 +43,7 @@ export default function Itinerary() {
                 </div>
                 <div className="no-scrollbar mt-6 flex w-full flex-col gap-6 md:mt-10 md:flex-row md:gap-8 md:overflow-x-auto md:overscroll-x-contain">
                     <div className="md:w-graph-card-w w-full shrink-0">
-                        <AltitudeProfile title={ALTITUDE_TITLE} />
+                        <AltitudeProfile title={altitudeTitle} />
                     </div>
                     <div className="md:w-graph-card-w w-full shrink-0">
                         <WeatherCard />

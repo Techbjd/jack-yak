@@ -1,14 +1,20 @@
 import { Link, usePage } from '@inertiajs/react';
 import { Bookmark, Mountain, ClipboardList, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { userMuted, userRow, userSectionTitle } from '@/config/theme';
-import { userCard } from './tokens';
+import {
+    userCard,
+    userMuted,
+    userRow,
+    userSectionTitle,
+} from '@/config/theme';
 import type {
     PageProps,
     RecentAvailability,
     RecentReview,
     UserStats,
 } from '@/types';
+import { savedCardCopy } from '@/config/user';
+import { siteRoutes } from '@/config/site';
 
 interface SavedPageProps extends PageProps {
     stats?: UserStats;
@@ -25,14 +31,14 @@ export default function SavedCard() {
             id: 'destinations',
             label: 'Saved Destinations',
             count: 0,
-            href: '/view-all',
+            href: siteRoutes.viewAll,
             Icon: Mountain,
         },
         {
             id: 'itineraries',
             label: 'Saved Itineraries',
             count: 0,
-            href: '/view-all',
+            href: siteRoutes.viewAll,
             Icon: ClipboardList,
         },
     ];
@@ -45,10 +51,8 @@ export default function SavedCard() {
                     className="text-ink size-5 md:size-6 md:text-black"
                 />
                 <div className="flex flex-col">
-                    <h2 className={userSectionTitle}>Saved</h2>
-                    <p className={userMuted}>
-                        Your requests, reviews, and trip-finder activity
-                    </p>
+                    <h2 className={userSectionTitle}>{savedCardCopy.title}</h2>
+                    <p className={userMuted}>{savedCardCopy.subtitle}</p>
                 </div>
             </div>
             <ul className="divide-fog flex w-full flex-col divide-y">
@@ -80,7 +84,9 @@ export default function SavedCard() {
 
             {recentAvailability && recentAvailability.length > 0 && (
                 <div className="pt-2">
-                    <p className={userMuted}>Latest availability</p>
+                    <p className={userMuted}>
+                        {savedCardCopy.latestAvailability}
+                    </p>
                     <ul className="pt-2 text-sm">
                         {recentAvailability.map((r) => (
                             <li key={r.id}>
@@ -94,7 +100,9 @@ export default function SavedCard() {
             )}
             {recentReviews && recentReviews.length > 0 && (
                 <div className="pt-2">
-                    <p className={userMuted}>Latest reviews</p>
+                    <p className={userMuted}>
+                        {savedCardCopy.latestReviews}
+                    </p>
                     <ul className="pt-2 text-sm">
                         {recentReviews.map((r) => (
                             <li key={r.id}>

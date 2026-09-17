@@ -1,6 +1,7 @@
-import { useEffect, useRef, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { createPortal } from 'react-dom';
 import { X } from 'lucide-react';
-import { formError } from '@/config/theme';
+import { modalCopy } from '@/config/site';
 
 interface ModalProps {
     open: boolean;
@@ -10,33 +11,17 @@ interface ModalProps {
     children: ReactNode;
 }
 
-export const modalDivider = 'border-hairline mt-6 border-t';
-
-export const modalSelectTrigger = 'cursor-pointer appearance-none pr-10';
-
-export const modalSelectChevron =
-    'text-mist pointer-events-none absolute top-1/2 right-4 size-5 -translate-y-1/2';
-
-export { formErrorBorder as modalInputErrorBorder } from '@/config/theme';
-
-interface ModalFieldErrorProps {
-    children: ReactNode;
-    id?: string;
-}
-
-export function ModalFieldError({
-    children,
-    id,
-}: ModalFieldErrorProps): ReactNode {
-    return (
-        <p role="alert" className={formError} id={id}>
-            {children}
-        </p>
-    );
-}
-
 export default function Modal({ open, onClose, label, children }: ModalProps) {
     const panelRef = useRef<HTMLDivElement>(null);
+    // Portal target guard: document doesn't exist during SSR.
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+        return () => {
+            setMounted(false);
+        };
+    }, []);
 
     useEffect(() => {
         if (!open) {
@@ -57,11 +42,14 @@ export default function Modal({ open, onClose, label, children }: ModalProps) {
         };
     }, [open, onClose]);
 
-    if (!open) {
+    if (!open || !mounted) {
         return null;
     }
 
-    return (
+    // Portalled to <body> so the dialog always paints above page sections
+    // (e.g. Home's `relative z-10` Sections), which would otherwise trap a
+    // fixed overlay in their own stacking context.
+    return createPortal(
         <div
             className="fixed inset-0 z-100 flex items-end justify-center sm:items-center sm:p-6"
             onMouseDown={(e) => {
@@ -81,7 +69,7 @@ export default function Modal({ open, onClose, label, children }: ModalProps) {
             >
                 <button
                     type="button"
-                    aria-label="Close dialog"
+                    aria-label={modalCopy.closeLabel}
                     onClick={onClose}
                     className="text-ink absolute top-4 right-4 flex size-9 items-center justify-center rounded-full transition-opacity hover:opacity-70 md:top-6 md:right-6"
                 >
@@ -89,6 +77,7 @@ export default function Modal({ open, onClose, label, children }: ModalProps) {
                 </button>
                 {children}
             </div>
-        </div>
+        </div>,
+        document.body,
     );
 }

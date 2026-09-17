@@ -1,7 +1,10 @@
-import Header from '../shared/Header';
+import Header from '@/components/ui/Header';
+import CtaButton from '@/components/ui/CtaButton';
 import { Plus } from 'lucide-react';
 import { fontPrimary, ctaIconCircle } from '@/config/theme';
 import { IMAGES } from '@/config/images';
+import { homeHero } from '@/config/home';
+import { siteRoutes } from '@/config/site';
 import { cn } from '@/lib/utils';
 
 export default function Hero() {
@@ -46,7 +49,7 @@ export default function Hero() {
                             'text-cta-accent tracking-tight sm:text-white',
                         )}
                     >
-                        The World Above the Clouds
+                        {homeHero.title}
                     </h1>
 
                     {/* Divider */}
@@ -61,31 +64,32 @@ export default function Hero() {
                             'leading-snug text-white md:leading-relaxed',
                         )}
                     >
-                        Nestled in the heart of the Himalayas, Nepal is a land
-                        of majestic mountains, rich heritage, and adventures
-                        unlike anywhere else.
+                        {homeHero.body}
                     </p>
 
                     {/* CTA */}
-                    <button
+                    <CtaButton
+                        href={siteRoutes.quiz}
+                        ariaLabel={homeHero.ctaLabel}
                         className={cn(
                             'mt-2 h-10.5 w-fit px-4 py-2 sm:mt-4',
-                            'bg-cta-accent sm:bg-cta rounded-full',
+                            'bg-cta-accent sm:bg-cta',
                             'mx-auto flex shrink-0 items-center gap-3 sm:mx-0',
                             fontPrimary,
-                            'sm:text-md-lg text-sm leading-normal font-bold text-white',
-                            'cursor-pointer shadow-md transition-opacity hover:opacity-95',
+                            'sm:text-md-lg text-sm leading-normal text-white',
+                            'shadow-md transition-opacity hover:opacity-95',
                         )}
+                        icon={
+                            <span className={ctaIconCircle}>
+                                <Plus
+                                    className="text-icon-accent h-4 w-4"
+                                    strokeWidth={3}
+                                />
+                            </span>
+                        }
                     >
-                        <span>Explore Nepal</span>
-
-                        <span className={ctaIconCircle}>
-                            <Plus
-                                className="text-icon-accent h-4 w-4"
-                                strokeWidth={3}
-                            />
-                        </span>
-                    </button>
+                        <span>{homeHero.cta}</span>
+                    </CtaButton>
                 </div>
             </div>
         </div>

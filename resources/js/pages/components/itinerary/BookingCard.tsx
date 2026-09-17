@@ -5,7 +5,8 @@ import { FaWhatsapp } from 'react-icons/fa';
 import { cn } from '@/lib/utils';
 import { itinCard } from '@/config/theme';
 import { trekBooking } from '@/config/itinerary';
-import Stars from '../shared/Stars';
+import { siteContact, siteRoutes } from '@/config/site';
+import Stars from '@/components/ui/Stars';
 import CheckAvailability from '../booking/CheckAvailability';
 import GiveReview from '../review/GiveReview';
 
@@ -17,7 +18,7 @@ export default function BookingCard() {
 
     return (
         <section
-            aria-label="Booking"
+            aria-label={trekBooking.sectionLabel}
             className={cn(
                 itinCard,
                 'md:max-w-content-md flex w-full flex-col gap-4 p-5 md:mx-auto xl:mx-0 xl:max-w-none',
@@ -28,9 +29,9 @@ export default function BookingCard() {
                     {trekBooking.operator}
                 </p>
                 <label className="relative inline-flex">
-                    <span className="sr-only">Currency</span>
+                    <span className="sr-only">{trekBooking.currencyLabel}</span>
                     <select
-                        aria-label="Currency"
+                        aria-label={trekBooking.currencyLabel}
                         defaultValue={trekBooking.currencies[0]}
                         className="font-manrope rounded-immersive border-card-line text-xs-md text-slate-text h-9 w-36 cursor-pointer appearance-none border bg-white pr-8 pl-3 leading-5 font-semibold outline-none"
                     >
@@ -64,9 +65,9 @@ export default function BookingCard() {
             <hr className="border-line-soft border-t" />
 
             <p className="flex w-full flex-wrap items-center gap-x-2">
-                <Stars label="Rated 5 out of 5 stars" />
+                <Stars />
                 <Link
-                    href="#reviews"
+                    href={siteRoutes.reviews}
                     className="font-manrope text-base-md leading-itinerary-25 text-ink font-semibold underline-offset-4 hover:underline"
                 >
                     {trekBooking.reviewCount}
@@ -109,7 +110,7 @@ export default function BookingCard() {
                     {trekBooking.giveReview}
                 </button>
                 <a
-                    href="https://wa.me/9779800000000"
+                    href={siteContact.whatsapp}
                     target="_blank"
                     rel="noreferrer"
                     className="border-wa flex min-h-15 w-full items-center gap-2 rounded-xl border bg-white px-4 py-2.5"

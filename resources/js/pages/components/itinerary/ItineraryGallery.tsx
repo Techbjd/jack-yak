@@ -1,8 +1,8 @@
 import { LayoutGrid, Play, Users } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { IMAGES } from '@/config/images';
-import { galleryTiles } from '@/config/itinerary';
-import CarouselDots from '../shared/CarouselDots';
+import { galleryPhotoAlt, galleryTiles } from '@/config/itinerary';
+import CarouselDots from '@/components/ui/CarouselDots';
 
 const frostedPill =
     'flex items-center gap-1.5 rounded-full bg-white/95 shadow-card backdrop-blur-sm';
@@ -25,13 +25,13 @@ export default function ItineraryGallery() {
 
     return (
         <section
-            aria-label="Trek photos"
+            aria-label={galleryTiles.sectionLabel}
             className="flex w-full flex-col gap-2 md:gap-3"
         >
             <div className="relative w-full lg:hidden">
                 <img
                     src={IMAGES.itinerary.hero}
-                    alt="Everest Base Camp trek panorama"
+                    alt={galleryTiles.heroAlt}
                     className="h-itinerary-hero-h rounded-dest-image w-full object-cover md:aspect-video md:h-auto"
                 />
                 <CarouselDots
@@ -46,7 +46,7 @@ export default function ItineraryGallery() {
                     <img
                         key={src}
                         src={src}
-                        alt={`Trek gallery photo ${i + 1}`}
+                        alt={galleryPhotoAlt(i)}
                         className="h-itinerary-thumb-h rounded-immersive w-full object-cover md:aspect-square md:h-auto"
                     />
                 ))}
@@ -56,7 +56,7 @@ export default function ItineraryGallery() {
                 <figure className="rounded-gallery-tile relative row-span-2 overflow-hidden">
                     <img
                         src={IMAGES.itinerary.hero}
-                        alt="Everest Base Camp trek panorama"
+                        alt={galleryTiles.heroAlt}
                         className="absolute inset-0 h-full w-full object-cover"
                     />
                     <figcaption className="absolute bottom-4 left-4">
@@ -74,7 +74,7 @@ export default function ItineraryGallery() {
                 <figure className="rounded-gallery-tile relative aspect-square overflow-hidden">
                     <img
                         src={cellA}
-                        alt="Trek gallery photo 1"
+                        alt={galleryPhotoAlt(0)}
                         className="absolute inset-0 h-full w-full object-cover"
                     />
                     <TravellerBadge />
@@ -82,7 +82,7 @@ export default function ItineraryGallery() {
                 <figure className="rounded-gallery-tile relative aspect-square overflow-hidden">
                     <img
                         src={cellB}
-                        alt="Trek gallery photo 2"
+                        alt={galleryPhotoAlt(1)}
                         className="absolute inset-0 h-full w-full object-cover"
                     />
                     <TravellerBadge />
@@ -109,7 +109,7 @@ export default function ItineraryGallery() {
                 >
                     <img
                         src={IMAGES.itinerary.videoPoster}
-                        alt="Traveller video from the Everest Base Camp Trek"
+                        alt={galleryTiles.videoAlt}
                         className="absolute inset-0 h-full w-full object-cover"
                     />
                     <span className="absolute inset-0 flex items-center justify-center">

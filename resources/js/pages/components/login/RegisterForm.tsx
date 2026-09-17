@@ -1,8 +1,15 @@
 import { Link, useForm } from '@inertiajs/react';
 import { cn } from '@/lib/utils';
-import { authButton, authLabel, authTitle, fontPrimary } from '@/config/theme';
-import AuthField from './AuthField';
-import { authLink } from './tokens';
+import {
+    authButton,
+    authLabel,
+    authLink,
+    authTitle,
+    fontPrimary,
+} from '@/config/theme';
+import TextField from '@/components/forms/TextField';
+import { registerCopy } from '@/config/auth';
+import { siteLegal, siteRoutes } from '@/config/site';
 
 export default function RegisterForm() {
     const { data, setData, post, processing, errors, clearErrors } = useForm({
@@ -14,29 +21,27 @@ export default function RegisterForm() {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        post('/register');
+        post(registerCopy.endpoint);
     };
 
     return (
         <section className="flex min-h-screen w-full flex-col items-center px-6 pt-16 pb-8 lg:justify-center lg:pt-10">
             <div className="flex w-full max-w-72.75 flex-1 flex-col justify-center">
-                <h1 className={authTitle}>Create account</h1>
-                <p className={cn(authLabel, 'pt-5')}>
-                    Sign up to save trips, request availability, and leave
-                    reviews.
-                </p>
+                <h1 className={authTitle}>{registerCopy.title}</h1>
+                <p className={cn(authLabel, 'pt-5')}>{registerCopy.subtitle}</p>
 
                 <form
                     className="flex w-full flex-col"
                     onSubmit={handleSubmit}
                     noValidate
                 >
-                    <AuthField
+                    <TextField
                         id="register-name"
-                        label="Name"
+                        label={registerCopy.nameLabel}
                         type="text"
+                        tone="auth"
                         autoComplete="name"
-                        placeholder="Enter Your Name"
+                        placeholder={registerCopy.namePlaceholder}
                         value={data.name}
                         onChange={(value) => {
                             setData('name', value);
@@ -48,12 +53,13 @@ export default function RegisterForm() {
                         first
                     />
 
-                    <AuthField
+                    <TextField
                         id="register-email"
-                        label="Email"
+                        label={registerCopy.emailLabel}
                         type="email"
+                        tone="auth"
                         autoComplete="email"
-                        placeholder="Enter Your Email"
+                        placeholder={registerCopy.emailPlaceholder}
                         value={data.email}
                         onChange={(value) => {
                             setData('email', value);
@@ -64,12 +70,13 @@ export default function RegisterForm() {
                         error={errors.email}
                     />
 
-                    <AuthField
+                    <TextField
                         id="register-password"
-                        label="Password"
+                        label={registerCopy.passwordLabel}
                         type="password"
+                        tone="auth"
                         autoComplete="new-password"
-                        placeholder="Min. 8 characters"
+                        placeholder={registerCopy.passwordPlaceholder}
                         value={data.password}
                         onChange={(value) => {
                             setData('password', value);
@@ -80,12 +87,13 @@ export default function RegisterForm() {
                         error={errors.password}
                     />
 
-                    <AuthField
+                    <TextField
                         id="register-password-confirmation"
-                        label="Confirm password"
+                        label={registerCopy.confirmLabel}
                         type="password"
+                        tone="auth"
                         autoComplete="new-password"
-                        placeholder="Repeat your password"
+                        placeholder={registerCopy.confirmPlaceholder}
                         value={data.password_confirmation}
                         onChange={(value) =>
                             setData('password_confirmation', value)
@@ -100,14 +108,16 @@ export default function RegisterForm() {
                             'mt-5 cursor-pointer disabled:opacity-60',
                         )}
                     >
-                        {processing ? 'Creating…' : 'Sign Up'}
+                        {processing
+                            ? registerCopy.submitting
+                            : registerCopy.submit}
                     </button>
                 </form>
 
                 <p className={cn(authLabel, 'pt-5 text-center')}>
-                    Already have an account?{' '}
-                    <Link href="/login" className={authLink}>
-                        Sign in
+                    {registerCopy.haveAccount}{' '}
+                    <Link href={siteRoutes.login} className={authLink}>
+                        {registerCopy.signIn}
                     </Link>
                 </p>
             </div>
@@ -118,7 +128,7 @@ export default function RegisterForm() {
                     'text-ink w-full max-w-72.75 pt-10 text-center text-xs font-medium',
                 )}
             >
-                &copy; 2026 JackYak. All rights reserved.
+                {siteLegal.copyright}
             </p>
         </section>
     );

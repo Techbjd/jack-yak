@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { fontPrimary, imagePlaceholder } from '@/config/theme';
+import { immersiveExperiences, immersivePlanCopy } from '@/config/destination';
 import { IMAGES } from '@/config/images';
 import { cn } from '@/lib/utils';
-import CoverImage from '../shared/CoverImage';
+import CoverImage from '@/components/ui/CoverImage';
+import CtaButton from '@/components/ui/CtaButton';
 import CheckAvailability from '../booking/CheckAvailability';
 
 export default function ImmersivePlan() {
@@ -17,7 +19,7 @@ export default function ImmersivePlan() {
                             'text-lg-xl text-text-primary md:text-2xl-3xl leading-snug font-bold tracking-wide uppercase',
                         )}
                     >
-                        IMMERSIVE EXPERIENCES
+                        {immersiveExperiences.heading}
                     </h2>
                     <p
                         className={cn(
@@ -25,20 +27,17 @@ export default function ImmersivePlan() {
                             'text-xs-md text-text-primary md:text-md-lg leading-snug font-medium',
                         )}
                     >
-                        Explore Nepal through cinematic destination stories,
-                        travel guides, local insights, trekking routes, and
-                        hidden gems designed to inspire your next adventure.
+                        {immersiveExperiences.body}
                     </p>
-                    <button
-                        type="button"
+                    <CtaButton
                         onClick={() => setAvailabilityOpen(true)}
                         className={cn(
                             fontPrimary,
-                            'bg-cta-ember text-xs-sm md:bg-cta md:text-md-lg flex w-fit cursor-pointer items-center justify-center px-5 py-2 font-bold tracking-wide text-white md:h-12.75 md:w-52 md:px-0 md:py-0',
+                            'bg-cta-ember text-xs-sm md:bg-cta md:text-md-lg w-fit rounded-none px-5 py-2 tracking-wide md:h-12.75 md:w-52 md:px-0 md:py-0',
                         )}
                     >
-                        Start Planning
-                    </button>
+                        {immersivePlanCopy.cta}
+                    </CtaButton>
                     <CheckAvailability
                         open={availabilityOpen}
                         onClose={() => setAvailabilityOpen(false)}
@@ -52,13 +51,13 @@ export default function ImmersivePlan() {
                 >
                     <CoverImage
                         src={IMAGES.destination.swayambhuStupa}
-                        alt="Temple image"
+                        alt={immersivePlanCopy.imageAltMobile}
                         className="md:hidden"
                         eager
                     />
                     <CoverImage
                         src={IMAGES.destination.stupaPanorama}
-                        alt="Temple image"
+                        alt={immersivePlanCopy.imageAltDesktop}
                         className="hidden md:block"
                         eager
                     />

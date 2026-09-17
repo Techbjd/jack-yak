@@ -1,6 +1,5 @@
 import { cn } from '@/lib/utils';
-import { quizLabel, quizOption } from '@/config/theme';
-import { quizQuestionRow } from './tokens';
+import { quizLabel, quizOption, quizQuestionRow } from '@/config/theme';
 import type { QuizSegmentQuestion } from '@/config/quiz';
 
 interface QuizSegmentFieldProps {

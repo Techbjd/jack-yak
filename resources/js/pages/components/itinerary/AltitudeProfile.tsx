@@ -61,7 +61,7 @@ export default function AltitudeProfile({
             >
                 <div className="flex w-full items-center gap-1.5">
                     <span className="font-manrope text-xs-sm tracking-itinerary-label text-pale md:text-xs-md leading-5 font-semibold uppercase">
-                        Altitude in:
+                        {altitudeProfile.altitudeIn}
                     </span>
                     <button
                         type="button"

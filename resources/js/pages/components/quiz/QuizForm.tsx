@@ -1,18 +1,21 @@
-import { Link, useForm, usePage } from '@inertiajs/react';
-import { CircleCheck } from 'lucide-react';
+import { useForm, usePage } from '@inertiajs/react';
 import { cn } from '@/lib/utils';
+import { EMAIL_PATTERN } from '@/lib/form-utils';
 import { quizButton, quizNote } from '@/config/theme';
 import {
+    quizEndpoint,
+    quizFormCopy,
     quizSegmentQuestions,
     quizSelectQuestions,
     type QuizAnswers,
 } from '@/config/quiz';
-import QuizTextField from './QuizTextField';
-import QuizSelectField from './QuizSelectField';
+import { siteRoutes } from '@/config/site';
+import TextField from '@/components/forms/TextField';
+import SelectField from '@/components/forms/SelectField';
+import FormSuccess from '@/components/forms/FormSuccess';
+import GuestNudge from '@/components/forms/GuestNudge';
 import QuizSegmentField from './QuizSegmentField';
 import type { PageProps } from '@/types';
-
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 export default function QuizForm() {
     const { auth, flash } = usePage<PageProps>().props;
@@ -41,7 +44,7 @@ export default function QuizForm() {
             document.getElementById(firstBad)?.focus();
             return;
         }
-        post('/quiz', {
+        post(quizEndpoint, {
             onError: () => {
                 const firstBackend =
                     (errors as Record<string, string>).name ||
@@ -62,30 +65,22 @@ export default function QuizForm() {
 
     if (flash?.success) {
         return (
-            <div className="flex flex-col items-center gap-4 py-10 text-center">
-                <CircleCheck
-                    aria-hidden
-                    className="text-cta size-12 md:size-16"
-                />
-                <h2 className="text-2xl font-bold">Request received!</h2>
-                <p className={cn(quizNote, 'max-w-md')}>
-                    {flash.success} We saved it for {data.email || 'you'}.
-                </p>
-                <div className="flex flex-wrap justify-center gap-3 pt-2">
-                    <Link href="/destinations" className={quizButton}>
-                        Browse destinations
-                    </Link>
-                    <Link
-                        href={user ? '/user' : '/login'}
-                        className={cn(
-                            quizNote,
-                            'text-cta-accent font-bold underline-offset-4 hover:underline',
-                        )}
-                    >
-                        {user ? 'View my activity' : 'Sign in to track it'}
-                    </Link>
-                </div>
-            </div>
+            <FormSuccess
+                tone="quiz"
+                title={quizFormCopy.successTitle}
+                message={
+                    <>
+                        {flash.success} {quizFormCopy.savedFor}{' '}
+                        {data.email || quizFormCopy.anonymousLabel}.
+                    </>
+                }
+                primaryHref={siteRoutes.destinations}
+                primaryLabel={quizFormCopy.browseLabel}
+                linkHref={user ? siteRoutes.user : siteRoutes.login}
+                linkLabel={
+                    user ? quizFormCopy.activityLabel : quizFormCopy.signInLabel
+                }
+            />
         );
     }
 
@@ -96,24 +91,20 @@ export default function QuizForm() {
             className="divide-hairline flex w-full flex-col divide-y"
         >
             {!user && (
-                <p className={cn(quizNote, 'pb-5')}>
-                    Tip:{' '}
-                    <Link
-                        href="/login"
-                        className="text-cta-accent font-bold underline-offset-4 hover:underline"
-                    >
-                        Sign in
-                    </Link>{' '}
-                    to track your recommendations in your profile.
-                </p>
+                <GuestNudge
+                    tone="quiz"
+                    prefix={quizFormCopy.guestPrefix}
+                    suffix={quizFormCopy.guestSuffix}
+                />
             )}
             <div className="grid grid-cols-1 gap-5 pb-7 sm:grid-cols-2">
-                <QuizTextField
+                <TextField
                     id="quiz-name"
-                    label="Enter your Name"
+                    label={quizFormCopy.nameLabel}
                     type="text"
+                    tone="quiz"
                     autoComplete="name"
-                    placeholder="Enter your name"
+                    placeholder={quizFormCopy.namePlaceholder}
                     value={data.name}
                     onChange={(value) => {
                         setData('name', value);
@@ -122,12 +113,13 @@ export default function QuizForm() {
                     error={errors.name}
                 />
 
-                <QuizTextField
+                <TextField
                     id="quiz-email"
-                    label="Enter your Email"
+                    label={quizFormCopy.emailLabel}
                     type="email"
+                    tone="quiz"
                     autoComplete="email"
-                    placeholder="Enter your email"
+                    placeholder={quizFormCopy.emailPlaceholder}
                     value={data.email}
                     onChange={(value) => {
                         setData('email', value);
@@ -138,9 +130,13 @@ export default function QuizForm() {
             </div>
 
             {quizSelectQuestions.map((q) => (
-                <QuizSelectField
+                <SelectField
                     key={q.id}
-                    question={q}
+                    id={`quiz-${q.id}`}
+                    label={q.question}
+                    tone="quiz"
+                    placeholder={q.placeholder}
+                    options={q.options}
                     value={data.answers[q.id] ?? ''}
                     onChange={(value) => setAnswer(q.id, value)}
                     error={getError(q.id)}
@@ -162,11 +158,10 @@ export default function QuizForm() {
                     disabled={processing}
                     className={cn(quizButton, 'disabled:opacity-60')}
                 >
-                    {processing ? 'Sending…' : 'Find My Destination'}
+                    {processing ? quizFormCopy.sending : quizFormCopy.submit}
                 </button>
                 <p className={cn(quizNote, 'pt-4 text-center')}>
-                    We&rsquo;ll send your personalized recommendations to your
-                    email.
+                    {quizFormCopy.note}
                 </p>
             </div>
         </form>

@@ -1,23 +1,23 @@
 import { cn } from '@/lib/utils';
 import { aboutBody, aboutSectionTitle } from '@/config/theme';
 import { IMAGES } from '@/config/images';
-import { aboutDifferenceParagraphs } from '@/config/about';
+import { aboutDifferenceCopy, aboutDifferenceParagraphs } from '@/config/about';
 
 export default function DifferenceSection() {
     return (
         <section className="flex w-full flex-col items-center gap-6 px-6 py-10 md:gap-10 md:px-12 md:py-16 lg:px-24">
             <h2 className={cn(aboutSectionTitle, 'text-center')}>
-                Why Choosing JackYak makes all the Difference
+                {aboutDifferenceCopy.heading}
             </h2>
             <img
                 src={IMAGES.about.differenceMobile}
-                alt="Decorated yaks by a mountain lake"
+                alt={aboutDifferenceCopy.imageAltMobile}
                 loading="lazy"
                 className="aspect-square w-full object-cover md:hidden"
             />
             <img
                 src={IMAGES.about.difference}
-                alt="Snowy Himalayan peak under a clear sky"
+                alt={aboutDifferenceCopy.imageAltDesktop}
                 loading="lazy"
                 className="hidden aspect-video w-full object-cover md:block"
             />

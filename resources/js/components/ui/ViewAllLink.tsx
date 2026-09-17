@@ -4,13 +4,13 @@ import { viewAllLink } from '@/config/theme';
 
 interface ViewAllLinkProps {
     children?: React.ReactNode;
-    href?: string;
+    href: string;
     className?: string;
 }
 
 export default function ViewAllLink({
     children = 'View all',
-    href = '#',
+    href,
     className,
 }: ViewAllLinkProps) {
     return (

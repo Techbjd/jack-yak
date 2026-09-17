@@ -1,27 +1,68 @@
-# Config — human edit guide
+# Frontend — team edit guide
 
-All page content lives here. Components are pure UI: they `map()` over
-these files. **Edit the file below, save, done — no component changes needed.**
+**One rule: content lives in `config/`, UI lives in `components/`, pages compose.**
+Components are pure UI: they `map()` over config files. **Edit the config file
+below, save, done — no component changes needed.**
 
 Import from one place: `import { popularDestinations } from '@/config';`
 (the barrel `index.ts` only re-exports; values live in the source files).
+
+## Folder map (`resources/js/`)
+
+```
+config/            ← ALL editable content: copy, routes, images, colors, tokens
+components/
+  ui/              ← shared UI: Header, Footer, SectionHeading, DestinationCard,
+                     HeroFrame, CtaButton, Modal, Stars, CarouselDots, ...
+  forms/           ← shared form primitives: TextField, SelectField, FieldError,
+                     FormSuccess, GuestNudge, FormActions
+pages/
+  *.tsx            ← 10 top-level pages (thin: title + layout + sections)
+  components/<p>/  ← sections co-located with their page (Hero, Gallery, ...)
+lib/               ← useAutoRotate, form-utils (EMAIL_PATTERN, todayISODate),
+                     utils (cn + Tailwind token allowlist)
+layouts/           ← AppLayout (PageShell + Footer)
+types/             ← shared TS types + page-props shapes
+```
+
+New page? Add `pages/X.tsx` + `pages/components/x/`. New section used twice?
+Promote it to `components/ui/` — never duplicate markup.
 
 ## I want to change… → edit this file
 
 | I want to change…                                    | Edit this file                                                                                                      | Used by (pages / components)                                                                 |
 | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| Destination cards, tabs, view-all listing (15 cards) | `destination.ts`                                                                                                    | Destination, ViewAll, Home/TopDestination, Guide                                             |
-| Guide explore cards, plan steps, trust badges        | `guide.ts`                                                                                                          | Guide (WhyExplore, PlanTripSteps, TrustStrip, GuideTopDestinations data in `destination.ts`) |
-| Home about-jackyak info blocks (2, order matters)    | `home.ts`                                                                                                           | Home/AboutJackyak (mobile uses [0]/[1] positionally)                                         |
-| About copy (pillars, story, newsletter)              | `about.ts`                                                                                                          | About (AboutHero, DifferenceSection, JourneyStory, NewsletterCta)                            |
-| Quiz questions + dropdown options                    | `quiz.ts`                                                                                                           | Quiz (QuizForm)                                                                              |
-| Review places, limits                                | `review.ts`                                                                                                         | review/GiveReview (`MAX_REVIEW_LENGTH`, `MAX_REVIEW_PHOTOS`)                                 |
-| User profile placeholder copy + counts               | `user.ts`                                                                                                           | User (ProfileCard, SavedCard, SettingsCard)                                                  |
-| Header / mobile nav items                            | `navigation.ts`                                                                                                     | shared/Header, shared/ResponsiveHeader                                                       |
-| Footer link columns                                  | `navigation.ts` (`footerColumns`)                                                                                   | shared/Footer (mobile + desktop)                                                             |
+| Any route / URL, brand name, logo alt, WhatsApp, ©   | `site.ts` (`siteRoutes`, `siteBrand`, `siteContact`, `siteLegal`)                                                   | everything (nav hrefs alias it; see `placeholderHref` below)                                 |
+| Any page `<title>`, header/footer/modal strings      | `site.ts` (`pageTitles`, `headerCopy`, `footerCopy`, `modalCopy`)                                                    | all 10 pages, Header, Footer, Modal                                                          |
+| Destination cards, tabs, view-all listing (15 cards) | `destination.ts`                                                                                                    | Destination, ViewAll, Home/TopDestination, Guide                                              |
+| Section headers, hero slides, hero tagline           | `destination.ts` (`popularHeader`, `featuredHeader`, `journeyNepalCopy`, `immersiveExperiences`, `destinationHeroTagline`) | Destination sections                                                                  |
+| Guide explore cards, plan steps, trust badges        | `guide.ts`                                                                                                          | Guide (WhyExplore, PlanTripSteps, TrustStrip, GuideTopDestinations)                          |
+| Home hero, map quote, about-jackyak, discover        | `home.ts`                                                                                                           | Home (Hero, MapQuote, AboutJackyak, DiscoverNepal, TopDestination)                           |
+| About copy (pillars, story, newsletter, difference)  | `about.ts`                                                                                                          | About (AboutHero, DifferenceSection, JourneyStory, NewsletterCta)                            |
+| Login / register form strings                        | `auth.ts` (`loginCopy`, `registerCopy`)                                                                             | login/LoginForm, login/RegisterForm                                                          |
+| Quiz questions + form strings + endpoint             | `quiz.ts` (`quizQuestions`, `quizFormCopy`, `quizEndpoint`)                                                          | Quiz (QuizForm)                                                                              |
+| Review places, limits, form strings + endpoint       | `review.ts`                                                                                                         | review/GiveReview                                                                            |
+| Availability strings, traveler cap, endpoint         | `booking.ts` (`availabilityCopy`, `availabilityMaxTravelers`, `availabilityEndpoint`)                               | booking/CheckAvailability                                                                    |
+| Itinerary display copy (units, gallery, booking)     | `itinerary.ts` (`trekBooking`, `trekWeather`, `altitudeProfile`, `galleryTiles`, …)                                 | Itinerary sections                                                                           |
+| User profile placeholder copy + counts               | `user.ts`                                                                                                           | User (ProfileCard, SavedCard, SettingsCard, SignOutCard)                                     |
+| Header / mobile nav items, footer columns            | `navigation.ts` (hrefs come from `siteRoutes`)                                                                      | ui/Header, ui/ResponsiveHeader, ui/Footer                                                    |
 | Any image URL                                        | `images.ts` (`IMAGES` registry)                                                                                     | everything via `IMAGES.<feature>.<name>`                                                     |
 | Colors                                               | `colors.ts` (`COLORS`) — mirrored in `resources/css/app.css` `@theme`, enforced by `tests/Unit/ColorTokensTest.php` | all                                                                                          |
 | Fonts, spacing, buttons, card/text styles            | `theme.ts`                                                                                                          | all (import the constant, never hardcode)                                                    |
+
+## Shared pieces — reuse, don't rebuild
+
+| Need…                          | Use                                                                 | Notes                                                  |
+| ------------------------------ | ------------------------------------------------------------------- | ------------------------------------------------------ |
+| Section eyebrow + title        | `SectionHeading` (`components/ui/`)                                 | Pass eyebrow size per site; keep inside flex rows via `className="contents"` |
+| Destination card               | `DestinationCard` (`components/ui/`)                                | Flat props; `className` override for mobile layouts    |
+| Hero (title locked to image)   | `HeroFrame` + `HeroTitleSvg`                                        | Title SVG uses `currentColor` + `text-text-primary` (`#334155`) |
+| CTA pill / button              | `CtaButton`                                                         | Link/button poly; override shape with `rounded-none` if needed |
+| Text input / select + error    | `TextField` / `SelectField` (`components/forms/`, tone prop)        | `auth` \| `quiz` \| `modal` tones                      |
+| Success panel / guest nudge / form buttons | `FormSuccess` / `GuestNudge` / `FormActions`             | Endpoints + strings come from config                   |
+| Auto-rotating carousel index   | `useAutoRotate(length, intervalMs)` (`lib/`)                        | Handles reduced-motion + cleanup                       |
+| Email regex / today string     | `EMAIL_PATTERN` / `todayISODate()` (`lib/form-utils`)               | Single source — never re-declare                       |
+| Star rating display            | `Stars` (`components/ui/`)                                          | `label` defaults to computed `Rated X out of 5 stars`  |
 
 ## Colors — what is what (newcomer map)
 
@@ -69,15 +110,28 @@ Class names are the kebab-case token: `bg-brand`, `text-ink`, `border-quiz-line`
 
 ## Rules (keep it reliable)
 
-1. **Content files** (`destination`, `about`, `quiz`, `review`, `user`, `navigation`):
-   edit freely. Keep the exported **shape** (field names) — components depend on it.
+1. **Content files** (`site`, `auth`, `booking`, `destination`, `about`, `quiz`,
+   `review`, `user`, `navigation`, `itinerary`, `home`, `guide`): edit freely.
+   Keep the exported **shape** (field names) — components depend on it.
 2. **Asset/design files** (`images`, `colors`, `theme`): do NOT edit for a copy
    change. Renaming/moving an image? Edit `images.ts` only — one line fixes the app.
-3. **Images on disk**: `public/images/**`, kebab-case, grouped by feature
+3. **Routes**: always use `siteRoutes`. `placeholderHref` (`'#'`) marks links to
+   pages that don't exist yet — when a page ships, replace that one constant.
+4. **Images on disk**: `public/images/**`, kebab-case, grouped by feature
    (`home/`, `destination/`, `about/`, `featured/`, `logo/`).
-4. **Backend handover**: routes currently send **no props** (`Route::inertia()`),
+5. **Inline `style={{}}` is banned except 4 data-driven cases** (documented, keep):
+   `backgroundImage` from config URLs, FeaturedGrid `--card-ratio` var,
+   `Stars` fractional width, TopDestination measured aspect ratio. Static ratios
+   use Tailwind (`aspect-[257/387]`); SVG transitions use classes.
+6. **Spelling**: booking uses `travelerUnit()` from `booking.ts` — keep the
+   original `traveller` (double-l) UI spelling; never "fix" it per-file.
+7. **Exceptions are deliberate**: `TrekAbout` rail heading and `ItineraryDayList`
+   h2 don't use `SectionHeading` (different visuals); FeaturedGrid's `defaultTab`
+   drives mobile + desktop together; SavedCard row labels stay inline (config
+   counts describe a different state).
+8. **Backend handover**: routes currently send **no props** (`Route::inertia()`),
    so these files ARE the data. When the backend takes over, it must send the
    same shapes declared in `@/types/page-props` (which reuses these interfaces).
    Pages will then do `function ViewAll({ destinations = viewAllDestinations })`
    — props win, config stays as fallback. Never invent a second shape.
-5. **Types**: strict TS. `npm run types:check` must pass before pushing.
+9. **Types**: strict TS. `npm run types:check` must pass before pushing.

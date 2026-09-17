@@ -1,16 +1,19 @@
 import { Link, useForm } from '@inertiajs/react';
 import { cn } from '@/lib/utils';
+import { EMAIL_PATTERN } from '@/lib/form-utils';
 import {
     authButton,
     authDividerLine,
     authLabel,
+    authLink,
     authSocialButton,
     authTitle,
     fontPrimary,
 } from '@/config/theme';
 import GoogleIcon from './GoogleIcon';
-import AuthField from './AuthField';
-import { authLink } from './tokens';
+import TextField from '@/components/forms/TextField';
+import { loginCopy } from '@/config/auth';
+import { siteLegal, siteRoutes } from '@/config/site';
 
 export default function LoginForm() {
     const { data, setData, post, processing, errors, clearErrors } = useForm({
@@ -21,10 +24,10 @@ export default function LoginForm() {
 
     const checkEmail = (value: string): string => {
         if (!value.trim()) {
-            return 'Email is required.';
+            return loginCopy.emailRequired;
         }
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value.trim())) {
-            return 'Please enter a valid email address.';
+        if (!EMAIL_PATTERN.test(value.trim())) {
+            return loginCopy.emailInvalid;
         }
         return '';
     };
@@ -44,28 +47,27 @@ export default function LoginForm() {
             document.getElementById('login-password')?.focus();
             return;
         }
-        post('/login');
+        post(loginCopy.endpoint);
     };
 
     return (
         <section className="flex min-h-screen w-full flex-col items-center px-6 pt-16 pb-8 lg:justify-center lg:pt-10">
             <div className="flex w-full max-w-72.75 flex-1 flex-col justify-center">
-                <h1 className={authTitle}>Welcome Back</h1>
-                <p className={cn(authLabel, 'pt-5')}>
-                    Sign in to discover personalized destinations.
-                </p>
+                <h1 className={authTitle}>{loginCopy.title}</h1>
+                <p className={cn(authLabel, 'pt-5')}>{loginCopy.subtitle}</p>
 
                 <form
                     className="flex w-full flex-col"
                     onSubmit={handleSubmit}
                     noValidate
                 >
-                    <AuthField
+                    <TextField
                         id="login-email"
-                        label="Email"
+                        label={loginCopy.emailLabel}
                         type="email"
+                        tone="auth"
                         autoComplete="email"
-                        placeholder="Enter Your Email"
+                        placeholder={loginCopy.emailPlaceholder}
                         value={data.email}
                         onChange={(value) => {
                             setData('email', value);
@@ -78,12 +80,13 @@ export default function LoginForm() {
                         first
                     />
 
-                    <AuthField
+                    <TextField
                         id="login-password"
-                        label="Password"
+                        label={loginCopy.passwordLabel}
                         type="password"
+                        tone="auth"
                         autoComplete="current-password"
-                        placeholder="Enter Your Password"
+                        placeholder={loginCopy.passwordPlaceholder}
                         value={data.password}
                         onChange={(value) => {
                             setData('password', value);
@@ -112,17 +115,17 @@ export default function LoginForm() {
                                 }
                                 className="accent-ink size-4 cursor-pointer"
                             />
-                            Remember me
+                            {loginCopy.rememberMe}
                         </label>
                         <Link
-                            href="/register"
+                            href={siteRoutes.register}
                             className={cn(
                                 fontPrimary,
                                 authLink,
                                 'text-xs font-bold',
                             )}
                         >
-                            Forgot Password?
+                            {loginCopy.forgotPassword}
                         </Link>
                     </div>
 
@@ -134,35 +137,38 @@ export default function LoginForm() {
                             'mt-5 cursor-pointer disabled:opacity-60',
                         )}
                     >
-                        {processing ? 'Signing in…' : 'Sign In'}
+                        {processing ? loginCopy.submitting : loginCopy.submit}
                     </button>
                 </form>
 
                 <div className="flex items-center gap-2.5 pt-6">
                     <span className={authDividerLine} />
-                    <span className={authLabel}>Or</span>
+                    <span className={authLabel}>{loginCopy.divider}</span>
                     <span className={authDividerLine} />
                 </div>
 
                 <Link
-                    href="/form"
+                    href={siteRoutes.quiz}
                     className={cn(authSocialButton, 'mt-4')}
-                    aria-label="Continue as guest to find your destination"
+                    aria-label={loginCopy.guestAria}
                 >
                     <GoogleIcon />
-                    Continue to explore destinations
+                    {loginCopy.guestCta}
                 </Link>
 
                 <p className={cn(authLabel, 'pt-5 text-center')}>
-                    Don&rsquo;t you have an account?{' '}
-                    <Link href="/register" className={authLink}>
-                        Sign up
+                    {loginCopy.noAccount}{' '}
+                    <Link href={siteRoutes.register} className={authLink}>
+                        {loginCopy.signUp}
                     </Link>
                 </p>
                 <p className={cn(authLabel, 'pt-2 text-center')}>
-                    Just looking around?{' '}
-                    <Link href="/destinations" className={authLink}>
-                        Browse destinations
+                    {loginCopy.lookingAround}{' '}
+                    <Link
+                        href={siteRoutes.destinations}
+                        className={authLink}
+                    >
+                        {loginCopy.browse}
                     </Link>
                 </p>
             </div>
@@ -173,7 +179,7 @@ export default function LoginForm() {
                     'text-ink w-full max-w-72.75 pt-10 text-center text-xs font-medium',
                 )}
             >
-                &copy; 2026 JackYak. All rights reserved.
+                {siteLegal.copyright}
             </p>
         </section>
     );

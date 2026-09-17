@@ -121,6 +121,8 @@ export const trekAbout = {
 };
 
 export const trekBooking = {
+    sectionLabel: 'Booking',
+    currencyLabel: 'Currency',
     operator: 'Himalayan Adventure Treks',
     currencies: ['USD ($)', 'EUR (€)', 'GBP (£)'],
     priceLabel: 'Price Per person',
@@ -143,12 +145,18 @@ export const galleryFilters = {
 };
 
 export const galleryTiles = {
+    sectionLabel: 'Trek photos',
+    heroAlt: 'Everest Base Camp trek panorama',
+    videoAlt: 'Traveller video from the Everest Base Camp Trek',
     viewAllPhotos: 'View all photos',
     travellerPhoto: 'Traveller photo',
     morePhotosCount: '+98',
     morePhotosLabel: 'Photos',
     watchVideos: 'Watch 3 traveller videos ›',
 };
+
+export const galleryPhotoAlt = (index: number): string =>
+    `Trek gallery photo ${index + 1}`;
 
 export const trekCta = {
     title: 'Ready to take your journey to new heights?',
@@ -164,6 +172,11 @@ export const trekWeather = {
     tempIn: 'Temperature in:',
     unitCelsius: 'Celsius',
     unitFahrenheit: 'Fahrenheit',
+    celsiusSuffix: '° C',
+    fahrenheitSuffix: '° F',
+    meterShort: 'm',
+    feetShort: 'ft',
+    allYearLabel: 'January – December',
     prevSlide: 'Previous slide',
     nextSlide: 'Next slide',
     daily: [
@@ -201,15 +214,23 @@ export interface AltitudeStop {
     meters: number;
 }
 
+export const altitudeTitle = 'Altitude Profile of Everest Base Camp Trek';
+
 export const altitudeProfile: {
+    altitudeIn: string;
     unitMeter: string;
     unitFeet: string;
+    unitMeterShort: string;
+    unitFeetShort: string;
     download: string;
     downloadFile: string;
     stops: AltitudeStop[];
 } = {
+    altitudeIn: 'Altitude in:',
     unitMeter: 'Meter',
     unitFeet: 'Feet',
+    unitMeterShort: 'm',
+    unitFeetShort: 'ft',
     download: 'Download',
     downloadFile: 'altitude-profile.svg',
     stops: [
@@ -226,6 +247,10 @@ export const altitudeProfile: {
         { place: 'Kathmandu', meters: 1400 },
     ],
 };
+
+export const reviewsSectionTitle = 'Reviews';
+
+export const itinerarySectionTitle = 'Itinerary';
 
 export const featuredReview = {
     name: 'Madeline Thomson',

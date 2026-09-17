@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import { Head } from '@inertiajs/react';
-import PageShell from '@/pages/components/shared/PageShell';
-import Footer from '@/pages/components/shared/Footer';
+import PageShell from '@/components/ui/PageShell';
+import Footer from '@/components/ui/Footer';
 
 interface AppLayoutProps {
     children: ReactNode;

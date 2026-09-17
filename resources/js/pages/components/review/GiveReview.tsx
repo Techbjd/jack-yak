@@ -1,14 +1,14 @@
 import { useRef, useState } from 'react';
-import { Link, useForm, usePage } from '@inertiajs/react';
-import { Star, ChevronDown, CircleCheck, ImagePlus, X } from 'lucide-react';
+import { useForm, usePage } from '@inertiajs/react';
+import { Star, ImagePlus, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { todayISODate } from '@/lib/form-utils';
 import {
     fontPrimary,
-    modalGhost,
+    formErrorBorder,
+    modalDivider,
     modalHint,
-    modalInput,
     modalLabel,
-    modalPrimary,
     modalSubtitle,
     modalTextarea,
     modalTitle,
@@ -17,15 +17,24 @@ import {
     MAX_REVIEW_LENGTH,
     MAX_REVIEW_PHOTOS,
     REVIEW_STAR_COUNT,
+    giveReviewCopy,
+    photoLimitError,
+    photosStepLabel,
+    rateActionLabel,
+    ratedLabel,
+    removePhotoLabel,
     reviewPlaces,
+    reviewSuccessMessage,
+    reviewsEndpoint,
 } from '@/config/review';
-import Modal, {
-    ModalFieldError,
-    modalDivider,
-    modalInputErrorBorder,
-    modalSelectChevron,
-    modalSelectTrigger,
-} from '../shared/Modal';
+import { siteRoutes } from '@/config/site';
+import Modal from '@/components/ui/Modal';
+import FieldError from '@/components/forms/FieldError';
+import TextField from '@/components/forms/TextField';
+import SelectField from '@/components/forms/SelectField';
+import FormSuccess from '@/components/forms/FormSuccess';
+import GuestNudge from '@/components/forms/GuestNudge';
+import FormActions from '@/components/forms/FormActions';
 import type { PageProps } from '@/types';
 
 interface ReviewPhoto {
@@ -42,7 +51,7 @@ interface GiveReviewProps {
 export default function GiveReview({ open, onClose }: GiveReviewProps) {
     const { auth, flash } = usePage<PageProps>().props;
     const user = auth?.user ?? null;
-    const today = new Date().toISOString().split('T')[0];
+    const today = todayISODate();
     const fileInputRef = useRef<HTMLInputElement>(null);
     const starRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
@@ -106,14 +115,14 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
     const addFiles = (files: FileList | File[]) => {
         const images = [...files].filter((f) => f.type.startsWith('image/'));
         if (images.length === 0) {
-            setPhotoError('Please choose image files.');
+            setPhotoError(giveReviewCopy.imageFilesOnly);
             return;
         }
         if (
             previews.length + images.length > MAX_REVIEW_PHOTOS ||
             data.photos.length + images.length > MAX_REVIEW_PHOTOS
         ) {
-            setPhotoError(`You can add up to ${MAX_REVIEW_PHOTOS} photos.`);
+            setPhotoError(photoLimitError(MAX_REVIEW_PHOTOS));
             return;
         }
         setPhotoError('');
@@ -147,93 +156,63 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
             return;
         }
         if (!agreed) {
-            setAgreedError('Please agree to the Community Guidelines.');
+            setAgreedError(giveReviewCopy.agreeRequired);
             document.getElementById('review-agree')?.focus();
             return;
         }
         setAgreedError('');
-        post('/reviews', {
+        post(reviewsEndpoint, {
             forceFormData: true,
             preserveScroll: true,
         });
     };
 
     return (
-        <Modal open={open} onClose={close} label="Give a review">
+        <Modal
+            open={open}
+            onClose={close}
+            label={giveReviewCopy.dialogLabel}
+        >
             {done ? (
-                <div className="flex flex-col items-center gap-4 py-10 text-center">
-                    <CircleCheck
-                        aria-hidden
-                        className="text-cta size-12 md:size-16"
-                    />
-                    <h2 className={modalTitle}>Thank you!</h2>
-                    <p className={modalSubtitle}>
-                        Your {data.rating}-star review helps others discover the
-                        best of Nepal.
-                    </p>
-                    {flash?.success && (
-                        <p
-                            className={cn(
-                                modalSubtitle,
-                                'text-cta font-semibold',
-                            )}
-                        >
-                            {flash.success}
-                        </p>
-                    )}
-                    <div className="mt-2 flex flex-wrap justify-center gap-3">
-                        <button
-                            type="button"
-                            onClick={close}
-                            className={cn(modalPrimary, 'cursor-pointer')}
-                        >
-                            Done
-                        </button>
-                        <Link
-                            href={user ? '/user' : '/login'}
-                            className={cn(
-                                fontPrimary,
-                                'text-cta-accent text-sm font-bold underline-offset-4 hover:underline',
-                            )}
-                        >
-                            {user
-                                ? 'View my reviews'
-                                : 'Sign in to track reviews'}
-                        </Link>
-                    </div>
-                </div>
+                <FormSuccess
+                    tone="modal"
+                    title={giveReviewCopy.successTitle}
+                    message={reviewSuccessMessage(data.rating)}
+                    flash={flash?.success}
+                    onPrimary={close}
+                    primaryLabel={giveReviewCopy.doneLabel}
+                    linkHref={user ? siteRoutes.user : siteRoutes.login}
+                    linkLabel={
+                        user
+                            ? giveReviewCopy.reviewsLabel
+                            : giveReviewCopy.signInLabel
+                    }
+                />
             ) : (
                 <form
                     noValidate
                     onSubmit={handleSubmit}
                     className="flex flex-col"
                 >
-                    <h2 className={modalTitle}>Give a Review</h2>
+                    <h2 className={modalTitle}>{giveReviewCopy.title}</h2>
                     <p className={cn(modalSubtitle, 'pt-2')}>
-                        Share your experience and help others discover the best
-                        of Nepal.
+                        {giveReviewCopy.intro}
                     </p>
                     {!user && (
-                        <p className={cn(modalSubtitle, 'pt-2')}>
-                            <Link
-                                href="/login"
-                                className="text-cta-accent font-bold underline-offset-4 hover:underline"
-                            >
-                                Sign in
-                            </Link>{' '}
-                            to track this review in your profile, or continue as
-                            guest.
-                        </p>
+                        <GuestNudge
+                            tone="modal"
+                            suffix={giveReviewCopy.guestSuffix}
+                        />
                     )}
                     <hr className={modalDivider} />
 
                     <p className={cn(modalLabel, 'pt-6')}>
-                        1. Rate Your Experience
+                        {giveReviewCopy.rateStep}
                     </p>
                     <div
                         id="review-rating"
                         role="radiogroup"
-                        aria-label="Star rating"
+                        aria-label={giveReviewCopy.ratingLabel}
                         className="flex gap-4 pt-3 md:gap-6"
                         onMouseLeave={() => setHovered(0)}
                     >
@@ -249,7 +228,7 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                                 type="button"
                                 role="radio"
                                 aria-checked={data.rating === star}
-                                aria-label={`Rate ${star} star${star > 1 ? 's' : ''}`}
+                                aria-label={rateActionLabel(star)}
                                 onClick={() => {
                                     setData('rating', star);
                                     clearErrors('rating' as never);
@@ -272,24 +251,24 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                     </div>
                     <p className={cn(modalHint, 'pt-3')}>
                         {data.rating > 0
-                            ? `You rated ${data.rating} star${data.rating > 1 ? 's' : ''}.`
-                            : 'Tap a star to rate.'}
+                            ? ratedLabel(data.rating)
+                            : giveReviewCopy.unratedHint}
                     </p>
                     {errors.rating && (
-                        <ModalFieldError>{errors.rating}</ModalFieldError>
+                        <FieldError>{errors.rating}</FieldError>
                     )}
 
                     <label
                         htmlFor="review-text"
                         className={cn(modalLabel, 'pt-6 pb-2')}
                     >
-                        2. Share your experience
+                        {giveReviewCopy.reviewStep}
                     </label>
                     <textarea
                         id="review-text"
                         rows={5}
                         maxLength={MAX_REVIEW_LENGTH}
-                        placeholder="Write your review here...."
+                        placeholder={giveReviewCopy.reviewPlaceholder}
                         value={data.body}
                         onChange={(e) => {
                             setData('body', e.target.value);
@@ -298,13 +277,13 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                         aria-invalid={errors.body ? true : undefined}
                         className={cn(
                             modalTextarea,
-                            errors.body && modalInputErrorBorder,
+                            errors.body && formErrorBorder,
                         )}
                     />
                     <div className="flex items-center justify-between pt-1.5">
                         <span>
                             {errors.body && (
-                                <ModalFieldError>{errors.body}</ModalFieldError>
+                                <FieldError>{errors.body}</FieldError>
                             )}
                         </span>
                         <span
@@ -319,12 +298,12 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                     </div>
 
                     <p className={cn(modalLabel, 'pt-5 pb-2')}>
-                        3. Add Photos (Optional, max {MAX_REVIEW_PHOTOS})
+                        {photosStepLabel(MAX_REVIEW_PHOTOS)}
                     </p>
                     <div
                         role="button"
                         tabIndex={0}
-                        aria-label="Upload review photos"
+                        aria-label={giveReviewCopy.uploadLabel}
                         onClick={() => fileInputRef.current?.click()}
                         onKeyDown={(e) => {
                             if (e.key === 'Enter' || e.key === ' ') {
@@ -349,7 +328,7 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                     >
                         <ImagePlus aria-hidden className="text-ink size-6" />
                         <p className={cn(modalHint, 'text-ink')}>
-                            Drag your file(s) to start uploading
+                            {giveReviewCopy.dropHint}
                         </p>
                         <div
                             aria-hidden
@@ -362,7 +341,7 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                                     'text-mist text-xs font-medium',
                                 )}
                             >
-                                OR
+                                {giveReviewCopy.orDivider}
                             </span>
                             <span className="bg-divider h-px flex-1" />
                         </div>
@@ -372,7 +351,7 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                                 'border-ink text-ink flex h-7.5 items-center justify-center rounded-lg border bg-white px-3 text-xs font-semibold',
                             )}
                         >
-                            Browse files
+                            {giveReviewCopy.browseFiles}
                         </span>
                     </div>
                     <input
@@ -391,7 +370,7 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                         }}
                     />
                     {photoError && (
-                        <ModalFieldError>{photoError}</ModalFieldError>
+                        <FieldError>{photoError}</FieldError>
                     )}
                     {previews.length > 0 && (
                         <ul className="flex flex-wrap gap-3 pt-3">
@@ -405,9 +384,11 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                                         alt={photo.name}
                                         className="h-full w-full object-cover"
                                     />
-                                    <button
-                                        type="button"
-                                        aria-label={`Remove ${photo.name}`}
+                                        <button
+                                            type="button"
+                                            aria-label={removePhotoLabel(
+                                                photo.name,
+                                            )}
                                         onClick={() => removePhoto(photo.url)}
                                         className="absolute top-1 right-1 flex size-6 cursor-pointer items-center justify-center rounded-full bg-black/60 text-white transition-opacity hover:opacity-80"
                                     >
@@ -419,162 +400,94 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                     )}
 
                     <div className="grid grid-cols-1 gap-5 pt-5 md:grid-cols-2">
-                        <div className="flex flex-col">
-                            <label
-                                htmlFor="review-place"
-                                className={cn(modalLabel, 'pb-2')}
-                            >
-                                4. What is this review about?
-                            </label>
-                            <div className="relative">
-                                <select
-                                    id="review-place"
-                                    value={data.place}
-                                    onChange={(e) => {
-                                        setData('place', e.target.value);
-                                        clearErrors('place' as never);
-                                    }}
-                                    aria-invalid={
-                                        errors.place ? true : undefined
-                                    }
-                                    className={cn(
-                                        modalInput,
-                                        modalSelectTrigger,
-                                        !data.place && 'text-mist',
-                                        errors.place && modalInputErrorBorder,
-                                    )}
-                                >
-                                    <option value="" disabled>
-                                        Select a place
-                                    </option>
-                                    {reviewPlaces.map((opt) => (
-                                        <option key={opt} value={opt}>
-                                            {opt}
-                                        </option>
-                                    ))}
-                                </select>
-                                <ChevronDown
-                                    aria-hidden
-                                    className={modalSelectChevron}
-                                />
-                            </div>
-                            {errors.place && (
-                                <ModalFieldError>
-                                    {errors.place}
-                                </ModalFieldError>
-                            )}
-                        </div>
+                        <SelectField
+                            id="review-place"
+                            label={giveReviewCopy.placeStep}
+                            tone="modal"
+                            labelClassName="pb-2"
+                            placeholder={giveReviewCopy.placePlaceholder}
+                            options={reviewPlaces}
+                            value={data.place}
+                            onChange={(value) => {
+                                setData('place', value);
+                                clearErrors('place' as never);
+                            }}
+                            error={errors.place}
+                        />
 
-                        <div className="flex flex-col">
-                            <label
-                                htmlFor="review-visit"
-                                className={cn(modalLabel, 'pb-2')}
-                            >
-                                5. When did you visit?
-                            </label>
-                            <input
-                                id="review-visit"
-                                type="date"
-                                max={today}
-                                value={data.visit_date}
-                                onChange={(e) => {
-                                    setData('visit_date', e.target.value);
-                                    clearErrors('visit_date' as never);
-                                }}
-                                aria-invalid={
-                                    errors.visit_date ? true : undefined
-                                }
-                                className={cn(
-                                    modalInput,
-                                    !data.visit_date && 'text-mist',
-                                    errors.visit_date && modalInputErrorBorder,
-                                )}
-                            />
-                            {errors.visit_date && (
-                                <ModalFieldError>
-                                    {errors.visit_date}
-                                </ModalFieldError>
-                            )}
-                        </div>
+                        <TextField
+                            id="review-visit"
+                            label={giveReviewCopy.visitStep}
+                            type="date"
+                            tone="modal"
+                            labelClassName="pb-2"
+                            inputClassName={
+                                !data.visit_date ? 'text-mist' : undefined
+                            }
+                            max={today}
+                            value={data.visit_date}
+                            onChange={(value) => {
+                                setData('visit_date', value);
+                                clearErrors('visit_date' as never);
+                            }}
+                            error={errors.visit_date}
+                        />
                     </div>
 
-                    <label
-                        htmlFor="review-name"
-                        className={cn(modalLabel, 'pt-5 pb-2')}
-                    >
-                        Your name
-                    </label>
-                    <input
+                    <TextField
                         id="review-name"
+                        label={giveReviewCopy.nameLabel}
                         type="text"
+                        tone="modal"
+                        labelClassName="pt-5 pb-2"
                         autoComplete="name"
-                        placeholder="Enter Your Name"
+                        placeholder={giveReviewCopy.namePlaceholder}
                         value={data.name}
-                        onChange={(e) => {
-                            setData('name', e.target.value);
+                        onChange={(value) => {
+                            setData('name', value);
                             clearErrors('name' as never);
                         }}
-                        aria-invalid={errors.name ? true : undefined}
-                        className={cn(
-                            modalInput,
-                            errors.name && modalInputErrorBorder,
-                        )}
+                        error={errors.name}
                     />
-                    {errors.name && (
-                        <ModalFieldError>{errors.name}</ModalFieldError>
-                    )}
 
-                    <div className="flex flex-col gap-4 pt-6 md:flex-row md:items-center md:justify-between">
-                        <div className="flex flex-col">
-                            <label
-                                htmlFor="review-agree"
-                                className="group flex cursor-pointer items-center gap-3"
-                            >
-                                <input
-                                    id="review-agree"
-                                    type="checkbox"
-                                    checked={agreed}
-                                    onChange={(e) => {
-                                        setAgreed(e.target.checked);
-                                        if (e.target.checked) {
-                                            setAgreedError('');
-                                        }
-                                    }}
-                                    className="accent-ink size-4.5 shrink-0 cursor-pointer"
-                                />
-                                <span
-                                    className={cn(
-                                        fontPrimary,
-                                        'text-base-md font-medium text-black',
-                                    )}
+                    <FormActions
+                        onCancel={close}
+                        processing={processing}
+                        submitLabel={giveReviewCopy.submit}
+                        className="pt-6"
+                        leading={
+                            <div className="flex flex-col">
+                                <label
+                                    htmlFor="review-agree"
+                                    className="group flex cursor-pointer items-center gap-3"
                                 >
-                                    I agree to the Community Guidelines
-                                </span>
-                            </label>
-                            {agreedError && (
-                                <ModalFieldError>{agreedError}</ModalFieldError>
-                            )}
-                        </div>
-                        <div className="flex gap-3">
-                            <button
-                                type="button"
-                                onClick={close}
-                                className={cn(modalGhost, 'cursor-pointer')}
-                            >
-                                Cancel
-                            </button>
-                            <button
-                                type="submit"
-                                disabled={processing}
-                                className={cn(
-                                    modalPrimary,
-                                    'cursor-pointer disabled:opacity-60',
+                                    <input
+                                        id="review-agree"
+                                        type="checkbox"
+                                        checked={agreed}
+                                        onChange={(e) => {
+                                            setAgreed(e.target.checked);
+                                            if (e.target.checked) {
+                                                setAgreedError('');
+                                            }
+                                        }}
+                                        className="accent-ink size-4.5 shrink-0 cursor-pointer"
+                                    />
+                                    <span
+                                        className={cn(
+                                            fontPrimary,
+                                            'text-base-md font-medium text-black',
+                                        )}
+                                    >
+                                        {giveReviewCopy.agreeLabel}
+                                    </span>
+                                </label>
+                                {agreedError && (
+                                    <FieldError>{agreedError}</FieldError>
                                 )}
-                            >
-                                {processing ? 'Sending…' : 'Submit'}
-                            </button>
-                        </div>
-                    </div>
+                            </div>
+                        }
+                    />
                 </form>
             )}
         </Modal>

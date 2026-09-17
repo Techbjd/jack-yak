@@ -4,12 +4,37 @@ export interface QuizSelectQuestion {
     placeholder: string;
     options: string[];
 }
-
 export interface QuizSegmentQuestion {
     id: 'activity' | 'season';
     question: string;
     options: string[];
 }
+
+export const quizEndpoint = '/quiz';
+
+export const quizFormCopy = {
+    successTitle: 'Request received!',
+    savedFor: 'We saved it for',
+    anonymousLabel: 'you',
+    browseLabel: 'Browse destinations',
+    activityLabel: 'View my activity',
+    signInLabel: 'Sign in to track it',
+    guestPrefix: 'Tip: ',
+    guestSuffix: 'to track your recommendations in your profile.',
+    nameLabel: 'Enter your Name',
+    namePlaceholder: 'Enter your name',
+    emailLabel: 'Enter your Email',
+    emailPlaceholder: 'Enter your email',
+    submit: 'Find My Destination',
+    sending: 'Sending…',
+    note: 'We’ll send your personalized recommendations to your email.',
+};
+
+export const quizHero = {
+    panelAlt: 'Snow-covered Langtang peaks under a clear sky',
+    logoAlt: 'JackYak',
+    tagline: 'Find your perfect destination in Nepal',
+} as const;
 
 export const quizSelectQuestions: QuizSelectQuestion[] = [
     {

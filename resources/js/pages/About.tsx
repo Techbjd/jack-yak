@@ -1,13 +1,14 @@
 import AppLayout from '@/layouts/AppLayout';
 import AboutHero from './components/about/AboutHero';
-import Section from './components/shared/Section';
+import Section from '@/components/ui/Section';
 import DifferenceSection from './components/about/DifferenceSection';
 import JourneyStory from './components/about/JourneyStory';
 import NewsletterCta from './components/about/NewsletterCta';
+import { pageTitles } from '@/config/site';
 
 export default function About() {
     return (
-        <AppLayout title="About" shellClassName="bg-canvas">
+        <AppLayout title={pageTitles.about} shellClassName="bg-canvas">
             <Section>
                 <AboutHero />
             </Section>

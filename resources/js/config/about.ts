@@ -1,7 +1,44 @@
+import { IMAGES } from './images';
+
 export interface AboutPillar {
     title: string;
     body: string;
 }
+
+export const aboutHeroTitleText = 'ABOUT US';
+
+export interface AboutHeroSlide {
+    image: string;
+    alt: string;
+}
+
+export const aboutHeroSlideIntervalMs = 5000;
+
+export const aboutHeroSlides: AboutHeroSlide[] = [
+    {
+        image: IMAGES.about.heroSlides[0],
+        alt: 'Travellers trekking beneath Himalayan peaks',
+    },
+    {
+        image: IMAGES.about.heroSlides[1],
+        alt: 'Prayer flags fluttering over a mountain valley',
+    },
+    {
+        image: IMAGES.about.heroSlides[2],
+        alt: 'Lakeside town beneath the Annapurna range',
+    },
+];
+
+export const aboutDifferenceCopy = {
+    heading: 'Why Choosing JackYak makes all the Difference',
+    imageAltMobile: 'Decorated yaks by a mountain lake',
+    imageAltDesktop: 'Snowy Himalayan peak under a clear sky',
+} as const;
+
+export const aboutStoryCopy = {
+    heading: 'Why JackYak Makes Every Journey Better ?',
+    planImageAlt: 'Cyclist on a high Himalayan trail',
+} as const;
 
 export const aboutDifferenceParagraphs: string[] = [
     'Nepal is a country of remarkable diversity, where every mountain trail, ancient temple, peaceful lake, and vibrant village has a story waiting to be discovered. JackYak was created to bring those stories closer to travelers through reliable information, authentic local insights, and carefully crafted travel experiences.',
@@ -33,4 +70,8 @@ export const aboutNewsletter = {
     title: 'Stay Inspired with JackYak',
     subtitle: 'Join the mailing list for our newsletter.',
     button: 'email address',
+    emailLabel: 'Email address',
+    successPlaceholder: 'You are on the list!',
+    emailRequired: 'Email is required.',
+    emailInvalid: 'Please enter a valid email address.',
 } as const;

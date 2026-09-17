@@ -1,5 +1,6 @@
 import { usePage } from '@inertiajs/react';
 import AppLayout from '@/layouts/AppLayout';
+import { pageTitles } from '@/config/site';
 import UserHero from './components/user/UserHero';
 import ProfileCard from './components/user/ProfileCard';
 import SavedCard from './components/user/SavedCard';
@@ -22,7 +23,7 @@ export default function User() {
     const { flash } = usePage<UserPageProps>().props;
 
     return (
-        <AppLayout title="User" shellClassName="bg-canvas relative">
+        <AppLayout title={pageTitles.user} shellClassName="bg-canvas relative">
             <div className="w-full sm:pb-30">
                 <UserHero />
             </div>

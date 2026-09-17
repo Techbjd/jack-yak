@@ -3,6 +3,7 @@ import { Link, usePage } from '@inertiajs/react';
 import { Heart, Menu, Search, User as UserIcon, X } from 'lucide-react';
 import { fontPrimary } from '@/config/theme';
 import { desktopNav, mobileNav } from '@/config/navigation';
+import { siteBrand, siteRoutes, headerCopy } from '@/config/site';
 import { IMAGES } from '@/config/images';
 import { cn } from '@/lib/utils';
 import type { PageProps } from '@/types';
@@ -11,7 +12,7 @@ interface HeaderProps {
     tone?: 'onDark' | 'onLight';
 }
 
-export const headerIconLinkBase =
+const headerIconLinkBase =
     'p-1 transition-opacity hover:opacity-80 focus-visible:ring-2 focus-visible:outline-none';
 
 const Header = ({ tone = 'onDark' }: HeaderProps) => {
@@ -38,19 +39,19 @@ const Header = ({ tone = 'onDark' }: HeaderProps) => {
         ? 'focus-visible:ring-ink'
         : 'focus-visible:ring-white';
 
-    const profileHref = user ? '/user' : '/login';
+    const profileHref = user ? siteRoutes.user : siteRoutes.login;
 
     return (
         <>
             <header className="max-w-container relative z-50 mx-auto flex w-full items-center justify-between bg-transparent px-6 pt-6 md:px-12 md:pt-10 lg:px-24">
                 <Link
-                    href="/home"
-                    aria-label="JackYak home"
+                    href={siteRoutes.home}
+                    aria-label={siteBrand.homeLabel}
                     className="flex shrink-0 items-center justify-center rounded-sm focus-visible:ring-2 focus-visible:outline-none"
                 >
                     <img
                         src={IMAGES.logo.jackYak}
-                        alt="Jack Yak Logo"
+                        alt={siteBrand.logoAlt}
                         className={cn(
                             'h-12 w-auto object-contain md:h-16 lg:h-20',
                             onLight && 'brightness-0',
@@ -89,15 +90,15 @@ const Header = ({ tone = 'onDark' }: HeaderProps) => {
                     )}
                 >
                     <Link
-                        href="/user"
-                        aria-label="Saved"
+                        href={siteRoutes.user}
+                        aria-label={headerCopy.savedLabel}
                         className={cn(headerIconLinkBase, ring)}
                     >
                         <Heart className="h-5 w-5 lg:h-6 lg:w-6" />
                     </Link>
                     <Link
-                        href="/view-all"
-                        aria-label="Search destinations"
+                        href={siteRoutes.viewAll}
+                        aria-label={headerCopy.searchLabel}
                         className={cn(headerIconLinkBase, ring)}
                     >
                         <Search className="h-5 w-5 lg:h-6 lg:w-6" />
@@ -105,7 +106,9 @@ const Header = ({ tone = 'onDark' }: HeaderProps) => {
                     <Link
                         href={profileHref}
                         aria-label={
-                            user ? `Profile for ${user.name}` : 'Sign in'
+                            user
+                                ? headerCopy.profileLabel(user.name)
+                                : headerCopy.signInLabel
                         }
                         className={cn(headerIconLinkBase, 'relative', ring)}
                     >
@@ -120,7 +123,7 @@ const Header = ({ tone = 'onDark' }: HeaderProps) => {
                 </div>
 
                 <button
-                    aria-label="Open menu"
+                    aria-label={headerCopy.openMenuLabel}
                     aria-expanded={isMobileMenuOpen}
                     className={cn(
                         'cursor-pointer p-3 transition-opacity hover:opacity-80 focus-visible:ring-2 focus-visible:outline-none md:hidden',
@@ -137,7 +140,7 @@ const Header = ({ tone = 'onDark' }: HeaderProps) => {
                 <div
                     role="dialog"
                     aria-modal="true"
-                    aria-label="Site menu"
+                    aria-label={headerCopy.menuLabel}
                     className="fixed inset-0 z-100 md:hidden"
                 >
                     <div
@@ -148,7 +151,7 @@ const Header = ({ tone = 'onDark' }: HeaderProps) => {
                     <div className="w-sidebar absolute top-0 left-0 flex h-full flex-col bg-white shadow-lg">
                         <div className="flex items-center justify-end p-4">
                             <button
-                                aria-label="Close menu"
+                                aria-label={headerCopy.closeMenuLabel}
                                 className="flex h-8 w-8 items-center justify-center"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
@@ -158,13 +161,13 @@ const Header = ({ tone = 'onDark' }: HeaderProps) => {
 
                         <div className="px-5 pt-2 pb-6">
                             <Link
-                                href="/home"
+                                href={siteRoutes.home}
                                 onClick={() => setIsMobileMenuOpen(false)}
-                                aria-label="JackYak home"
+                                aria-label={siteBrand.homeLabel}
                             >
                                 <img
                                     src={IMAGES.logo.jackYak}
-                                    alt="Jack Yak Logo"
+                                    alt={siteBrand.logoAlt}
                                     className="h-logo w-logo object-contain brightness-0"
                                 />
                             </Link>
@@ -175,18 +178,18 @@ const Header = ({ tone = 'onDark' }: HeaderProps) => {
                                         'text-ink pt-4 text-sm font-semibold',
                                     )}
                                 >
-                                    Hi, {user.name}
+                                    {headerCopy.greeting(user.name)}
                                 </p>
                             ) : (
                                 <Link
-                                    href="/login"
+                                    href={siteRoutes.login}
                                     onClick={() => setIsMobileMenuOpen(false)}
                                     className={cn(
                                         fontPrimary,
                                         'text-cta-accent pt-4 text-sm font-bold underline-offset-4 hover:underline',
                                     )}
                                 >
-                                    Sign in to plan your trip
+                                    {headerCopy.signInNudge}
                                 </Link>
                             )}
                         </div>
@@ -215,9 +218,13 @@ const Header = ({ tone = 'onDark' }: HeaderProps) => {
                                 ))}
                                 <li className="py-2">
                                     {user ? (
-                                        <Link href="/user">My account</Link>
+                                        <Link href={siteRoutes.user}>
+                                            {headerCopy.accountLabel}
+                                        </Link>
                                     ) : (
-                                        <Link href="/login">Sign in</Link>
+                                        <Link href={siteRoutes.login}>
+                                            {headerCopy.signInLabel}
+                                        </Link>
                                     )}
                                 </li>
                             </ul>

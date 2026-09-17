@@ -1,5 +1,5 @@
 import { IMAGES } from '@/config/images';
-import ResponsiveHeader from '../shared/ResponsiveHeader';
+import ResponsiveHeader from '@/components/ui/ResponsiveHeader';
 
 export default function UserHero() {
     return (

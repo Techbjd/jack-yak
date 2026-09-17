@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { IMAGES } from '@/config/images';
+import { discoverNepalCopy } from '@/config/home';
 import {
     bodyTextSmall,
     ctaMobile,
@@ -7,12 +9,15 @@ import {
     headingSubsection,
     imagePlaceholder,
     imageRoundedXl,
+    modalTitle,
     sectionPadding,
 } from '@/config/theme';
-
-const STAGGERED_RATIO = '257 / 387';
+import Modal from '@/components/ui/Modal';
+import CtaButton from '@/components/ui/CtaButton';
+import QuizForm from '../quiz/QuizForm';
 
 const DiscoverNepal = () => {
+    const [quizOpen, setQuizOpen] = useState(false);
     return (
         <section
             className={cn(
@@ -24,7 +29,7 @@ const DiscoverNepal = () => {
                 <div className="order-2 w-full md:hidden">
                     <img
                         src={IMAGES.home.discoverNepal2}
-                        alt="Himalayan peak at dusk"
+                        alt={discoverNepalCopy.imageAltSecondary}
                         loading="lazy"
                         className={cn(
                             imageRoundedXl,
@@ -40,7 +45,7 @@ const DiscoverNepal = () => {
                             'max-md:text-lg-xl order-1 text-center max-md:leading-normal md:order-1 md:text-left',
                         )}
                     >
-                        Discover the Beauty of Nepal
+                        {discoverNepalCopy.heading}
                     </h2>
                     <p
                         className={cn(
@@ -48,54 +53,60 @@ const DiscoverNepal = () => {
                             'md:text-xl-2xl order-3 text-center md:order-2 md:text-left',
                         )}
                     >
-                        From snow-capped peaks and peaceful lakes to ancient
-                        heritage sites and vibrant local communities, Nepal
-                        offers experiences unlike anywhere else.
+                        {discoverNepalCopy.body}
                     </p>
 
-                    <button
+                    <CtaButton
+                        onClick={() => setQuizOpen(true)}
                         className={cn(
                             ctaMobile,
-                            'text-xs-md order-4 md:hidden',
+                            'text-xs-md order-4 transition-opacity hover:opacity-90 md:hidden',
                         )}
                     >
-                        <span className="px-2">Start Your Journey</span>
-                    </button>
+                        <span className="px-2">{discoverNepalCopy.cta}</span>
+                    </CtaButton>
 
-                    <button
+                    <CtaButton
+                        onClick={() => setQuizOpen(true)}
                         className={cn(
                             fontPrimary,
-                            'bg-cta text-md-lg hidden h-10.5 w-52 items-center justify-center rounded-full font-bold text-white md:order-3 md:mt-5 md:flex',
+                            'bg-cta text-md-lg hidden h-10.5 w-52 items-center justify-center rounded-full font-bold text-white transition-opacity hover:opacity-90 md:order-3 md:mt-5 md:flex',
                         )}
                     >
-                        Start Your Journey
-                    </button>
+                        {discoverNepalCopy.cta}
+                    </CtaButton>
                 </div>
 
                 <div className="hidden w-full min-w-0 flex-1 items-start justify-center gap-5 md:flex lg:justify-end">
                     <img
                         src={IMAGES.home.discoverNepal1}
-                        alt="Stone cairn before snowy peaks"
+                        alt={discoverNepalCopy.imageAltMain}
                         loading="lazy"
                         className={cn(
                             imagePlaceholder,
-                            'mt-13 w-64.25 min-w-0 object-cover',
+                            'mt-13 aspect-[257/387] w-64.25 min-w-0 object-cover',
                         )}
-                        style={{ aspectRatio: STAGGERED_RATIO }}
                     />
 
                     <img
                         src={IMAGES.home.discoverNepal2}
-                        alt="Himalayan peak at dusk"
+                        alt={discoverNepalCopy.imageAltSecondary}
                         loading="lazy"
                         className={cn(
                             imagePlaceholder,
-                            'w-82 min-w-0 object-cover',
+                            'aspect-[257/387] w-82 min-w-0 object-cover',
                         )}
-                        style={{ aspectRatio: STAGGERED_RATIO }}
                     />
                 </div>
             </div>
+            <Modal
+                open={quizOpen}
+                onClose={() => setQuizOpen(false)}
+                label={discoverNepalCopy.modalLabel}
+            >
+                <h2 className={modalTitle}>{discoverNepalCopy.modalTitle}</h2>
+                <QuizForm />
+            </Modal>
         </section>
     );
 };

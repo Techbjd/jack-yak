@@ -3,9 +3,10 @@ import type { IconType } from 'react-icons';
 import { fontPrimary, sectionInner } from '@/config/theme';
 import { IMAGES } from '@/config/images';
 import { footerColumns } from '@/config/navigation';
+import { placeholderHref, siteBrand, siteLegal, footerCopy } from '@/config/site';
 import { cn } from '@/lib/utils';
 
-export const footerLogoImage = 'h-full w-full object-contain';
+const footerLogoImage = 'h-full w-full object-contain';
 
 interface SocialIconProps {
     label: string;
@@ -13,7 +14,11 @@ interface SocialIconProps {
     href?: string;
 }
 
-const SocialIcon: React.FC<SocialIconProps> = ({ label, Icon, href = '#' }) => {
+const SocialIcon: React.FC<SocialIconProps> = ({
+    label,
+    Icon,
+    href = placeholderHref,
+}) => {
     return (
         <a
             href={href}
@@ -25,14 +30,14 @@ const SocialIcon: React.FC<SocialIconProps> = ({ label, Icon, href = '#' }) => {
     );
 };
 
-export const Footer: React.FC = () => {
+const Footer: React.FC = () => {
     return (
         <footer className="bg-brand w-full text-white">
             <div className="-mb-1 w-full overflow-hidden">
                 <div className="flex aspect-144/47 w-full items-center justify-center bg-white select-none">
                     <img
                         src={IMAGES.home.trekkerYak}
-                        alt="JackYak Logo"
+                        alt={siteBrand.logoAlt}
                         className={footerLogoImage}
                     />
                 </div>
@@ -43,7 +48,7 @@ export const Footer: React.FC = () => {
                         <div className="h-logo w-logo-w flex items-center justify-center">
                             <img
                                 src={IMAGES.logo.jackYak}
-                                alt="JackYak Logo"
+                                alt={siteBrand.logoAlt}
                                 className={footerLogoImage}
                             />
                         </div>
@@ -53,13 +58,12 @@ export const Footer: React.FC = () => {
                                 'text-xs-sm leading-display-tight font-normal text-white',
                             )}
                         >
-                            Helping travelers explore Nepal with trusted
-                            information.
+                            {footerCopy.tagline}
                         </p>
                     </div>
 
                     <nav
-                        aria-label="Footer"
+                        aria-label={footerCopy.navLabel}
                         className="grid grid-cols-2 gap-x-8 gap-y-8"
                     >
                         {footerColumns.map((col) => (
@@ -79,7 +83,7 @@ export const Footer: React.FC = () => {
                                     {col.links.map((link) => (
                                         <li key={link}>
                                             <a
-                                                href="#"
+                                                href={placeholderHref}
                                                 className={cn(
                                                     fontPrimary,
                                                     'text-md-lg block py-0.5 leading-snug font-light text-white outline-none focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-white',
@@ -100,7 +104,7 @@ export const Footer: React.FC = () => {
                         <div className="flex h-20 w-20 items-center justify-center">
                             <img
                                 src={IMAGES.logo.jackYak}
-                                alt="JackYak Logo"
+                                alt={siteBrand.logoAlt}
                                 className={footerLogoImage}
                             />
                         </div>
@@ -110,13 +114,12 @@ export const Footer: React.FC = () => {
                                 'text-sm-base md:text-md-lg leading-display-tight font-normal text-white',
                             )}
                         >
-                            Helping travelers explore Nepal with trusted
-                            information.
+                            {footerCopy.tagline}
                         </p>
                     </div>
 
                     <nav
-                        aria-label="Footer"
+                        aria-label={footerCopy.navLabel}
                         className="grid flex-1 grid-cols-1 gap-x-8 md:grid-cols-4"
                     >
                         {footerColumns.map((col) => (
@@ -139,7 +142,7 @@ export const Footer: React.FC = () => {
                                     {col.links.map((link) => (
                                         <li key={link}>
                                             <a
-                                                href="#"
+                                                href={placeholderHref}
                                                 className={cn(
                                                     fontPrimary,
                                                     'text-base-md leading-footer-link font-medium text-white/80 transition-colors outline-none hover:text-white focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-white',
@@ -164,13 +167,22 @@ export const Footer: React.FC = () => {
                             'text-md-lg md:text-base-md order-2 text-center font-medium text-white/60 md:order-0',
                         )}
                     >
-                        © 2026 JackYak. All rights reserved.
+                        {siteLegal.copyright}
                     </p>
 
                     <div className="order-1 flex flex-row items-center justify-center gap-4 md:order-0 md:justify-end">
-                        <SocialIcon label="Instagram" Icon={FaInstagram} />
-                        <SocialIcon label="Facebook" Icon={FaFacebookF} />
-                        <SocialIcon label="WhatsApp" Icon={FaWhatsapp} />
+                        <SocialIcon
+                            label={footerCopy.socialLabels.instagram}
+                            Icon={FaInstagram}
+                        />
+                        <SocialIcon
+                            label={footerCopy.socialLabels.facebook}
+                            Icon={FaFacebookF}
+                        />
+                        <SocialIcon
+                            label={footerCopy.socialLabels.whatsapp}
+                            Icon={FaWhatsapp}
+                        />
                     </div>
                 </div>
             </div>

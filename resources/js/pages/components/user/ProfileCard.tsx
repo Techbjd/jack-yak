@@ -1,8 +1,8 @@
 import { usePage } from '@inertiajs/react';
 import { Pencil, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { userEditButton, userMuted, userName } from '@/config/theme';
-import { userCard } from './tokens';
+import { userCard, userEditButton, userMuted, userName } from '@/config/theme';
+import { profileCardCopy } from '@/config/user';
 import { IMAGES } from '@/config/images';
 import type { PageProps } from '@/types';
 
@@ -10,7 +10,7 @@ function EditProfileContent() {
     return (
         <>
             <Pencil aria-hidden className="hidden size-5 text-white md:block" />
-            <span>Edit Profile</span>
+            <span>{profileCardCopy.editLabel}</span>
             <ArrowRight
                 aria-hidden
                 className="size-3 text-white md:size-5"
@@ -23,8 +23,8 @@ function EditProfileContent() {
 export default function ProfileCard() {
     const { auth } = usePage<PageProps>().props;
     const user = auth?.user;
-    const name = user?.name ?? 'Traveler';
-    const email = user?.email ?? 'Sign in to sync your profile';
+    const name = user?.name ?? profileCardCopy.guestName;
+    const email = user?.email ?? profileCardCopy.guestEmail;
 
     return (
         <section

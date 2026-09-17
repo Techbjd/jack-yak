@@ -1,4 +1,4 @@
-import { itineraryDays } from '@/config/itinerary';
+import { itineraryDays, itinerarySectionTitle } from '@/config/itinerary';
 import ItineraryDayCard from './ItineraryDayCard';
 
 export default function ItineraryDayList() {
@@ -6,6 +6,7 @@ export default function ItineraryDayList() {
     const leftColumn = itineraryDays.slice(0, midpoint);
     const rightColumn = itineraryDays.slice(midpoint);
     const rows = leftColumn.map((left, i) => [left, rightColumn[i]] as const);
+    const planLabel = `${itineraryDays.length}-day plan`;
 
     return (
         <section
@@ -16,12 +17,11 @@ export default function ItineraryDayList() {
                 id="itinerary-heading"
                 className="font-manrope text-xl-2xl leading-itinerary-33 text-ink md:text-2xl-3xl font-bold"
             >
-                Itinerary
+                {itinerarySectionTitle}
             </h2>
-            {}
             <div
                 role="list"
-                aria-label="12-day plan"
+                aria-label={planLabel}
                 className="flex max-h-dvh w-full snap-y snap-proximity flex-col gap-3.5 overflow-y-auto pb-1 md:hidden"
             >
                 {itineraryDays.map((day) => (
@@ -33,7 +33,7 @@ export default function ItineraryDayList() {
 
             <div
                 role="list"
-                aria-label="12-day plan"
+                aria-label={planLabel}
                 className="hidden w-full flex-col gap-6 md:flex xl:hidden"
             >
                 {itineraryDays.map((day) => (
@@ -45,7 +45,7 @@ export default function ItineraryDayList() {
 
             <div
                 role="list"
-                aria-label="12-day plan"
+                aria-label={planLabel}
                 className="hidden w-full flex-col xl:flex"
             >
                 {rows.map(([left, right]) => (

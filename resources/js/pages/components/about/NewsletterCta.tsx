@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
+import { EMAIL_PATTERN } from '@/lib/form-utils';
 import { aboutCta, aboutHeading, aboutNote } from '@/config/theme';
 import { aboutNewsletter } from '@/config/about';
-
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 export default function NewsletterCta() {
     const [email, setEmail] = useState('');
@@ -13,11 +12,11 @@ export default function NewsletterCta() {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (!email.trim()) {
-            setError('Email is required.');
+            setError(aboutNewsletter.emailRequired);
             return;
         }
         if (!EMAIL_PATTERN.test(email.trim())) {
-            setError('Please enter a valid email address.');
+            setError(aboutNewsletter.emailInvalid);
             return;
         }
         setError('');
@@ -25,7 +24,7 @@ export default function NewsletterCta() {
     };
 
     return (
-        <section className="flex w-full flex-col items-center gap-3 px-6 py-10 text-center md:gap-5 md:px-12 md:py-16 lg:px-24">
+        <section className="flex w-full flex-col items-center gap-3 px-6 pt-10 pb-0 text-center md:gap-5 md:px-12 md:pt-16 md:pb-0 lg:px-24">
             <h2 className={aboutHeading}>{aboutNewsletter.title}</h2>
             <p className={aboutNote}>{aboutNewsletter.subtitle}</p>
             <form
@@ -35,9 +34,11 @@ export default function NewsletterCta() {
             >
                 <input
                     type="email"
-                    aria-label="Email address"
+                    aria-label={aboutNewsletter.emailLabel}
                     placeholder={
-                        done ? 'You are on the list!' : aboutNewsletter.button
+                        done
+                            ? aboutNewsletter.successPlaceholder
+                            : aboutNewsletter.button
                     }
                     value={email}
                     onChange={(e) => {

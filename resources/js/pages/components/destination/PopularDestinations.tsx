@@ -4,27 +4,26 @@ import {
     fontPrimary,
     imagePlaceholder,
 } from '@/config/theme';
-import { popularDestinations } from '@/config/destination';
+import { popularDestinations, popularHeader, viewAllPageHref } from '@/config/destination';
 import { cn } from '@/lib/utils';
-import CarouselDots from '../shared/CarouselDots';
-import ViewAllLink from '../shared/ViewAllLink';
-
-const DESKTOP_CARD_RATIO = '260 / 374';
+import CarouselDots from '@/components/ui/CarouselDots';
+import ViewAllLink from '@/components/ui/ViewAllLink';
+import SectionHeading from '@/components/ui/SectionHeading';
 
 export default function PopularDestinations() {
     return (
         <section className="flex w-full flex-col gap-6 py-8 md:py-12">
             <div className="flex items-center justify-between px-6 md:px-12 lg:px-24">
-                <h2
-                    className={cn(
-                        fontPrimary,
-                        'text-md-lg text-text-primary md:text-lg-xl font-bold tracking-wide',
-                    )}
+                <SectionHeading
+                    title={popularHeader.eyebrow}
+                    className="contents"
+                    titleClassName="md:text-lg-xl"
+                />
+                <ViewAllLink
+                    href={viewAllPageHref}
+                    className="text-cta-accent md:text-text-primary gap-2"
                 >
-                    POPULAR DESTINATIONS
-                </h2>
-                <ViewAllLink className="text-cta-accent md:text-text-primary gap-2">
-                    VIEW ALL
+                    {popularHeader.link}
                 </ViewAllLink>
             </div>
 
@@ -34,7 +33,7 @@ export default function PopularDestinations() {
                     'text-3xl-4xl text-text-primary hidden px-6 leading-snug font-bold md:block md:px-12 lg:px-24',
                 )}
             >
-                Where will you go?
+                {popularHeader.question}
             </p>
 
             <div className="no-scrollbar w-full overflow-x-auto md:hidden">
@@ -44,14 +43,20 @@ export default function PopularDestinations() {
                             key={`${dest.name}-${i}`}
                             className="w-dest-card-w flex shrink-0 snap-start flex-col gap-2"
                         >
-                            <img
-                                className={cn(
-                                    imagePlaceholder,
-                                    'rounded-dest-card aspect-[109/192] h-auto w-full object-cover',
-                                )}
-                                src={dest.image}
-                                alt={dest.name}
-                            />
+                            <a
+                                href={dest.href}
+                                aria-label={`Explore ${dest.name}`}
+                                className="block w-full"
+                            >
+                                <img
+                                    className={cn(
+                                        imagePlaceholder,
+                                        'rounded-dest-card aspect-[109/192] h-auto w-full object-cover',
+                                    )}
+                                    src={dest.image}
+                                    alt={dest.name}
+                                />
+                            </a>
 
                             <p className={destCardTitle}>{dest.name}</p>
                             <p className={destCardTitle}>{dest.province}</p>
@@ -70,19 +75,22 @@ export default function PopularDestinations() {
                             key={`${dest.image}-${i}`}
                             className="flex flex-col gap-3"
                         >
-                            <div
-                                className="relative w-full"
-                                style={{ aspectRatio: DESKTOP_CARD_RATIO }}
-                            >
-                                <img
-                                    src={dest.image}
-                                    alt={dest.name}
-                                    className={cn(
-                                        imagePlaceholder,
-                                        coverImageAbsolute,
-                                        'rounded-dest-card',
-                                    )}
-                                />
+                            <div className="aspect-[260/374] relative w-full">
+                                <a
+                                    href={dest.href}
+                                    aria-label={`Explore ${dest.name}`}
+                                    className="absolute inset-0"
+                                >
+                                    <img
+                                        src={dest.image}
+                                        alt={dest.name}
+                                        className={cn(
+                                            imagePlaceholder,
+                                            coverImageAbsolute,
+                                            'rounded-dest-card',
+                                        )}
+                                    />
+                                </a>
                                 <div className="absolute bottom-0 left-0 flex flex-col gap-1 p-4">
                                     <p
                                         className={cn(

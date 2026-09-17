@@ -5,7 +5,7 @@ import {
     imagePlaceholder,
 } from '@/config/theme';
 import { IMAGES } from '@/config/images';
-import { journeyImageAlt } from '@/config/destination';
+import { immersiveExperiences, journeyImageAlt, journeyNepalCopy } from '@/config/destination';
 import { cn } from '@/lib/utils';
 
 export default function JourneyNepal() {
@@ -15,7 +15,7 @@ export default function JourneyNepal() {
                 <div className="xs:pl-8 flex flex-col gap-4 pl-6 md:gap-6 md:pl-0 lg:col-span-5 lg:justify-center lg:pl-20">
                     <img
                         src={IMAGES.destination.yakMascot}
-                        alt="JackYak mascot"
+                        alt={journeyNepalCopy.mascotAlt}
                         className="w-9 lg:w-28"
                     />
 
@@ -25,7 +25,7 @@ export default function JourneyNepal() {
                             'md:text-2xl-3xl leading-snug lg:whitespace-nowrap',
                         )}
                     >
-                        DISCOVER NEPAL
+                        {journeyNepalCopy.eyebrow}
                     </p>
                     <h2
                         className={cn(
@@ -33,13 +33,13 @@ export default function JourneyNepal() {
                             'text-2xl-3xl text-text-primary md:text-journey md:leading-journey md:text-teal leading-none font-bold tracking-wide xl:relative xl:whitespace-nowrap',
                         )}
                     >
-                        Journey Beyond{' '}
+                        {journeyNepalCopy.titleLead}{' '}
                         <span
                             className={cn(
                                 'xl:absolute xl:top-0 xl:left-130 xl:z-10 xl:text-white',
                             )}
                         >
-                            Peaks
+                            {journeyNepalCopy.titleAccent}
                         </span>
                     </h2>
                     <p
@@ -48,9 +48,7 @@ export default function JourneyNepal() {
                             'text-xs-md text-text-primary md:max-w-dest-title md:text-md-lg mt-4 max-w-xs leading-snug font-medium md:mt-0',
                         )}
                     >
-                        JackYak is your gateway to Nepal&apos;s breathtaking
-                        landscapes, timeless traditions, and unforgettable
-                        adventures.
+                        {journeyNepalCopy.body}
                     </p>
                 </div>
                 <div
@@ -87,7 +85,7 @@ export default function JourneyNepal() {
                             'text-lg-xl leading-snug font-bold tracking-wide',
                         )}
                     >
-                        IMMERSIVE EXPERIENCES
+                        {immersiveExperiences.heading}
                     </h3>
                     <p
                         className={cn(
@@ -95,9 +93,7 @@ export default function JourneyNepal() {
                             'text-xs-sm md:text-md-lg leading-snug font-medium',
                         )}
                     >
-                        Explore Nepal through cinematic destination stories,
-                        travel guides, local insights, trekking routes, and
-                        hidden gems designed to inspire your next adventure.
+                        {immersiveExperiences.body}
                     </p>
                 </div>
                 <div
@@ -131,7 +127,7 @@ export default function JourneyNepal() {
                             'text-lg-xl text-text-primary leading-snug font-bold lg:tracking-wide',
                         )}
                     >
-                        Meet the Yak
+                        {journeyNepalCopy.meetHeading}
                     </h3>
                     <p
                         className={cn(
@@ -139,11 +135,7 @@ export default function JourneyNepal() {
                             'text-xs-sm text-text-primary md:text-md-lg leading-snug font-medium lg:tracking-wide',
                         )}
                     >
-                        For centuries, the Himalayan yak has been a symbol of
-                        strength, resilience, and exploration. Inspired by this
-                        remarkable companion of the mountains, JackYak invites
-                        you to journey through Nepal&apos;s most extraordinary
-                        landscapes and cultures.
+                        {journeyNepalCopy.meetBody}
                     </p>
                 </div>
             </div>

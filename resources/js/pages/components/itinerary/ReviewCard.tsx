@@ -1,7 +1,12 @@
 import { cn } from '@/lib/utils';
 import { itinCard, itinH2 } from '@/config/theme';
-import { trekReviews, type TrekReview } from '@/config/itinerary';
-import Stars from '../shared/Stars';
+import {
+    reviewsSectionTitle,
+    trekReviews,
+    type TrekReview,
+} from '@/config/itinerary';
+import { siteRoutes } from '@/config/site';
+import Stars from '@/components/ui/Stars';
 import SectionHeading from './SectionHeading';
 
 function ReviewArticle({ review }: { review: TrekReview }) {
@@ -38,7 +43,6 @@ function ReviewArticle({ review }: { review: TrekReview }) {
             <div className="flex w-full flex-col gap-1.5 md:mt-4 lg:flex-row lg:items-center lg:gap-3">
                 <span className="shrink-0">
                     <Stars
-                        label="Rated 5 out of 5 stars"
                         starClassName="size-4 md:size-6"
                         gapClassName="gap-0.5 md:gap-1"
                     />
@@ -50,7 +54,7 @@ function ReviewArticle({ review }: { review: TrekReview }) {
             <p className="font-manrope text-xs-sm md:text-sm-md leading-itinerary-23 text-pale font-normal md:mt-1">
                 {review.metaPrefix}
                 <a
-                    href="#booking"
+                    href={siteRoutes.booking}
                     className="text-review-ink font-semibold underline underline-offset-2"
                 >
                     {review.metaLink}
@@ -66,7 +70,6 @@ function ReviewArticle({ review }: { review: TrekReview }) {
                 {review.seeMore}
             </button>
 
-            {}
             <div
                 role="group"
                 aria-label={review.photosLabel}
@@ -83,7 +86,6 @@ function ReviewArticle({ review }: { review: TrekReview }) {
                 ))}
             </div>
 
-            {}
             <div
                 role="group"
                 aria-label={review.photosLabel}
@@ -111,7 +113,7 @@ export default function ReviewCard() {
             className="flex w-full scroll-mt-4 flex-col gap-2.5 md:gap-5"
         >
             <SectionHeading
-                title="Reviews"
+                title={reviewsSectionTitle}
                 id="reviews-heading"
                 titleClassName={cn(itinH2, 'md:text-review-ink')}
             />

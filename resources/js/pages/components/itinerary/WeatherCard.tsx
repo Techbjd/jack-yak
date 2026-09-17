@@ -37,7 +37,8 @@ const toFeet = (meters: number): string =>
 const toUnit = (celsius: number, unit: Unit): number =>
     unit === 'c' ? Math.round(celsius) : Math.round((celsius * 9) / 5 + 32);
 
-const unitSuffix = (unit: Unit): string => (unit === 'c' ? '° C' : '° F');
+const unitSuffix = (unit: Unit): string =>
+    unit === 'c' ? trekWeather.celsiusSuffix : trekWeather.fahrenheitSuffix;
 
 function WeatherTooltip(props: {
     active?: boolean;
@@ -103,7 +104,7 @@ export default function WeatherCard() {
             const min = d.min + offset;
             const max = d.max + offset;
             return {
-                label: `${d.day} (${d.meters.toLocaleString('en-US')} m / ${toFeet(d.meters)} ft)`,
+                label: `${d.day} (${d.meters.toLocaleString('en-US')} ${trekWeather.meterShort} / ${toFeet(d.meters)} ${trekWeather.feetShort})`,
                 min: toUnit(min, unit),
                 max: toUnit(max, unit),
                 value: toUnit(max, unit),
@@ -126,7 +127,7 @@ export default function WeatherCard() {
     const heading =
         tab === 'daily'
             ? trekWeather.months[monthIndex].month
-            : 'January – December';
+            : trekWeather.allYearLabel;
 
     const tabPill = (activeTab: Tab): string =>
         cn(
@@ -304,7 +305,7 @@ export default function WeatherCard() {
                 <div className="flex w-full flex-col gap-2 md:hidden">
                     <div className="flex w-full flex-wrap items-center gap-2">
                         <span className="font-manrope text-xs-sm tracking-itinerary-label text-pale font-semibold uppercase">
-                            Altitude in:
+                            {altitudeProfile.altitudeIn}
                         </span>
                         <span className="ml-auto flex items-center gap-2">
                             <button

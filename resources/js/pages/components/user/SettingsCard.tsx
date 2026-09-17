@@ -7,9 +7,9 @@ import {
     ArrowRight,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { userRow, userRowDark } from '@/config/theme';
-import { userCard } from './tokens';
-import { userSettings } from '@/config/user';
+import { userCard, userRow, userRowDark } from '@/config/theme';
+import { userSettings, settingsCardCopy } from '@/config/user';
+import { placeholderHref } from '@/config/site';
 
 const SETTING_ICONS: Record<string, typeof UserIcon> = {
     account: UserIcon,
@@ -26,7 +26,7 @@ export default function SettingsCard() {
                     aria-hidden
                     className="text-ink size-5 md:size-7 md:text-black"
                 />
-                <h2 className={userRowDark}>Settings</h2>
+                <h2 className={userRowDark}>{settingsCardCopy.title}</h2>
             </div>
             <ul className="divide-fog flex w-full flex-col divide-y">
                 {userSettings.map((row) => {
@@ -34,7 +34,7 @@ export default function SettingsCard() {
                     return (
                         <li key={row.id}>
                             <a
-                                href="#"
+                                href={placeholderHref}
                                 className="flex items-center gap-3 py-3 md:gap-4 md:py-4"
                             >
                                 <Icon

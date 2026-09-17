@@ -19,8 +19,8 @@ const toFeet = (meters: number): number => Math.round(meters * 3.28084);
 
 const formatValue = (value: number, unit: AltitudeUnit): string =>
     unit === 'm'
-        ? `${value.toLocaleString('en-US')}m`
-        : `${value.toLocaleString('en-US')}ft`;
+        ? `${value.toLocaleString('en-US')}${altitudeProfile.unitMeterShort}`
+        : `${value.toLocaleString('en-US')}${altitudeProfile.unitFeetShort}`;
 
 interface ChartRow {
     place: string;

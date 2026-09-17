@@ -132,6 +132,20 @@ export const quizNote =
     'font-manrope text-sm-md leading-5 font-medium text-subtle';
 export const quizError = formError;
 
+export const quizQuestionRow =
+    'grid grid-cols-1 items-center gap-3 py-6 lg:grid-cols-[220px_1fr] lg:gap-6';
+
+export const userCard =
+    'shadow-card w-full rounded-xl bg-white p-5 md:rounded-none md:p-10';
+
+export const authLabelFirst = 'pt-5 pb-1.5';
+
+export const authLabelRest = 'pt-4 pb-1.5';
+
+export const authLink = 'text-cta-accent';
+
+export const heroDisplayFont = "'EB Garamond', Georgia, serif";
+
 export const aboutHeroTitle =
     'font-display text-3xl-4xl  font-medium text-ink xs:text-display xs:leading-about md:text-white xl:text-about-display xl:leading-about-display';
 
@@ -178,6 +192,13 @@ export const userSignOut =
 
 export const modalTitle =
     'font-manrope text-modal leading-tight font-semibold text-ink';
+
+export const modalDivider = 'border-hairline mt-6 border-t';
+
+export const modalSelectTrigger = 'cursor-pointer appearance-none pr-10';
+
+export const modalSelectChevron =
+    'text-mist pointer-events-none absolute top-1/2 right-4 size-5 -translate-y-1/2';
 
 export const modalSubtitle =
     'font-manrope text-md-lg leading-relaxed font-medium text-ink';
