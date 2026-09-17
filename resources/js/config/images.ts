@@ -10,6 +10,15 @@ export const IMAGES = {
         discoverNepal1: '/images/home/discover-nepal-1.png',
         discoverNepal2: '/images/home/discover-nepal-2.png',
         provincesMap: '/images/home/nepal-provinces-map.png',
+        mapProvinces: {
+            'sudur-pashchim': '/images/home/map/provinces/sudur-pashchim.png',
+            karnali: '/images/home/map/provinces/karnali.png',
+            lumbini: '/images/home/map/provinces/lumbini.png',
+            gandaki: '/images/home/map/provinces/gandaki.png',
+            bagmati: '/images/home/map/provinces/bagmati.png',
+            madhesh: '/images/home/map/provinces/madhesh.png',
+            koshi: '/images/home/map/provinces/koshi.png',
+        },
         trekkerYak: '/images/home/trekker-yak-silhouette.png',
     },
     destination: {
