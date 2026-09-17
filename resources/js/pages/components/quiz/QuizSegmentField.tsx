@@ -6,15 +6,18 @@ interface QuizSegmentFieldProps {
     question: QuizSegmentQuestion;
     value: string | undefined;
     onChange: (value: string) => void;
+    /** Compact density for dialogs (less row padding, fits without scroll). */
+    compact?: boolean;
 }
 
 export default function QuizSegmentField({
     question,
     value,
     onChange,
+    compact,
 }: QuizSegmentFieldProps) {
     return (
-        <div className={quizQuestionRow}>
+        <div className={cn(quizQuestionRow, compact && 'flex-1 py-3')}>
             <p id={`quiz-${question.id}-label`} className={quizLabel}>
                 {question.question}
             </p>

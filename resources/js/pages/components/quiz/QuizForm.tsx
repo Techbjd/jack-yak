@@ -17,7 +17,7 @@ import GuestNudge from '@/components/forms/GuestNudge';
 import QuizSegmentField from './QuizSegmentField';
 import type { PageProps } from '@/types';
 
-export default function QuizForm() {
+export default function QuizForm({ compact = false }: { compact?: boolean }) {
     const { auth, flash } = usePage<PageProps>().props;
     const user = auth?.user ?? null;
 
@@ -88,16 +88,24 @@ export default function QuizForm() {
         <form
             noValidate
             onSubmit={handleSubmit}
-            className="divide-hairline flex w-full flex-col divide-y"
+            className={cn(
+                'divide-hairline flex w-full flex-col divide-y',
+                compact && 'h-full',
+            )}
         >
-            {!user && (
+            {!user && !compact && (
                 <GuestNudge
                     tone="quiz"
                     prefix={quizFormCopy.guestPrefix}
                     suffix={quizFormCopy.guestSuffix}
                 />
             )}
-            <div className="grid grid-cols-1 gap-5 pb-7 sm:grid-cols-2">
+            <div
+                className={cn(
+                    'grid grid-cols-1 gap-5 sm:grid-cols-2',
+                    compact ? 'pb-4' : 'pb-7',
+                )}
+            >
                 <TextField
                     id="quiz-name"
                     label={quizFormCopy.nameLabel}
@@ -135,6 +143,7 @@ export default function QuizForm() {
                     id={`quiz-${q.id}`}
                     label={q.question}
                     tone="quiz"
+                    compact={compact}
                     placeholder={q.placeholder}
                     options={q.options}
                     value={data.answers[q.id] ?? ''}
@@ -149,10 +158,16 @@ export default function QuizForm() {
                     question={q}
                     value={data.answers[q.id]}
                     onChange={(value) => setAnswer(q.id, value)}
+                    compact={compact}
                 />
             ))}
 
-            <div className="flex flex-col items-center pt-7">
+            <div
+                className={cn(
+                    'flex flex-col items-center',
+                    compact ? 'pt-4' : 'pt-7',
+                )}
+            >
                 <button
                     type="submit"
                     disabled={processing}
@@ -160,7 +175,12 @@ export default function QuizForm() {
                 >
                     {processing ? quizFormCopy.sending : quizFormCopy.submit}
                 </button>
-                <p className={cn(quizNote, 'pt-4 text-center')}>
+                <p
+                    className={cn(
+                        quizNote,
+                        compact ? 'pt-2 text-center' : 'pt-4 text-center',
+                    )}
+                >
                     {quizFormCopy.note}
                 </p>
             </div>
