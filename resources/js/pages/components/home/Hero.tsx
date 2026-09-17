@@ -72,9 +72,9 @@ export default function Hero() {
                         href={siteRoutes.quiz}
                         ariaLabel={homeHero.ctaLabel}
                         className={cn(
-                            'mt-2 h-10.5 w-fit px-4 py-2 sm:mt-4',
+                            'mt-2 h-10.5 w-fit px-3 py-2 sm:mt-4',
                             'bg-cta-accent sm:bg-cta',
-                            'mx-auto flex shrink-0 items-center gap-3 sm:mx-0',
+                            'mx-auto flex shrink-0 items-center  gap-3 sm:mx-0',
                             fontPrimary,
                             'sm:text-md-lg text-sm leading-normal text-white',
                             'shadow-md transition-opacity hover:opacity-95',
@@ -82,7 +82,7 @@ export default function Hero() {
                         icon={
                             <span className={ctaIconCircle}>
                                 <Plus
-                                    className="text-icon-accent h-4 w-4"
+                                    className="text-icon-accent h-4 w-4 "
                                     strokeWidth={3}
                                 />
                             </span>

@@ -90,7 +90,7 @@ const TopDestinations = () => {
                             >
                                 <div
                                     aria-hidden
-                                    className="absolute inset-0 bg-cover bg-center transition-transform duration-500 ease-out group-hover:scale-105"
+                                    className="absolute inset-0 bg-cover bg-center transition-transform duration-500 ease-out group-hover:scale-150"
                                     style={{
                                         backgroundImage: `url(${dest.image})`,
                                     }}

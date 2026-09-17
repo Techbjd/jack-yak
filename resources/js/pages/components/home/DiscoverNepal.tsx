@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { IMAGES } from '@/config/images';
 import { discoverNepalCopy } from '@/config/home';
+import { quizHero } from '@/config/quiz';
 import {
     bodyTextSmall,
     ctaMobile,
@@ -9,7 +10,6 @@ import {
     headingSubsection,
     imagePlaceholder,
     imageRoundedXl,
-    modalTitle,
     sectionPadding,
 } from '@/config/theme';
 import Modal from '@/components/ui/Modal';
@@ -84,7 +84,7 @@ const DiscoverNepal = () => {
                         loading="lazy"
                         className={cn(
                             imagePlaceholder,
-                            'mt-13 aspect-[257/387] w-64.25 min-w-0 object-cover',
+                            'mt-13 aspect-257/387 w-64.25 min-w-0 object-cover',
                         )}
                     />
 
@@ -94,7 +94,7 @@ const DiscoverNepal = () => {
                         loading="lazy"
                         className={cn(
                             imagePlaceholder,
-                            'aspect-[257/387] w-82 min-w-0 object-cover',
+                            'aspect-257/387 w-82 min-w-0 object-cover',
                         )}
                     />
                 </div>
@@ -103,9 +103,35 @@ const DiscoverNepal = () => {
                 open={quizOpen}
                 onClose={() => setQuizOpen(false)}
                 label={discoverNepalCopy.modalLabel}
+                panelClassName="p-0 sm:max-w-[1188px] md:p-0 lg:h-[792px]"
             >
-                <h2 className={modalTitle}>{discoverNepalCopy.modalTitle}</h2>
-                <QuizForm />
+                <div className="flex w-full flex-1 items-stretch">
+                    <div className="relative hidden w-99.5 shrink-0 overflow-hidden rounded-l-2xl lg:block">
+                        <img
+                            src={IMAGES.destination.langtangMountain}
+                            alt={quizHero.panelAlt}
+                            className="absolute inset-0 h-full w-full object-cover"
+                        />
+                        <div className="absolute inset-0 flex flex-col gap-4 p-6 sm:gap-5 lg:justify-start lg:p-14">
+                            <img
+                                src={IMAGES.logo.jackYak}
+                                alt={quizHero.logoAlt}
+                                className="w-36 object-contain lg:w-53.25"
+                            />
+                            <p
+                                className={cn(
+                                    fontPrimary,
+                                    'lg:text-2xl-3xl max-w-82.5 text-2xl leading-11 font-semibold text-white',
+                                )}
+                            >
+                                {quizHero.tagline}
+                            </p>
+                        </div>
+                    </div>
+                    <div className="w-full min-w-0 flex-1 p-6 md:p-10">
+                        <QuizForm compact />
+                    </div>
+                </div>
             </Modal>
         </section>
     );

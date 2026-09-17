@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { router } from '@inertiajs/react';
 import { fontPrimary, sectionInner, sectionPadding } from '@/config/theme';
-import { useColors } from '@/config/colors';
 import { IMAGES } from '@/config/images';
 import { cn } from '@/lib/utils';
 import {
@@ -25,7 +24,8 @@ interface MapLabel {
 
 // Clickable labels drawn where the picture has them (name + leader line
 // look). The baked-in raster text is covered by a background rect so only
-// the link text shows. Leaders lines + dots stay as in the image.
+// the link text shows. Leader lines + dots are retraced as SVG (MAP_LEADERS)
+// above the hover fills so they never get covered.
 const MAP_LABELS: MapLabel[] = [
     {
         slug: 'karnali',
@@ -69,10 +69,68 @@ const MAP_LABELS: MapLabel[] = [
 
 const LABEL_FONT_SIZE = 15;
 
+const LEADER_GRAY = '#929CAA';
+const LEADER_NAVY = '#253A55';
+const LEADER_WIDTH = 2;
+const DOT_RADIUS = 3.5;
+
+interface MapLeader {
+    slug: string;
+    dot: { x: number; y: number };
+    /** Gray main segment of the leader line. */
+    line: { x1: number; y1: number; x2: number; y2: number };
+    /** Navy end tick past the gray segment (absent for Karnali). */
+    tick?: { x1: number; y1: number; x2: number; y2: number };
+}
+
+// Leader lines + dots traced from the base picture (viewBox px). Redrawn
+// above the hover fills so the line and the point stay visible even when a
+// hover fill takes over the province underneath them.
+const MAP_LEADERS: MapLeader[] = [
+    {
+        slug: 'karnali',
+        dot: { x: 280, y: 166 },
+        line: { x1: 120, y1: 165.5, x2: 273, y2: 165.5 },
+    },
+    {
+        slug: 'sudur-pashchim',
+        dot: { x: 151, y: 268 },
+        line: { x1: 150.5, y1: 275, x2: 150.5, y2: 292 },
+        tick: { x1: 150.5, y1: 292, x2: 150.5, y2: 302 },
+    },
+    {
+        slug: 'lumbini',
+        dot: { x: 341, y: 379 },
+        line: { x1: 340.5, y1: 386, x2: 340.5, y2: 392 },
+        tick: { x1: 340.5, y1: 392, x2: 340.5, y2: 399 },
+    },
+    {
+        slug: 'gandaki',
+        dot: { x: 479, y: 354 },
+        line: { x1: 478.5, y1: 361, x2: 478.5, y2: 418 },
+        tick: { x1: 478.5, y1: 419, x2: 478.5, y2: 425 },
+    },
+    {
+        slug: 'bagmati',
+        dot: { x: 660, y: 386 },
+        line: { x1: 667, y1: 386.5, x2: 875, y2: 386.5 },
+        tick: { x1: 876, y1: 386.5, x2: 880, y2: 386.5 },
+    },
+    {
+        slug: 'madhesh',
+        dot: { x: 612, y: 476 },
+        line: { x1: 611.5, y1: 483, x2: 611.5, y2: 489 },
+        tick: { x1: 611.5, y1: 489, x2: 611.5, y2: 497 },
+    },
+    {
+        slug: 'koshi',
+        dot: { x: 840, y: 442 },
+        line: { x1: 847, y1: 442.5, x2: 864, y2: 442.5 },
+        tick: { x1: 865, y1: 442.5, x2: 868, y2: 442.5 },
+    },
+];
+
 const NepalMap = () => {
-    const colors = useColors();
-    // #2D8A8A — hover + selected province fill and label color (design token).
-    const provinceInk = colors.teal;
     const [hovered, setHovered] = useState<string | null>(null);
     const [focused, setFocused] = useState<string | null>(null);
     const [selected, setSelected] = useState<string | null>(null);
@@ -138,6 +196,53 @@ const NepalMap = () => {
                             className="block h-auto w-full object-contain"
                         />
 
+                        {/* Province color fill under the hover images so pointed
+                            tips and edge slivers the PNGs miss still show
+                            color (same hue family, seamless). */}
+                        <svg
+                            viewBox={NEPAL_MAP_VIEWBOX}
+                            aria-hidden="true"
+                            className="pointer-events-none absolute inset-0 block h-full w-full"
+                        >
+                            {NEPAL_PROVINCES.map((province) => (
+                                <path
+                                    key={province.slug}
+                                    d={province.d}
+                                    fill={province.color}
+                                    stroke={province.color}
+                                    strokeWidth={3}
+                                    strokeLinejoin="round"
+                                    className={cn(
+                                        'transition-opacity duration-[180ms]',
+                                        isActive(province.slug)
+                                            ? 'opacity-100'
+                                            : 'opacity-0',
+                                    )}
+                                />
+                            ))}
+                        </svg>
+
+                        {NEPAL_PROVINCES.map((province) => (
+                                <img
+                                    key={province.slug}
+                                    src={province.image}
+                                    alt=""
+                                    aria-hidden="true"
+                                    style={{
+                                        left: `${province.pos.left}%`,
+                                        top: `${province.pos.top}%`,
+                                        width: `${province.pos.width}%`,
+                                        height: `${province.pos.height}%`,
+                                    }}
+                                    className={cn(
+                                        'pointer-events-none absolute transition-opacity duration-180',
+                                        isActive(province.slug)
+                                            ? 'opacity-100'
+                                            : 'opacity-0',
+                                    )}
+                                />
+                            ))}
+
                         <svg
                             viewBox={NEPAL_MAP_VIEWBOX}
                             role="group"
@@ -145,8 +250,6 @@ const NepalMap = () => {
                             className="absolute inset-0 block h-full w-full"
                         >
                             {NEPAL_PROVINCES.map((province) => {
-                                const active = isActive(province.slug);
-                                const isSelected = selected === province.slug;
                                 return (
                                     <g
                                         key={province.slug}
@@ -176,18 +279,8 @@ const NepalMap = () => {
                                         <title>{province.name}</title>
                                         <path
                                             d={province.d}
-                                            fill={provinceInk}
-                                            fillOpacity={
-                                                active
-                                                    ? isSelected
-                                                        ? 1
-                                                        : 0.65
-                                                    : 0
-                                            }
-                                            stroke={provinceInk}
-                                            strokeWidth={active ? 1.5 : 0}
-                                            strokeLinejoin="round"
-                                            className="transition-[fill-opacity] duration-[180ms]"
+                                            fill="transparent"
+                                            stroke="none"
                                         />
                                     </g>
                                 );
@@ -230,7 +323,7 @@ const NepalMap = () => {
                                             tabIndex={0}
                                             aria-label={`View destinations in ${province.name}`}
                                             className="cursor-pointer outline-none"
-                                            fill={provinceInk}
+                                            fill={province.color}
                                             onMouseEnter={() =>
                                                 setHovered(label.slug)
                                             }
@@ -270,6 +363,39 @@ const NepalMap = () => {
                                         </g>
                                     );
                                 })}
+                            </g>
+
+                            {/* Leader lines + dots redrawn above everything so
+                                they stay visible in every state — at rest and
+                                even when a hover fill covers the province. */}
+                            <g pointerEvents="none" strokeWidth={LEADER_WIDTH}>
+                                {MAP_LEADERS.map((leader) => (
+                                    <g key={leader.slug}>
+                                        <line
+                                            x1={leader.line.x1}
+                                            y1={leader.line.y1}
+                                            x2={leader.line.x2}
+                                            y2={leader.line.y2}
+                                            stroke={LEADER_GRAY}
+                                        />
+                                        {leader.tick && (
+                                            <line
+                                                x1={leader.tick.x1}
+                                                y1={leader.tick.y1}
+                                                x2={leader.tick.x2}
+                                                y2={leader.tick.y2}
+                                                stroke={LEADER_NAVY}
+                                            />
+                                        )}
+                                        <circle
+                                            cx={leader.dot.x}
+                                            cy={leader.dot.y}
+                                            r={DOT_RADIUS}
+                                            stroke="none"
+                                            fill={LEADER_NAVY}
+                                        />
+                                    </g>
+                                ))}
                             </g>
                         </svg>
                     </div>
