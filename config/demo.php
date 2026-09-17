@@ -3,10 +3,7 @@
 return [
 
     /*
-    |--------------------------------------------------------------------------
     | Demo User
-    |--------------------------------------------------------------------------
-    |
     | Credentials for the demo login profile used for local testing.
     | Values live in .env (DEMO_USER_*) so config caching keeps working.
     |

@@ -196,7 +196,7 @@ export const viewAllDestinations: ViewAllDestination[] = [
         tagline: 'Wildlife Safari',
         province: 'Terai Region',
         days: '2–3 Days',
-        image: IMAGES.viewAll.chitwanFirst,
+        image: IMAGES.viewAll.chitwanSafari,
         href: itineraryPageHref,
     },
     {
