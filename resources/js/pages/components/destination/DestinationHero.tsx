@@ -100,7 +100,7 @@ export default function DestinationHero() {
                 <p
                     className={cn(
                         fontPrimary,
-                        'text-sm-base text-text-primary md:text-2xl-3xl  mt-6 w-full max-w-full  m-auto justify-center items-center px-6 text-center leading-snug font-medium md:mt-8 md:max-w-md md:px-0',
+                        'text-sm-base text-text-primary md:text-2xl-3xl  mt-6 w-full  m-auto justify-center items-center px-6 text-center leading-snug font-medium md:mt-8  md max-w-2xl md:px-0',
                     )}
                 >
                     Nepal is a land of extraordinary diversity where the

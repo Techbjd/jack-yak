@@ -110,6 +110,8 @@ interface HeroTitleSvgProps {
     animate?: boolean;
     /** Tailwind text color class for the SVG title paint. */
     colorClass?: string;
+    /** Shadow class for the SVG title. Defaults to `drop-shadow-md`. */
+    shadowClass?: string;
 }
 
 /**
@@ -127,6 +129,7 @@ export function HeroTitleSvg({
     active = true,
     animate = false,
     colorClass = 'text-text-primary',
+    shadowClass = 'drop-shadow-md',
 }: HeroTitleSvgProps) {
     return (
         <svg
@@ -153,7 +156,7 @@ export function HeroTitleSvg({
                         ? undefined
                         : `matrix(${scaleX} 0 0 1 ${x * (1 - scaleX)} 0)`
                 }
-                className={cn('drop-shadow-md', colorClass)}
+                className={cn(shadowClass, colorClass)}
             >
                 {title}
             </text>

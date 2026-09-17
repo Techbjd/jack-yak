@@ -11,7 +11,7 @@ export default function Quiz() {
         <>
             <Head title={pageTitles.quiz} />
             <main className="flex min-h-screen w-full flex-col bg-white lg:flex-row">
-                <div className="relative min-h-64 w-full shrink-0 overflow-hidden sm:min-h-72 lg:h-auto lg:min-h-screen lg:w-[398px]">
+                <div className="relative min-h-64 w-full shrink-0 overflow-hidden sm:min-h-72 lg:h-auto lg:min-h-screen lg:w-99.5">
                     <img
                         src={IMAGES.destination.langtangMountain}
                         alt={quizHero.panelAlt}
