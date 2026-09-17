@@ -10,7 +10,7 @@ export default function Quiz() {
     return (
         <>
             <Head title={pageTitles.quiz} />
-            <main className="flex min-h-screen w-full flex-col bg-white lg:flex-row">
+            <main className="flex min-h-screen w-full  justify-center items-center mx-auto gap 2 flex-col bg-white lg:flex-row">
                 <div className="relative min-h-64 w-full shrink-0 overflow-hidden sm:min-h-72 lg:h-auto lg:min-h-screen lg:w-99.5">
                     <img
                         src={IMAGES.destination.langtangMountain}
@@ -34,11 +34,11 @@ export default function Quiz() {
                     </div>
                 </div>
 
-                <div className="flex w-full flex-1 justify-center px-6 py-10 sm:px-10 lg:items-start lg:px-14 lg:py-14">
+
                     <div className="w-full max-w-170">
                         <QuizForm />
                     </div>
-                </div>
+
             </main>
         </>
     );
