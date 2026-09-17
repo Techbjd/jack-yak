@@ -26,6 +26,8 @@ interface SelectFieldProps {
     tone: SelectFieldTone;
     /** Quiz selects sit in a label-beside row; modal selects stack. */
     layout?: 'row' | 'stacked';
+    /** Compact density for dialogs (less row padding, fits without scroll). */
+    compact?: boolean;
     /** Extra label classes (e.g. modal `pb-2 font-semibold`). */
     labelClassName?: string;
 }
@@ -46,22 +48,28 @@ export default function SelectField({
     error,
     tone,
     layout,
+    compact,
     labelClassName,
 }: SelectFieldProps) {
     const resolvedLayout = layout ?? (tone === 'quiz' ? 'row' : 'stacked');
     const resolvedErrorId = `${id}-error`;
 
-    const field = (
-        <div className="flex flex-col">
-            <label
-                htmlFor={id}
-                className={cn(
-                    tone === 'quiz' ? quizLabel : modalLabel,
-                    labelClassName,
-                )}
-            >
-                {label}
-            </label>
+    // NOTE: label and control must stay SIBLINGS (not wrapped in one div)
+    // so the `row` grid can place them in its two columns.
+    const labelEl = (
+        <label
+            htmlFor={id}
+            className={cn(
+                tone === 'quiz' ? quizLabel : modalLabel,
+                labelClassName,
+            )}
+        >
+            {label}
+        </label>
+    );
+
+    const controlEl = (
+        <div className="flex min-w-0 flex-col">
             <div className="relative">
                 <select
                     id={id}
@@ -101,7 +109,17 @@ export default function SelectField({
     );
 
     if (resolvedLayout === 'row') {
-        return <div className={quizQuestionRow}>{field}</div>;
+        return (
+            <div className={cn(quizQuestionRow, compact && 'flex-1 py-3')}>
+                {labelEl}
+                {controlEl}
+            </div>
+        );
     }
-    return field;
+    return (
+        <div className="flex flex-col">
+            {labelEl}
+            {controlEl}
+        </div>
+    );
 }

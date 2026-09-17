@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import { X } from 'lucide-react';
+import { cn } from '@/lib/utils';
 import { modalCopy } from '@/config/site';
 
 interface ModalProps {
@@ -9,9 +10,17 @@ interface ModalProps {
 
     label: string;
     children: ReactNode;
+    /** Extra panel classes (merged via `cn`, so they override the defaults). */
+    panelClassName?: string;
 }
 
-export default function Modal({ open, onClose, label, children }: ModalProps) {
+export default function Modal({
+    open,
+    onClose,
+    label,
+    children,
+    panelClassName,
+}: ModalProps) {
     const panelRef = useRef<HTMLDivElement>(null);
     // Portal target guard: document doesn't exist during SSR.
     const [mounted, setMounted] = useState(false);
@@ -65,7 +74,10 @@ export default function Modal({ open, onClose, label, children }: ModalProps) {
                 aria-modal="true"
                 aria-label={label}
                 tabIndex={-1}
-                className="relative flex max-h-full w-full max-w-4xl flex-col overflow-y-auto rounded-t-2xl bg-white p-6 outline-none sm:rounded-2xl md:p-10"
+                className={cn(
+                    'relative flex max-h-full w-full max-w-4xl flex-col overflow-y-auto rounded-t-2xl bg-white p-6 outline-none sm:rounded-2xl md:p-10',
+                    panelClassName,
+                )}
             >
                 <button
                     type="button"
