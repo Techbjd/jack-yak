@@ -427,7 +427,7 @@ export const destinationHeroSlides: DestinationHeroSlide[] = [
         titleOverlay: {
             viewBox: '0 0 2880 1940',
             x: 1440,
-            y: 500,
+            y: 650,
             fontSize: 514,
             scaleX: 1,
             color: '#334155',
@@ -441,7 +441,7 @@ export const destinationHeroSlides: DestinationHeroSlide[] = [
         titleOverlay: {
             viewBox: '0 0 2880 1940',
             x: 1440,
-            y: 690,
+            y: 730,
             fontSize: 514,
             scaleX: 1,
             color: '#334155',

@@ -22,7 +22,7 @@ export default function AppLayout({
     return (
         <PageShell className={shellClassName}>
             {title ? <Head title={title} /> : null}
-            {header ? <div className="w-full">{header}</div> : null}
+            {header ? <div className="w-full ">{header}</div> : null}
             {children}
             <div className="w-full">
                 <Footer />

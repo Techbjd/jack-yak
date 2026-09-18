@@ -29,7 +29,9 @@ export const planTripHeader = {
 
 export const travelStoriesCopy = {
     eyebrow: 'Travel Stories',
-    title: 'What Travelers Love About Nepal',
+    title:'What Travelers Love About Nepal',
+    // titleTop: 'What Travelers Love',
+    // titleBottom: 'About Nepal',
     quote: 'Watching the sunrise over the Himalayas from Poon Hill was one of the most unforgettable moments of my life.',
     name: 'Ken San',
     country: 'Japan',

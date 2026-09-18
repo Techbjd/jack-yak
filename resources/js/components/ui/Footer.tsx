@@ -33,7 +33,7 @@ const SocialIcon: React.FC<SocialIconProps> = ({
 const Footer: React.FC = () => {
     return (
         <footer className="bg-brand w-full text-white">
-            <div className="-mb-1 w-full overflow-hidden">
+            <div className="mb-2 w-full overflow-hidden">
                 <div className="flex aspect-144/47 w-full items-center justify-center bg-white select-none">
                     <img
                         src={IMAGES.home.trekkerYak}
@@ -158,7 +158,7 @@ const Footer: React.FC = () => {
                     </nav>
                 </div>
 
-                <div className="mt-12 flex flex-col items-center gap-4 border-t border-white/10 pt-6 md:mt-16 md:grid md:grid-cols-3">
+                <div className="mt-12 flex flex-col items-center gap-4 border-t border-white/10 pt-6 pb-2 md:mt-16 md:grid md:grid-cols-3">
                     <div className="hidden md:block" />
 
                     <p
