@@ -4,9 +4,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="icon" href="/logo/jack-yak-logo" sizes="any">
-        <link rel="icon" href="/logo/jack-yak-logo" type="image/svg+xml">
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" href="{{ asset('images/logo/jack-yak-logo.png') }}">
+        <link rel="shortcut icon" type="image/png" href="{{ asset('images/logo/jack-yak-logo.png') }}">
+        <link rel="apple-touch-icon" href="{{ asset('images/logo/jack-yak-logo.png') }}">
 
         @fonts
 

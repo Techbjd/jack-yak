@@ -116,7 +116,7 @@ export default function QuizForm({ compact = false }: { compact?: boolean }) {
                     value={data.name}
                     onChange={(value) => {
                         setData('name', value);
-                        clearErrors('name' as never);
+                        clearErrors('name' as never)
                     }}
                     error={errors.name}
                 />
