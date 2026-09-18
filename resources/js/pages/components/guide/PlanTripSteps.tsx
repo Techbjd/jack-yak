@@ -47,7 +47,7 @@ const PlanTripSteps = () => {
                                         <h3
                                             className={cn(
                                                 fontPrimary,
-                                                'text-xs-sm text-ink ms:text-md-lg lg:text-base-md leading-tight font-bold tracking-wide',
+                                                'text-[9px] text-ink ms:text-md-lg lg:text-base-md leading-tight font-bold tracking-wide',
                                             )}
                                         >
                                             {index} {title}
@@ -55,7 +55,7 @@ const PlanTripSteps = () => {
                                         <p
                                             className={cn(
                                                 fontPrimary,
-                                                'text-2xs text-text-primary ms:text-base-md md:text-lg-xl lg:text-md-lg leading-relaxed font-medium tracking-wide',
+                                                'text-[7px] text-text-primary ms:text-base-md md:text-lg-xl lg:text-md-lg leading-relaxed font-medium tracking-wide',
                                             )}
                                         >
                                             {description}

@@ -51,7 +51,7 @@ function WeatherTooltip(props: {
         return null;
     }
     return (
-        <div className="font-manrope shadow-card bg-bubble rounded-md px-2.5 py-1.5 text-xs leading-5 font-semibold whitespace-nowrap text-white">
+        <div className="font-inter shadow-card bg-bubble rounded-md px-2.5 py-1.5 text-xs leading-5 font-semibold whitespace-nowrap text-white">
             <p>
                 Min: {toUnit(row.min, unit)}
                 {unitSuffix(unit)}
@@ -77,7 +77,7 @@ function DayTick(props: {
             textAnchor="end"
             fontSize={11}
             transform={`rotate(-18 ${x} ${y + 12})`}
-            className="fill-slate-text font-manrope"
+            className="fill-slate-text font-inter"
         >
             {payload?.value}
         </text>
@@ -131,7 +131,7 @@ export default function WeatherCard() {
 
     const tabPill = (activeTab: Tab): string =>
         cn(
-            'font-manrope text-base-md flex h-11 shrink-0 cursor-pointer items-center justify-center rounded-full border px-5 font-bold whitespace-nowrap md:h-9.5 md:font-semibold',
+            'font-inter text-base-md flex h-11 shrink-0 cursor-pointer items-center justify-center rounded-full border px-5 font-bold whitespace-nowrap md:h-9.5 md:font-semibold',
             activeTab === tab
                 ? 'border-cta bg-cta text-white'
                 : 'border-card-line text-slate-text md:text-slate-mute bg-white',
@@ -184,11 +184,11 @@ export default function WeatherCard() {
                 <div className="bg-line-soft h-px w-full" />
 
                 <div className="hidden w-full flex-wrap items-center gap-2 md:flex">
-                    <h3 className="font-manrope text-lg-xl text-ink md:text-about-highlight md:text-graph-title md:tracking-review font-medium">
+                    <h3 className="font-inter text-lg-xl text-ink md:text-about-highlight md:text-graph-title md:tracking-review font-medium">
                         {heading}
                     </h3>
                     <span className="ml-auto flex items-center gap-2">
-                        <span className="font-manrope text-xs-sm tracking-itinerary-label text-pale md:text-xs-md font-semibold uppercase">
+                        <span className="font-inter text-xs-sm tracking-itinerary-label text-pale md:text-xs-md font-semibold uppercase">
                             {trekWeather.tempIn}
                         </span>
                         <button
@@ -304,7 +304,7 @@ export default function WeatherCard() {
                 </div>
                 <div className="flex w-full flex-col gap-2 md:hidden">
                     <div className="flex w-full flex-wrap items-center gap-2">
-                        <span className="font-manrope text-xs-sm tracking-itinerary-label text-pale font-semibold uppercase">
+                        <span className="font-inter text-xs-sm tracking-itinerary-label text-pale font-semibold uppercase">
                             {altitudeProfile.altitudeIn}
                         </span>
                         <span className="ml-auto flex items-center gap-2">

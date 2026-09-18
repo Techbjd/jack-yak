@@ -66,7 +66,7 @@ function PlaceTick({
             textAnchor="middle"
             fontSize={9}
             transform={`rotate(-45 ${x} ${ly})`}
-            className="fill-ash font-manrope"
+            className="fill-ash font-inter"
         >
             {payload?.value}
         </text>
@@ -87,7 +87,7 @@ function AltitudeTooltip({
         return null;
     }
     return (
-        <div className="font-manrope shadow-card bg-bubble rounded-md px-2.5 py-1.5 text-xs leading-5 font-semibold whitespace-nowrap text-white">
+        <div className="font-inter shadow-card bg-bubble rounded-md px-2.5 py-1.5 text-xs leading-5 font-semibold whitespace-nowrap text-white">
             <p>{row.place}</p>
             <p>{formatValue(row.value, unit)}</p>
         </div>
@@ -124,7 +124,7 @@ function ValueLabel({
             textAnchor="middle"
             fontSize={9}
             fontWeight={600}
-            className="fill-abyss font-manrope"
+            className="fill-abyss font-inter"
         >
             {formatValue(Number(value), unit)}
         </text>

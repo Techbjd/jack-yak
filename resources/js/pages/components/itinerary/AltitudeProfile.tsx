@@ -60,7 +60,7 @@ export default function AltitudeProfile({
                 )}
             >
                 <div className="flex w-full items-center gap-1.5">
-                    <span className="font-manrope text-xs-sm tracking-itinerary-label text-pale md:text-xs-md leading-5 font-semibold uppercase">
+                    <span className="font-inter text-xs-sm tracking-itinerary-label text-pale md:text-xs-md leading-5 font-semibold uppercase">
                         {altitudeProfile.altitudeIn}
                     </span>
                     <button
@@ -94,7 +94,7 @@ export default function AltitudeProfile({
                             aria-hidden
                             className="text-ink size-4 md:size-5"
                         />
-                        <span className="font-manrope text-xs-sm leading-itinerary-19 text-ink md:text-xs-md font-medium uppercase underline underline-offset-2">
+                        <span className="font-inter text-xs-sm leading-itinerary-19 text-ink md:text-xs-md font-medium uppercase underline underline-offset-2">
                             {altitudeProfile.download}
                         </span>
                     </button>

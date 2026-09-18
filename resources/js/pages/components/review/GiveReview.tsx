@@ -194,7 +194,7 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                     onSubmit={handleSubmit}
                     className="flex flex-col"
                 >
-                    <h2 className={modalTitle}>{giveReviewCopy.title}</h2>
+                    <h2 className={cn(modalTitle, 'text-2xl-3xl')}>{giveReviewCopy.title}</h2>
                     <p className={cn(modalSubtitle, 'pt-2')}>
                         {giveReviewCopy.intro}
                     </p>

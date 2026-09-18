@@ -25,7 +25,7 @@ export default function BookingCard() {
             )}
         >
             <div className="flex w-full items-center justify-between gap-3">
-                <p className="font-manrope text-xs-sm tracking-card text-ink leading-3 font-bold">
+                <p className="font-inter text-xs-sm tracking-card text-ink leading-3 font-bold">
                     {trekBooking.operator}
                 </p>
                 <label className="relative inline-flex">
@@ -33,7 +33,7 @@ export default function BookingCard() {
                     <select
                         aria-label={trekBooking.currencyLabel}
                         defaultValue={trekBooking.currencies[0]}
-                        className="font-manrope rounded-immersive border-card-line text-xs-md text-slate-text h-9 w-36 cursor-pointer appearance-none border bg-white pr-8 pl-3 leading-5 font-semibold outline-none"
+                        className="font-inter rounded-immersive border-card-line text-xs-md text-slate-text h-9 w-36 cursor-pointer appearance-none border bg-white pr-8 pl-3 leading-5 font-semibold outline-none"
                     >
                         {trekBooking.currencies.map((c) => (
                             <option key={c} value={c}>
@@ -49,14 +49,14 @@ export default function BookingCard() {
             </div>
 
             <div className="w-full">
-                <p className="font-manrope text-xs-md tracking-itinerary-wide text-pale leading-5 font-semibold uppercase">
+                <p className="font-inter text-xs-md tracking-itinerary-wide text-pale leading-5 font-semibold uppercase">
                     {trekBooking.priceLabel}
                 </p>
                 <p className="flex w-full flex-wrap items-baseline gap-x-3">
-                    <span className="font-manrope text-xl-2xl tracking-price text-ink leading-10 font-extrabold">
+                    <span className="font-inter text-xl-2xl md:text-3xl-4xl tracking-price text-ink leading-10 font-extrabold">
                         {trekBooking.price}
                     </span>
-                    <s className="font-manrope text-md-lg text-strike leading-8 font-medium">
+                    <s className="font-inter text-md-lg text-strike leading-8 font-medium">
                         {trekBooking.wasPrice}
                     </s>
                 </p>
@@ -68,7 +68,7 @@ export default function BookingCard() {
                 <Stars />
                 <Link
                     href={siteRoutes.reviews}
-                    className="font-manrope text-base-md leading-itinerary-25 text-ink font-semibold underline-offset-4 hover:underline"
+                    className="font-inter text-base-md leading-itinerary-25 text-ink font-semibold underline-offset-4 hover:underline"
                 >
                     {trekBooking.reviewCount}
                 </Link>
@@ -86,7 +86,7 @@ export default function BookingCard() {
                                 aria-hidden
                                 className="text-slate-text size-4.75 shrink-0"
                             />
-                            <span className="font-manrope text-base-md leading-itinerary-25 text-slate-text font-medium">
+                            <span className="font-inter text-base-md leading-itinerary-25 text-slate-text font-medium">
                                 {perk}
                             </span>
                         </li>
@@ -98,14 +98,14 @@ export default function BookingCard() {
                 <button
                     type="button"
                     onClick={() => setAvailabilityOpen(true)}
-                    className="font-manrope rounded-itinerary-cta bg-cta text-md-lg leading-itinerary-27 flex h-14.75 w-full cursor-pointer items-center justify-center font-medium text-white transition-opacity hover:opacity-90"
+                    className="font-inter rounded-itinerary-cta bg-cta text-md-lg leading-itinerary-27 flex h-14.75 w-full cursor-pointer items-center justify-center font-medium text-white transition-opacity hover:opacity-90"
                 >
                     {trekBooking.checkAvailability}
                 </button>
                 <button
                     type="button"
                     onClick={() => setReviewOpen(true)}
-                    className="font-manrope border-cta-accent text-md-lg text-cta-accent flex h-14 w-full cursor-pointer items-center justify-center rounded-xl border bg-white leading-6 font-semibold transition-opacity hover:opacity-80"
+                    className="font-inter border-cta-accent text-md-lg text-cta-accent flex h-14 w-full cursor-pointer items-center justify-center rounded-xl border bg-white leading-6 font-semibold transition-opacity hover:opacity-80"
                 >
                     {trekBooking.giveReview}
                 </button>
@@ -119,7 +119,7 @@ export default function BookingCard() {
                         aria-hidden
                         className="text-wa size-6 shrink-0"
                     />
-                    <span className="font-manrope text-xs-md leading-itinerary-19 text-ink font-normal">
+                    <span className="font-inter text-xs-md leading-itinerary-19 text-ink font-normal">
                         {trekBooking.whatsapp}
                     </span>
                 </a>

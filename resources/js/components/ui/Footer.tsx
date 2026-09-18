@@ -132,11 +132,11 @@ const Footer: React.FC = () => {
                                     <h3
                                         className={cn(
                                             fontPrimary,
-                                            'text-base-md font-bold text-white',
-                                        )}
-                                    >
-                                        {col.title}
-                                    </h3>
+                                        'text-md-lg font-bold text-white',
+                                    )}
+                                >
+                                    {col.title}
+                                </h3>
                                 </div>
                                 <ul className="flex flex-col gap-2">
                                     {col.links.map((link) => (
@@ -145,7 +145,7 @@ const Footer: React.FC = () => {
                                                 href={placeholderHref}
                                                 className={cn(
                                                     fontPrimary,
-                                                    'text-base-md leading-footer-link font-medium text-white/80 transition-colors outline-none hover:text-white focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-white',
+                                                    'text-md-lg leading-footer-link font-medium text-white transition-colors outline-none hover:text-white focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-white',
                                                 )}
                                             >
                                                 {link}
@@ -164,7 +164,7 @@ const Footer: React.FC = () => {
                     <p
                         className={cn(
                             fontPrimary,
-                            'text-md-lg md:text-base-md order-2 text-center font-medium text-white/60 md:order-0',
+                            'text-md-lg order-2 text-center font-medium text-white/60 md:order-0',
                         )}
                     >
                         {siteLegal.copyright}

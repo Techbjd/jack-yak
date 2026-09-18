@@ -45,7 +45,7 @@ const GuideTopDestinations = () => {
                         eyebrow={guideTopHeader.eyebrow}
                         title={guideTopHeader.title}
                         eyebrowClassName="md:text-md-lg"
-                        titleClassName="leading-tight md:text-3xl-4xl md:leading-snug"
+                        titleClassName="leading-tight md:text-3xl-4xl md:leading-snug md:text-ink"
                     />
                     <ViewAllLink href={viewAllPageHref}>
                         {guideTopHeader.link}

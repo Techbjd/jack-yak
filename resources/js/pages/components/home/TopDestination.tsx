@@ -26,7 +26,7 @@ const TopDestinations = () => {
                     className={cn(
                         fontPrimary,
                         'text-text-primary text-center font-bold',
-                        'text-3xl-4xl leading-tight',
+                        'text-xl-2xl leading-tight md:text-3xl-4xl',
                         'max-w-dest-title',
                     )}
                 >

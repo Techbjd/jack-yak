@@ -22,6 +22,9 @@ export default defineConfig({
                 bunny('Manrope', {
                     weights: [300, 400, 500, 600, 700, 800],
                 }),
+                bunny('Inter', {
+                    weights: [400, 500, 600, 700, 800],
+                }),
                 bunny('Poppins', {
                     weights: [400],
                 }),

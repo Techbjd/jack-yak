@@ -8,7 +8,7 @@ export default function MapQuote() {
             <p
                 className={cn(
                     fontPrimary,
-                    'text-text-primary lg:text-2xl-3xl leading-quote w-full max-w-[1011px] text-center text-xl font-medium sm:text-2xl md:text-3xl md:leading-11',
+                    'text-text-primary lg:text-2xl-3xl leading-quote w-full max-w-[1011px] text-center text-sm-base font-medium sm:text-2xl md:text-3xl md:leading-11',
                 )}
             >
                 {mapQuote}

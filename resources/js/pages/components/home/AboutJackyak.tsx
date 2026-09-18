@@ -44,7 +44,7 @@ const AboutJackyak = () => {
                         title={aboutJackyakInfoBlocks[0].title}
                         body={aboutJackyakInfoBlocks[0].body}
                         align="center"
-                        titleClassName="text-lg-xl md:text-3xl-4xl"
+                        titleClassName="text-xl-2xl md:text-3xl-4xl"
                     />
 
                     <div className="-mx-6 flex flex-col items-center gap-8 self-stretch bg-white px-6 py-8">
@@ -63,7 +63,7 @@ const AboutJackyak = () => {
                             title={aboutJackyakInfoBlocks[1].title}
                             body={aboutJackyakInfoBlocks[1].body}
                             align="center"
-                            titleClassName="text-lg-xl md:text-3xl-4xl"
+                            titleClassName="text-xl-2xl md:text-3xl-4xl"
                         />
                     </div>
                 </div>

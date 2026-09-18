@@ -58,7 +58,7 @@ export const cardRounded = 'rounded-dest-card';
 export const panelRounded = 'rounded-immersive';
 
 export const viewAllLink =
-    'font-manrope flex items-center gap-1 text-2xs font-bold tracking-wide text-cta-accent md:text-md-lg md:text-ink';
+    'font-manrope flex items-center gap-1 text-xs-sm font-bold tracking-wide text-cta-accent md:text-md-lg md:text-ink';
 
 export const destCard =
     'mx-auto flex w-full max-w-dest-card flex-col items-center';
@@ -153,7 +153,7 @@ export const aboutSectionTitle =
     'font-manrope text-md-lg leading-snug font-bold text-ink md:text-section-xl md:leading-section-xl';
 
 export const aboutHeading =
-    'font-manrope text-md-lg leading-snug font-bold text-ink md:text-3xl-4xl';
+    'font-manrope text-md-lg leading-snug font-bold text-ink md:text-section-xl';
 
 export const aboutSubhead =
     'font-manrope text-base-md leading-snug font-bold text-ink md:text-2xl-3xl';
@@ -231,16 +231,16 @@ export const itinRailTeal =
     'w-1 shrink-0 self-stretch rounded-full bg-cta md:w-1.5';
 
 export const itinH2 =
-    'font-manrope text-md-lg leading-9 font-bold tracking-itinerary-tight text-ink md:text-2xl-3xl';
+    'font-inter text-md-lg leading-9 font-bold tracking-itinerary-tight text-ink md:text-[30.4px]';
 
 export const itinAltTitle =
-    'font-manrope text-base leading-9 font-bold tracking-itinerary-tight text-ink md:text-2xl-3xl';
+    'font-inter text-base leading-9 font-bold tracking-itinerary-tight text-ink md:text-[30.4px]';
 
 export const itinTitleBar =
     'bg-cta ml-3.5 hidden h-1 w-12 rounded-full md:ml-4 md:block';
 
 export const itinBody =
-    'font-manrope text-xs-md leading-5 font-normal text-abyss md:text-md-lg md:leading-itinerary-26';
+    'font-inter text-xs-md leading-5 font-normal text-abyss md:text-md-lg md:leading-itinerary-26';
 
 export const itinCard =
     'rounded-2xl border border-line-soft bg-white shadow-card';
@@ -255,16 +255,16 @@ export const itinDayText =
     'flex min-w-0 flex-1 flex-col justify-center gap-2.5 md:gap-5';
 
 export const itinDayLabel =
-    'font-manrope text-[15px] leading-[20px] font-bold text-cta-accent min-[360px]:text-md-lg min-[360px]:leading-itinerary-22 md:text-cta';
+    'font-inter text-[15px] leading-[20px] font-bold text-cta-accent min-[360px]:text-md-lg min-[360px]:leading-itinerary-22 md:text-cta';
 
 export const itinDayPlace =
-    'font-manrope line-clamp-2 text-[15px] leading-[20px] font-bold tracking-card break-words text-ink min-[360px]:text-md-lg min-[360px]:leading-itinerary-22 md:text-xl-2xl md:leading-itinerary-33';
+    'font-inter line-clamp-2 text-[15px] leading-[20px] font-bold tracking-card break-words text-ink min-[360px]:text-md-lg min-[360px]:leading-itinerary-22 md:text-xl-2xl md:leading-itinerary-33';
 
 export const itinDaySub =
-    'font-manrope line-clamp-2 text-[11px] leading-4 font-bold break-words text-ink min-[360px]:text-xs-md md:text-md-lg md:leading-itinerary-22';
+    'font-inter line-clamp-2 text-[11px] leading-4 font-bold break-words text-ink min-[360px]:text-xs-md md:text-md-lg md:leading-itinerary-22';
 
 export const itinUnitPillBase =
-    'font-manrope text-xs-md text-slate-text md:text-slate-mute flex items-center justify-center rounded-full border uppercase md:h-8';
+    'font-inter text-xs-md text-slate-text md:text-slate-mute flex items-center justify-center rounded-full border uppercase md:h-8';
 
 export const itinUnitPillActive = 'border-sky-line bg-sky-tint font-bold';
 

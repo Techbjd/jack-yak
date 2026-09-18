@@ -42,7 +42,7 @@ const DiscoverNepal = () => {
                     <h2
                         className={cn(
                             headingSubsection,
-                            'max-md:text-lg-xl order-1 text-center max-md:leading-normal md:order-1 md:text-left',
+                            'max-md:text-xl-2xl order-1 text-center max-md:leading-normal md:order-1 md:text-left',
                         )}
                     >
                         {discoverNepalCopy.heading}

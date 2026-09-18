@@ -13,7 +13,7 @@ const TravelStories = () => {
                             <p
                                 className={cn(
                                     fontPrimary,
-                                    'text-xs-sm text-ink md:text-md-lg font-bold tracking-wide uppercase',
+                                    'text-2xs text-ink md:text-md-lg font-bold tracking-wide uppercase',
                                 )}
                             >
                                 {travelStoriesCopy.eyebrow}
@@ -21,7 +21,7 @@ const TravelStories = () => {
                             <h2
                                 className={cn(
                                     fontPrimary,
-                                    'text-base-md text-text-primary md:text-3xl-4xl leading-story-title tracking-card font-bold md:leading-tight md:tracking-wide',
+                                    'text-xs-md text-text-primary md:text-3xl-4xl leading-story-title tracking-card font-bold md:leading-tight md:tracking-wide',
                                 )}
                             >
                                 {travelStoriesCopy.title}
@@ -34,7 +34,7 @@ const TravelStories = () => {
                                     aria-hidden="true"
                                     className={cn(
                                         fontQuoteMark,
-                                        'text-quote-blush text-4xl leading-8.75 font-bold md:hidden',
+                                        'text-quote-blush text-[30px] leading-8.75 font-bold md:hidden',
                                     )}
                                 >
                                     &ldquo;
@@ -52,7 +52,7 @@ const TravelStories = () => {
                                 <blockquote
                                     className={cn(
                                         fontQuote,
-                                        'w-full text-xs-sm text-ink leading-relaxe font-normal md:text-xl-2xl md:leading-relaxed',
+                                        'w-full text-2xs text-ink leading-relaxe font-normal md:text-xl-2xl md:leading-relaxed',
                                     )}
                                 >
 
@@ -78,7 +78,7 @@ const TravelStories = () => {
                                                 <span
                                                     className={cn(
                                                         fontPrimary,
-                                                        'text-xs-sm text-ink md:text-md-lg font-medium md:font-bold',
+                                                        'text-2xs text-ink md:text-md-lg font-medium md:font-bold',
                                                     )}
                                                 >
                                                     {travelStoriesCopy.name}
@@ -87,7 +87,7 @@ const TravelStories = () => {
                                                 <span
                                                     className={cn(
                                                         fontPrimary,
-                                                        'text-ink md:text-md-lg text-2xs font-medium md:font-bold',
+                                                        'text-ink md:text-md-lg text-[6px] font-medium md:font-bold',
                                                     )}
                                                 >
                                                     {travelStoriesCopy.country}

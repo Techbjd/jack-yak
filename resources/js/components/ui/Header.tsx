@@ -66,7 +66,7 @@ const Header = ({ tone = 'onDark' }: HeaderProps) => {
                     <ul
                         className={cn(
                             fontPrimary,
-                            'flex items-center gap-8 text-lg leading-tight font-semibold lg:gap-12 lg:text-2xl',
+                            'flex items-center gap-8 text-2xl leading-tight font-semibold lg:gap-12 lg:text-2xl',
                             ink,
                         )}
                     >

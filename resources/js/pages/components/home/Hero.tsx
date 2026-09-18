@@ -49,9 +49,9 @@ export default function Hero() {
                     <h1
                         className={cn(
                             fontPrimary,
-                            'md:text-3xl-4xl lg:text-hero text-4xl font-extrabold sm:text-6xl',
+                            'md:text-3xl-4xl lg:text-hero text-xl-2xl font-extrabold sm:text-6xl',
                             'lg:leading-hero leading-tight',
-                            'text-cta-accent tracking-tight sm:text-white',
+                            'text-cta tracking-tight sm:text-white',
                         )}
                     >
                         {homeHero.title}
@@ -82,13 +82,13 @@ export default function Hero() {
                             'bg-cta-accent sm:bg-cta',
                             'mx-auto flex shrink-0 items-center  gap-3 sm:mx-0',
                             fontPrimary,
-                            'sm:text-md-lg text-sm leading-normal text-white',
+                            'sm:text-md-lg text-xs-sm leading-normal text-white',
                             'shadow-md transition-opacity hover:opacity-95',
                         )}
                         icon={
                             <span className={ctaIconCircle}>
                                 <Plus
-                                    className="text-icon-accent h-4 w-4 "
+                                    className="text-cta h-4 w-4 "
                                     strokeWidth={3}
                                 />
                             </span>

@@ -15,7 +15,7 @@ export default function ItineraryDayList() {
         >
             <h2
                 id="itinerary-heading"
-                className="font-manrope text-xl-2xl leading-itinerary-33 text-ink md:text-2xl-3xl font-bold"
+                className="font-inter text-xl-2xl leading-itinerary-33 text-ink md:text-2xl-3xl font-bold"
             >
                 {itinerarySectionTitle}
             </h2>

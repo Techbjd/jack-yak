@@ -55,7 +55,7 @@ export default function ItineraryDayCard({ day }: ItineraryDayCardProps) {
                         Fallback={Hotel}
                         className="text-ink size-6.75 shrink-0"
                     />
-                    <span className="font-manrope text-md-lg leading-itinerary-22 text-ink font-bold">
+                    <span className="font-inter text-md-lg leading-itinerary-22 text-ink font-bold">
                         {day.stay}
                     </span>
                 </p>
@@ -66,7 +66,7 @@ export default function ItineraryDayCard({ day }: ItineraryDayCardProps) {
                         Fallback={UtensilsCrossed}
                         className="text-ink size-6.75 shrink-0"
                     />
-                    <span className="font-manrope text-md-lg leading-itinerary-22 text-ink font-bold">
+                    <span className="font-inter text-md-lg leading-itinerary-22 text-ink font-bold">
                         {day.meals}
                     </span>
                 </p>

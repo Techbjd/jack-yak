@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils';
 import { galleryFilters } from '@/config/itinerary';
 
 const pillText =
-    'font-manrope text-xs-sm leading-itinerary-23 font-semibold md:text-md-lg';
+    'font-inter text-xs-sm leading-itinerary-23 font-semibold md:text-md-lg';
 
 interface FilterPillProps {
     active?: boolean;

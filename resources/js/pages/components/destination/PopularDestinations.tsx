@@ -17,7 +17,7 @@ export default function PopularDestinations() {
                 <SectionHeading
                     title={popularHeader.eyebrow}
                     className="contents"
-                    titleClassName="md:text-lg-xl"
+                    titleClassName="text-black md:text-lg-xl md:text-text-primary"
                 />
                 <ViewAllLink
                     href={viewAllPageHref}

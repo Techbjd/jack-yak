@@ -67,7 +67,7 @@ const MAP_LABELS: MapLabel[] = [
     },
 ];
 
-const LABEL_FONT_SIZE = 15;
+const LABEL_FONT_SIZE = 16;
 
 const LEADER_GRAY = '#929CAA';
 const LEADER_NAVY = '#253A55';
@@ -183,7 +183,7 @@ const NepalMap = () => {
                     <p
                         className={cn(
                             fontPrimary,
-                            'text-teal pr-[5%] text-right text-xl font-bold sm:text-2xl md:text-4xl',
+                            'text-text-primary md:text-teal pr-[5%] text-right text-base-md font-bold sm:text-2xl md:text-4xl',
                         )}
                     >
                         CHINA
@@ -323,7 +323,11 @@ const NepalMap = () => {
                                             tabIndex={0}
                                             aria-label={`View destinations in ${province.name}`}
                                             className="cursor-pointer outline-none"
-                                            fill={province.color}
+                                            fill={
+                                                isActive(label.slug)
+                                                    ? '#2D8A8A'
+                                                    : '#253A55'
+                                            }
                                             onMouseEnter={() =>
                                                 setHovered(label.slug)
                                             }
@@ -403,7 +407,7 @@ const NepalMap = () => {
                     <p
                         className={cn(
                             fontPrimary,
-                            'text-teal pl-[10%] text-left text-xl font-bold sm:text-2xl md:text-4xl',
+                            'text-text-primary md:text-teal pl-[10%] text-left text-base-md font-bold sm:text-2xl md:text-4xl',
                         )}
                     >
                         INDIA

@@ -37,7 +37,7 @@ export default function TrekAbout() {
                 type="button"
                 aria-expanded={expanded}
                 onClick={() => setExpanded((v) => !v)}
-                className="font-manrope text-xs-md text-cta cursor-pointer self-start leading-8 font-bold md:hidden"
+                className="font-inter text-xs-md text-cta cursor-pointer self-start leading-8 font-bold md:hidden"
             >
                 {expanded ? trekAbout.readLess : trekAbout.readMore}
             </button>

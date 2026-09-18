@@ -27,14 +27,14 @@ function ReviewArticle({ review }: { review: TrekReview }) {
                 />
                 <div className="flex min-w-0 flex-1 flex-col">
                     <p className="flex flex-wrap items-baseline gap-x-2">
-                        <span className="font-manrope text-xs-md md:text-lg-xl text-review-ink truncate leading-8 font-semibold md:font-bold">
+                        <span className="font-inter text-xs-md md:text-lg-xl text-review-ink truncate leading-8 font-semibold md:font-bold">
                             {review.name}
                         </span>
-                        <span className="font-manrope text-xs-sm md:text-md-lg leading-itinerary-26 text-pale font-normal">
+                        <span className="font-inter text-xs-sm md:text-md-lg leading-itinerary-26 text-pale font-normal">
                             {review.country}
                         </span>
                     </p>
-                    <p className="font-manrope text-xs-sm md:text-md-lg leading-itinerary-26 text-pale font-normal">
+                    <p className="font-inter text-xs-sm md:text-md-lg leading-itinerary-26 text-pale font-normal">
                         {review.date}
                     </p>
                 </div>
@@ -47,11 +47,11 @@ function ReviewArticle({ review }: { review: TrekReview }) {
                         gapClassName="gap-0.5 md:gap-1"
                     />
                 </span>
-                <h3 className="font-manrope text-xs-md md:text-lg-xl leading-itinerary-28 tracking-review text-review-ink font-semibold md:font-bold">
+                <h3 className="font-inter text-xs-md md:text-lg-xl leading-itinerary-28 tracking-review text-review-ink font-semibold md:font-bold">
                     {review.title}
                 </h3>
             </div>
-            <p className="font-manrope text-xs-sm md:text-sm-md leading-itinerary-23 text-pale font-normal md:mt-1">
+            <p className="font-inter text-xs-sm md:text-sm-md leading-itinerary-23 text-pale font-normal md:mt-1">
                 {review.metaPrefix}
                 <a
                     href={siteRoutes.booking}
@@ -60,12 +60,12 @@ function ReviewArticle({ review }: { review: TrekReview }) {
                     {review.metaLink}
                 </a>
             </p>
-            <p className="font-manrope text-xs-sm md:text-about-highlight text-review-body md:leading-about-32 leading-4 font-normal md:mt-4">
+            <p className="font-inter text-xs-sm md:text-about-highlight text-review-body md:leading-about-32 leading-4 font-normal md:mt-4">
                 {review.body}
             </p>
             <button
                 type="button"
-                className="font-manrope text-xs-sm md:text-md-lg leading-itinerary-22 md:text-review-ink text-ink cursor-pointer self-start font-semibold underline underline-offset-2 md:mt-2"
+                className="font-inter text-xs-sm md:text-md-lg leading-itinerary-22 md:text-review-ink text-ink cursor-pointer self-start font-semibold underline underline-offset-2 md:mt-2"
             >
                 {review.seeMore}
             </button>

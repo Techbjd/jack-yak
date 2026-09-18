@@ -21,7 +21,7 @@ function AboutHeroLayers() {
                     y={TITLE.y}
                     fontSize={TITLE.fontSize}
                     title="ABOUT US"
-                    colorClass="text-white"
+                    colorClass="text-ink lg:text-white"
                     shadowClass="[text-shadow:0_4px_4px_rgb(0_0_0/0.25)]"
                 />
             </div>

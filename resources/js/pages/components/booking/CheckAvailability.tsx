@@ -112,7 +112,7 @@ export default function CheckAvailability({
                     onSubmit={handleSubmit}
                     className="flex flex-col"
                 >
-                    <h2 className={modalTitle}>{availabilityCopy.title}</h2>
+                    <h2 className={cn(modalTitle, 'font-inter')}>{availabilityCopy.title}</h2>
                     <p className={cn(modalSubtitle, 'pt-2')}>
                         {availabilityCopy.intro}
                     </p>

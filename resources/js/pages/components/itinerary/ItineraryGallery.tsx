@@ -13,7 +13,7 @@ function TravellerBadge() {
             className={cn(frostedPill, 'absolute top-2.5 left-2.5 px-2.5 py-1')}
         >
             <Users aria-hidden className="text-review-ink size-3 shrink-0" />
-            <span className="font-manrope text-xs-sm text-review-ink leading-none font-bold">
+            <span className="font-inter text-xs-sm text-review-ink leading-none font-bold">
                 {galleryTiles.travellerPhoto}
             </span>
         </span>
@@ -65,7 +65,7 @@ export default function ItineraryGallery() {
                                 aria-hidden
                                 className="text-review-ink size-4 shrink-0"
                             />
-                            <span className="font-manrope text-sm-base text-review-ink leading-none font-semibold">
+                            <span className="font-inter text-sm-base text-review-ink leading-none font-semibold">
                                 {galleryTiles.viewAllPhotos}
                             </span>
                         </span>
@@ -94,10 +94,10 @@ export default function ItineraryGallery() {
                         className="absolute inset-0 h-full w-full object-cover"
                     />
                     <span className="bg-gallery-shade absolute inset-0 flex flex-col items-center justify-center gap-1">
-                        <span className="font-manrope text-xl-2xl leading-6 font-extrabold text-white">
+                        <span className="font-inter text-xl-2xl leading-6 font-extrabold text-white">
                             {galleryTiles.morePhotosCount}
                         </span>
-                        <span className="font-manrope text-sm-base leading-none font-semibold text-white/95">
+                        <span className="font-inter text-sm-base leading-none font-semibold text-white/95">
                             {galleryTiles.morePhotosLabel}
                         </span>
                     </span>
@@ -121,7 +121,7 @@ export default function ItineraryGallery() {
                         </span>
                     </span>
                     <span className="from-gallery-shade absolute inset-x-0 bottom-0 flex justify-center bg-gradient-to-t to-transparent px-2 pt-8 pb-3">
-                        <span className="font-manrope text-sm-base leading-none font-bold text-white">
+                        <span className="font-inter text-sm-base leading-none font-bold text-white">
                             {galleryTiles.watchVideos}
                         </span>
                     </span>
