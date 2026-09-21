@@ -75,7 +75,7 @@ export default function PopularDestinations() {
                             key={`${dest.image}-${i}`}
                             className="flex flex-col gap-3"
                         >
-                            <div className="aspect-[260/374] relative w-full">
+                            <div className="aspect-260/374 relative w-full">
                                 <a
                                     href={dest.href}
                                     aria-label={`Explore ${dest.name}`}

@@ -7,7 +7,7 @@ export default function ResponsiveHeader() {
                 <Header tone="onLight" />
             </div>
             <div className="hidden w-full md:block">
-                <Header tone="onDark" />
+                <Header tone="onDark" className='max-w-full' />
             </div>
         </>
     );

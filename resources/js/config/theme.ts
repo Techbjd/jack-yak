@@ -12,7 +12,7 @@ export const destCardTitle =
     'font-manrope text-xs-sm leading-tight font-bold text-ink';
 
 export const pageShell =
-    'mx-auto flex w-full max-w-container flex-col items-center';
+    'mx-auto flex w-full max-w-full flex-col items-center';
 
 export const sectionPadding = 'py-5  md:py-0';
 

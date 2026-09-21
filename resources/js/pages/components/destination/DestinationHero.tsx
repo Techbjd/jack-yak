@@ -22,9 +22,9 @@ export default function DestinationHero() {
 
     return (
         <div className="flex w-full flex-col bg-white">
-            <Header tone="onLight" />
+            <Header tone="onLight" className='max-w-full' />
 
-            <div className="flex flex-col items-center px-0 pt-2 text-center md:px-12 lg:px-12">
+            <div className="flex flex-col items-center px-0 pt-2 text-center ">
                 <div className="relative mt-4 w-full bg-white">
                     <div className="md:rounded-dest-card relative flex aspect-video w-full items-center justify-center overflow-hidden bg-white lg:aspect-1464/958">
                         <img

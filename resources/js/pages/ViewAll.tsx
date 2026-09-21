@@ -2,6 +2,8 @@ import { useState } from 'react';
 import AppLayout from '@/layouts/AppLayout';
 import { viewAllDestinations, viewAllPageSize } from '@/config/destination';
 import { pageTitles } from '@/config/site';
+import { sectionInner } from '@/config/theme';
+import { cn } from '@/lib/utils';
 import Header from '@/components/ui/Header';
 import ViewAllHeader from './components/view-all/ViewAllHeader';
 import DestinationGrid from './components/view-all/DestinationGrid';
@@ -31,18 +33,19 @@ export default function ViewAll() {
             header={<Header tone="onLight" />}
             shellClassName="bg-canvas"
         >
-            <div className="w-full px-5 pt-6">
+            <div className={cn(sectionInner, 'pt-6')}>
                 <ViewAllHeader />
-            </div>
-            <div id="view-all-grid" className="w-full scroll-mt-6 px-5 pt-6">
-                <DestinationGrid destinations={visibleDestinations} />
-            </div>
-            <div className="w-full px-5 pt-10 pb-12">
-                <Pagination
-                    page={page}
-                    totalPages={totalPages}
-                    onPageChange={handlePageChange}
-                />
+
+                <div id="view-all-grid" className="scroll-mt-6 pt-6">
+                    <DestinationGrid destinations={visibleDestinations} />
+                </div>
+                <div className="pt-10 pb-12">
+                    <Pagination
+                        page={page}
+                        totalPages={totalPages}
+                        onPageChange={handlePageChange}
+                    />
+                </div>
             </div>
         </AppLayout>
     );

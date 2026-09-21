@@ -30,6 +30,7 @@ export const siteRoutes = {
     /** In-page anchors on the itinerary page. */
     booking: '#booking',
     reviews: '#reviews',
+    google:'/auth/google'
 } as const;
 
 /**

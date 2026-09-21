@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Auth\HandleGoogleCallback;
 use App\Http\Controllers\Auth\Login;
 use App\Http\Controllers\Auth\Logout;
+use App\Http\Controllers\Auth\RedirectToGoogle;
 use App\Http\Controllers\Auth\Register;
 use App\Http\Controllers\AvailabilityController;
 use App\Http\Controllers\QuizSubmissionController;
@@ -35,3 +37,6 @@ Route::middleware('auth')->group(function (): void {
 Route::post('/availability', AvailabilityController::class)->name('availability.store');
 Route::post('/reviews', ReviewController::class)->name('reviews.store');
 Route::post('/quiz', QuizSubmissionController::class)->name('quiz.store');
+
+Route::get('/auth/google', RedirectToGoogle::class)->name('google.redirect');
+Route::get('/auth/google/callback', HandleGoogleCallback::class)->name('google.callback');

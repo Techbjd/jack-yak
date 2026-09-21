@@ -39,11 +39,11 @@ export default function Hero() {
 
             {/* Header */}
             <div className="relative z-30 w-full">
-                <Header />
+                <Header className='max-w-full' />
             </div>
 
             {/* Hero Content */}
-            <div className="max-w-container relative z-20 mx-auto flex w-full flex-1 flex-col justify-center px-6 pt-12 pb-48 sm:pb-72 md:px-12 lg:px-24 lg:pt-20 lg:pb-96">
+            <div className="max-w-full relative z-20 mx-auto flex w-full flex-1 flex-col justify-center px-6 pt-12 pb-48 sm:pb-72 md:px-12 lg:px-24 lg:pt-20 lg:pb-96">
                 <div className="grid max-w-4xl grid-cols-1 items-center gap-4 text-center sm:items-start sm:gap-6 sm:text-left md:gap-8">
                     {/* Heading */}
                     <h1

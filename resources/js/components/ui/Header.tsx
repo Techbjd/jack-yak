@@ -10,12 +10,13 @@ import type { PageProps } from '@/types';
 
 interface HeaderProps {
     tone?: 'onDark' | 'onLight';
+    className?: string;
 }
 
 const headerIconLinkBase =
     'p-1 transition-opacity hover:opacity-80 focus-visible:ring-2 focus-visible:outline-none';
 
-const Header = ({ tone = 'onDark' }: HeaderProps) => {
+const Header = ({ tone = 'onDark', className }: HeaderProps) => {
     const { auth } = usePage<PageProps>().props;
     const user = auth?.user ?? null;
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -43,7 +44,12 @@ const Header = ({ tone = 'onDark' }: HeaderProps) => {
 
     return (
         <>
-            <header className="max-w-container relative z-50 mx-auto flex w-full items-center justify-between bg-transparent px-6 pt-6 md:px-12 md:pt-10 lg:px-24">
+            <header
+                className={cn(
+                    'relative z-50 mx-auto flex w-full max-w-container items-center justify-between bg-transparent px-6 pt-6 md:px-12 md:pt-10 lg:px-24',
+                    className,
+                )}
+            >
                 <Link
                     href={siteRoutes.home}
                     aria-label={siteBrand.homeLabel}
@@ -112,7 +118,7 @@ const Header = ({ tone = 'onDark' }: HeaderProps) => {
                         }
                         className={cn(headerIconLinkBase, 'relative', ring)}
                     >
-                        <UserIcon className="drop-shadow-card h-5 w-5 lg:h-6 lg:w-6" />
+                        <UserIcon className="h-5 w-5 lg:h-6 lg:w-6" />
                         {user && (
                             <span
                                 aria-hidden

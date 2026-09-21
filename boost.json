@@ -1,5 +1,8 @@
 {
-    "agents": ["antigravity", "opencode"],
+    "agents": [
+        "antigravity",
+        "opencode"
+    ],
     "cloud": false,
     "guidelines": true,
     "mcp": true,
@@ -9,6 +12,7 @@
         "infer-conventions",
         "laravel-best-practices",
         "testing-best-practices",
+        "socialite-development",
         "wayfinder-development",
         "inertia-react-development",
         "tailwindcss-development"

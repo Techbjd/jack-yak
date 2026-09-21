@@ -36,7 +36,7 @@ export default function LoginForm() {
     const emailError = errors.email ?? clientEmailError;
     const passwordError = errors.password;
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
         e.preventDefault();
         const nextEmailError = checkEmail(data.email);
         if (nextEmailError) {
@@ -147,14 +147,14 @@ export default function LoginForm() {
                     <span className={authDividerLine} />
                 </div>
 
-                <Link
-                    href={siteRoutes.quiz}
+                <a
+                    href={siteRoutes.google}
                     className={cn(authSocialButton, 'mt-4')}
                     aria-label={loginCopy.guestAria}
                 >
                     <GoogleIcon />
                     {loginCopy.guestCta}
-                </Link>
+                </a>
 
                 <p className={cn(authLabel, 'pt-5 text-center')}>
                     {loginCopy.noAccount}{' '}
