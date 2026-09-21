@@ -11,7 +11,7 @@ class Logout extends Controller
 {
     public function __invoke(Request $request): RedirectResponse
     {
-        Auth::guard('web')->logout();
+        Auth::guard('user')->logout();
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();

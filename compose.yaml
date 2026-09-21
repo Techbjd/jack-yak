@@ -1,0 +1,21 @@
+services:
+  pgsql:
+    image: postgres:17
+    container_name: jackyak-pgsql
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: ${DB_DATABASE:-jackyak}
+      POSTGRES_USER: ${DB_USERNAME:-jackyak}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-secret}
+    volumes:
+      - jackyak-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${DB_USERNAME:-jackyak} -d $${DB_DATABASE:-jackyak}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  jackyak-pgdata:

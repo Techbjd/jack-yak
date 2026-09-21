@@ -14,7 +14,7 @@ export default function Home() {
     return (
         <AppLayout title={pageTitles.home}>
             <Hero  />
-            <div className="relative z-20 flex w-full flex-col items-center gap-16 py-16 md:gap-20 md:py-70">
+            <div className="relative z-20 flex w-full flex-col items-center gap-16 py-16 md:gap-20 md:py-90">
                 <NepalMap />
                 <MapQuote />
             </div>

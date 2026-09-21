@@ -20,7 +20,7 @@ export const loginCopy = {
     submit: 'Sign In',
     submitting: 'Signing in…',
     divider: 'Or',
-    guestCta: 'Continue to explore destinations',
+    guestCta: 'Continue with Google',
     guestAria: 'Continue as guest to find your destination',
     noAccount: 'Don’t you have an account?',
     signUp: 'Sign up',

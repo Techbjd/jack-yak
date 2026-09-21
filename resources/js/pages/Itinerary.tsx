@@ -12,18 +12,20 @@ import WeatherCard from './components/itinerary/WeatherCard';
 import ReviewCard from './components/itinerary/ReviewCard';
 import { altitudeTitle } from '@/config/itinerary';
 import { pageTitles } from '@/config/site';
+import { cn } from '@/lib/utils';
 
 export default function Itinerary() {
     return (
         <AppLayout
             title={pageTitles.itinerary}
-            header={<Header tone="onLight" />}
+            header={<Header tone="onLight" className='max-w-full' />}
         >
-            <div className={itinPage}>
+            <div className={cn(itinPage,"md:max-w-full")}>
                 <div className="mt-4 w-full md:mt-8">
                     <ItineraryGallery />
                 </div>
-                <div className="mt-2.5 w-full md:mt-5">
+                <div className={itinPage}>
+                <div className={"mt-2.5 w-full md:mt-5 "}>
                     <GalleryFilterPills />
                 </div>
                 <div className="mt-4.5 grid w-full grid-cols-1 gap-6 md:mt-10 xl:grid-cols-[minmax(0,1fr)_360px] xl:items-start xl:gap-10">
@@ -52,6 +54,7 @@ export default function Itinerary() {
                 <div className="mt-6 w-full md:mt-10">
                     <ReviewCard />
                 </div>
+            </div>
             </div>
         </AppLayout>
     );
