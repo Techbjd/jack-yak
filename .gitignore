@@ -11,6 +11,7 @@
 /storage/*.key
 /storage/pail
 /vendor
+boost.json
 .env
 .env.backup
 .env.production
@@ -37,3 +38,21 @@ skill.md
 **/skills/**/*.md
 **/skill/*.md
 **/skill/**/*.md
+compose.yaml
+compose.yml
+docker-compose.yaml
+docker-compose.yml
+compose.override.yaml
+compose.override.yml
+# Local test suite (per repo owner — not pushed to GitHub)
+/tests
+# Local agent / AI tooling state
+/.agents/
+/.opencode/
+/.cursor/
+# OS / coverage junk
+.DS_Store
+Thumbs.db
+/coverage
+coverage.xml
+.nyc_output
