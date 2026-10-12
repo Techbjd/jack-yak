@@ -1,4 +1,6 @@
-export const availabilityEndpoint = '/availability';
+import { store as availabilityStore } from '@/routes/availability';
+
+export const availabilityEndpoint = availabilityStore.url();
 
 export const availabilityMaxTravelers = 16;
 

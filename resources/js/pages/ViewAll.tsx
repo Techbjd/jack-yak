@@ -1,30 +1,68 @@
 import { useState } from 'react';
+import { router } from '@inertiajs/react';
 import AppLayout from '@/layouts/AppLayout';
 import { viewAllDestinations, viewAllPageSize } from '@/config/destination';
 import { pageTitles } from '@/config/site';
 import { sectionInner } from '@/config/theme';
+import { viewAll } from '@/routes';
 import { cn } from '@/lib/utils';
 import Header from '@/components/ui/Header';
 import ViewAllHeader from './components/view-all/ViewAllHeader';
 import DestinationGrid from './components/view-all/DestinationGrid';
 import Pagination from './components/view-all/Pagination';
 
+function readPageFromUrl(totalPages: number): number {
+    if (typeof window === 'undefined') {
+        return 1;
+    }
+    const raw = new URLSearchParams(window.location.search).get('page');
+    const parsed = raw === null ? 1 : parseInt(raw, 10);
+    if (Number.isNaN(parsed)) {
+        return 1;
+    }
+    return Math.min(totalPages, Math.max(1, parsed));
+}
+
 export default function ViewAll() {
-    const [page, setPage] = useState(1);
     const totalPages = Math.max(
         1,
         Math.ceil(viewAllDestinations.length / viewAllPageSize),
     );
+    const [page, setPage] = useState(() => readPageFromUrl(totalPages));
     const visibleDestinations = viewAllDestinations.slice(
         (page - 1) * viewAllPageSize,
         page * viewAllPageSize,
     );
 
     const handlePageChange = (next: number) => {
-        setPage(next);
+        const clamped = Math.min(totalPages, Math.max(1, next));
+        if (clamped === page) {
+            return;
+        }
+        setPage(clamped);
+        const query: Record<string, string> = {};
+        if (typeof window !== 'undefined') {
+            new URLSearchParams(window.location.search).forEach(
+                (value, key) => {
+                    if (key !== 'page') {
+                        query[key] = value;
+                    }
+                },
+            );
+        }
+        if (clamped > 1) {
+            query.page = String(clamped);
+        }
+        router.get(viewAll.url({ query }), {
+            preserveState: true,
+            preserveScroll: false,
+        });
         document
             .getElementById('view-all-grid')
             ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        document
+            .getElementById('view-all-heading')
+            ?.focus({ preventScroll: true });
     };
 
     return (

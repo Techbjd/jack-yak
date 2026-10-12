@@ -15,7 +15,9 @@ export const MAX_REVIEW_PHOTOS = 5;
 
 export const REVIEW_STAR_COUNT = 5;
 
-export const reviewsEndpoint = '/reviews';
+import { store as reviewsStore } from '@/routes/reviews';
+
+export const reviewsEndpoint = reviewsStore.url();
 
 export const giveReviewCopy = {
     dialogLabel: 'Give a review',

@@ -1,9 +1,25 @@
+import {
+    about,
+    destinations,
+    form,
+    guide,
+    home,
+    itinerary,
+    login,
+    logout,
+    register,
+    user,
+    viewAll,
+} from '@/routes';
+import { redirect as googleRedirect } from '@/routes/google';
+
 /**
  * Site-wide constants: brand, routes, contact, legal.
  *
  * RULE: never hardcode a route path, the brand name, or contact links in a
  * component. Import from here so URL/brand changes touch exactly one file.
- * `as const` keeps every value a literal type for Wayfinder/route helpers.
+ * Route values are thin wrappers over Wayfinder (`php artisan
+ * wayfinder:generate`) so paths always match `routes/web.php`.
  */
 
 export const siteBrand = {
@@ -15,22 +31,22 @@ export const siteBrand = {
 } as const;
 
 export const siteRoutes = {
-    home: '/home',
-    destinations: '/destinations',
-    itinerary: '/itinerary',
-    viewAll: '/view-all',
-    guide: '/guide',
-    about: '/about',
+    home: home.url(),
+    destinations: destinations.url(),
+    itinerary: itinerary.url(),
+    viewAll: viewAll.url(),
+    guide: guide.url(),
+    about: about.url(),
     /** Quiz / trip-finder form. */
-    quiz: '/form',
-    login: '/login',
-    register: '/register',
-    user: '/user',
-    logout: '/logout',
+    quiz: form.url(),
+    login: login.url(),
+    register: register.url(),
+    user: user.url(),
+    logout: logout.url(),
     /** In-page anchors on the itinerary page. */
     booking: '#booking',
     reviews: '#reviews',
-    google: '/auth/google',
+    google: googleRedirect.url(),
 } as const;
 
 /**

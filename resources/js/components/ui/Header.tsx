@@ -80,6 +80,7 @@ const Header = ({ tone = 'onDark', className }: HeaderProps) => {
                             <li key={item.href}>
                                 <Link
                                     href={item.href}
+                                    prefetch
                                     className="transition-opacity hover:opacity-80"
                                 >
                                     {item.label}

@@ -42,7 +42,9 @@ export const aboutPillars: AboutPillar[] = [
 export const aboutPlanTitle: string =
     'Let’s plan your next Nepal adventure together.';
 
-export const newsletterEndpoint = '/newsletter';
+import { store as newsletterStore } from '@/routes/newsletter';
+
+export const newsletterEndpoint = newsletterStore.url();
 
 export const aboutNewsletter = {
     title: 'Stay Inspired with JackYak',

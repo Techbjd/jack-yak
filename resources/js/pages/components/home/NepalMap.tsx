@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { router } from '@inertiajs/react';
 import { fontPrimary, sectionInner, sectionPadding } from '@/config/theme';
+import { viewAll } from '@/routes';
 import { IMAGES } from '@/config/images';
 import { cn } from '@/lib/utils';
 import { useColors } from '@/config/colors';
@@ -158,7 +159,7 @@ const NepalMap = () => {
         }
         // Brief delay so the navy fill is visible before navigating.
         navigateTimer.current = window.setTimeout(() => {
-            router.visit(`/view-all?province=${province.slug}`);
+            router.visit(viewAll.url({ query: { province: province.slug } }));
         }, 240);
     };
 

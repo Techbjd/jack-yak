@@ -12,9 +12,9 @@ function AboutHeroLayers() {
                 src={IMAGES.about.hero}
                 alt="Blue sky over forested Himalayan hills"
                 loading="eager"
-                className="absolute inset-0 h-full w-full object-cover hidden sm:block"
+                className="absolute inset-0 hidden h-full w-full object-cover sm:block"
             />
-            <div className="absolute inset-x-0 top-[6%] aspect-1440/814 w-full ">
+            <div className="absolute inset-x-0 top-[6%] aspect-1440/814 w-full">
                 <HeroTitleSvg
                     viewBox={VIEWBOX}
                     x={TITLE.x}
@@ -25,7 +25,7 @@ function AboutHeroLayers() {
                     shadowClass="[text-shadow:0_4px_4px_rgb(0_0_0/0.25)]"
                 />
             </div>
-            <div className="absolute inset-x-0 top-[12.9%] aspect-1444/814 w-full ">
+            <div className="absolute inset-x-0 top-[12.9%] aspect-1444/814 w-full">
                 <img
                     src={IMAGES.about.heroSecond}
                     alt="Hazy Himalayan ranges over a green valley"
