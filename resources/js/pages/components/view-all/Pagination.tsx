@@ -62,7 +62,7 @@ export default function Pagination({
             <button
                 type="button"
                 aria-label="Previous page"
-                aria-disabled={page === 1}
+                disabled={page === 1}
                 onClick={() => goTo(page - 1)}
                 className={cn(
                     'text-steel flex items-center justify-center',
@@ -98,7 +98,7 @@ export default function Pagination({
             <button
                 type="button"
                 aria-label="Next page"
-                aria-disabled={page === totalPages}
+                disabled={page === totalPages}
                 onClick={() => goTo(page + 1)}
                 className={cn(
                     'text-steel flex items-center justify-center',

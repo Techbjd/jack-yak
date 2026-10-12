@@ -145,6 +145,7 @@ const Header = ({ tone = 'onDark', mdTone, className }: HeaderProps) => {
                 </div>
 
                 <button
+                    type="button"
                     aria-label={headerCopy.openMenuLabel}
                     aria-expanded={isMobileMenuOpen}
                     className={cn(
@@ -173,6 +174,7 @@ const Header = ({ tone = 'onDark', mdTone, className }: HeaderProps) => {
                     <div className="w-sidebar absolute top-0 left-0 flex h-full flex-col bg-white shadow-lg">
                         <div className="flex items-center justify-end p-4">
                             <button
+                                type="button"
                                 aria-label={headerCopy.closeMenuLabel}
                                 className="flex h-8 w-8 items-center justify-center"
                                 onClick={() => setIsMobileMenuOpen(false)}

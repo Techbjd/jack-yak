@@ -96,6 +96,14 @@ export const headerCopy = {
     accountLabel: 'My account',
 } as const;
 
+/** Shared accessibility copy (skip link, main landmark). */
+export const a11yCopy = {
+    /** Skip-link text; target is `#main-content` in `AppLayout`. */
+    skipToContent: 'Skip to main content',
+    /** `id` of the `<main>` landmark rendered by `AppLayout`. */
+    mainContentId: 'main-content',
+} as const;
+
 /** Copy for the shared site footer. */
 export const footerCopy = {
     tagline: 'Helping travelers explore Nepal with trusted information.',

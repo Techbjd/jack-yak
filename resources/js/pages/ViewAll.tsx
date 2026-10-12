@@ -77,6 +77,9 @@ export default function ViewAll() {
                 <div id="view-all-grid" className="scroll-mt-6 pt-6">
                     <DestinationGrid destinations={visibleDestinations} />
                 </div>
+                <p aria-live="polite" className="sr-only">
+                    {`Page ${page} of ${totalPages}`}
+                </p>
                 <div className="pt-10 pb-12">
                     <Pagination
                         page={page}
