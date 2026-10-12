@@ -1,12 +1,12 @@
-import { Head } from '@inertiajs/react';
+import Seo from '@/components/seo/Seo';
 import { IMAGES } from '@/config/images';
-import { pageTitles } from '@/config/site';
+import { pageSeo } from '@/config/seo';
 import RegisterForm from './components/login/RegisterForm';
 
 export default function Register() {
     return (
         <>
-            <Head title={pageTitles.register} />
+            <Seo {...pageSeo.register} />
             <main className="bg-canvas min-h-screen w-full lg:grid lg:grid-cols-2 lg:bg-white">
                 <RegisterForm />
                 <div className="hidden lg:flex lg:items-center lg:justify-center lg:p-10 xl:p-14">

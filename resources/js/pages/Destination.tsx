@@ -6,11 +6,11 @@ import FeaturedGrid from './components/destination/FeaturedGrid';
 import Section from '@/components/ui/Section';
 import DiscoverNepal from './components/home/DiscoverNepal';
 import AppLayout from '@/layouts/AppLayout';
-import { pageTitles } from '@/config/site';
+import { pageSeo } from '@/config/seo';
 
 export default function Destination() {
     return (
-        <AppLayout title={pageTitles.destinations}>
+        <AppLayout seo={pageSeo.destinations}>
             <Section>
                 <DestinationHero />
             </Section>

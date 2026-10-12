@@ -96,6 +96,10 @@ export function useColors(): Colors {
 }
 
 export function setRootColors(colors: Colors): void {
+    // No-op during SSR — there is no `document` on the server.
+    if (typeof document === 'undefined') {
+        return;
+    }
     const root = document.documentElement;
     root.style.setProperty('--color-navy', colors.navy);
     root.style.setProperty('--color-navy-light', colors.navy_light);
