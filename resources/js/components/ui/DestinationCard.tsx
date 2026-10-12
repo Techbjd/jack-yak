@@ -1,3 +1,4 @@
+import { Link } from '@inertiajs/react';
 import { Clock, MapPin } from 'lucide-react';
 import {
     destCard,
@@ -45,7 +46,7 @@ export default function DestinationCard({
     return (
         <article className={className ?? destCard}>
             <div className={destCardImage}>
-                <a
+                <Link
                     href={href}
                     aria-label={`Explore ${name}`}
                     className="absolute inset-0"
@@ -56,7 +57,7 @@ export default function DestinationCard({
                         loading={eager ? 'eager' : 'lazy'}
                         className="h-full w-full object-cover"
                     />
-                </a>
+                </Link>
                 <span className={destCardBadge}>
                     <MapPin className="text-ink size-3 shrink-0 md:size-4" />
                     <span className={cn(destCardBadgeText)}>{province}</span>

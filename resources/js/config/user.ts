@@ -1,19 +1,8 @@
-export interface UserSavedRow {
-    id: string;
-    label: string;
-    count: number;
-}
-
 export interface UserSettingRow {
     id: string;
     label: string;
     value?: string;
 }
-
-export const userProfile = {
-    name: 'Name',
-    email: 'Email',
-} as const;
 
 export const profileCardCopy = {
     editLabel: 'Edit Profile',
@@ -35,11 +24,6 @@ export const settingsCardCopy = {
 export const signOutCopy = {
     label: 'Sign Out',
 } as const;
-
-export const userSaved: UserSavedRow[] = [
-    { id: 'destinations', label: 'Saved Destinations', count: 12 },
-    { id: 'itineraries', label: 'Saved Itineraries', count: 4 },
-];
 
 export const userSettings: UserSettingRow[] = [
     { id: 'account', label: 'Account Settings' },

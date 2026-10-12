@@ -40,7 +40,7 @@ export default function TrekCtaBanner() {
                 open={quizOpen}
                 onClose={() => setQuizOpen(false)}
                 label={pageTitles.quiz}
-                panelClassName="p-0 sm:max-w-[1188px] md:p-0 lg:h-[792px]"
+                panelClassName="p-0 sm:max-w-hero-panel md:p-0 lg:h-hero-panel-h"
             >
                 <div className="flex w-full flex-1 items-stretch">
                     <div className="relative hidden w-99.5 shrink-0 overflow-hidden rounded-l-2xl lg:block">

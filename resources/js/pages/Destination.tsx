@@ -14,7 +14,7 @@ export default function Destination() {
             <Section>
                 <DestinationHero />
             </Section>
-            <Section className='w-full mx-auto flex flex-col justify-center items-center'>
+            <Section className="mx-auto flex w-full flex-col items-center justify-center">
                 <JourneyNepal />
             </Section>
             <Section>

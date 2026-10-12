@@ -1,5 +1,5 @@
 import { IMAGES } from '@/config/images';
-import ResponsiveHeader from '@/components/ui/ResponsiveHeader';
+import Header from '@/components/ui/Header';
 
 export default function UserHero() {
     return (
@@ -16,7 +16,11 @@ export default function UserHero() {
                 className="to-canvas absolute inset-x-0 top-226 hidden h-24 bg-linear-to-b from-transparent md:block"
             />
             <div className="relative w-full">
-                <ResponsiveHeader />
+                <Header
+                    tone="onLight"
+                    mdTone="onDark"
+                    className="md:max-w-full"
+                />
             </div>
         </div>
     );

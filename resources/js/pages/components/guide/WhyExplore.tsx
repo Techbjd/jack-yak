@@ -31,9 +31,9 @@ const WhyExplore = () => {
                         ({ title, description, Icon, image, imageAlt }) => (
                             <article
                                 key={title}
-                                className="group rounded-dest-card border-ash md:hover:border-cta md:hover:bg-surface-warm md:hover:shadow-card flex min-h-[173px] flex-col gap-2.5 border bg-white p-2.5 transition md:min-h-0 md:gap-4 md:p-6"
+                                className="group rounded-dest-card border-ash md:hover:border-cta md:hover:bg-surface-warm md:hover:shadow-card min-h-explore-card-min flex flex-col gap-2.5 border bg-white p-2.5 transition md:min-h-0 md:gap-4 md:p-6"
                             >
-                                <span className="bg-surface-warm md:group-hover:border-ink flex h-[38px] w-[38px] items-center justify-center rounded-full md:h-20 md:w-20 md:group-hover:border">
+                                <span className="bg-surface-warm md:group-hover:border-ink h-explore-icon w-explore-icon flex items-center justify-center rounded-full md:h-20 md:w-20 md:group-hover:border">
                                     {image ? (
                                         <img
                                             src={image}

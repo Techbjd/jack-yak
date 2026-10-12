@@ -1,13 +1,11 @@
 import { useAutoRotate } from '@/lib/useAutoRotate';
 import Header from '@/components/ui/Header';
-import {
-    aboutHeroTitle,
-    fontPrimary,
-    coverImageAbsolute,
-} from '@/config/theme';
+import { aboutHeroTitle, fontPrimary } from '@/config/theme';
+import CoverImage from '@/components/ui/CoverImage';
 import {
     destinationHeroSlideIntervalMs,
     destinationHeroSlides,
+    destinationHeroTagline,
 } from '@/config/destination';
 import { IMAGES } from '@/config/images';
 import { cn } from '@/lib/utils';
@@ -22,9 +20,9 @@ export default function DestinationHero() {
 
     return (
         <div className="flex w-full flex-col bg-white">
-            <Header tone="onLight" className='max-w-full' />
+            <Header tone="onLight" className="max-w-full" />
 
-            <div className="flex flex-col items-center px-0 pt-2 text-center ">
+            <div className="flex flex-col items-center px-0 pt-2 text-center">
                 <div className="relative mt-4 w-full bg-white">
                     <div className="md:rounded-dest-card relative flex aspect-video w-full items-center justify-center overflow-hidden bg-white lg:aspect-1464/958">
                         <img
@@ -32,7 +30,7 @@ export default function DestinationHero() {
                             alt=""
                             aria-hidden="true"
                             loading="eager"
-                            className="absolute top-[6%] left-1/2 w-[30%] -translate-x-1/2 object-contain"
+                            className="absolute top-[6%] left-1/2 w-3/10 -translate-x-1/2 object-contain"
                         />
                         {destinationHeroSlides.map((slide, index) =>
                             slide.titleOverlay ? (
@@ -64,20 +62,22 @@ export default function DestinationHero() {
                             ) : null,
                         )}
                         {destinationHeroSlides.map((slide, index) => (
-                            <img
+                            <div
                                 key={slide.name}
-                                src={slide.image}
-                                alt={slide.name}
-                                loading={index === 0 ? 'eager' : 'lazy'}
                                 aria-hidden={index !== active}
                                 className={cn(
-                                    coverImageAbsolute,
-                                    'transition-opacity duration-700 ease-out',
+                                    'absolute inset-0 transition-opacity duration-700 ease-out',
                                     index === active
                                         ? 'opacity-100'
                                         : 'opacity-0',
                                 )}
-                            />
+                            >
+                                <CoverImage
+                                    src={slide.image}
+                                    alt={slide.name}
+                                    eager={index === 0}
+                                />
+                            </div>
                         ))}
 
                         {!current.titleOverlay && (
@@ -100,14 +100,10 @@ export default function DestinationHero() {
                 <p
                     className={cn(
                         fontPrimary,
-                        'text-xs-md text-text-primary md:text-2xl-3xl  mt-6 w-full  m-auto justify-center items-center px-6 text-center leading-snug font-medium md:mt-8  md max-w-2xl md:px-0',
+                        'text-xs-md text-text-primary md:text-2xl-3xl md m-auto mt-6 w-full max-w-2xl items-center justify-center px-6 text-center leading-snug font-medium md:mt-8 md:px-0',
                     )}
                 >
-                    Nepal is a land of extraordinary diversity where the
-                    Himalayas, ancient heritage, vibrant cultures, and abundant
-                    wildlife come together. From the world&apos;s highest peaks
-                    to lush subtropical jungles, Nepal offers unforgettable
-                    experiences for every traveler.
+                    {destinationHeroTagline}
                 </p>
             </div>
         </div>

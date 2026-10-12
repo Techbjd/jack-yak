@@ -36,6 +36,7 @@ export interface Colors {
     hairline: string;
     subtle: string;
     haze: string;
+    map_leader: string;
 }
 
 export const COLORS: Colors = {
@@ -74,7 +75,19 @@ export const COLORS: Colors = {
     hairline: '#F1F3F5',
     subtle: '#858D99',
     haze: '#989EAD',
+    map_leader: '#929CAA',
 };
+
+/** Per-province map fills (SVG `fill` attributes, keyed by province slug). */
+export const PROVINCE_COLORS = {
+    'sudur-pashchim': '#729D9D',
+    karnali: '#15B7B7',
+    lumbini: '#147070',
+    gandaki: '#197979',
+    bagmati: '#2D8A8A',
+    madhesh: '#61C3C3',
+    koshi: '#44A2A2',
+} as const;
 
 export const ColorsContext = createContext<Colors>(COLORS);
 
@@ -119,4 +132,5 @@ export function setRootColors(colors: Colors): void {
     root.style.setProperty('--color-hairline', colors.hairline);
     root.style.setProperty('--color-subtle', colors.subtle);
     root.style.setProperty('--color-haze', colors.haze);
+    root.style.setProperty('--color-map-leader', colors.map_leader);
 }

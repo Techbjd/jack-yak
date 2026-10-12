@@ -48,7 +48,9 @@ export default function FormSuccess({
     return (
         <div className="flex flex-col items-center gap-4 py-10 text-center">
             <CircleCheck aria-hidden className="text-cta size-12 md:size-16" />
-            <h2 className={tone === 'modal' ? modalTitle : 'text-2xl font-bold'}>
+            <h2
+                className={tone === 'modal' ? modalTitle : 'text-2xl font-bold'}
+            >
                 {title}
             </h2>
             <p

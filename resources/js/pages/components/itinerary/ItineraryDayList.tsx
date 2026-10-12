@@ -22,22 +22,14 @@ export default function ItineraryDayList() {
             <div
                 role="list"
                 aria-label={planLabel}
-                className="flex max-h-dvh w-full snap-y snap-proximity flex-col gap-3.5 overflow-y-auto pb-1 md:hidden"
+                className="flex max-h-dvh w-full snap-y snap-proximity flex-col gap-3.5 overflow-y-auto pb-1 md:max-h-none md:snap-none md:gap-6 md:overflow-visible md:pb-0 xl:hidden"
             >
                 {itineraryDays.map((day) => (
-                    <div key={day.day} role="listitem" className="contents">
-                        <ItineraryDayCard day={day} />
-                    </div>
-                ))}
-            </div>
-
-            <div
-                role="list"
-                aria-label={planLabel}
-                className="hidden w-full flex-col gap-6 md:flex xl:hidden"
-            >
-                {itineraryDays.map((day) => (
-                    <div key={day.day} role="listitem">
+                    <div
+                        key={day.day}
+                        role="listitem"
+                        className="contents md:block"
+                    >
                         <ItineraryDayCard day={day} />
                     </div>
                 ))}

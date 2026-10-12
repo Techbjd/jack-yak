@@ -1,4 +1,5 @@
 import { useState, type CSSProperties } from 'react';
+import { Link } from '@inertiajs/react';
 import {
     ArrowUpRight,
     Binoculars,
@@ -9,7 +10,9 @@ import {
     Waves,
     type LucideIcon,
 } from 'lucide-react';
-import { coverImageAbsolute, fontPrimary } from '@/config/theme';
+import { fontPrimary } from '@/config/theme';
+import CoverImage from '@/components/ui/CoverImage';
+import CardGridSkeleton from '@/components/ui/skeletons/CardGridSkeleton';
 import {
     destinationFeaturedCards,
     featuredHeader,
@@ -59,10 +62,40 @@ function TabIcon({ tab }: { tab: string }) {
     );
 }
 
-export default function FeaturedGrid() {
+export default function FeaturedGrid({
+    loading = false,
+}: {
+    loading?: boolean;
+}) {
     const [activeTab, setActiveTab] = useState<string>(
         featuredHeader.defaultTab,
     );
+    const visibleCards =
+        activeTab === 'All'
+            ? destinationFeaturedCards
+            : destinationFeaturedCards.filter(
+                  (card) => card.category === activeTab,
+              );
+
+    if (loading) {
+        return (
+            <section
+                className="flex w-full flex-col gap-6 px-4 py-8 md:gap-8 md:px-12 md:py-12 lg:px-24"
+                aria-busy="true"
+                aria-label="Loading featured destinations"
+            >
+                <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+                    <div className="flex flex-col gap-2">
+                        <div className="bg-bg-placeholder h-3 w-20 animate-pulse rounded" />
+                        <div className="bg-bg-placeholder h-6 w-56 animate-pulse rounded" />
+                    </div>
+                    <div className="bg-bg-placeholder hidden h-4 w-64 animate-pulse rounded lg:block" />
+                </div>
+                <div className="bg-bg-placeholder h-10 w-full animate-pulse rounded md:h-16" />
+                <CardGridSkeleton />
+            </section>
+        );
+    }
 
     return (
         <section className="flex w-full flex-col gap-6 px-4 py-8 md:gap-8 md:px-12 md:py-12 lg:px-24">
@@ -165,53 +198,62 @@ export default function FeaturedGrid() {
             </div>
 
             <div className="grid grid-cols-2 gap-x-3 gap-y-4 md:grid-cols-12 md:gap-5">
-                {destinationFeaturedCards.map((card, i) => (
-                    <div
-                        key={`${card.src}-${i}`}
+                {visibleCards.length === 0 ? (
+                    <p
                         className={cn(
-                            'relative aspect-square h-auto w-full md:[aspect-ratio:var(--card-ratio)]',
-                            card.span,
+                            fontPrimary,
+                            'text-md-lg text-text-primary col-span-full py-8 text-center font-medium',
                         )}
-                        style={{ '--card-ratio': card.ratio } as CSSProperties}
                     >
-                        <a
-                            href={card.href}
-                            aria-label={`Explore ${card.label}`}
-                            className="block h-full w-full"
-                        >
-                            <img
-                                src={card.src}
-                                alt={card.label}
-                                loading="lazy"
-                                className={cn(
-                                    coverImageAbsolute,
-                                    'rounded-card-sm',
-                                )}
-                            />
-                        </a>
+                        {featuredHeader.empty}
+                    </p>
+                ) : (
+                    visibleCards.map((card, i) => (
                         <div
-                            aria-hidden="true"
-                            className="rounded-card-sm absolute inset-0 bg-black/0"
-                        />
-                        <p
+                            key={`${card.src}-${i}`}
                             className={cn(
-                                fontPrimary,
-                                'text-xl-2xl absolute bottom-4 left-4 hidden leading-snug font-bold text-white drop-shadow-md md:block',
+                                'relative aspect-square h-auto w-full md:[aspect-ratio:var(--card-ratio)]',
+                                card.span,
                             )}
+                            style={
+                                { '--card-ratio': card.ratio } as CSSProperties
+                            }
                         >
-                            {card.label}
-                        </p>
-                        <a
-                            href={card.href}
-                            aria-label={`Explore ${card.label}`}
-                            className="absolute -right-1 -bottom-1.5 flex h-10 w-12 items-center justify-center rounded-full bg-white md:-right-4 md:-bottom-4 md:h-16 md:w-16"
-                        >
-                            <span className="bg-text-primary md:bg-cta flex h-6.5 w-6.5 items-center justify-center rounded-full md:h-10 md:w-10">
-                                <ArrowUpRight className="h-3.5 w-3.5 text-white md:h-5 md:w-5" />
-                            </span>
-                        </a>
-                    </div>
-                ))}
+                            <Link
+                                href={card.href}
+                                aria-label={`Explore ${card.label}`}
+                                className="block h-full w-full"
+                            >
+                                <CoverImage
+                                    src={card.src}
+                                    alt={card.label}
+                                    className="rounded-card-sm"
+                                />
+                            </Link>
+                            <div
+                                aria-hidden="true"
+                                className="rounded-card-sm absolute inset-0 bg-black/0"
+                            />
+                            <p
+                                className={cn(
+                                    fontPrimary,
+                                    'text-xl-2xl absolute bottom-4 left-4 hidden leading-snug font-bold text-white drop-shadow-md md:block',
+                                )}
+                            >
+                                {card.label}
+                            </p>
+                            <Link
+                                href={card.href}
+                                aria-label={`Explore ${card.label}`}
+                                className="absolute -right-1 -bottom-1.5 flex h-10 w-12 items-center justify-center rounded-full bg-white md:-right-4 md:-bottom-4 md:h-16 md:w-16"
+                            >
+                                <span className="bg-text-primary md:bg-cta flex h-6.5 w-6.5 items-center justify-center rounded-full md:h-10 md:w-10">
+                                    <ArrowUpRight className="h-3.5 w-3.5 text-white md:h-5 md:w-5" />
+                                </span>
+                            </Link>
+                        </div>
+                    ))
+                )}
             </div>
         </section>
     );

@@ -1,9 +1,7 @@
-import { useRef } from 'react';
+import { useCallback, useRef, useState } from 'react';
+import type { KeyboardEvent } from 'react';
 import { ArrowRight } from 'lucide-react';
-import {
-    guideTopDestinations,
-    viewAllPageHref,
-} from '@/config/destination';
+import { guideTopDestinations, viewAllPageHref } from '@/config/destination';
 import { guideTopHeader } from '@/config/guide';
 import CarouselDots from '@/components/ui/CarouselDots';
 import ViewAllLink from '@/components/ui/ViewAllLink';
@@ -13,27 +11,89 @@ import DestinationCard from '@/components/ui/DestinationCard';
 const GUIDE_CARD_LAYOUT =
     'ms:basis-55 max-w-dest-card mx-auto flex w-full shrink-0 grow basis-27 snap-start flex-col items-center md:basis-65 lg:w-full lg:basis-auto';
 
+type GuideTopDestination = (typeof guideTopDestinations)[number];
+
+function GuideTopCard({ dest }: { dest: GuideTopDestination }) {
+    return (
+        <DestinationCard
+            image={dest.image}
+            name={dest.name}
+            province={dest.province}
+            tagline={dest.subtitle}
+            meta={dest.duration}
+            href={dest.href}
+            className={GUIDE_CARD_LAYOUT}
+        />
+    );
+}
+
 const GuideTopDestinations = () => {
     const carouselRef = useRef<HTMLDivElement>(null);
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    const getStep = useCallback(() => {
+        const el = carouselRef.current;
+        const track = el?.firstElementChild as HTMLElement | null;
+        const firstCard = track?.querySelector('article') as HTMLElement | null;
+        const cardWidth =
+            firstCard?.getBoundingClientRect().width ??
+            (el?.clientWidth ?? 0) * 0.6;
+        const gap = track
+            ? parseFloat(getComputedStyle(track).columnGap || '8')
+            : 8;
+        return cardWidth + gap;
+    }, []);
+
+    const scrollToIndex = useCallback(
+        (index: number) => {
+            const el = carouselRef.current;
+            if (!el) {
+                return;
+            }
+            el.scrollTo({ left: index * getStep(), behavior: 'smooth' });
+        },
+        [getStep],
+    );
 
     const scrollToNextImage = () => {
         const el = carouselRef.current;
         if (!el) {
             return;
         }
-        const track = el.firstElementChild as HTMLElement | null;
-        const firstCard = track?.querySelector('article') as HTMLElement | null;
-        const cardWidth =
-            firstCard?.getBoundingClientRect().width ?? el.clientWidth * 0.6;
-        const gap = track
-            ? parseFloat(getComputedStyle(track).columnGap || '8')
-            : 8;
-        const step = cardWidth + gap;
         const maxScroll = el.scrollWidth - el.clientWidth;
         if (el.scrollLeft >= maxScroll - 10) {
             el.scrollTo({ left: 0, behavior: 'smooth' });
         } else {
-            el.scrollBy({ left: step, behavior: 'smooth' });
+            el.scrollBy({ left: getStep(), behavior: 'smooth' });
+        }
+    };
+
+    const handleTrackScroll = () => {
+        const el = carouselRef.current;
+        if (!el) {
+            return;
+        }
+        const step = getStep();
+        if (step <= 0) {
+            return;
+        }
+        const index = Math.min(
+            guideTopDestinations.length - 1,
+            Math.max(0, Math.round(el.scrollLeft / step)),
+        );
+        setActiveIndex((prev) => (prev === index ? prev : index));
+    };
+
+    const handleTrackKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
+        if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            scrollToNextImage();
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            carouselRef.current?.scrollBy({
+                left: -getStep(),
+                behavior: 'smooth',
+            });
         }
     };
 
@@ -55,19 +115,19 @@ const GuideTopDestinations = () => {
                 <div className="relative -mx-6 md:-mx-12 lg:hidden">
                     <div
                         ref={carouselRef}
-                        className="no-scrollbar scroll-px-6 overflow-x-auto scroll-smooth md:scroll-px-12"
+                        role="region"
+                        aria-roledescription="carousel"
+                        aria-label={guideTopHeader.title}
+                        tabIndex={0}
+                        onScroll={handleTrackScroll}
+                        onKeyDown={handleTrackKeyDown}
+                        className="no-scrollbar focus-visible:ring-ink scroll-px-6 overflow-x-auto scroll-smooth focus-visible:ring-2 focus-visible:outline-none md:scroll-px-12"
                     >
                         <div className="flex w-full min-w-max snap-x snap-mandatory gap-2 px-6 md:gap-4 md:px-12">
                             {guideTopDestinations.map((dest, i) => (
-                                <DestinationCard
+                                <GuideTopCard
                                     key={`${dest.name}-${i}`}
-                                    image={dest.image}
-                                    name={dest.name}
-                                    province={dest.province}
-                                    tagline={dest.subtitle}
-                                    meta={dest.duration}
-                                    href={dest.href}
-                                    className={GUIDE_CARD_LAYOUT}
+                                    dest={dest}
                                 />
                             ))}
                         </div>
@@ -85,21 +145,17 @@ const GuideTopDestinations = () => {
 
                 <CarouselDots
                     count={guideTopDestinations.length}
+                    activeIndex={activeIndex}
+                    onSelect={scrollToIndex}
                     className="lg:hidden"
                 />
 
                 <div className="relative hidden lg:block">
                     <div className="grid gap-6 lg:grid-cols-3">
                         {guideTopDestinations.map((dest, i) => (
-                            <DestinationCard
+                            <GuideTopCard
                                 key={`${dest.name}-${i}`}
-                                image={dest.image}
-                                name={dest.name}
-                                province={dest.province}
-                                tagline={dest.subtitle}
-                                meta={dest.duration}
-                                href={dest.href}
-                                className={GUIDE_CARD_LAYOUT}
+                                dest={dest}
                             />
                         ))}
                     </div>

@@ -1,4 +1,6 @@
-export const availabilityEndpoint = '/availability';
+import { store as availabilityStore } from '@/routes/availability';
+
+export const availabilityEndpoint = availabilityStore.url();
 
 export const availabilityMaxTravelers = 16;
 
@@ -6,8 +8,7 @@ export const availabilityCopy = {
     dialogLabel: 'Check availability',
     title: 'Check Availability',
     intro: 'Select your dates and number of travelers to check availability.',
-    guestSuffix:
-        'to track this request in your profile, or continue as guest.',
+    guestSuffix: 'to track this request in your profile, or continue as guest.',
     dateLabel: 'Select Date',
     travelersLabel: 'Number of Travelers',
     fewerLabel: 'One fewer traveler',

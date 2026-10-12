@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\Logout;
 use App\Http\Controllers\Auth\RedirectToGoogle;
 use App\Http\Controllers\Auth\Register;
 use App\Http\Controllers\AvailabilityController;
+use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\QuizSubmissionController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
@@ -23,9 +24,9 @@ Route::inertia('/form', 'Quiz')->name('form');
 
 Route::middleware('guest')->group(function (): void {
     Route::get('/login', [Login::class, 'show'])->name('login');
-    Route::post('/login', Login::class)->name('login.store');
+    Route::post('/login', Login::class)->middleware('throttle:5,1')->name('login.store');
     Route::get('/register', [Register::class, 'show'])->name('register');
-    Route::post('/register', Register::class)->name('register.store');
+    Route::post('/register', Register::class)->middleware('throttle:5,1')->name('register.store');
 });
 
 Route::post('/logout', Logout::class)->middleware('auth')->name('logout');
@@ -34,9 +35,10 @@ Route::middleware('auth')->group(function (): void {
     Route::get('/user', UserController::class)->name('user');
 });
 
-Route::post('/availability', AvailabilityController::class)->name('availability.store');
-Route::post('/reviews', ReviewController::class)->name('reviews.store');
-Route::post('/quiz', QuizSubmissionController::class)->name('quiz.store');
+Route::post('/availability', AvailabilityController::class)->middleware('throttle:20,1')->name('availability.store');
+Route::post('/reviews', ReviewController::class)->middleware('throttle:20,1')->name('reviews.store');
+Route::post('/quiz', QuizSubmissionController::class)->middleware('throttle:20,1')->name('quiz.store');
+Route::post('/newsletter', NewsletterController::class)->middleware('throttle:20,1')->name('newsletter.store');
 
-Route::get('/auth/google', RedirectToGoogle::class)->name('google.redirect');
-Route::get('/auth/google/callback', HandleGoogleCallback::class)->name('google.callback');
+Route::get('/auth/google', RedirectToGoogle::class)->middleware('throttle:10,1')->name('google.redirect');
+Route::get('/auth/google/callback', HandleGoogleCallback::class)->middleware('throttle:10,1')->name('google.callback');

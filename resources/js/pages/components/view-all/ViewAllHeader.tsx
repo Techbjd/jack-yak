@@ -32,6 +32,8 @@ export default function ViewAllHeader() {
                 {viewAllHeaderCopy.back}
             </button>
             <h1
+                id="view-all-heading"
+                tabIndex={-1}
                 className={cn(
                     fontPrimary,
                     'text-md-lg text-text-primary tracking-card text-center font-bold',

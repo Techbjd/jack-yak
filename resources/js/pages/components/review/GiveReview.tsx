@@ -43,6 +43,15 @@ interface ReviewPhoto {
     file: File;
 }
 
+interface ReviewForm {
+    rating: number;
+    body: string;
+    place: string;
+    visit_date: string;
+    name: string;
+    photos: File[];
+}
+
 interface GiveReviewProps {
     open: boolean;
     onClose: () => void;
@@ -56,13 +65,13 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
     const starRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
     const { data, setData, post, processing, errors, clearErrors, reset } =
-        useForm({
+        useForm<ReviewForm>({
             rating: 0,
             body: '',
             place: '',
             visit_date: '',
             name: user?.name ?? '',
-            photos: [] as File[],
+            photos: [],
         });
 
     const [previews, setPreviews] = useState<ReviewPhoto[]>([]);
@@ -136,17 +145,15 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
     };
 
     const removePhoto = (url: string) => {
-        setPreviews((prev) => {
-            const target = prev.find((p) => p.url === url);
-            if (target) {
-                URL.revokeObjectURL(target.url);
-                setData(
-                    'photos',
-                    data.photos.filter((f) => f.name !== target.name),
-                );
-            }
-            return prev.filter((p) => p.url !== url);
-        });
+        const target = previews.find((p) => p.url === url);
+        if (target) {
+            URL.revokeObjectURL(target.url);
+            setData(
+                'photos',
+                data.photos.filter((f) => f !== target.file),
+            );
+        }
+        setPreviews((prev) => prev.filter((p) => p.url !== url));
     };
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -168,11 +175,7 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
     };
 
     return (
-        <Modal
-            open={open}
-            onClose={close}
-            label={giveReviewCopy.dialogLabel}
-        >
+        <Modal open={open} onClose={close} label={giveReviewCopy.dialogLabel}>
             {done ? (
                 <FormSuccess
                     tone="modal"
@@ -194,7 +197,9 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                     onSubmit={handleSubmit}
                     className="flex flex-col"
                 >
-                    <h2 className={cn(modalTitle, 'text-2xl-3xl')}>{giveReviewCopy.title}</h2>
+                    <h2 className={cn(modalTitle, 'text-2xl-3xl')}>
+                        {giveReviewCopy.title}
+                    </h2>
                     <p className={cn(modalSubtitle, 'pt-2')}>
                         {giveReviewCopy.intro}
                     </p>
@@ -231,7 +236,7 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                                 aria-label={rateActionLabel(star)}
                                 onClick={() => {
                                     setData('rating', star);
-                                    clearErrors('rating' as never);
+                                    clearErrors('rating');
                                 }}
                                 onMouseEnter={() => setHovered(star)}
                                 onFocus={() => setHovered(star)}
@@ -254,9 +259,7 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                             ? ratedLabel(data.rating)
                             : giveReviewCopy.unratedHint}
                     </p>
-                    {errors.rating && (
-                        <FieldError>{errors.rating}</FieldError>
-                    )}
+                    {errors.rating && <FieldError>{errors.rating}</FieldError>}
 
                     <label
                         htmlFor="review-text"
@@ -272,7 +275,7 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                         value={data.body}
                         onChange={(e) => {
                             setData('body', e.target.value);
-                            clearErrors('body' as never);
+                            clearErrors('body');
                         }}
                         aria-invalid={errors.body ? true : undefined}
                         className={cn(
@@ -369,9 +372,7 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                             e.target.value = '';
                         }}
                     />
-                    {photoError && (
-                        <FieldError>{photoError}</FieldError>
-                    )}
+                    {photoError && <FieldError>{photoError}</FieldError>}
                     {previews.length > 0 && (
                         <ul className="flex flex-wrap gap-3 pt-3">
                             {previews.map((photo) => (
@@ -384,11 +385,11 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                                         alt={photo.name}
                                         className="h-full w-full object-cover"
                                     />
-                                        <button
-                                            type="button"
-                                            aria-label={removePhotoLabel(
-                                                photo.name,
-                                            )}
+                                    <button
+                                        type="button"
+                                        aria-label={removePhotoLabel(
+                                            photo.name,
+                                        )}
                                         onClick={() => removePhoto(photo.url)}
                                         className="absolute top-1 right-1 flex size-6 cursor-pointer items-center justify-center rounded-full bg-black/60 text-white transition-opacity hover:opacity-80"
                                     >
@@ -410,7 +411,7 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                             value={data.place}
                             onChange={(value) => {
                                 setData('place', value);
-                                clearErrors('place' as never);
+                                clearErrors('place');
                             }}
                             error={errors.place}
                         />
@@ -428,7 +429,7 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                             value={data.visit_date}
                             onChange={(value) => {
                                 setData('visit_date', value);
-                                clearErrors('visit_date' as never);
+                                clearErrors('visit_date');
                             }}
                             error={errors.visit_date}
                         />
@@ -445,7 +446,7 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                         value={data.name}
                         onChange={(value) => {
                             setData('name', value);
-                            clearErrors('name' as never);
+                            clearErrors('name');
                         }}
                         error={errors.name}
                     />

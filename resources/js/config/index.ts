@@ -57,8 +57,8 @@ export {
     reviewSuccessMessage,
 } from './review';
 
-export { userProfile, userSaved, userSettings } from './user';
-export type { UserSavedRow, UserSettingRow } from './user';
+export { userSettings } from './user';
+export type { UserSettingRow } from './user';
 
 export { desktopNav, mobileNav, footerColumns } from './navigation';
 export type { NavItem, FooterColumnData } from './navigation';
@@ -66,7 +66,13 @@ export type { NavItem, FooterColumnData } from './navigation';
 export { IMAGES } from './images';
 export type { Images } from './images';
 
-export { siteBrand, siteRoutes, siteContact, siteLegal, placeholderHref } from './site';
+export {
+    siteBrand,
+    siteRoutes,
+    siteContact,
+    siteLegal,
+    placeholderHref,
+} from './site';
 
 export { loginCopy, registerCopy } from './auth';
 

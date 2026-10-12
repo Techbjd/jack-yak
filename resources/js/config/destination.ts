@@ -1,3 +1,4 @@
+import { COLORS } from './colors';
 import { IMAGES } from './images';
 import { siteRoutes } from './site';
 
@@ -50,6 +51,8 @@ export const featuredHeader = {
     side: "Discover the country's most remarkable destinations.",
     /** Tab selected on first paint (mobile + desktop stay in sync). */
     defaultTab: 'Safari',
+    /** Shown when the active tab has no cards yet. */
+    empty: 'More destinations for this category are on the way.',
 } as const;
 
 export interface DestinationCard {
@@ -131,6 +134,8 @@ export interface FeaturedCard {
     ratio: string;
     span: string;
     href: string;
+    /** Must match one of `featuredTabs` (other than 'All'). */
+    category: string;
 }
 
 export interface ViewAllDestination {
@@ -271,6 +276,7 @@ export const destinationFeaturedCards: FeaturedCard[] = [
         ratio: '292 / 350',
         span: 'md:col-span-3',
         href: itineraryPageHref,
+        category: 'Safari',
     },
     {
         src: IMAGES.destination.featured.jeepSafari,
@@ -278,6 +284,7 @@ export const destinationFeaturedCards: FeaturedCard[] = [
         ratio: '606 / 351',
         span: 'md:col-span-6',
         href: itineraryPageHref,
+        category: 'Safari',
     },
     {
         src: IMAGES.destination.featured.canoeSafari,
@@ -285,6 +292,7 @@ export const destinationFeaturedCards: FeaturedCard[] = [
         ratio: '292 / 350',
         span: 'md:col-span-3',
         href: itineraryPageHref,
+        category: 'Safari',
     },
     {
         src: IMAGES.destination.featured.birdWatchingSafari,
@@ -292,6 +300,7 @@ export const destinationFeaturedCards: FeaturedCard[] = [
         ratio: '506 / 351',
         span: 'md:col-span-5',
         href: itineraryPageHref,
+        category: 'Safari',
     },
     {
         src: IMAGES.destination.featured.crocodileWatching,
@@ -299,6 +308,7 @@ export const destinationFeaturedCards: FeaturedCard[] = [
         ratio: '394 / 349',
         span: 'md:col-span-4',
         href: itineraryPageHref,
+        category: 'Safari',
     },
     {
         src: IMAGES.destination.featured.tigerWatching,
@@ -306,6 +316,7 @@ export const destinationFeaturedCards: FeaturedCard[] = [
         ratio: '292 / 350',
         span: 'md:col-span-3',
         href: itineraryPageHref,
+        category: 'Safari',
     },
 ];
 
@@ -406,7 +417,7 @@ export const destinationHeroSlides: DestinationHeroSlide[] = [
         name: 'Ama Dablam',
         image: IMAGES.destination.hero.amaDablam,
         // Pixel-measured from hero/ama_dablam.png (2928x1916): title sits
-        // in the transparent sky, baseline y 704, color #334155. Same EB
+        // in the transparent sky, baseline y 704, color text_primary. Same EB
         // Garamond overlay technique as before, scaled from the original
         // 1440x958 panorama geometry (x2.033).
         titleOverlay: {
@@ -415,7 +426,7 @@ export const destinationHeroSlides: DestinationHeroSlide[] = [
             y: 704,
             fontSize: 514,
             scaleX: 0.9851,
-            color: '#334155',
+            color: COLORS.text_primary,
         },
     },
     {
@@ -430,7 +441,7 @@ export const destinationHeroSlides: DestinationHeroSlide[] = [
             y: 650,
             fontSize: 514,
             scaleX: 1,
-            color: '#334155',
+            color: COLORS.text_primary,
         },
     },
     {
@@ -444,7 +455,7 @@ export const destinationHeroSlides: DestinationHeroSlide[] = [
             y: 730,
             fontSize: 514,
             scaleX: 1,
-            color: '#334155',
+            color: COLORS.text_primary,
         },
     },
 ];

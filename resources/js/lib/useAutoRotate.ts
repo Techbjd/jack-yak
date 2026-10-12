@@ -20,9 +20,7 @@ export function useAutoRotate(
         if (length < 2) {
             return;
         }
-        if (
-            window.matchMedia('(prefers-reduced-motion: reduce)').matches
-        ) {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             return;
         }
         const id = window.setInterval(() => {

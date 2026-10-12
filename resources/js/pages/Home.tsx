@@ -13,7 +13,7 @@ import { pageTitles } from '@/config/site';
 export default function Home() {
     return (
         <AppLayout title={pageTitles.home}>
-            <Hero  />
+            <Hero />
             <div className="relative z-20 flex w-full flex-col items-center gap-16 py-16 md:gap-20 md:py-90">
                 <NepalMap />
                 <MapQuote />
@@ -21,7 +21,7 @@ export default function Home() {
             <Section className="relative z-10 pb-3">
                 <AboutJackyak />
             </Section>
-            <div className="relative z-10 hidden w-full md:block ">
+            <div className="relative z-10 hidden w-full md:block">
                 <img
                     src={IMAGES.home.mountainDivider}
                     alt={mountainDividerAlt}

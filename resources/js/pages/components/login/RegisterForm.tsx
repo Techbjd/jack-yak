@@ -95,9 +95,12 @@ export default function RegisterForm() {
                         autoComplete="new-password"
                         placeholder={registerCopy.confirmPlaceholder}
                         value={data.password_confirmation}
-                        onChange={(value) =>
-                            setData('password_confirmation', value)
-                        }
+                        onChange={(value) => {
+                            setData('password_confirmation', value);
+                            if (errors.password_confirmation) {
+                                clearErrors('password_confirmation');
+                            }
+                        }}
                     />
 
                     <button

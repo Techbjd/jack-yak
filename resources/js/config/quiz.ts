@@ -10,7 +10,9 @@ export interface QuizSegmentQuestion {
     options: string[];
 }
 
-export const quizEndpoint = '/quiz';
+import { store as quizStore } from '@/routes/quiz';
+
+export const quizEndpoint = quizStore.url();
 
 export const quizFormCopy = {
     successTitle: 'Request received!',

@@ -20,14 +20,21 @@ export default function TrekAbout() {
                     {trekAbout.title}
                 </h2>
             </div>
-            <p className={cn(itinBody, 'md:leading-about-30  ')}>
+            <p className={cn(itinBody, 'md:leading-about-30')}>
                 {trekAbout.intro}
             </p>
             <p className={cn(itinBody, extra, desktopPara)}>
                 {trekAbout.belief}
             </p>
             <p className={cn(itinBody, desktopPara)}>{trekAbout.body}</p>
-            <p className={cn(itinBody, extra, desktopPara, 'md:font-bold text-md-lg ')}>
+            <p
+                className={cn(
+                    itinBody,
+                    extra,
+                    desktopPara,
+                    'text-md-lg md:font-bold',
+                )}
+            >
                 {trekAbout.highlight}
             </p>
             <p className={cn(itinBody, extra, desktopPara)}>

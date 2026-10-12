@@ -100,9 +100,7 @@ export default function TextField({
                     inputClassName,
                 )}
             />
-            {error && (
-                <FieldError id={resolvedErrorId}>{error}</FieldError>
-            )}
+            {error && <FieldError id={resolvedErrorId}>{error}</FieldError>}
         </Wrapper>
     );
 }
