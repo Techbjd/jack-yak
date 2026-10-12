@@ -1,3 +1,4 @@
+import { COLORS } from './colors';
 import { IMAGES } from './images';
 import { siteRoutes } from './site';
 
@@ -416,7 +417,7 @@ export const destinationHeroSlides: DestinationHeroSlide[] = [
         name: 'Ama Dablam',
         image: IMAGES.destination.hero.amaDablam,
         // Pixel-measured from hero/ama_dablam.png (2928x1916): title sits
-        // in the transparent sky, baseline y 704, color #334155. Same EB
+        // in the transparent sky, baseline y 704, color text_primary. Same EB
         // Garamond overlay technique as before, scaled from the original
         // 1440x958 panorama geometry (x2.033).
         titleOverlay: {
@@ -425,7 +426,7 @@ export const destinationHeroSlides: DestinationHeroSlide[] = [
             y: 704,
             fontSize: 514,
             scaleX: 0.9851,
-            color: '#334155',
+            color: COLORS.text_primary,
         },
     },
     {
@@ -440,7 +441,7 @@ export const destinationHeroSlides: DestinationHeroSlide[] = [
             y: 650,
             fontSize: 514,
             scaleX: 1,
-            color: '#334155',
+            color: COLORS.text_primary,
         },
     },
     {
@@ -454,7 +455,7 @@ export const destinationHeroSlides: DestinationHeroSlide[] = [
             y: 730,
             fontSize: 514,
             scaleX: 1,
-            color: '#334155',
+            color: COLORS.text_primary,
         },
     },
 ];

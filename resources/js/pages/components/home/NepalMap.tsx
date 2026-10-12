@@ -71,7 +71,6 @@ const MAP_LABELS: MapLabel[] = [
 
 const LABEL_FONT_SIZE = 16;
 
-const LEADER_GRAY = '#929CAA';
 const LEADER_WIDTH = 2;
 const DOT_RADIUS = 3.5;
 
@@ -134,6 +133,7 @@ const MAP_LEADERS: MapLeader[] = [
 const NepalMap = () => {
     const colors = useColors();
     const leaderNavy = colors.navy_light;
+    const leaderGray = colors.map_leader;
     const leaderActive = colors.teal;
     const [hovered, setHovered] = useState<string | null>(null);
     const [focused, setFocused] = useState<string | null>(null);
@@ -293,7 +293,7 @@ const NepalMap = () => {
                             {/* Cover baked-in raster labels so the links below are the only text (desktop only) */}
                             <g
                                 pointerEvents="none"
-                                fill="#FFFFFF"
+                                fill={colors.text_white}
                                 className="hidden sm:block"
                             >
                                 {MAP_LABELS.map((label) => (
@@ -384,7 +384,7 @@ const NepalMap = () => {
                                             y1={leader.line.y1}
                                             x2={leader.line.x2}
                                             y2={leader.line.y2}
-                                            stroke={LEADER_GRAY}
+                                            stroke={leaderGray}
                                         />
                                         {leader.tick && (
                                             <line

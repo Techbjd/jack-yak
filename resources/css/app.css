@@ -59,11 +59,23 @@
     --color-hairline: #f1f3f5;
     --color-subtle: #858d99;
     --color-haze: #989ead;
+    --color-map-leader: #929caa;
+    --color-sudur-pashchim: #729d9d;
+    --color-karnali: #15b7b7;
+    --color-lumbini: #147070;
+    --color-gandaki: #197979;
+    --color-bagmati: #2d8a8a;
+    --color-madhesh: #61c3c3;
+    --color-koshi: #44a2a2;
 
     --radius-card: 5px;
     --radius-image: 17px;
 
     --text-2xs: 8px;
+    --text-micro-xs: 6px;
+    --text-micro-sm: 7px;
+    --text-micro-md: 9px;
+    --text-mark-sm: 30px;
     --text-xs-sm: 10px;
     --text-sm-base: 13px;
     --text-base-md: 14px;

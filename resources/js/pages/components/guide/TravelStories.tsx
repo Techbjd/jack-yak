@@ -34,7 +34,7 @@ const TravelStories = () => {
                                     aria-hidden="true"
                                     className={cn(
                                         fontQuoteMark,
-                                        'text-quote-blush text-[30px] leading-8.75 font-bold md:hidden',
+                                        'text-quote-blush text-mark-sm leading-8.75 font-bold md:hidden',
                                     )}
                                 >
                                     &ldquo;
@@ -80,7 +80,7 @@ const TravelStories = () => {
                                                 <span
                                                     className={cn(
                                                         fontPrimary,
-                                                        'text-ink md:text-md-lg text-[6px] font-medium md:font-bold',
+                                                        'text-ink md:text-md-lg text-micro-xs font-medium md:font-bold',
                                                     )}
                                                 >
                                                     {travelStoriesCopy.country}
