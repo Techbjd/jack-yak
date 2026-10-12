@@ -10,13 +10,22 @@ import type { PageProps } from '@/types';
 
 interface HeaderProps {
     tone?: 'onDark' | 'onLight';
+    mdTone?: 'onDark' | 'onLight';
     className?: string;
 }
 
 const headerIconLinkBase =
     'p-1 transition-opacity hover:opacity-80 focus-visible:ring-2 focus-visible:outline-none';
 
-const Header = ({ tone = 'onDark', className }: HeaderProps) => {
+type HeaderTone = NonNullable<HeaderProps['tone']>;
+
+const toneInkClass = (tone: HeaderTone) =>
+    tone === 'onLight' ? 'text-ink' : 'text-white';
+
+const toneRingClass = (tone: HeaderTone) =>
+    tone === 'onLight' ? 'focus-visible:ring-ink' : 'focus-visible:ring-white';
+
+const Header = ({ tone = 'onDark', mdTone, className }: HeaderProps) => {
     const { auth } = usePage<PageProps>().props;
     const user = auth?.user ?? null;
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -35,10 +44,16 @@ const Header = ({ tone = 'onDark', className }: HeaderProps) => {
     }, [isMobileMenuOpen]);
 
     const onLight = tone === 'onLight';
-    const ink = onLight ? 'text-ink' : 'text-white';
-    const ring = onLight
-        ? 'focus-visible:ring-ink'
-        : 'focus-visible:ring-white';
+    const ink = cn(toneInkClass(tone), mdTone && `md:${toneInkClass(mdTone)}`);
+    const ring = cn(
+        toneRingClass(tone),
+        mdTone && `md:${toneRingClass(mdTone)}`,
+    );
+    const logoTone = cn(
+        onLight && 'brightness-0',
+        mdTone === 'onLight' && 'md:brightness-0',
+        mdTone === 'onDark' && 'md:brightness-100',
+    );
 
     const profileHref = user ? siteRoutes.user : siteRoutes.login;
 
@@ -60,7 +75,7 @@ const Header = ({ tone = 'onDark', className }: HeaderProps) => {
                         alt={siteBrand.logoAlt}
                         className={cn(
                             'h-12 w-auto object-contain md:h-16 lg:h-20',
-                            onLight && 'brightness-0',
+                            logoTone,
                         )}
                     />
                 </Link>
