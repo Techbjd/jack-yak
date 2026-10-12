@@ -15,7 +15,7 @@ if [ "$IS_LARAVEL" = "true" ]; then
     php artisan migrate --force
   fi
 
-  php artisan storage:link
+  php artisan storage:link || true
 
   # Re-cache now that APP_KEY / DB_* are present in the environment.
   php artisan optimize
