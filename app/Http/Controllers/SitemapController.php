@@ -9,6 +9,9 @@ class SitemapController extends Controller
 {
     public function __invoke(Request $request): Response
     {
+        // These are all static pages, so there is no real content timestamp to
+        // report. Omitting <lastmod> is better than emitting a date that
+        // changes on every request, which crawlers read as low-quality churn.
         $urls = collect([
             'home',
             'destinations',
@@ -19,7 +22,6 @@ class SitemapController extends Controller
         ])->map(function (string $name): array {
             return [
                 'loc' => route($name),
-                'lastmod' => today()->toDateString(),
                 'changefreq' => 'weekly',
                 'priority' => $name === 'home' ? '1.0' : '0.8',
             ];
@@ -27,7 +29,6 @@ class SitemapController extends Controller
 
         $entries = $urls->map(fn (array $url): string => '    <url>'.PHP_EOL.
             '        <loc>'.e($url['loc']).'</loc>'.PHP_EOL.
-            '        <lastmod>'.e($url['lastmod']).'</lastmod>'.PHP_EOL.
             '        <changefreq>'.e($url['changefreq']).'</changefreq>'.PHP_EOL.
             '        <priority>'.e($url['priority']).'</priority>'.PHP_EOL.
             '    </url>')->implode(PHP_EOL);
