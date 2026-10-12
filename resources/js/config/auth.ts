@@ -31,8 +31,7 @@ export const loginCopy = {
 export const registerCopy = {
     endpoint: '/register',
     title: 'Create account',
-    subtitle:
-        'Sign up to save trips, request availability, and leave reviews.',
+    subtitle: 'Sign up to save trips, request availability, and leave reviews.',
     nameLabel: 'Name',
     namePlaceholder: 'Enter Your Name',
     emailLabel: 'Email',

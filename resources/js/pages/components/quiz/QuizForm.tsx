@@ -17,19 +17,26 @@ import GuestNudge from '@/components/forms/GuestNudge';
 import QuizSegmentField from './QuizSegmentField';
 import type { PageProps } from '@/types';
 
+interface QuizFormData {
+    name: string;
+    email: string;
+    answers: QuizAnswers;
+}
+
 export default function QuizForm({ compact = false }: { compact?: boolean }) {
     const { auth, flash } = usePage<PageProps>().props;
     const user = auth?.user ?? null;
 
-    const { data, setData, post, processing, errors, clearErrors } = useForm({
-        name: user?.name ?? '',
-        email: user?.email ?? '',
-        answers: {} as QuizAnswers,
-    });
+    const { data, setData, post, processing, errors, clearErrors } =
+        useForm<QuizFormData>({
+            name: user?.name ?? '',
+            email: user?.email ?? '',
+            answers: {},
+        });
 
     const setAnswer = (id: string, value: string) => {
         setData('answers', { ...data.answers, [id]: value });
-        clearErrors(`answers.${id}` as never);
+        clearErrors(`answers.${id}`);
     };
 
     const getError = (key: string): string | undefined => {
@@ -116,7 +123,7 @@ export default function QuizForm({ compact = false }: { compact?: boolean }) {
                     value={data.name}
                     onChange={(value) => {
                         setData('name', value);
-                        clearErrors('name' as never)
+                        clearErrors('name');
                     }}
                     error={errors.name}
                 />
@@ -131,7 +138,7 @@ export default function QuizForm({ compact = false }: { compact?: boolean }) {
                     value={data.email}
                     onChange={(value) => {
                         setData('email', value);
-                        clearErrors('email' as never);
+                        clearErrors('email');
                     }}
                     error={errors.email}
                 />

@@ -3,6 +3,7 @@ import { router } from '@inertiajs/react';
 import { fontPrimary, sectionInner, sectionPadding } from '@/config/theme';
 import { IMAGES } from '@/config/images';
 import { cn } from '@/lib/utils';
+import { useColors } from '@/config/colors';
 import {
     NEPAL_MAP_VIEWBOX,
     NEPAL_PROVINCES,
@@ -70,7 +71,6 @@ const MAP_LABELS: MapLabel[] = [
 const LABEL_FONT_SIZE = 16;
 
 const LEADER_GRAY = '#929CAA';
-const LEADER_NAVY = '#253A55';
 const LEADER_WIDTH = 2;
 const DOT_RADIUS = 3.5;
 
@@ -131,6 +131,9 @@ const MAP_LEADERS: MapLeader[] = [
 ];
 
 const NepalMap = () => {
+    const colors = useColors();
+    const leaderNavy = colors.navy_light;
+    const leaderActive = colors.teal;
     const [hovered, setHovered] = useState<string | null>(null);
     const [focused, setFocused] = useState<string | null>(null);
     const [selected, setSelected] = useState<string | null>(null);
@@ -153,7 +156,7 @@ const NepalMap = () => {
         if (navigateTimer.current !== null) {
             window.clearTimeout(navigateTimer.current);
         }
-        // Brief delay so the #253A55 fill is visible before navigating.
+        // Brief delay so the navy fill is visible before navigating.
         navigateTimer.current = window.setTimeout(() => {
             router.visit(`/view-all?province=${province.slug}`);
         }, 240);
@@ -183,7 +186,7 @@ const NepalMap = () => {
                     <p
                         className={cn(
                             fontPrimary,
-                            'text-text-primary md:text-teal pr-[5%] text-right text-base-md font-bold sm:text-2xl md:text-4xl',
+                            'text-text-primary md:text-teal text-base-md pr-[5%] text-right font-bold sm:text-2xl md:text-4xl',
                         )}
                     >
                         CHINA
@@ -223,25 +226,25 @@ const NepalMap = () => {
                         </svg>
 
                         {NEPAL_PROVINCES.map((province) => (
-                                <img
-                                    key={province.slug}
-                                    src={province.image}
-                                    alt=""
-                                    aria-hidden="true"
-                                    style={{
-                                        left: `${province.pos.left}%`,
-                                        top: `${province.pos.top}%`,
-                                        width: `${province.pos.width}%`,
-                                        height: `${province.pos.height}%`,
-                                    }}
-                                    className={cn(
-                                        'pointer-events-none absolute transition-opacity duration-180',
-                                        isActive(province.slug)
-                                            ? 'opacity-100'
-                                            : 'opacity-0',
-                                    )}
-                                />
-                            ))}
+                            <img
+                                key={province.slug}
+                                src={province.image}
+                                alt=""
+                                aria-hidden="true"
+                                style={{
+                                    left: `${province.pos.left}%`,
+                                    top: `${province.pos.top}%`,
+                                    width: `${province.pos.width}%`,
+                                    height: `${province.pos.height}%`,
+                                }}
+                                className={cn(
+                                    'pointer-events-none absolute transition-opacity duration-180',
+                                    isActive(province.slug)
+                                        ? 'opacity-100'
+                                        : 'opacity-0',
+                                )}
+                            />
+                        ))}
 
                         <svg
                             viewBox={NEPAL_MAP_VIEWBOX}
@@ -325,8 +328,8 @@ const NepalMap = () => {
                                             className="cursor-pointer outline-none"
                                             fill={
                                                 isActive(label.slug)
-                                                    ? '#2D8A8A'
-                                                    : '#253A55'
+                                                    ? leaderActive
+                                                    : leaderNavy
                                             }
                                             onMouseEnter={() =>
                                                 setHovered(label.slug)
@@ -388,7 +391,7 @@ const NepalMap = () => {
                                                 y1={leader.tick.y1}
                                                 x2={leader.tick.x2}
                                                 y2={leader.tick.y2}
-                                                stroke={LEADER_NAVY}
+                                                stroke={leaderNavy}
                                             />
                                         )}
                                         <circle
@@ -396,7 +399,7 @@ const NepalMap = () => {
                                             cy={leader.dot.y}
                                             r={DOT_RADIUS}
                                             stroke="none"
-                                            fill={LEADER_NAVY}
+                                            fill={leaderNavy}
                                         />
                                     </g>
                                 ))}
@@ -407,7 +410,7 @@ const NepalMap = () => {
                     <p
                         className={cn(
                             fontPrimary,
-                            'text-text-primary md:text-teal pl-[10%] text-left text-base-md font-bold sm:text-2xl md:text-4xl',
+                            'text-text-primary md:text-teal text-base-md pl-[10%] text-left font-bold sm:text-2xl md:text-4xl',
                         )}
                     >
                         INDIA

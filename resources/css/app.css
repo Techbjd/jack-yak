@@ -194,6 +194,13 @@
     --tracking-itinerary-wide: 0.691px;
     --tracking-itinerary-label: 0.576px;
     --tracking-review: -0.36px;
+
+    /* Image-frame tokens so image wrappers stay pure Tailwind (no `[px]`). */
+    --spacing-day-thumb-compact: 84px;
+    --spacing-explore-card-min: 173px;
+    --spacing-explore-icon: 38px;
+    --spacing-hero-panel-h: 792px;
+    --container-hero-panel: 1188px;
 }
 
 @utility no-scrollbar {

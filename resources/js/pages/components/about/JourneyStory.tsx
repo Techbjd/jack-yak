@@ -6,7 +6,12 @@ import {
     aboutSubhead,
 } from '@/config/theme';
 import { IMAGES } from '@/config/images';
-import { aboutPillars, aboutPlanTitle, aboutStoryCopy, aboutStoryIntro } from '@/config/about';
+import {
+    aboutPillars,
+    aboutPlanTitle,
+    aboutStoryCopy,
+    aboutStoryIntro,
+} from '@/config/about';
 
 export default function JourneyStory() {
     return (

@@ -1,8 +1,9 @@
 import { useState } from 'react';
+import { router } from '@inertiajs/react';
 import { cn } from '@/lib/utils';
 import { EMAIL_PATTERN } from '@/lib/form-utils';
 import { aboutCta, aboutHeading, aboutNote } from '@/config/theme';
-import { aboutNewsletter } from '@/config/about';
+import { aboutNewsletter, newsletterEndpoint } from '@/config/about';
 
 export default function NewsletterCta() {
     const [email, setEmail] = useState('');
@@ -20,7 +21,23 @@ export default function NewsletterCta() {
             return;
         }
         setError('');
-        setDone(true);
+        router.post(
+            newsletterEndpoint,
+            { email: email.trim() },
+            {
+                preserveScroll: true,
+                preserveState: true,
+                onSuccess: () => setDone(true),
+                onError: (formErrors) => {
+                    setDone(false);
+                    setError(
+                        typeof formErrors.email === 'string'
+                            ? formErrors.email
+                            : aboutNewsletter.emailInvalid,
+                    );
+                },
+            },
+        );
     };
 
     return (

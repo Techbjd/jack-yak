@@ -36,7 +36,7 @@ export default function LoginForm() {
     const emailError = errors.email ?? clientEmailError;
     const passwordError = errors.password;
 
-    const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const nextEmailError = checkEmail(data.email);
         if (nextEmailError) {
@@ -164,10 +164,7 @@ export default function LoginForm() {
                 </p>
                 <p className={cn(authLabel, 'pt-2 text-center')}>
                     {loginCopy.lookingAround}{' '}
-                    <Link
-                        href={siteRoutes.destinations}
-                        className={authLink}
-                    >
+                    <Link href={siteRoutes.destinations} className={authLink}>
                         {loginCopy.browse}
                     </Link>
                 </p>

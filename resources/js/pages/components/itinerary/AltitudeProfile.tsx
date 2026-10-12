@@ -9,7 +9,7 @@ import {
 } from '@/config/theme';
 import { altitudeProfile, type AltitudeStop } from '@/config/itinerary';
 import AltitudeChart, { type AltitudeUnit } from './AltitudeChart';
-import SectionHeading from './SectionHeading';
+import SectionHeading from '@/components/ui/SectionHeading';
 import useDesktop from './useDesktop';
 
 interface AltitudeProfileProps {
@@ -52,7 +52,7 @@ export default function AltitudeProfile({
 
     return (
         <section aria-label={title} className="flex w-full flex-col gap-2.5">
-            <SectionHeading title={title} />
+            <SectionHeading variant="rail" title={title} />
             <div
                 className={cn(
                     itinCard,

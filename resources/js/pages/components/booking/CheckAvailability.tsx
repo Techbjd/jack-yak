@@ -32,6 +32,13 @@ const durations =
 const activities =
     quizSelectQuestions.find((q) => q.id === 'experience')?.options ?? [];
 
+interface AvailabilityForm {
+    date: string;
+    travelers: number;
+    duration: string;
+    looking_for: string;
+}
+
 interface CheckAvailabilityProps {
     open: boolean;
     onClose: () => void;
@@ -46,7 +53,7 @@ export default function CheckAvailability({
     const today = todayISODate();
 
     const { data, setData, post, processing, errors, clearErrors, reset } =
-        useForm({
+        useForm<AvailabilityForm>({
             date: '',
             travelers: 1,
             duration: '',
@@ -76,11 +83,7 @@ export default function CheckAvailability({
     const done = Boolean(flash?.success && !processing);
 
     return (
-        <Modal
-            open={open}
-            onClose={close}
-            label={availabilityCopy.dialogLabel}
-        >
+        <Modal open={open} onClose={close} label={availabilityCopy.dialogLabel}>
             {done ? (
                 <FormSuccess
                     tone="modal"
@@ -92,8 +95,8 @@ export default function CheckAvailability({
                             {data.duration ? ` · ${data.duration}` : ''}
                             {data.looking_for
                                 ? ` · ${data.looking_for}`
-                                : ''}
-                            . {availabilityCopy.successTail}
+                                : ''}.{' '}
+                            {availabilityCopy.successTail}
                         </>
                     }
                     flash={flash?.success}
@@ -112,7 +115,9 @@ export default function CheckAvailability({
                     onSubmit={handleSubmit}
                     className="flex flex-col"
                 >
-                    <h2 className={cn(modalTitle, 'font-inter')}>{availabilityCopy.title}</h2>
+                    <h2 className={cn(modalTitle, 'font-inter')}>
+                        {availabilityCopy.title}
+                    </h2>
                     <p className={cn(modalSubtitle, 'pt-2')}>
                         {availabilityCopy.intro}
                     </p>
@@ -135,7 +140,7 @@ export default function CheckAvailability({
                         value={data.date}
                         onChange={(value) => {
                             setData('date', value);
-                            clearErrors('date' as never);
+                            clearErrors('date');
                         }}
                         error={errors.date}
                     />
@@ -216,9 +221,7 @@ export default function CheckAvailability({
                             placeholder={availabilityCopy.durationPlaceholder}
                             options={durations}
                             value={data.duration}
-                            onChange={(value) =>
-                                setData('duration', value)
-                            }
+                            onChange={(value) => setData('duration', value)}
                             error={errors.duration}
                         />
                     </div>

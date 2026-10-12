@@ -18,7 +18,7 @@ import {
 } from '@/config/theme';
 import { altitudeProfile, trekWeather } from '@/config/itinerary';
 import AltitudeChart, { type AltitudeUnit } from './AltitudeChart';
-import SectionHeading from './SectionHeading';
+import SectionHeading from '@/components/ui/SectionHeading';
 import useDesktop from './useDesktop';
 
 type Tab = 'daily' | 'monthly';
@@ -149,7 +149,7 @@ export default function WeatherCard() {
             aria-label={trekWeather.title}
             className="flex w-full flex-col gap-2.5"
         >
-            <SectionHeading title={trekWeather.title} />
+            <SectionHeading variant="rail" title={trekWeather.title} />
             <div
                 className={cn(
                     itinCard,

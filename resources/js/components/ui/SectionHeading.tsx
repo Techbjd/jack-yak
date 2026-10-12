@@ -1,9 +1,20 @@
 import { cn } from '@/lib/utils';
-import { fontPrimary } from '@/config/theme';
+import {
+    fontPrimary,
+    itinAltTitle,
+    itinRailTeal,
+    itinTitleBar,
+} from '@/config/theme';
 
 interface SectionHeadingProps {
     eyebrow?: string;
     title: string;
+    id?: string;
+    /**
+     * `default`: eyebrow + h2 pair used by content sections.
+     * `rail`: teal rail + title + rule used by itinerary sections.
+     */
+    variant?: 'default' | 'rail';
     eyebrowClassName?: string;
     titleClassName?: string;
     className?: string;
@@ -19,10 +30,26 @@ interface SectionHeadingProps {
 export default function SectionHeading({
     eyebrow,
     title,
+    id,
+    variant = 'default',
     eyebrowClassName,
     titleClassName,
     className,
 }: SectionHeadingProps) {
+    if (variant === 'rail') {
+        return (
+            <div className={cn('flex w-full flex-col gap-2', className)}>
+                <div className="flex w-full items-stretch gap-2.5">
+                    <span aria-hidden className={itinRailTeal} />
+                    <h2 id={id} className={cn(itinAltTitle, titleClassName)}>
+                        {title}
+                    </h2>
+                </div>
+                <span aria-hidden className={itinTitleBar} />
+            </div>
+        );
+    }
+
     return (
         <div className={cn('flex flex-col gap-1', className)}>
             {eyebrow && (

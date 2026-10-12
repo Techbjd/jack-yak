@@ -26,7 +26,12 @@ export default function GuestNudge({
     loginHref = '/login',
 }: GuestNudgeProps) {
     return (
-        <p className={cn(tone === 'modal' ? modalSubtitle : quizNote, tone === 'modal' ? 'pt-2' : 'pb-5')}>
+        <p
+            className={cn(
+                tone === 'modal' ? modalSubtitle : quizNote,
+                tone === 'modal' ? 'pt-2' : 'pb-5',
+            )}
+        >
             {prefix}
             <Link
                 href={loginHref}

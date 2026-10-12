@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { IMAGES } from '@/config/images';
 import { discoverNepalCopy } from '@/config/home';
-import { quizHero } from '@/config/quiz';
 import {
     bodyTextSmall,
     ctaMobile,
@@ -15,6 +14,7 @@ import {
 import Modal from '@/components/ui/Modal';
 import CtaButton from '@/components/ui/CtaButton';
 import QuizForm from '../quiz/QuizForm';
+import QuizPanel from '../quiz/QuizPanel';
 
 const DiscoverNepal = () => {
     const [quizOpen, setQuizOpen] = useState(false);
@@ -103,31 +103,10 @@ const DiscoverNepal = () => {
                 open={quizOpen}
                 onClose={() => setQuizOpen(false)}
                 label={discoverNepalCopy.modalLabel}
-                panelClassName="p-0 sm:max-w-[1188px] md:p-0 lg:h-[792px]"
+                panelClassName="p-0 sm:max-w-hero-panel md:p-0 lg:h-hero-panel-h"
             >
                 <div className="flex w-full flex-1 items-stretch">
-                    <div className="relative hidden w-99.5 shrink-0 overflow-hidden rounded-l-2xl lg:block">
-                        <img
-                            src={IMAGES.destination.langtangMountain}
-                            alt={quizHero.panelAlt}
-                            className="absolute inset-0 h-full w-full object-cover"
-                        />
-                        <div className="absolute inset-0 flex flex-col gap-4 p-6 sm:gap-5 lg:justify-start lg:p-14">
-                            <img
-                                src={IMAGES.logo.jackYak}
-                                alt={quizHero.logoAlt}
-                                className="w-36 object-contain lg:w-53.25"
-                            />
-                            <p
-                                className={cn(
-                                    fontPrimary,
-                                    'lg:text-2xl-3xl max-w-82.5 text-2xl leading-11 font-semibold text-white',
-                                )}
-                            >
-                                {quizHero.tagline}
-                            </p>
-                        </div>
-                    </div>
+                    <QuizPanel variant="modal" />
                     <div className="w-full min-w-0 flex-1 p-6 md:p-10">
                         <QuizForm compact />
                     </div>

@@ -50,6 +50,8 @@ export const featuredHeader = {
     side: "Discover the country's most remarkable destinations.",
     /** Tab selected on first paint (mobile + desktop stay in sync). */
     defaultTab: 'Safari',
+    /** Shown when the active tab has no cards yet. */
+    empty: 'More destinations for this category are on the way.',
 } as const;
 
 export interface DestinationCard {
@@ -131,6 +133,8 @@ export interface FeaturedCard {
     ratio: string;
     span: string;
     href: string;
+    /** Must match one of `featuredTabs` (other than 'All'). */
+    category: string;
 }
 
 export interface ViewAllDestination {
@@ -271,6 +275,7 @@ export const destinationFeaturedCards: FeaturedCard[] = [
         ratio: '292 / 350',
         span: 'md:col-span-3',
         href: itineraryPageHref,
+        category: 'Safari',
     },
     {
         src: IMAGES.destination.featured.jeepSafari,
@@ -278,6 +283,7 @@ export const destinationFeaturedCards: FeaturedCard[] = [
         ratio: '606 / 351',
         span: 'md:col-span-6',
         href: itineraryPageHref,
+        category: 'Safari',
     },
     {
         src: IMAGES.destination.featured.canoeSafari,
@@ -285,6 +291,7 @@ export const destinationFeaturedCards: FeaturedCard[] = [
         ratio: '292 / 350',
         span: 'md:col-span-3',
         href: itineraryPageHref,
+        category: 'Safari',
     },
     {
         src: IMAGES.destination.featured.birdWatchingSafari,
@@ -292,6 +299,7 @@ export const destinationFeaturedCards: FeaturedCard[] = [
         ratio: '506 / 351',
         span: 'md:col-span-5',
         href: itineraryPageHref,
+        category: 'Safari',
     },
     {
         src: IMAGES.destination.featured.crocodileWatching,
@@ -299,6 +307,7 @@ export const destinationFeaturedCards: FeaturedCard[] = [
         ratio: '394 / 349',
         span: 'md:col-span-4',
         href: itineraryPageHref,
+        category: 'Safari',
     },
     {
         src: IMAGES.destination.featured.tigerWatching,
@@ -306,6 +315,7 @@ export const destinationFeaturedCards: FeaturedCard[] = [
         ratio: '292 / 350',
         span: 'md:col-span-3',
         href: itineraryPageHref,
+        category: 'Safari',
     },
 ];
 

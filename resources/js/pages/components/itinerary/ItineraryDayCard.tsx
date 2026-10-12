@@ -10,6 +10,7 @@ import {
 import { IMAGES } from '@/config/images';
 import type { ItineraryDay } from '@/config/itinerary';
 import DayMetaIcon from './DayMetaIcon';
+import { SkeletonImage } from '@/components/ui/Skeleton';
 import { cn } from '@/lib/utils';
 
 interface ItineraryDayCardProps {
@@ -22,11 +23,12 @@ export default function ItineraryDayCard({ day }: ItineraryDayCardProps) {
             aria-label={`${day.day}: ${day.place}`}
             className={cn(itinDayCard)}
         >
-            <img
+            <SkeletonImage
                 src={day.image}
                 alt=""
                 loading="lazy"
-                className={itinDayThumb}
+                wrapperClassName={itinDayThumb}
+                className="h-full w-full object-cover"
             />
             <div className={itinDayText}>
                 <p className={itinDayLabel}>{day.day}</p>
@@ -34,10 +36,9 @@ export default function ItineraryDayCard({ day }: ItineraryDayCardProps) {
                 <p className={itinDaySub}>{day.subtitle}</p>
             </div>
             <div className="mb-1 flex shrink-0 items-center gap-2 self-end pl-1 min-[360px]:mb-2.25 min-[360px]:gap-2.75 min-[360px]:pl-0 md:hidden">
-                <DayMetaIcon
-                    src={IMAGES.itinerary.icons.stay}
-                    label={`${day.stay} included`}
-                    Fallback={BedDouble}
+                <BedDouble
+                    aria-label={`${day.stay} included`}
+                    role="img"
                     className="text-ink size-5.5 shrink-0 min-[360px]:size-6.75"
                 />
                 <DayMetaIcon
@@ -49,10 +50,8 @@ export default function ItineraryDayCard({ day }: ItineraryDayCardProps) {
             </div>
             <div className="ml-auto hidden shrink-0 flex-col justify-center gap-5 pr-5 md:flex">
                 <p className="flex items-center gap-2.5">
-                    <DayMetaIcon
-                        src={IMAGES.itinerary.icons.stay}
-                        decorative
-                        Fallback={Hotel}
+                    <Hotel
+                        aria-hidden
                         className="text-ink size-6.75 shrink-0"
                     />
                     <span className="font-inter text-md-lg leading-itinerary-22 text-ink font-bold">

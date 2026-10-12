@@ -1,23 +1,12 @@
 import { Link, usePage } from '@inertiajs/react';
 import { Bookmark, Mountain, ClipboardList, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import {
-    userCard,
-    userMuted,
-    userRow,
-    userSectionTitle,
-} from '@/config/theme';
-import type {
-    PageProps,
-    RecentAvailability,
-    RecentReview,
-    UserStats,
-} from '@/types';
+import { userCard, userMuted, userRow, userSectionTitle } from '@/config/theme';
+import type { PageProps, RecentAvailability, RecentReview } from '@/types';
 import { savedCardCopy } from '@/config/user';
 import { siteRoutes } from '@/config/site';
 
 interface SavedPageProps extends PageProps {
-    stats?: UserStats;
     recentAvailability?: RecentAvailability[];
     recentReviews?: RecentReview[];
 }
@@ -100,9 +89,7 @@ export default function SavedCard() {
             )}
             {recentReviews && recentReviews.length > 0 && (
                 <div className="pt-2">
-                    <p className={userMuted}>
-                        {savedCardCopy.latestReviews}
-                    </p>
+                    <p className={userMuted}>{savedCardCopy.latestReviews}</p>
                     <ul className="pt-2 text-sm">
                         {recentReviews.map((r) => (
                             <li key={r.id}>

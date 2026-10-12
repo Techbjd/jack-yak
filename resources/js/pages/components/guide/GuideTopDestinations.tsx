@@ -1,9 +1,6 @@
 import { useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
-import {
-    guideTopDestinations,
-    viewAllPageHref,
-} from '@/config/destination';
+import { guideTopDestinations, viewAllPageHref } from '@/config/destination';
 import { guideTopHeader } from '@/config/guide';
 import CarouselDots from '@/components/ui/CarouselDots';
 import ViewAllLink from '@/components/ui/ViewAllLink';

@@ -52,19 +52,12 @@ const TravelStories = () => {
                                 <blockquote
                                     className={cn(
                                         fontQuote,
-                                        'w-full text-2xs text-ink leading-relaxe font-normal md:text-xl-2xl md:leading-relaxed',
+                                        'text-2xs text-ink leading-relaxe md:text-xl-2xl w-full font-normal md:leading-relaxed',
                                     )}
                                 >
+                                    {travelStoriesCopy.quote}
 
-                                        {travelStoriesCopy.quote}
-
-
-                                    <span
-                                        className="
-                                                    flex w-full items-end justify-end gap-1.5
-                                                      md:inline-flex md:w-auto md:items-center md:justify-normal md:gap-4
-                                                                 "
-                                    >
+                                    <span className="flex w-full items-end justify-end gap-1.5 md:inline-flex md:w-auto md:items-center md:justify-normal md:gap-4">
                                         <span></span>
                                         <figcaption className="flex shrink-0 items-center gap-1.5 md:gap-4">
                                             <img
@@ -96,14 +89,9 @@ const TravelStories = () => {
                                         </figcaption>
                                     </span>
                                 </blockquote>
-
-
-
                             </div>
 
-                            <div className="flex  justify-center sm:items-end sm:justify-end gap-2 md:gap-4">
-
-
+                            <div className="flex justify-center gap-2 sm:items-end sm:justify-end md:gap-4">
                                 <CarouselDots
                                     className="gap-1 md:gap-2"
                                     dotClassName="size-carousel-dot md:size-2.5"

@@ -74,7 +74,6 @@ export const IMAGES = {
         chitwan: '/images/guide/guide_third.png',
     },
     viewAll: {
-        everest: '/images/destination/mount-everest.png',
         swayambhuStupa: '/images/destination/swayambhu-stupa.png',
         pokharaLakeside: '/images/destination/pokhara-lake.png',
         langtangValley: '/images/view-all/chitwan_4.png',
@@ -91,7 +90,6 @@ export const IMAGES = {
         gokyoLakes: '/images/featured/gokyo-lake.png',
         mounteverestFirst: '/images/view-all/mounteverest_1.png',
         pokharaFirst: '/images/view-all/pokhara_1.png',
-        chitwanFirst: '/images/view-all/chitwan_1.png',
     },
     about: {
         pokharaLakeside: '/images/about/pokhara.png',
@@ -103,11 +101,6 @@ export const IMAGES = {
         difference: '/images/about/about-difference.png',
         differenceMobile: '/images/about/about-difference-mobile.png',
         plan: '/images/about/about-plan.png',
-        heroSlides: [
-            '/images/about/hero/about-hero-1.png',
-            '/images/about/hero/about-hero-2.png',
-            '/images/about/hero/about-hero-3.png',
-        ],
     },
     icons: {
         advanture: '/images/about/icons/advanture_activities.png',
@@ -118,7 +111,6 @@ export const IMAGES = {
     },
     itinerary: {
         icons: {
-            stay: '/images/itinerary/icons/icon-stay.png',
             meals: '/images/itinerary/icons/dinner.png',
         },
         hero: '/images/itinerary/hero/143d24e9d4ef2e765e75fbe263dfdb8cfa94170f.jpg',

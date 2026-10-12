@@ -21,8 +21,7 @@ export const giveReviewCopy = {
     dialogLabel: 'Give a review',
     title: 'Give a Review',
     intro: 'Share your experience and help others discover the best of Nepal.',
-    guestSuffix:
-        'to track this review in your profile, or continue as guest.',
+    guestSuffix: 'to track this review in your profile, or continue as guest.',
     rateStep: '1. Rate Your Experience',
     ratingLabel: 'Star rating',
     unratedHint: 'Tap a star to rate.',

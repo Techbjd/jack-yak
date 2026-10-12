@@ -36,18 +36,41 @@ export default function Modal({
         if (!open) {
             return;
         }
+        const panel = panelRef.current;
+        const previouslyFocused = document.activeElement as HTMLElement | null;
         const onKey = (e: KeyboardEvent) => {
             if (e.key === 'Escape') {
                 onClose();
+                return;
+            }
+            if (e.key !== 'Tab' || !panel) {
+                return;
+            }
+            const focusables = panel.querySelectorAll<HTMLElement>(
+                'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])',
+            );
+            if (focusables.length === 0) {
+                e.preventDefault();
+                return;
+            }
+            const first = focusables[0];
+            const last = focusables[focusables.length - 1];
+            if (e.shiftKey && document.activeElement === first) {
+                e.preventDefault();
+                last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
             }
         };
         document.addEventListener('keydown', onKey);
         const previousOverflow = document.body.style.overflow;
         document.body.style.overflow = 'hidden';
-        panelRef.current?.focus();
+        panel?.focus();
         return () => {
             document.removeEventListener('keydown', onKey);
             document.body.style.overflow = previousOverflow;
+            previouslyFocused?.focus();
         };
     }, [open, onClose]);
 
@@ -59,15 +82,12 @@ export default function Modal({
     // (e.g. Home's `relative z-10` Sections), which would otherwise trap a
     // fixed overlay in their own stacking context.
     return createPortal(
-        <div
-            className="fixed inset-0 z-100 flex items-end justify-center sm:items-center sm:p-6"
-            onMouseDown={(e) => {
-                if (e.target === e.currentTarget) {
-                    onClose();
-                }
-            }}
-        >
-            <div aria-hidden className="absolute inset-0 bg-black/50" />
+        <div className="fixed inset-0 z-100 flex items-end justify-center sm:items-center sm:p-6">
+            <div
+                aria-hidden
+                className="absolute inset-0 bg-black/50"
+                onMouseDown={onClose}
+            />
             <div
                 ref={panelRef}
                 role="dialog"

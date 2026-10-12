@@ -1,33 +1,9 @@
-import { IMAGES } from './images';
-
 export interface AboutPillar {
     title: string;
     body: string;
 }
 
 export const aboutHeroTitleText = 'ABOUT US';
-
-export interface AboutHeroSlide {
-    image: string;
-    alt: string;
-}
-
-export const aboutHeroSlideIntervalMs = 5000;
-
-export const aboutHeroSlides: AboutHeroSlide[] = [
-    {
-        image: IMAGES.about.heroSlides[0],
-        alt: 'Travellers trekking beneath Himalayan peaks',
-    },
-    {
-        image: IMAGES.about.heroSlides[1],
-        alt: 'Prayer flags fluttering over a mountain valley',
-    },
-    {
-        image: IMAGES.about.heroSlides[2],
-        alt: 'Lakeside town beneath the Annapurna range',
-    },
-];
 
 export const aboutDifferenceCopy = {
     heading: 'Why Choosing JackYak makes all the Difference',
@@ -65,6 +41,8 @@ export const aboutPillars: AboutPillar[] = [
 
 export const aboutPlanTitle: string =
     'Let’s plan your next Nepal adventure together.';
+
+export const newsletterEndpoint = '/newsletter';
 
 export const aboutNewsletter = {
     title: 'Stay Inspired with JackYak',

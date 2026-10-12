@@ -1,16 +1,16 @@
-import {
-    coverImageAbsolute,
-    eyebrow,
-    fontPrimary,
-    imagePlaceholder,
-} from '@/config/theme';
+import { eyebrow, fontPrimary, imagePlaceholder } from '@/config/theme';
 import { IMAGES } from '@/config/images';
-import { immersiveExperiences, journeyImageAlt, journeyNepalCopy } from '@/config/destination';
+import {
+    immersiveExperiences,
+    journeyImageAlt,
+    journeyNepalCopy,
+} from '@/config/destination';
 import { cn } from '@/lib/utils';
+import CoverImage from '@/components/ui/CoverImage';
 
 export default function JourneyNepal() {
     return (
-        <section className="flex max-w-container flex-col gap-0 px-6 py-8 md:px-12 md:py-12 lg:px-24">
+        <section className="max-w-container flex flex-col gap-0 px-6 py-8 md:px-12 md:py-12 lg:px-24">
             <div className="-mx-6 -my-0.5 grid grid-cols-2 items-stretch gap-0 md:mx-0 lg:-mx-24 lg:grid-cols-12">
                 <div className="xs:pl-8 flex flex-col gap-4 pl-6 md:gap-6 md:pl-0 lg:col-span-5 lg:justify-center lg:pl-20">
                     <img
@@ -57,10 +57,9 @@ export default function JourneyNepal() {
                         'relative flex h-full w-full items-center justify-center overflow-hidden md:hidden',
                     )}
                 >
-                    <img
+                    <CoverImage
                         src={IMAGES.destination.journeyMobile}
                         alt={journeyImageAlt}
-                        className={cn(coverImageAbsolute)}
                     />
                 </div>
                 <div
@@ -69,15 +68,14 @@ export default function JourneyNepal() {
                         'relative hidden h-full w-full items-center justify-center overflow-hidden md:flex md:aspect-893/548 md:h-auto lg:col-span-7',
                     )}
                 >
-                    <img
+                    <CoverImage
                         src={IMAGES.destination.journey}
                         alt={journeyImageAlt}
-                        className={cn(coverImageAbsolute)}
                     />
                 </div>
             </div>
 
-            <div className="xs:grid-cols-2 -mx-6 grid grid-cols-2 items-stretch gap-0 md:mx-0 lg:-mx-24 lg:min-h-71.5 lg:grid-cols-12 lg:gap-0 ">
+            <div className="xs:grid-cols-2 -mx-6 grid grid-cols-2 items-stretch gap-0 md:mx-0 lg:-mx-24 lg:min-h-71.5 lg:grid-cols-12 lg:gap-0">
                 <div className="bg-cta-ember xs:col-span-1 md:bg-cta col-span-1 flex flex-col justify-center gap-5 px-8 py-10 text-white md:gap-3 md:p-6 lg:col-span-3 lg:justify-start lg:px-16 lg:pt-12">
                     <h3
                         className={cn(
@@ -102,10 +100,9 @@ export default function JourneyNepal() {
                         'relative flex h-full w-full items-center justify-center overflow-hidden md:hidden',
                     )}
                 >
-                    <img
+                    <CoverImage
                         src={IMAGES.destination.journeyMobileMountain}
                         alt={journeyImageAlt}
-                        className={cn(coverImageAbsolute)}
                     />
                 </div>
                 <div
@@ -114,10 +111,9 @@ export default function JourneyNepal() {
                         'relative hidden h-full w-full items-center justify-center overflow-hidden md:flex md:aspect-893/548 md:h-auto lg:col-span-5',
                     )}
                 >
-                    <img
+                    <CoverImage
                         src={IMAGES.destination.journeyMountain}
                         alt={journeyImageAlt}
-                        className={cn(coverImageAbsolute)}
                     />
                 </div>
                 <div className="hidden flex-col justify-center gap-3 bg-white p-6 md:col-span-2 md:flex lg:col-span-4 lg:justify-start lg:pt-12">

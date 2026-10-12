@@ -21,6 +21,11 @@ interface HeroFrameProps {
     headerOverlay?: boolean;
     /** Header tone; use onDark when overlaying a photo. */
     headerTone?: 'onDark' | 'onLight';
+    /**
+     * Remove the md/lg horizontal padding so the frame imagery stretches
+     * edge-to-edge (used by the about hero).
+     */
+    fullBleed?: boolean;
 }
 
 /**
@@ -36,6 +41,7 @@ export default function HeroFrame({
     frameClassName,
     headerOverlay = false,
     headerTone = 'onLight',
+    fullBleed = false,
 }: HeroFrameProps) {
     return (
         <div
@@ -47,20 +53,21 @@ export default function HeroFrame({
             {headerOverlay ? (
                 <>
                     <div className="lg:hidden">
-                        <Header tone="onLight" />
+                        <Header tone="onLight" className='max-w-full' />
                     </div>
                     <div className="absolute inset-x-0 top-0 z-20 hidden lg:block">
-                        <Header tone={headerTone} />
+                        <Header tone={headerTone} className='max-w-full' />
                     </div>
                 </>
             ) : (
-                <Header tone={headerTone} />
+                <Header tone={headerTone} className='max-w-full'/>
             )}
 
             <div
                 className={cn(
                     'flex flex-col items-center px-0 pt-2 text-center md:px-12 lg:px-12',
                     headerOverlay && 'lg:pt-0',
+                    fullBleed && 'md:px-0 lg:px-0',
                 )}
             >
                 <div

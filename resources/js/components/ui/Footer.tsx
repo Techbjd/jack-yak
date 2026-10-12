@@ -99,7 +99,7 @@ const Footer: React.FC = () => {
                     </nav>
                 </div>
 
-                <div className="hidden flex-col gap-10 md:flex md:flex-row md:justify-between md:gap-8">
+                <div className="hidden flex-col gap-10 md:flex lg:flex-row  md:justify-between md:gap-8">
                     <div className="max-w-content-sm flex flex-col gap-4">
                         <div className="flex h-20 w-20 items-center justify-center">
                             <img

@@ -7,7 +7,7 @@ import {
 } from '@/config/itinerary';
 import { siteRoutes } from '@/config/site';
 import Stars from '@/components/ui/Stars';
-import SectionHeading from './SectionHeading';
+import SectionHeading from '@/components/ui/SectionHeading';
 
 function ReviewArticle({ review }: { review: TrekReview }) {
     return (
@@ -113,6 +113,7 @@ export default function ReviewCard() {
             className="flex w-full scroll-mt-4 flex-col gap-2.5 md:gap-5"
         >
             <SectionHeading
+                variant="rail"
                 title={reviewsSectionTitle}
                 id="reviews-heading"
                 titleClassName={cn(itinH2, 'md:text-review-ink')}

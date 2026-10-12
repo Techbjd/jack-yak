@@ -1,6 +1,6 @@
 import { IMAGES } from '@/config/images';
+import { aboutHeroTitleText } from '@/config/about';
 import HeroFrame, { HeroTitleSvg } from '@/components/ui/HeroFrame';
-
 
 const VIEWBOX = '0 0 1440 814';
 const TITLE = { x: 720, y: 252, fontSize: 200 };
@@ -12,20 +12,20 @@ function AboutHeroLayers() {
                 src={IMAGES.about.hero}
                 alt="Blue sky over forested Himalayan hills"
                 loading="eager"
-                className="absolute inset-0 h-full w-full object-cover"
+                className="absolute inset-0 h-full w-full object-cover hidden sm:block"
             />
-            <div className="absolute inset-x-0 top-[6%] aspect-1440/814 w-full">
+            <div className="absolute inset-x-0 top-[6%] aspect-1440/814 w-full ">
                 <HeroTitleSvg
                     viewBox={VIEWBOX}
                     x={TITLE.x}
                     y={TITLE.y}
                     fontSize={TITLE.fontSize}
-                    title="ABOUT US"
+                    title={aboutHeroTitleText}
                     colorClass="text-ink lg:text-white"
                     shadowClass="[text-shadow:0_4px_4px_rgb(0_0_0/0.25)]"
                 />
             </div>
-            <div className="absolute inset-x-0 top-[12.9%] aspect-1444/814 w-full">
+            <div className="absolute inset-x-0 top-[12.9%] aspect-1444/814 w-full ">
                 <img
                     src={IMAGES.about.heroSecond}
                     alt="Hazy Himalayan ranges over a green valley"
@@ -43,7 +43,8 @@ export default function AboutHero() {
             liveText="About us"
             headerOverlay
             headerTone="onDark"
-            frameClassName="lg:aspect-1440/1000"
+            frameClassName="lg:aspect-144/100"
+            fullBleed
         >
             <div className="absolute inset-0 lg:hidden">
                 <AboutHeroLayers />
