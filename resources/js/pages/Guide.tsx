@@ -6,12 +6,12 @@ import PlanTripSteps from './components/guide/PlanTripSteps';
 import TravelStories from './components/guide/TravelStories';
 import TrustStrip from './components/guide/TrustStrip';
 import AppLayout from '@/layouts/AppLayout';
-import { pageTitles } from '@/config/site';
+import { pageSeo } from '@/config/seo';
 
 export default function Guide() {
     return (
         <AppLayout
-            title={pageTitles.guide}
+            seo={pageSeo.guide}
             shellClassName="bg-white"
             header={<Header tone="onLight" />}
         >

@@ -8,11 +8,11 @@ import Section from '@/components/ui/Section';
 import AppLayout from '@/layouts/AppLayout';
 import { IMAGES } from '@/config/images';
 import { mountainDividerAlt } from '@/config/home';
-import { pageTitles } from '@/config/site';
+import { pageSeo } from '@/config/seo';
 
 export default function Home() {
     return (
-        <AppLayout title={pageTitles.home}>
+        <AppLayout seo={pageSeo.home}>
             <Hero />
             <div className="relative z-20 flex w-full flex-col items-center gap-16 py-16 md:gap-20 md:py-90">
                 <NepalMap />

@@ -1,13 +1,14 @@
 import type { ReactNode } from 'react';
-import { Head } from '@inertiajs/react';
 import PageShell from '@/components/ui/PageShell';
 import Footer from '@/components/ui/Footer';
+import Seo, { type SeoProps } from '@/components/seo/Seo';
 import { a11yCopy } from '@/config/site';
 
 interface AppLayoutProps {
     children: ReactNode;
 
-    title?: string;
+    /** Full head tags for the page — pass a `pageSeo.*` preset. */
+    seo: SeoProps;
 
     shellClassName?: string;
 
@@ -16,13 +17,13 @@ interface AppLayoutProps {
 
 export default function AppLayout({
     children,
-    title,
+    seo,
     shellClassName,
     header,
 }: AppLayoutProps) {
     return (
         <PageShell className={shellClassName}>
-            {title ? <Head title={title} /> : null}
+            <Seo {...seo} />
             <a
                 href={`#${a11yCopy.mainContentId}`}
                 className="focus:rounded-immersive focus:text-ink sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-100 focus:bg-white focus:px-4 focus:py-2"

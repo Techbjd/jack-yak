@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { router } from '@inertiajs/react';
 import AppLayout from '@/layouts/AppLayout';
 import { viewAllDestinations, viewAllPageSize } from '@/config/destination';
-import { pageTitles } from '@/config/site';
+import { pageSeo } from '@/config/seo';
 import { sectionInner } from '@/config/theme';
 import { viewAll } from '@/routes';
 import { cn } from '@/lib/utils';
@@ -67,7 +67,7 @@ export default function ViewAll() {
 
     return (
         <AppLayout
-            title={pageTitles.viewAll}
+            seo={pageSeo.viewAll}
             header={<Header tone="onLight" />}
             shellClassName="bg-canvas"
         >

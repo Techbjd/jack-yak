@@ -1,7 +1,7 @@
 import { createInertiaApp } from '@inertiajs/react';
 import { COLORS, ColorsContext, setRootColors } from '@/config/colors';
 
-const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
+const appName = import.meta.env.VITE_APP_NAME || 'JackYak';
 void createInertiaApp({
     title: (title) => (title ? `${title} - ${appName}` : appName),
     progress: {

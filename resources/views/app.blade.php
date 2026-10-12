@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#0E1B2B">
 
         <link rel="icon" type="image/png" href="{{ asset('images/logo/jack-yak-logo.png') }}">
         <link rel="shortcut icon" type="image/png" href="{{ asset('images/logo/jack-yak-logo.png') }}">
@@ -13,7 +14,7 @@
         @viteReactRefresh
         @vite(['resources/css/app.css', 'resources/js/app.tsx', "resources/js/pages/{$page['component']}.tsx"])
         <x-inertia::head>
-            <title>{{ config('app.name', 'Jackyak') }}</title>
+            <title>{{ config('app.name', 'JackYak') }}</title>
         </x-inertia::head>
     </head>
     <body class="font-sans antialiased">

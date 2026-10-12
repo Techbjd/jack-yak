@@ -12,13 +12,13 @@ import AltitudeProfile from './components/itinerary/AltitudeProfile';
 import WeatherCard from './components/itinerary/WeatherCard';
 import ReviewCard from './components/itinerary/ReviewCard';
 import { altitudeTitle } from '@/config/itinerary';
-import { pageTitles } from '@/config/site';
+import { pageSeo } from '@/config/seo';
 import { cn } from '@/lib/utils';
 
 export default function Itinerary() {
     return (
         <AppLayout
-            title={pageTitles.itinerary}
+            seo={pageSeo.itinerary}
             header={<Header tone="onLight" className="max-w-full" />}
         >
             <div className={cn(itinPage, 'md:max-w-full')}>

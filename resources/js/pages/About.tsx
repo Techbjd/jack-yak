@@ -4,11 +4,11 @@ import Section from '@/components/ui/Section';
 import DifferenceSection from './components/about/DifferenceSection';
 import JourneyStory from './components/about/JourneyStory';
 import NewsletterCta from './components/about/NewsletterCta';
-import { pageTitles } from '@/config/site';
+import { pageSeo } from '@/config/seo';
 
 export default function About() {
     return (
-        <AppLayout title={pageTitles.about} shellClassName="bg-canvas">
+        <AppLayout seo={pageSeo.about} shellClassName="bg-canvas">
             <Section>
                 <AboutHero />
             </Section>

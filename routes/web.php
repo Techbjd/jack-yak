@@ -9,10 +9,13 @@ use App\Http\Controllers\AvailabilityController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\QuizSubmissionController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', '/home')->name('root');
+
+Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
 
 Route::inertia('/home', 'Home')->name('home');
 Route::inertia('/destinations', 'Destination')->name('destinations');
