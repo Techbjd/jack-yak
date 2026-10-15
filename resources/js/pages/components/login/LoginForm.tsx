@@ -36,6 +36,12 @@ export default function LoginForm() {
     const emailError = errors.email ?? clientEmailError;
     const passwordError = errors.password;
 
+    // Locked out (route throttle or per-account limiter): dim + freeze the form.
+    // Both backend messages start with 'Too many' — single check covers both.
+    const isLocked =
+        typeof errors.email === 'string' && errors.email.startsWith('Too many');
+    const formDisabled = processing || isLocked;
+
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const nextEmailError = checkEmail(data.email);
@@ -57,7 +63,10 @@ export default function LoginForm() {
                 <p className={cn(authLabel, 'pt-5')}>{loginCopy.subtitle}</p>
 
                 <form
-                    className="flex w-full flex-col"
+                    className={cn(
+                        'flex w-full flex-col',
+                        isLocked && 'pointer-events-none opacity-60',
+                    )}
                     onSubmit={handleSubmit}
                     noValidate
                 >
@@ -78,6 +87,7 @@ export default function LoginForm() {
                         error={emailError}
                         errorId="login-email-error"
                         first
+                        disabled={formDisabled}
                     />
 
                     <TextField
@@ -96,6 +106,7 @@ export default function LoginForm() {
                         }}
                         error={passwordError}
                         errorId="login-password-error"
+                        disabled={formDisabled}
                     />
 
                     <div className="flex items-center justify-between pt-2.5">
@@ -113,12 +124,13 @@ export default function LoginForm() {
                                 onChange={(e) =>
                                     setData('remember', e.target.checked)
                                 }
-                                className="accent-ink size-4 cursor-pointer"
+                                disabled={formDisabled}
+                                className="accent-ink size-4 cursor-pointer disabled:cursor-not-allowed"
                             />
                             {loginCopy.rememberMe}
                         </label>
                         <Link
-                            href={siteRoutes.register}
+                            href={siteRoutes.passwordRequest}
                             className={cn(
                                 fontPrimary,
                                 authLink,
@@ -131,10 +143,10 @@ export default function LoginForm() {
 
                     <button
                         type="submit"
-                        disabled={processing}
+                        disabled={formDisabled}
                         className={cn(
                             authButton,
-                            'mt-5 cursor-pointer disabled:opacity-60',
+                            'mt-5 cursor-pointer disabled:cursor-not-allowed disabled:opacity-60',
                         )}
                     >
                         {processing ? loginCopy.submitting : loginCopy.submit}

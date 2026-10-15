@@ -4,6 +4,9 @@ namespace App\Http\Requests\Auth;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rules\Password;
+
+// validation runs before the controller ever see the requist
 
 class RegisterRequest extends FormRequest
 {
@@ -25,7 +28,10 @@ class RegisterRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'confirmed', Password::defaults()],
+            // min:8 is and explicit rule  so declearning it make laravel ignore password::defaults()
+            // now the code chages fire the appservice provider to set the default password rules to min:8 and mixedCase
+
         ];
     }
 }

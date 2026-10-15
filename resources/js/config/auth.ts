@@ -37,11 +37,38 @@ export const registerCopy = {
     emailLabel: 'Email',
     emailPlaceholder: 'Enter Your Email',
     passwordLabel: 'Password',
-    passwordPlaceholder: 'Min. 8 characters',
+    passwordPlaceholder: 'Min. 12 characters',
     confirmLabel: 'Confirm password',
     confirmPlaceholder: 'Repeat your password',
     submit: 'Sign Up',
     submitting: 'Creating…',
     haveAccount: 'Already have an account?',
     signIn: 'Sign in',
+} as const;
+
+export const forgotPasswordCopy = {
+    endpoint: '/forgot-password',
+    title: 'Forgot Password?',
+    subtitle: 'Enter your email and we will send you a reset link.',
+    emailLabel: 'Email',
+    emailPlaceholder: 'Enter your registered email',
+    emailRequired: 'Email is required.',
+    emailInvalid: 'Please enter a valid email address.',
+    submit: 'Send Reset Link',
+    submitting: 'Sending…',
+    success: 'Reset link sent. Check your email.',
+    backToLogin: 'Back to login',
+} as const;
+
+export const resetPasswordCopy = {
+    endpoint: '/reset-password',
+    title: 'Set a New Password',
+    subtitle: 'Choose a strong password to secure your account.',
+    passwordLabel: 'New password',
+    passwordPlaceholder: 'Min. 12 characters',
+    confirmLabel: 'Confirm new password',
+    confirmPlaceholder: 'Repeat your new password',
+    submit: 'Reset Password',
+    submitting: 'Resetting…',
+    backToLogin: 'Back to login',
 } as const;

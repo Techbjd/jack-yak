@@ -23,16 +23,7 @@ class Login extends Controller
 
     public function __invoke(LoginRequest $request): RedirectResponse|SymfonyResponse
     {
-        $credentials = $request->only('email', 'password');
-        $remember = $request->boolean('remember');
-
-        if (! Auth::attempt($credentials, $remember)) {
-            return back()->withErrors([
-                'email' => 'These credentials do not match our records.',
-            ])->onlyInput('email');
-        }
-
-        $request->session()->regenerate();
+        $request->authenticate();
 
         /** @var SymfonyResponse|RedirectResponse $redirect */
         $redirect = redirect()->intended(route('user'));

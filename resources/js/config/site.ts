@@ -12,6 +12,11 @@ import {
     viewAll,
 } from '@/routes';
 import { redirect as googleRedirect } from '@/routes/google';
+import {
+    email as passwordEmail,
+    request as passwordRequest,
+    update as passwordUpdate,
+} from '@/routes/password';
 
 /**
  * Site-wide constants: brand, routes, contact, legal.
@@ -43,6 +48,10 @@ export const siteRoutes = {
     register: register.url(),
     user: user.url(),
     logout: logout.url(),
+    /** Password reset flow (forgot-password form, reset-password form). */
+    passwordRequest: passwordRequest.url(),
+    passwordEmail: passwordEmail.url(),
+    passwordUpdate: passwordUpdate.url(),
     /** In-page anchors on the itinerary page. */
     booking: '#booking',
     reviews: '#reviews',
@@ -78,6 +87,8 @@ export const pageTitles = {
     itinerary: 'Itinerary',
     login: 'Login',
     register: 'Sign up',
+    forgotPassword: 'Forgot Password?',
+    resetPassword: 'Reset Password',
     quiz: 'Find Your Destination',
     user: 'User',
 } as const;

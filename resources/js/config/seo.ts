@@ -15,8 +15,20 @@ import { pageTitles, siteBrand, siteRoutes } from '@/config/site';
  */
 
 /** Absolute site origin. Replace the fallback with the real domain. */
-export const siteUrl: string =
-    import.meta.env.VITE_APP_URL ?? 'https://jackyak.example.com';
+
+
+const configuredURL:string|undefined = import.meta.env.VITE_APP_URL;
+if (!configuredURL && import.meta.env.PROD) {
+    console.error(
+        'VITE_APP_URL is not set — canonical/og:url/og:image will be omitted.',
+    );
+}
+
+
+export const siteUrl: string =(configuredURL ?? "").replace(/\/$/, '') ;
+export function absoluteUrl(path:string):string | undefined {
+return siteUrl?`${siteUrl}${path}`:undefined;
+}
 
 export const siteSeo = {
     siteName: siteBrand.name,
@@ -41,6 +53,7 @@ export interface PageSeo {
     noindex?: boolean;
     /** JSON-LD nodes rendered by `<Seo>`. */
     jsonLd?: Record<string, unknown>[];
+
 }
 
 function organizationJsonLd(description: string): Record<string, unknown> {
@@ -136,6 +149,18 @@ export const pageSeo = {
         path: siteRoutes.login,
         noindex: true,
     },
+    forgotPassword: {
+        title: 'Forgot Password?',
+        description: 'Reset your JackYak account password via email.',
+        path: siteRoutes.login,
+        noindex: true,
+    },
+    resetPassword: {
+        title: 'Reset Password',
+        description: 'Set a new password for your JackYak account.',
+        path: siteRoutes.login,
+        noindex: true,
+    },
     register: {
         title: pageTitles.register,
         description: 'Create a JackYak account to plan and save Nepal trips.',
@@ -149,3 +174,7 @@ export const pageSeo = {
         noindex: true,
     },
 } as const satisfies Record<string, PageSeo>;
+
+
+
+

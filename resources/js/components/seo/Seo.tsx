@@ -23,14 +23,17 @@ export default function Seo({
     noindex = false,
     jsonLd,
 }: SeoProps) {
-    const canonical = `${siteUrl}${path}`;
-    const ogImage = image ?? siteSeo.defaultOgImage;
+
+
+    const hasAbsoluteUrl = siteUrl.length > 0;
+    const canonical = hasAbsoluteUrl ? `${siteUrl}${path}` : undefined;
+    const ogImage = hasAbsoluteUrl ? (image ?? siteSeo.defaultOgImage) : undefined;
 
     return (
         <Head>
             <title>{title}</title>
             <meta name="description" content={description} />
-            <link rel="canonical" href={canonical} />
+            {canonical ? <link rel="canonical" href={canonical} /> : null}
             {noindex ? (
                 <meta name="robots" content="noindex, nofollow" />
             ) : null}
@@ -39,12 +42,12 @@ export default function Seo({
             <meta property="og:locale" content={siteSeo.locale} />
             <meta property="og:title" content={title} />
             <meta property="og:description" content={description} />
-            <meta property="og:url" content={canonical} />
-            <meta property="og:image" content={ogImage} />
             <meta name="twitter:card" content={siteSeo.twitterCard} />
             <meta name="twitter:title" content={title} />
             <meta name="twitter:description" content={description} />
-            <meta name="twitter:image" content={ogImage} />
+            {canonical ? <meta property="og:url" content={canonical} /> : null}
+            {ogImage ? <meta property="og:image" content={ogImage} /> : null}
+            {ogImage ? <meta name="twitter:image" content={ogImage} /> : null}
             {jsonLd?.map((node, index) => (
                 <script
                     key={index}

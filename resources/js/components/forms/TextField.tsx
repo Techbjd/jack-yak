@@ -35,6 +35,8 @@ interface TextFieldProps {
     /** Extra input classes (e.g. dim an empty date input). */
     inputClassName?: string;
     errorId?: string;
+    /** Disables the input (e.g. while the form is locked out). */
+    disabled?: boolean;
 }
 
 const labelBase: Record<TextFieldTone, (first: boolean) => string> = {
@@ -71,6 +73,7 @@ export default function TextField({
     labelClassName,
     inputClassName,
     errorId,
+    disabled = false,
 }: TextFieldProps) {
     const resolvedErrorId = errorId ?? `${id}-error`;
     const Wrapper = tone === 'quiz' ? 'div' : Fragment;
@@ -94,10 +97,12 @@ export default function TextField({
                 onChange={(e) => onChange(e.target.value)}
                 aria-invalid={error ? true : undefined}
                 aria-describedby={error ? resolvedErrorId : undefined}
+                disabled={disabled}
                 className={cn(
                     inputBase[tone],
                     error && formErrorBorder,
                     inputClassName,
+                    disabled && 'cursor-not-allowed opacity-60',
                 )}
             />
             {error && <FieldError id={resolvedErrorId}>{error}</FieldError>}

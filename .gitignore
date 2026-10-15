@@ -33,6 +33,8 @@ SKILL.md
 skill.md
 # Local-only frontend handbook (conventions doc, not for fresh clones)
 /docs
+# Local-only improvement plan (you code, agent teaches — never pushed)
+/docs/jack-yak-todo.md
 # Agent skill docs (auto-generated, local only) — all markdown inside any skills folder
 **/skills/*.md
 **/skills/**/*.md
