@@ -23,7 +23,10 @@ class StoreNewsletterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:newsletter_subscriptions,email'],
+            // No `unique` rule (Task 8b): the controller de-dupes via
+            // updateOrCreate, so a repeat subscriber gets the same happy path
+            // as a first-timer instead of a validation error.
+            'email' => ['required', 'string', 'email', 'max:255'],
         ];
     }
 }

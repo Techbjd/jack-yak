@@ -10,7 +10,9 @@ class NewsletterController extends Controller
 {
     public function __invoke(StoreNewsletterRequest $request): RedirectResponse
     {
-        NewsletterSubscription::create([
+        // Idempotent subscribe (Task 8b): resubmitting an already-known email is
+        // a silent no-op success, never a validation error.
+        NewsletterSubscription::updateOrCreate([
             'email' => $request->validated('email'),
         ]);
 

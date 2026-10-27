@@ -55,3 +55,6 @@ Route::post('/newsletter', NewsletterController::class)->middleware('throttle:20
 
 Route::get('/auth/google', RedirectToGoogle::class)->middleware('throttle:10,1')->name('google.redirect');
 Route::get('/auth/google/callback', HandleGoogleCallback::class)->middleware('throttle:10,1')->name('google.callback');
+
+// for the newsletter subscription form
+Route::post('/newsletter', NewsletterController::class)->middleware('throttle:10,1')->name('newsletter.store');
