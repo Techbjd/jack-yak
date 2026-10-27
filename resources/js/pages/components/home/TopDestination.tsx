@@ -45,7 +45,7 @@ const TopDestinations = () => {
                                 <span
                                     className={cn(
                                         fontPrimary,
-                                        'text-ink w-full text-center font-bold break-words',
+                                        'text-ink warp-break-word w-full text-center font-bold',
                                         'text-xs-sm leading-tight tracking-wide',
                                     )}
                                 >
@@ -54,7 +54,7 @@ const TopDestinations = () => {
                                 <span
                                     className={cn(
                                         fontPrimary,
-                                        'text-ink text-2xs w-full text-center font-semibold break-words',
+                                        'text-ink text-2xs warp-break-word w-full text-center font-semibold',
                                         'leading-tight tracking-wide',
                                     )}
                                 >

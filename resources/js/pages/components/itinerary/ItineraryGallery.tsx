@@ -27,7 +27,7 @@ export default function ItineraryGallery() {
     return (
         <section
             aria-label={galleryTiles.sectionLabel}
-            className="flex w-full flex-col gap-2 md:gap-3 px-2"
+            className="flex w-full flex-col gap-2 px-2 md:gap-3"
         >
             <div className="relative w-full lg:hidden">
                 <SkeletonImage
@@ -128,7 +128,7 @@ export default function ItineraryGallery() {
                             />
                         </span>
                     </span>
-                    <span className="from-gallery-shade absolute inset-x-0 bottom-0 flex justify-center bg-gradient-to-t to-transparent px-2 pt-8 pb-3">
+                    <span className="from-gallery-shade absolute inset-x-0 bottom-0 flex justify-center bg-linear-to-t to-transparent px-2 pt-8 pb-3">
                         <span className="font-inter text-sm-base leading-none font-bold text-white">
                             {galleryTiles.watchVideos}
                         </span>

@@ -23,11 +23,11 @@ export default function Seo({
     noindex = false,
     jsonLd,
 }: SeoProps) {
-
-
     const hasAbsoluteUrl = siteUrl.length > 0;
     const canonical = hasAbsoluteUrl ? `${siteUrl}${path}` : undefined;
-    const ogImage = hasAbsoluteUrl ? (image ?? siteSeo.defaultOgImage) : undefined;
+    const ogImage = hasAbsoluteUrl
+        ? (image ?? siteSeo.defaultOgImage)
+        : undefined;
 
     return (
         <Head>

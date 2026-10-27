@@ -16,18 +16,16 @@ import { pageTitles, siteBrand, siteRoutes } from '@/config/site';
 
 /** Absolute site origin. Replace the fallback with the real domain. */
 
-
-const configuredURL:string|undefined = import.meta.env.VITE_APP_URL;
+const configuredURL: string | undefined = import.meta.env.VITE_APP_URL;
 if (!configuredURL && import.meta.env.PROD) {
     console.error(
         'VITE_APP_URL is not set — canonical/og:url/og:image will be omitted.',
     );
 }
 
-
-export const siteUrl: string =(configuredURL ?? "").replace(/\/$/, '') ;
-export function absoluteUrl(path:string):string | undefined {
-return siteUrl?`${siteUrl}${path}`:undefined;
+export const siteUrl: string = (configuredURL ?? '').replace(/\/$/, '');
+export function absoluteUrl(path: string): string | undefined {
+    return siteUrl ? `${siteUrl}${path}` : undefined;
 }
 
 export const siteSeo = {
@@ -53,7 +51,6 @@ export interface PageSeo {
     noindex?: boolean;
     /** JSON-LD nodes rendered by `<Seo>`. */
     jsonLd?: Record<string, unknown>[];
-
 }
 
 function organizationJsonLd(description: string): Record<string, unknown> {
@@ -169,12 +166,9 @@ export const pageSeo = {
     },
     user: {
         title: pageTitles.user,
-        description: 'Your JackYak account — profile, saved trips and settings.',
+        description:
+            'Your JackYak account — profile, saved trips and settings.',
         path: siteRoutes.user,
         noindex: true,
     },
 } as const satisfies Record<string, PageSeo>;
-
-
-
-

@@ -139,7 +139,7 @@ export const aboutSectionTitle =
     'font-manrope text-md-lg leading-snug font-bold text-ink md:text-section-xl md:leading-section-xl';
 
 export const aboutHeading =
-    'font-manrope text-md-lg leading-snug font-bold text-ink md:text-section-xl';
+    'font-manrope text-md-lg leading-snug font-bold text-ink md:text-4xl';
 
 export const aboutSubhead =
     'font-manrope text-base-md leading-snug font-bold text-ink md:text-2xl-3xl';
@@ -253,10 +253,10 @@ export const itinDayLabel =
     'font-inter text-sm-md leading-5 font-bold text-cta-accent xs2:text-md-lg xs2:leading-itinerary-22 md:text-cta';
 
 export const itinDayPlace =
-    'font-inter line-clamp-2 text-sm-md leading-5 font-bold tracking-card break-words text-ink xs2:text-md-lg xs2:leading-itinerary-22 md:text-xl-2xl md:leading-itinerary-33';
+    'font-inter line-clamp-2 text-sm-md leading-5 font-bold tracking-cardwarp-break-word text-ink xs2:text-md-lg xs2:leading-itinerary-22 md:text-xl-2xl md:leading-itinerary-33';
 
 export const itinDaySub =
-    'font-inter line-clamp-2 text-2xs leading-4 font-bold break-words text-ink xs2:text-xs-md md:text-md-lg md:leading-itinerary-22';
+    'font-inter line-clamp-2 text-2xs leading-4 font-boldwarp-break-word text-ink xs2:text-xs-md md:text-md-lg md:leading-itinerary-22';
 
 export const itinUnitPillBase =
     'font-inter text-xs-md text-slate-text md:text-slate-mute flex items-center justify-center rounded-full border uppercase md:h-8';
