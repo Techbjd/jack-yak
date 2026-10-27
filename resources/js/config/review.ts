@@ -37,7 +37,7 @@ export const giveReviewCopy = {
     placeStep: '4. What is this review about?',
     placePlaceholder: 'Select a place',
     visitStep: '5. When did you visit?',
-    nameLabel: 'Your name',
+    nameLabel: '6. Your name',
     namePlaceholder: 'Enter Your Name',
     agreeLabel: 'I agree to the Community Guidelines',
     agreeRequired: 'Please agree to the Community Guidelines.',
@@ -46,6 +46,8 @@ export const giveReviewCopy = {
     doneLabel: 'Done',
     reviewsLabel: 'View my reviews',
     signInLabel: 'Sign in to track reviews',
+    imageDownloadFailed:
+        'Could not download this image. Try dragging the file itself or browse for it.',
 };
 
 export const rateActionLabel = (star: number): string =>

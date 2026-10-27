@@ -80,6 +80,7 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
     const [hovered, setHovered] = useState(0);
     const [agreed, setAgreed] = useState(false);
     const [agreedError, setAgreedError] = useState('');
+    const [urlLoading, setUrlLoading] = useState(false);
 
     const lit = hovered || data.rating;
     const done = Boolean(flash?.success && !processing);
@@ -90,6 +91,7 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
         setPhotoError('');
         setAgreedError('');
         setHovered(0);
+        setUrlLoading(false);
         reset();
         clearErrors();
         if (user?.name) {
@@ -121,29 +123,58 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
         }
     };
 
-    const addFiles = (files: FileList | File[]) => {
+    const addFiles = (files: FileList | File[]): boolean => {
         const images = [...files].filter((f) => f.type.startsWith('image/'));
         if (images.length === 0) {
             setPhotoError(giveReviewCopy.imageFilesOnly);
-            return;
+            return false;
         }
         if (
             previews.length + images.length > MAX_REVIEW_PHOTOS ||
             data.photos.length + images.length > MAX_REVIEW_PHOTOS
         ) {
             setPhotoError(photoLimitError(MAX_REVIEW_PHOTOS));
-            return;
+            return false;
         }
         setPhotoError('');
-        const next = images.map((f) => ({
+
+        const next: ReviewPhoto[] = images.map((f) => ({
             url: URL.createObjectURL(f),
             name: f.name,
             file: f,
         }));
+
         setPreviews((prev) => [...prev, ...next]);
         setData('photos', [...data.photos, ...images]);
+
+        return true;
     };
 
+    const addImageFromUrl = async (url: string): Promise<boolean> => {
+        setUrlLoading(true);
+
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}`);
+            }
+            const blob = await response.blob();
+            if (!blob.type.startsWith('image/')) {
+                throw new Error('Not an image');
+            }
+            const name = decodeURIComponent(
+                url.split('/').pop()?.split('?')[0] || 'image.jpg',
+            );
+            const file = new File([blob], name, { type: blob.type });
+
+            return addFiles([file]);
+        } catch {
+            setPhotoError(giveReviewCopy.imageDownloadFailed);
+            return false;
+        } finally {
+            setUrlLoading(false);
+        }
+    };
     const removePhoto = (url: string) => {
         const target = previews.find((p) => p.url === url);
         if (target) {
@@ -156,7 +187,45 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
         setPreviews((prev) => prev.filter((p) => p.url !== url));
     };
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const imageUrlFromDataTransfer = (
+        transfer: DataTransfer,
+    ): string | null => {
+        const uriList = transfer.getData('text/uri-list');
+
+        if (uriList) {
+            const uri = uriList
+                .split('\n')
+                .map((line) => line.trim())
+                .find((line) => line !== '' && !line.startsWith('#'));
+
+            if (uri) {
+                return uri;
+            }
+        }
+
+        const html = transfer.getData('text/html');
+
+        if (html) {
+            const src = html.match(/<img[^>]+src=["']([^"']+)["']/i)?.[1];
+
+            if (src) {
+                return src;
+            }
+        }
+
+        return null;
+    };
+
+    const handlePaste = (e: React.ClipboardEvent<HTMLFormElement>) => {
+        const files = e.clipboardData.files;
+
+        if ([...files].some((f) => f.type.startsWith('image/'))) {
+            e.preventDefault();
+            addFiles(files);
+        }
+    };
+
+    const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (data.rating === 0) {
             document.getElementById('review-rating')?.focus();
@@ -171,6 +240,7 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
         post(reviewsEndpoint, {
             forceFormData: true,
             preserveScroll: true,
+            preserveState: true,
         });
     };
 
@@ -195,6 +265,7 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                 <form
                     noValidate
                     onSubmit={handleSubmit}
+                    onPaste={handlePaste}
                     className="flex flex-col"
                 >
                     <h2 className={cn(modalTitle, 'text-2xl-3xl')}>
@@ -307,8 +378,16 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                         role="button"
                         tabIndex={0}
                         aria-label={giveReviewCopy.uploadLabel}
-                        onClick={() => fileInputRef.current?.click()}
+                        aria-busy={urlLoading}
+                        onClick={() => {
+                            if (!urlLoading) {
+                                fileInputRef.current?.click();
+                            }
+                        }}
                         onKeyDown={(e) => {
+                            if (urlLoading) {
+                                return;
+                            }
                             if (e.key === 'Enter' || e.key === ' ') {
                                 e.preventDefault();
                                 fileInputRef.current?.click();
@@ -322,11 +401,31 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                         onDrop={(e) => {
                             e.preventDefault();
                             setDragging(false);
-                            addFiles(e.dataTransfer.files);
+
+                            if (urlLoading) {
+                                return;
+                            }
+
+                            if (e.dataTransfer.files.length > 0) {
+                                addFiles(e.dataTransfer.files);
+                                return;
+                            }
+
+                            const url = imageUrlFromDataTransfer(
+                                e.dataTransfer,
+                            );
+
+                            if (url) {
+                                void addImageFromUrl(url);
+                                return;
+                            }
+
+                            setPhotoError(giveReviewCopy.imageFilesOnly);
                         }}
                         className={cn(
                             'border-ink flex min-h-24.5 cursor-pointer flex-col items-center justify-center gap-3 rounded-lg border border-dashed bg-white p-6 text-center transition-colors',
                             dragging && 'border-cta bg-surface-cream',
+                            urlLoading && 'opacity-60',
                         )}
                     >
                         <ImagePlus aria-hidden className="text-ink size-6" />
@@ -400,39 +499,43 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                         </ul>
                     )}
 
-                    <div className="grid grid-cols-1 gap-5 pt-5 md:grid-cols-2">
-                        <SelectField
-                            id="review-place"
-                            label={giveReviewCopy.placeStep}
-                            tone="modal"
-                            labelClassName="pb-2"
-                            placeholder={giveReviewCopy.placePlaceholder}
-                            options={reviewPlaces}
-                            value={data.place}
-                            onChange={(value) => {
-                                setData('place', value);
-                                clearErrors('place');
-                            }}
-                            error={errors.place}
-                        />
+                    <div className="item-start grid w-full grid-cols-1 gap-2 pt-5 md:grid-cols-2">
+                        <div className="flex min-w-0 flex-col">
+                            <SelectField
+                                id="review-place"
+                                label={giveReviewCopy.placeStep}
+                                tone="modal"
+                                labelClassName="pb-2"
+                                placeholder={giveReviewCopy.placePlaceholder}
+                                options={reviewPlaces}
+                                value={data.place}
+                                onChange={(value) => {
+                                    setData('place', value);
+                                    clearErrors('place');
+                                }}
+                                error={errors.place}
+                            />
+                        </div>
 
-                        <TextField
-                            id="review-visit"
-                            label={giveReviewCopy.visitStep}
-                            type="date"
-                            tone="modal"
-                            labelClassName="pb-2"
-                            inputClassName={
-                                !data.visit_date ? 'text-mist' : undefined
-                            }
-                            max={today}
-                            value={data.visit_date}
-                            onChange={(value) => {
-                                setData('visit_date', value);
-                                clearErrors('visit_date');
-                            }}
-                            error={errors.visit_date}
-                        />
+                        <div className="flex min-w-0 flex-col">
+                            <TextField
+                                id="review-visit"
+                                label={giveReviewCopy.visitStep}
+                                type="date"
+                                tone="modal"
+                                labelClassName="pb-2"
+                                inputClassName={
+                                    !data.visit_date ? 'text-mist' : undefined
+                                }
+                                max={today}
+                                value={data.visit_date}
+                                onChange={(value) => {
+                                    setData('visit_date', value);
+                                    clearErrors('visit_date');
+                                }}
+                                error={errors.visit_date}
+                            />
+                        </div>
                     </div>
 
                     <TextField
