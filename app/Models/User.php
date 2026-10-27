@@ -20,13 +20,14 @@ use Illuminate\Support\Carbon;
  * @property string|null $google_id
  * @property string|null $avatar
  * @property Carbon|null $email_verified_at
+ * @property bool $is_admin
  * @property string|null $password
  * @property string|null $remember_token
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  */
-#[Fillable(['name', 'email', 'password', 'google_id', 'avatar', 'email_verified_at'])]
-#[Hidden(['password', 'remember_token'])]
+#[Fillable(['name', 'email', 'password', 'google_id', 'avatar', 'email_verified_at', 'is_admin'])]
+#[Hidden(['password', 'remember_token', 'is_admin'])]
 class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
