@@ -1,5 +1,5 @@
 import { MoveRight } from 'lucide-react';
-import { fontPrimary } from '@/config/theme';
+import { fontPrimary, sectionInner } from '@/config/theme';
 import { cn } from '@/lib/utils';
 import { exploreCards, whyExploreHeader } from '@/config/guide';
 import SectionHeading from '@/components/ui/SectionHeading';
@@ -7,7 +7,12 @@ import SectionHeading from '@/components/ui/SectionHeading';
 const WhyExplore = () => {
     return (
         <section className="w-full">
-            <div className="max-w-container mx-auto flex w-full flex-col gap-6 px-6 pt-6 md:gap-10 md:px-12 md:pt-10 lg:px-24">
+            <div
+                className={cn(
+                    sectionInner,
+                    'flex flex-col gap-6 pt-6 md:gap-10 md:pt-10',
+                )}
+            >
                 <div className="grid grid-cols-3 items-start gap-4 md:items-center md:justify-between md:gap-8">
                     <SectionHeading
                         eyebrow={whyExploreHeader.eyebrow}

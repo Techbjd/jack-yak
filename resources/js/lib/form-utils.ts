@@ -7,6 +7,20 @@
 /** Single email rule for all forms — keep in sync with backend. */
 export const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
+/** Shared email validation with caller-supplied copy. */
+export function validateEmail(
+    value: string,
+    messages: { required: string; invalid: string },
+): string {
+    if (!value.trim()) {
+        return messages.required;
+    }
+    if (!EMAIL_PATTERN.test(value.trim())) {
+        return messages.invalid;
+    }
+    return '';
+}
+
 /** Today's date as `YYYY-MM-DD` for `<input type="date">` min/max. */
 export function todayISODate(): string {
     return new Date().toISOString().split('T')[0];

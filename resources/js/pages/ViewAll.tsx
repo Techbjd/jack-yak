@@ -69,7 +69,7 @@ export default function ViewAll() {
         <AppLayout
             seo={pageSeo.viewAll}
             header={<Header tone="onLight" />}
-            shellClassName="bg-canvas"
+            background="canvas"
         >
             <div className={cn(sectionInner, 'pt-6')}>
                 <ViewAllHeader />

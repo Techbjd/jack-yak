@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils';
 import { itinBody, itinH2, itinRailOrange } from '@/config/theme';
 import { trekAbout } from '@/config/itinerary';
 
-const desktopPara = 'md:leading-about-32 md:text-review-body  md:block';
+const desktopPara = 'md:leading-about-32 md:text-review-body md:block';
 
 export default function TrekAbout() {
     const [expanded, setExpanded] = useState(false);
@@ -11,7 +11,7 @@ export default function TrekAbout() {
 
     return (
         <section
-            aria-labelledby="trek-about-heading "
+            aria-labelledby="trek-about-heading"
             className="md:max-w-content-lg mx-auto flex w-full flex-col gap-2 md:gap-4 xl:max-w-none"
         >
             <div className="flex w-full items-stretch gap-2.5">

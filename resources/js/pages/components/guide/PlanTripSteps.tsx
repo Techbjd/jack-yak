@@ -1,5 +1,5 @@
 import { useAutoRotate } from '@/lib/useAutoRotate';
-import { fontPrimary, imageRoundedLg } from '@/config/theme';
+import { fontPrimary, imageRoundedLg, sectionInner } from '@/config/theme';
 import { cn } from '@/lib/utils';
 import {
     planStepImages,
@@ -18,7 +18,12 @@ const PlanTripSteps = () => {
 
     return (
         <section className="w-full">
-            <div className="max-w-container ms:gap-8 ms:px-8 mx-auto flex w-full flex-col gap-4 px-6 py-6 md:px-12 lg:px-24">
+            <div
+                className={cn(
+                    sectionInner,
+                    'ms:gap-8 ms:px-8 flex flex-col gap-4 py-6',
+                )}
+            >
                 <SectionHeading
                     eyebrow={planTripHeader.eyebrow}
                     title={planTripHeader.title}

@@ -84,7 +84,7 @@ export default function BookingCard() {
                         >
                             <Icon
                                 aria-hidden
-                                className="text-slate-text size-4.75 shrink-0"
+                                className="text-slate-text size-booking-perk shrink-0"
                             />
                             <span className="font-inter text-base-md leading-itinerary-25 text-slate-text font-medium">
                                 {perk}
@@ -98,7 +98,7 @@ export default function BookingCard() {
                 <button
                     type="button"
                     onClick={() => setAvailabilityOpen(true)}
-                    className="font-inter rounded-itinerary-cta bg-cta text-md-lg leading-itinerary-27 flex h-14.75 w-full cursor-pointer items-center justify-center font-medium text-white transition-opacity hover:opacity-90"
+                    className="font-inter rounded-itinerary-cta bg-cta text-md-lg leading-itinerary-27 h-booking-cta flex w-full cursor-pointer items-center justify-center font-medium text-white transition-opacity hover:opacity-90"
                 >
                     {trekBooking.checkAvailability}
                 </button>
@@ -113,7 +113,7 @@ export default function BookingCard() {
                     href={siteContact.whatsapp}
                     target="_blank"
                     rel="noreferrer"
-                    className="border-wa flex min-h-15 w-full items-center gap-2 rounded-xl border bg-white px-4 py-2.5"
+                    className="border-wa min-h-booking-wa flex w-full items-center gap-2 rounded-xl border bg-white px-4 py-2.5"
                 >
                     <FaWhatsapp
                         aria-hidden

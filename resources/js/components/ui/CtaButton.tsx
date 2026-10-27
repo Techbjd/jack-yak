@@ -12,10 +12,17 @@ interface CtaButtonProps {
     /** Trailing icon (e.g. the plus-in-circle). */
     icon?: ReactNode;
     type?: 'button' | 'submit';
+    /** Pill is the default; block squares the corners. */
+    shape?: 'pill' | 'block';
 }
 
 const ctaBase =
-    'inline-flex cursor-pointer items-center justify-center gap-2 rounded-full font-bold text-white';
+    'inline-flex cursor-pointer items-center justify-center gap-2 font-bold text-white';
+
+const ctaShapes = {
+    pill: 'rounded-full',
+    block: 'rounded-none',
+} as const;
 
 /**
  * Pill call-to-action. Unifies the home hero link, the DiscoverNepal
@@ -31,6 +38,7 @@ export default function CtaButton({
     ariaLabel,
     icon,
     type = 'button',
+    shape = 'pill',
 }: CtaButtonProps) {
     const content = (
         <>
@@ -45,7 +53,7 @@ export default function CtaButton({
                 href={href}
                 aria-label={ariaLabel}
                 onClick={onClick}
-                className={cn(ctaBase, className)}
+                className={cn(ctaBase, ctaShapes[shape], className)}
             >
                 {content}
             </Link>
@@ -57,7 +65,7 @@ export default function CtaButton({
             type={type}
             onClick={onClick}
             aria-label={ariaLabel}
-            className={cn(ctaBase, className)}
+            className={cn(ctaBase, ctaShapes[shape], className)}
         >
             {content}
         </button>

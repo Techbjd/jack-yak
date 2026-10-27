@@ -1,11 +1,11 @@
 import { cn } from '@/lib/utils';
-import { fontPrimary } from '@/config/theme';
+import { coverImageAbsolute, fontPrimary } from '@/config/theme';
 import { IMAGES } from '@/config/images';
 import { quizHero } from '@/config/quiz';
 
 const PANEL_WRAPPER: Record<'modal' | 'page', string> = {
-    modal: 'relative hidden w-99.5 shrink-0 overflow-hidden rounded-l-2xl lg:block',
-    page: 'relative min-h-64 w-full shrink-0 overflow-hidden sm:min-h-72 lg:h-auto lg:min-h-0 lg:w-99.5',
+    modal: 'relative hidden w-quiz-panel-w shrink-0 overflow-hidden rounded-l-2xl lg:block',
+    page: 'relative min-h-64 w-full shrink-0 overflow-hidden sm:min-h-72 lg:min-h-0 lg:w-quiz-panel-w',
 };
 
 const PANEL_OVERLAY: Record<'modal' | 'page', string> = {
@@ -27,18 +27,18 @@ export default function QuizPanel({ variant }: QuizPanelProps) {
             <img
                 src={IMAGES.destination.langtangMountain}
                 alt={quizHero.panelAlt}
-                className="absolute inset-0 h-full w-full object-cover"
+                className={coverImageAbsolute}
             />
             <div className={PANEL_OVERLAY[variant]}>
                 <img
-                    src={IMAGES.logo.jackYak}
+                    src={IMAGES.logo.jackYakWordmark}
                     alt={quizHero.logoAlt}
-                    className="w-36 object-contain lg:w-53.25"
+                    className="lg:w-quiz-logo-w w-36 object-contain"
                 />
                 <p
                     className={cn(
                         fontPrimary,
-                        'lg:text-2xl-3xl max-w-82.5 text-2xl leading-11 font-semibold text-white',
+                        'lg:text-2xl-3xl max-w-quiz-copy-w text-2xl leading-11 font-semibold text-white',
                     )}
                 >
                     {quizHero.tagline}

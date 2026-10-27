@@ -1,8 +1,13 @@
 import { useState } from 'react';
 import { router } from '@inertiajs/react';
 import { cn } from '@/lib/utils';
-import { EMAIL_PATTERN } from '@/lib/form-utils';
-import { aboutCta, aboutHeading, aboutNote } from '@/config/theme';
+import { validateEmail } from '@/lib/form-utils';
+import {
+    aboutCta,
+    aboutHeading,
+    aboutNote,
+    sectionInner,
+} from '@/config/theme';
 import { aboutNewsletter, newsletterEndpoint } from '@/config/about';
 
 export default function NewsletterCta() {
@@ -12,12 +17,12 @@ export default function NewsletterCta() {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if (!email.trim()) {
-            setError(aboutNewsletter.emailRequired);
-            return;
-        }
-        if (!EMAIL_PATTERN.test(email.trim())) {
-            setError(aboutNewsletter.emailInvalid);
+        const emailError = validateEmail(email, {
+            required: aboutNewsletter.emailRequired,
+            invalid: aboutNewsletter.emailInvalid,
+        });
+        if (emailError) {
+            setError(emailError);
             return;
         }
         setError('');
@@ -41,7 +46,12 @@ export default function NewsletterCta() {
     };
 
     return (
-        <section className="flex w-full flex-col items-center gap-3 px-6 pt-10 pb-0 text-center md:gap-5 md:px-12 md:pt-16 md:pb-0 lg:px-24">
+        <section
+            className={cn(
+                sectionInner,
+                'flex flex-col items-center gap-3 pt-10 pb-0 text-center md:gap-5 md:pt-16',
+            )}
+        >
             <h2 className={aboutHeading}>{aboutNewsletter.title}</h2>
             <p className={aboutNote}>{aboutNewsletter.subtitle}</p>
             <form

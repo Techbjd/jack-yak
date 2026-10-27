@@ -1,9 +1,15 @@
 import { Link, usePage } from '@inertiajs/react';
 import { Bookmark, Mountain, ClipboardList, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { userCard, userMuted, userRow, userSectionTitle } from '@/config/theme';
+import {
+    userCard,
+    userMuted,
+    userRow,
+    userRowArrow,
+    userSectionTitle,
+} from '@/config/theme';
 import type { PageProps, RecentAvailability, RecentReview } from '@/types';
-import { savedCardCopy } from '@/config/user';
+import { savedCardCopy, savedCardRows } from '@/config/user';
 import { siteRoutes } from '@/config/site';
 
 interface SavedPageProps extends PageProps {
@@ -15,22 +21,15 @@ export default function SavedCard() {
     const { recentAvailability, recentReviews } =
         usePage<SavedPageProps>().props;
 
-    const rows = [
-        {
-            id: 'destinations',
-            label: 'Saved Destinations',
-            count: 0,
-            href: siteRoutes.viewAll,
-            Icon: Mountain,
-        },
-        {
-            id: 'itineraries',
-            label: 'Saved Itineraries',
-            count: 0,
-            href: siteRoutes.viewAll,
-            Icon: ClipboardList,
-        },
-    ];
+    const icons = {
+        destinations: Mountain,
+        itineraries: ClipboardList,
+    } as const;
+    const rows = savedCardRows.map((row) => ({
+        ...row,
+        href: siteRoutes.viewAll,
+        Icon: icons[row.id],
+    }));
 
     return (
         <section className={cn(userCard, 'flex flex-col gap-4')}>
@@ -63,7 +62,7 @@ export default function SavedCard() {
                             </span>
                             <ArrowRight
                                 aria-hidden
-                                className="text-ink size-3 shrink-0 md:size-5"
+                                className={userRowArrow}
                                 strokeWidth={2}
                             />
                         </Link>

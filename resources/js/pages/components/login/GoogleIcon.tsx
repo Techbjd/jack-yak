@@ -3,7 +3,7 @@ interface GoogleIconProps {
 }
 
 export default function GoogleIcon({
-    className = 'size-5.25',
+    className = 'size-social-icon',
 }: GoogleIconProps) {
     return (
         <svg viewBox="0 0 48 48" aria-hidden="true" className={className}>

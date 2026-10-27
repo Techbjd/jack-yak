@@ -12,7 +12,7 @@ export default function Guide() {
     return (
         <AppLayout
             seo={pageSeo.guide}
-            shellClassName="bg-white"
+            background="white"
             header={<Header tone="onLight" />}
         >
             <Section>

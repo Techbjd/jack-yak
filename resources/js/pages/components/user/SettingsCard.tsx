@@ -7,7 +7,7 @@ import {
     ArrowRight,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { userCard, userRow, userRowDark } from '@/config/theme';
+import { userCard, userRow, userRowArrow, userRowDark } from '@/config/theme';
 import { userSettings, settingsCardCopy } from '@/config/user';
 import { placeholderHref } from '@/config/site';
 
@@ -50,7 +50,7 @@ export default function SettingsCard() {
                                 <ArrowRight
                                     aria-hidden
                                     className={cn(
-                                        'text-ink size-3 shrink-0 md:size-5',
+                                        userRowArrow,
                                         !row.value && 'ml-auto',
                                     )}
                                     strokeWidth={2}

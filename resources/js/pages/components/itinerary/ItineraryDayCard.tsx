@@ -35,24 +35,24 @@ export default function ItineraryDayCard({ day }: ItineraryDayCardProps) {
                 <h3 className={itinDayPlace}>{day.place}</h3>
                 <p className={itinDaySub}>{day.subtitle}</p>
             </div>
-            <div className="mb-1 flex shrink-0 items-center gap-2 self-end pl-1 min-[360px]:mb-2.25 min-[360px]:gap-2.75 min-[360px]:pl-0 md:hidden">
+            <div className="xs2:mb-day-meta-mb xs2:gap-day-meta-gap xs2:pl-0 mb-1 flex shrink-0 items-center gap-2 self-end pl-1 md:hidden">
                 <BedDouble
                     aria-label={`${day.stay} included`}
                     role="img"
-                    className="text-ink size-5.5 shrink-0 min-[360px]:size-6.75"
+                    className="text-ink size-day-meta-sm xs2:size-day-meta shrink-0"
                 />
                 <DayMetaIcon
                     src={IMAGES.itinerary.icons.meals}
                     label={`${day.meals} included`}
                     Fallback={UtensilsCrossed}
-                    className="text-ink size-5.5 shrink-0 min-[360px]:size-6.75"
+                    className="text-ink size-day-meta-sm xs2:size-day-meta shrink-0"
                 />
             </div>
             <div className="ml-auto hidden shrink-0 flex-col justify-center gap-5 pr-5 md:flex">
                 <p className="flex items-center gap-2.5">
                     <Hotel
                         aria-hidden
-                        className="text-ink size-6.75 shrink-0"
+                        className="text-ink size-day-meta shrink-0"
                     />
                     <span className="font-inter text-md-lg leading-itinerary-22 text-ink font-bold">
                         {day.stay}
@@ -63,7 +63,7 @@ export default function ItineraryDayCard({ day }: ItineraryDayCardProps) {
                         src={IMAGES.itinerary.icons.meals}
                         decorative
                         Fallback={UtensilsCrossed}
-                        className="text-ink size-6.75 shrink-0"
+                        className="text-ink size-day-meta shrink-0"
                     />
                     <span className="font-inter text-md-lg leading-itinerary-22 text-ink font-bold">
                         {day.meals}

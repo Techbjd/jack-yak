@@ -182,12 +182,12 @@ const NepalMap = () => {
                 sectionInner,
             )}
         >
-            <div className="max-w-container relative mx-auto w-full">
-                <div className="max-w-map relative mx-auto w-full pt-[calc(25.6vw-3rem)] md:pt-0">
+            <div className="relative mx-auto w-full">
+                <div className="max-w-map pt-map-offset relative mx-auto w-full md:pt-0">
                     <p
                         className={cn(
                             fontPrimary,
-                            'text-text-primary md:text-teal text-base-md pr-[5%] text-right font-bold sm:text-2xl md:text-4xl',
+                            'text-text-primary md:text-teal text-base-md pr-map-gutter text-right font-bold sm:text-2xl md:text-4xl',
                         )}
                     >
                         CHINA
@@ -217,7 +217,7 @@ const NepalMap = () => {
                                     strokeWidth={3}
                                     strokeLinejoin="round"
                                     className={cn(
-                                        'transition-opacity duration-[180ms]',
+                                        'duration-map transition-opacity',
                                         isActive(province.slug)
                                             ? 'opacity-100'
                                             : 'opacity-0',
@@ -411,7 +411,7 @@ const NepalMap = () => {
                     <p
                         className={cn(
                             fontPrimary,
-                            'text-text-primary md:text-teal text-base-md pl-[10%] text-left font-bold sm:text-2xl md:text-4xl',
+                            'text-text-primary md:text-teal text-base-md pl-map-label text-left font-bold sm:text-2xl md:text-4xl',
                         )}
                     >
                         INDIA

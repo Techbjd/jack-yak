@@ -13,15 +13,15 @@ import WeatherCard from './components/itinerary/WeatherCard';
 import ReviewCard from './components/itinerary/ReviewCard';
 import { altitudeTitle } from '@/config/itinerary';
 import { pageSeo } from '@/config/seo';
-import { cn } from '@/lib/utils';
 
 export default function Itinerary() {
     return (
         <AppLayout
             seo={pageSeo.itinerary}
-            header={<Header tone="onLight" className="max-w-full " />}
+            background="canvas"
+            header={<Header tone="onLight" className="max-w-full" />}
         >
-            <div className={cn(itinPage, 'md:max-w-full lg:px-2')}>
+            <div className="w-full">
                 <div className="mt-4 w-full md:mt-8">
                     <ErrorBoundary message="Gallery failed to load.">
                         <ItineraryGallery />
@@ -33,7 +33,7 @@ export default function Itinerary() {
                             <GalleryFilterPills />
                         </ErrorBoundary>
                     </div>
-                    <div className="mt-4.5 grid w-full grid-cols-1 gap-6 md:mt-10 xl:grid-cols-[minmax(0,1fr)_360px] xl:items-start xl:gap-10">
+                    <div className="mt-itin-section grid w-full grid-cols-1 gap-6 md:mt-10 xl:grid-cols-[minmax(0,1fr)_360px] xl:items-start xl:gap-10">
                         <ErrorBoundary message="Trek details failed to load.">
                             <TrekAbout />
                         </ErrorBoundary>
@@ -46,7 +46,7 @@ export default function Itinerary() {
                             </ErrorBoundary>
                         </div>
                     </div>
-                    <div className="mt-5.5 w-full md:mt-12">
+                    <div className="mt-itin-block w-full md:mt-12">
                         <ErrorBoundary message="Itinerary failed to load.">
                             <ItineraryDayList />
                         </ErrorBoundary>

@@ -39,7 +39,7 @@ export function DestinationCardSkeleton() {
             aria-hidden
         >
             <SkeletonRect className="rounded-t-card md:rounded-dest-image aspect-dest-card w-full" />
-            <div className="shadow-card rounded-b-card relative z-10 flex w-full flex-col gap-2 bg-white px-2 pt-1.5 pb-1.5 md:-mt-2 md:px-6.75 md:pt-7 md:pb-5">
+            <div className="shadow-card rounded-b-card relative z-10 flex w-full flex-col gap-2 bg-white px-2 pt-1.5 pb-1.5 md:-mt-2 md:px-dest-panel md:pt-7 md:pb-5">
                 <Skeleton className="h-4 w-3/4 rounded" />
                 <Skeleton className="h-3 w-2/3 rounded" />
                 <div className="mt-2 flex items-center gap-2">

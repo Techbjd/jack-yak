@@ -1,5 +1,6 @@
-import { AlertTriangle, RotateCcw } from 'lucide-react';
+import { AlertTriangle } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import RetryButton from '@/components/ui/RetryButton';
 
 interface ErrorFallbackProps {
     message?: string;
@@ -28,16 +29,7 @@ export default function ErrorFallback({
             <p className="font-manrope text-md-lg text-ink max-w-sm leading-snug font-semibold">
                 {message}
             </p>
-            {onRetry && (
-                <button
-                    type="button"
-                    onClick={onRetry}
-                    className="font-manrope bg-ink inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-bold text-white transition-opacity hover:opacity-90"
-                >
-                    <RotateCcw aria-hidden className="size-4" />
-                    {retryLabel}
-                </button>
-            )}
+            {onRetry && <RetryButton onClick={onRetry} label={retryLabel} />}
         </div>
     );
 }

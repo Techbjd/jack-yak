@@ -1,15 +1,10 @@
 import { Link, useForm } from '@inertiajs/react';
 import { cn } from '@/lib/utils';
-import {
-    authButton,
-    authLabel,
-    authLink,
-    authTitle,
-    fontPrimary,
-} from '@/config/theme';
+import { authButton, authLabel, authLink, authTitle } from '@/config/theme';
 import TextField from '@/components/forms/TextField';
 import { registerCopy } from '@/config/auth';
-import { siteLegal, siteRoutes } from '@/config/site';
+import { siteRoutes } from '@/config/site';
+import AuthFormShell from './AuthFormShell';
 
 export default function RegisterForm() {
     const { data, setData, post, processing, errors, clearErrors } = useForm({
@@ -25,8 +20,8 @@ export default function RegisterForm() {
     };
 
     return (
-        <section className="flex min-h-screen w-full flex-col items-center px-6 pt-16 pb-8 lg:justify-center lg:pt-10">
-            <div className="flex w-full max-w-72.75 flex-1 flex-col justify-center">
+        <AuthFormShell>
+            <div className="flex w-full flex-1 flex-col justify-center">
                 <h1 className={authTitle}>{registerCopy.title}</h1>
                 <p className={cn(authLabel, 'pt-5')}>{registerCopy.subtitle}</p>
 
@@ -124,15 +119,6 @@ export default function RegisterForm() {
                     </Link>
                 </p>
             </div>
-
-            <p
-                className={cn(
-                    fontPrimary,
-                    'text-ink w-full max-w-72.75 pt-10 text-center text-xs font-medium',
-                )}
-            >
-                {siteLegal.copyright}
-            </p>
-        </section>
+        </AuthFormShell>
     );
 }

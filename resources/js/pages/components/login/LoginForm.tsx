@@ -1,6 +1,6 @@
 import { Link, useForm } from '@inertiajs/react';
 import { cn } from '@/lib/utils';
-import { EMAIL_PATTERN } from '@/lib/form-utils';
+import { validateEmail } from '@/lib/form-utils';
 import {
     authButton,
     authDividerLine,
@@ -13,7 +13,8 @@ import {
 import GoogleIcon from './GoogleIcon';
 import TextField from '@/components/forms/TextField';
 import { loginCopy } from '@/config/auth';
-import { siteLegal, siteRoutes } from '@/config/site';
+import { siteRoutes } from '@/config/site';
+import AuthFormShell from './AuthFormShell';
 
 export default function LoginForm() {
     const { data, setData, post, processing, errors, clearErrors } = useForm({
@@ -22,15 +23,11 @@ export default function LoginForm() {
         remember: false as boolean,
     });
 
-    const checkEmail = (value: string): string => {
-        if (!value.trim()) {
-            return loginCopy.emailRequired;
-        }
-        if (!EMAIL_PATTERN.test(value.trim())) {
-            return loginCopy.emailInvalid;
-        }
-        return '';
-    };
+    const checkEmail = (value: string): string =>
+        validateEmail(value, {
+            required: loginCopy.emailRequired,
+            invalid: loginCopy.emailInvalid,
+        });
 
     const clientEmailError = data.email ? checkEmail(data.email) : '';
     const emailError = errors.email ?? clientEmailError;
@@ -57,8 +54,8 @@ export default function LoginForm() {
     };
 
     return (
-        <section className="flex min-h-screen w-full flex-col items-center px-6 pt-16 pb-8 lg:justify-center lg:pt-10">
-            <div className="flex w-full max-w-72.75 flex-1 flex-col justify-center">
+        <AuthFormShell>
+            <div className="flex w-full flex-1 flex-col justify-center">
                 <h1 className={authTitle}>{loginCopy.title}</h1>
                 <p className={cn(authLabel, 'pt-5')}>{loginCopy.subtitle}</p>
 
@@ -181,15 +178,6 @@ export default function LoginForm() {
                     </Link>
                 </p>
             </div>
-
-            <p
-                className={cn(
-                    fontPrimary,
-                    'text-ink w-full max-w-72.75 pt-10 text-center text-xs font-medium',
-                )}
-            >
-                {siteLegal.copyright}
-            </p>
-        </section>
+        </AuthFormShell>
     );
 }

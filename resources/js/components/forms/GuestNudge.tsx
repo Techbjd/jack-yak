@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import { Link } from '@inertiajs/react';
 import { cn } from '@/lib/utils';
 import { modalSubtitle, quizNote } from '@/config/theme';
+import { siteRoutes } from '@/config/site';
 
 export type GuestNudgeTone = 'modal' | 'quiz';
 
@@ -23,7 +24,7 @@ export default function GuestNudge({
     tone,
     suffix,
     prefix,
-    loginHref = '/login',
+    loginHref = siteRoutes.login,
 }: GuestNudgeProps) {
     return (
         <p

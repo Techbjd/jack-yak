@@ -9,6 +9,8 @@ import {
     quizInput,
     quizLabel,
     quizQuestionRow,
+    quizSelectChevron,
+    quizSelectTrigger,
 } from '@/config/theme';
 import FieldError from './FieldError';
 
@@ -80,7 +82,7 @@ export default function SelectField({
                     className={cn(
                         tone === 'quiz' ? quizInput : modalInput,
                         tone === 'quiz'
-                            ? 'cursor-pointer appearance-none pr-10'
+                            ? quizSelectTrigger
                             : modalSelectTrigger,
                         !value && 'text-mist',
                         error && formErrorBorder,
@@ -98,9 +100,7 @@ export default function SelectField({
                 <ChevronDown
                     aria-hidden
                     className={
-                        tone === 'quiz'
-                            ? 'text-mist pointer-events-none absolute top-1/2 right-4 size-5 -translate-y-1/2'
-                            : modalSelectChevron
+                        tone === 'quiz' ? quizSelectChevron : modalSelectChevron
                     }
                 />
             </div>

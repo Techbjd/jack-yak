@@ -1,6 +1,7 @@
 export const IMAGES = {
     logo: {
         jackYak: '/images/logo/jack-yak-logo.png',
+        jackYakWordmark: '/images/logo/jackyak_text.png',
     },
     home: {
         heroBg: '/images/home/hero-bg.png',
@@ -22,15 +23,14 @@ export const IMAGES = {
         trekkerYak: '/images/home/trekker-yak-silhouette.png',
     },
     destination: {
-        amaDablam: '/images/destination/ama-dablam-panorama.png',
         hero: {
             amaDablam: '/images/destination/hero/ama_dablam.png',
             chitwan: '/images/destination/hero/chitwan.png',
             pokhara: '/images/destination/hero/pokhara.png',
             sun: '/images/destination/hero/background-sun.png',
         },
-        swayambhuStupa: '/images/destination/swayambhu-stupa.png',
         stupaPanorama: '/images/destination/stupa-mountain-panorama.png',
+        swayambhuStupa: '/images/destination/swayambhu-stupa.png',
         journey: '/images/destination/journey.png',
         journeyMobile: '/images/destination/journey-mobile.png',
         journeyMountain: '/images/destination/journey-mountain.png',
@@ -74,20 +74,14 @@ export const IMAGES = {
         chitwan: '/images/guide/guide_third.png',
     },
     viewAll: {
-        swayambhuStupa: '/images/destination/swayambhu-stupa.png',
-        pokharaLakeside: '/images/destination/pokhara-lake.png',
         langtangValley: '/images/view-all/chitwan_4.png',
         mardiHimal: '/images/view-all/pokhara_4.png',
         upperMustang: '/images/view-all/chitwan_3.png',
         chitwanSafari: '/images/view-all/chitwan_2.png',
-        kathmanduDurbar: '/images/destination/kathmandu-temple.png',
         stupaPanorama: '/images/destination/stupa-mountain-panorama.png',
         elephantSafari: '/images/view-all/chitwan_1.png',
-        jeepSafari: '/images/destination/featured/jeep_safari.png',
         canoeSafari: '/images/view-all/mounteverest_3.png',
-        tilichoLake: '/images/featured/tilicho-lake.png',
         everestFlags: '/images/view-all/mounteverest_4.png',
-        gokyoLakes: '/images/featured/gokyo-lake.png',
         mounteverestFirst: '/images/view-all/mounteverest_1.png',
         pokharaFirst: '/images/view-all/pokhara_1.png',
     },

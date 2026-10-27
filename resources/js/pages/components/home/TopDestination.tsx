@@ -1,8 +1,4 @@
-import {
-    fontPrimary,
-    cardMobileImage,
-    cardMobileContent,
-} from '@/config/theme';
+import { fontPrimary, sectionInner } from '@/config/theme';
 import {
     homeTopDestinations,
     topDestinationsHeading,
@@ -20,8 +16,8 @@ const cardDimensions: Record<
 
 const TopDestinations = () => {
     return (
-        <section className="w-full px-6 py-16 md:px-12 md:py-24 lg:px-24">
-            <div className="max-w-container mx-auto flex flex-col items-center gap-16 md:gap-24">
+        <section className={cn(sectionInner, 'flex flex-col py-16 md:py-24')}>
+            <div className="flex flex-col items-center gap-16 md:gap-24">
                 <h2
                     className={cn(
                         fontPrimary,
@@ -37,27 +33,19 @@ const TopDestinations = () => {
                     {homeTopDestinations.map((dest, i) => (
                         <div
                             key={i}
-                            className="flex min-w-0 flex-col transition-transform duration-200 ease-out active:scale-[0.98]"
+                            className="flex min-w-0 flex-col transition-transform duration-200 ease-out active:scale-98"
                         >
                             <div
-                                className={cn(
-                                    cardMobileImage,
-                                    'rounded-t-card bg-bg-placeholder aspect-117/97 h-auto w-full bg-cover bg-center',
-                                )}
+                                className="rounded-t-card bg-bg-placeholder aspect-117/97 h-auto w-full bg-cover bg-center"
                                 style={{
                                     backgroundImage: `url(${dest.image})`,
                                 }}
                             />
-                            <div
-                                className={cn(
-                                    cardMobileContent,
-                                    'rounded-b-card shadow-card flex h-auto min-h-9.25 w-full flex-col items-center justify-center bg-white px-1 py-1.5',
-                                )}
-                            >
+                            <div className="rounded-b-card shadow-card min-h-dest-card-mobile flex h-auto w-full flex-col items-center justify-center bg-white px-1 py-1.5">
                                 <span
                                     className={cn(
                                         fontPrimary,
-                                        'text-ink warp-break-words w-full text-center font-bold',
+                                        'text-ink w-full text-center font-bold break-words',
                                         'text-xs-sm leading-tight tracking-wide',
                                     )}
                                 >
@@ -66,7 +54,7 @@ const TopDestinations = () => {
                                 <span
                                     className={cn(
                                         fontPrimary,
-                                        'text-ink text-2xs warp-break-words w-full text-center font-semibold',
+                                        'text-ink text-2xs w-full text-center font-semibold break-words',
                                         'leading-tight tracking-wide',
                                     )}
                                 >
@@ -77,7 +65,7 @@ const TopDestinations = () => {
                     ))}
                 </div>
 
-                <div className="hidden md:mx-auto md:grid md:w-full md:max-w-240 md:grid-cols-[9fr_10fr_9fr] md:items-start md:gap-6">
+                <div className="md:max-w-dest-section hidden md:mx-auto md:grid md:w-full md:grid-cols-[9fr_10fr_9fr] md:items-start md:gap-6">
                     {homeTopDestinations.map((dest) => {
                         const dims = cardDimensions[dest.variant];
                         return (

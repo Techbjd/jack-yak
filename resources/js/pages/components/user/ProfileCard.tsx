@@ -36,7 +36,7 @@ export default function ProfileCard() {
             <img
                 src={IMAGES.about.travelerAvatar}
                 alt={name}
-                className="bg-bg-placeholder size-18 shrink-0 rounded-full object-cover object-top md:size-36"
+                className="bg-bg-placeholder size-profile-avatar shrink-0 rounded-full object-cover object-top md:size-36"
             />
             <div className="flex min-w-0 flex-1 flex-col gap-1">
                 <h2 className={cn(userName, 'truncate')} title={name}>

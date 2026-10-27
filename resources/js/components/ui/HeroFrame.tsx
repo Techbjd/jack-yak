@@ -65,9 +65,9 @@ export default function HeroFrame({
 
             <div
                 className={cn(
-                    'flex flex-col items-center px-0 pt-2 text-center md:px-12 lg:px-12',
+                    'flex flex-col items-center px-0 pt-2 text-center md:px-12',
                     headerOverlay && 'lg:pt-0',
-                    fullBleed && 'md:px-0 lg:px-0',
+                    fullBleed && 'md:px-0',
                 )}
             >
                 <div
@@ -94,7 +94,7 @@ export default function HeroFrame({
                     <p
                         className={cn(
                             fontPrimary,
-                            'text-sm-base text-text-primary md:text-md-lg mx-auto mt-6 w-full max-w-70 px-6 text-center leading-snug font-medium md:mt-8 md:max-w-md md:px-0',
+                            'text-sm-base text-text-primary md:text-md-lg mx-auto mt-6 w-full max-w-hero-tagline px-6 text-center leading-snug font-medium md:mt-8 md:max-w-md md:px-0',
                         )}
                     >
                         {tagline}

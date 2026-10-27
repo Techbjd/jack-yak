@@ -1,5 +1,6 @@
-import { ImageOff, RotateCcw } from 'lucide-react';
+import { ImageOff } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import RetryButton from '@/components/ui/RetryButton';
 
 interface ImageErrorProps {
     onRetry?: () => void;
@@ -27,14 +28,7 @@ export default function ImageError({
                 {message}
             </span>
             {onRetry && (
-                <button
-                    type="button"
-                    onClick={onRetry}
-                    className="font-manrope bg-ink inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-bold text-white transition-opacity hover:opacity-90"
-                >
-                    <RotateCcw aria-hidden className="size-3.5" />
-                    {retryLabel}
-                </button>
+                <RetryButton onClick={onRetry} label={retryLabel} size="sm" />
             )}
         </span>
     );

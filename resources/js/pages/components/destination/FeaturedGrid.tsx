@@ -33,7 +33,7 @@ const TAB_ICONS: Record<string, LucideIcon> = {
 
 const TAB_ICON_SIZE: Record<string, string> = {
     Spiritual: 'h-9 w-9',
-    Lakes: 'h-8.5 w-8.5',
+    Lakes: 'size-featured-tab-icon',
 };
 
 function TabIcon({ tab }: { tab: string }) {
@@ -104,7 +104,7 @@ export default function FeaturedGrid({
                     eyebrow={featuredHeader.eyebrow}
                     title={featuredHeader.title}
                     className="gap-2"
-                    eyebrowClassName="text-xs-md text-text-primary tracking-wide max-md:hidden md:block md:text-md-lg"
+                    eyebrowClassName="text-xs-md text-text-primary tracking-wide hidden md:block md:text-md-lg"
                     titleClassName="text-lg-xl lg:text-journey lg:leading-journey"
                 />
                 <p
@@ -247,7 +247,7 @@ export default function FeaturedGrid({
                                 aria-label={`Explore ${card.label}`}
                                 className="absolute -right-1 -bottom-1.5 flex h-10 w-12 items-center justify-center rounded-full bg-white md:-right-4 md:-bottom-4 md:h-16 md:w-16"
                             >
-                                <span className="bg-text-primary md:bg-cta flex h-6.5 w-6.5 items-center justify-center rounded-full md:h-10 md:w-10">
+                                <span className="bg-text-primary md:bg-cta h-featured-arrow w-featured-arrow-w flex items-center justify-center rounded-full md:h-10 md:w-10">
                                     <ArrowUpRight className="h-3.5 w-3.5 text-white md:h-5 md:w-5" />
                                 </span>
                             </Link>

@@ -69,7 +69,7 @@ export default function AltitudeProfile({
                         onClick={() => setUnit('m')}
                         className={pill(
                             unit === 'm',
-                            'h-6.75 w-auto cursor-pointer px-3',
+                            'h-alt-pill cursor-pointer px-3',
                         )}
                     >
                         {altitudeProfile.unitMeter}
@@ -80,7 +80,7 @@ export default function AltitudeProfile({
                         onClick={() => setUnit('ft')}
                         className={pill(
                             unit === 'ft',
-                            'h-6.5 w-auto cursor-pointer px-3',
+                            'h-alt-pill cursor-pointer px-3',
                         )}
                     >
                         {altitudeProfile.unitFeet}
@@ -88,7 +88,7 @@ export default function AltitudeProfile({
                     <button
                         type="button"
                         onClick={downloadSvg}
-                        className="border-card-line ml-auto flex h-6.5 cursor-pointer items-center gap-1 rounded-full border bg-white px-2.5 md:h-9"
+                        className="border-card-line h-featured-arrow ml-auto flex cursor-pointer items-center gap-1 rounded-full border bg-white px-2.5 md:h-9"
                     >
                         <Download
                             aria-hidden

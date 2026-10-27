@@ -30,7 +30,7 @@ export default function DestinationHero() {
                             alt=""
                             aria-hidden="true"
                             loading="eager"
-                            className="absolute top-[6%] left-1/2 w-3/10 -translate-x-1/2 object-contain"
+                            className="top-hero-deco absolute left-1/2 w-3/10 -translate-x-1/2 object-contain"
                         />
                         {destinationHeroSlides.map((slide, index) =>
                             slide.titleOverlay ? (
@@ -85,7 +85,7 @@ export default function DestinationHero() {
                                 className={cn(
                                     aboutHeroTitle,
 
-                                    'absolute inset-x-0 top-[12%] px-6 text-center drop-shadow-md lg:top-[17.5%]',
+                                    'top-destination-deco lg:top-destination-deco-lg absolute inset-x-0 px-6 text-center drop-shadow-md',
                                 )}
                             >
                                 {current.name}
@@ -100,7 +100,7 @@ export default function DestinationHero() {
                 <p
                     className={cn(
                         fontPrimary,
-                        'text-xs-md text-text-primary md:text-2xl-3xl md m-auto mt-6 w-full max-w-2xl items-center justify-center px-6 text-center leading-snug font-medium md:mt-8 md:px-0',
+                        'text-xs-md text-text-primary md:text-2xl-3xl mt-6 w-full max-w-2xl px-6 text-center leading-snug font-medium md:mt-8 md:px-0',
                     )}
                 >
                     {destinationHeroTagline}

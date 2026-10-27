@@ -1,4 +1,9 @@
-import { fontPrimary, fontQuote, fontQuoteMark } from '@/config/theme';
+import {
+    fontPrimary,
+    fontQuote,
+    fontQuoteMark,
+    sectionInner,
+} from '@/config/theme';
 import { travelStoriesCopy } from '@/config/guide';
 import { cn } from '@/lib/utils';
 import CarouselDots from '@/components/ui/CarouselDots';
@@ -6,10 +11,10 @@ import CarouselDots from '@/components/ui/CarouselDots';
 const TravelStories = () => {
     return (
         <section className="w-full">
-            <div className="max-w-container mx-auto w-full px-6 pb-8 md:px-12 md:pb-12 lg:px-24">
+            <div className={cn(sectionInner, 'pb-8 md:pb-12')}>
                 <figure className="rounded-card-sm bg-surface-warm shadow-card md:rounded-image p-3 md:p-10">
                     <div className="flex items-start gap-3 md:items-center md:gap-8">
-                        <div className="md:max-w-content-sm flex min-w-0 shrink-0 basis-[38%] flex-col gap-1.5 md:w-auto md:basis-auto md:gap-4 lg:max-w-110">
+                        <div className="md:max-w-content-sm basis-story-card lg:max-w-story-card flex min-w-0 shrink-0 flex-col gap-1.5 md:w-auto md:basis-auto md:gap-4">
                             <p
                                 className={cn(
                                     fontPrimary,
@@ -34,16 +39,7 @@ const TravelStories = () => {
                                     aria-hidden="true"
                                     className={cn(
                                         fontQuoteMark,
-                                        'text-quote-blush text-mark-sm leading-8.75 font-bold md:hidden',
-                                    )}
-                                >
-                                    &ldquo;
-                                </span>
-                                <span
-                                    aria-hidden="true"
-                                    className={cn(
-                                        fontQuoteMark,
-                                        'text-quote-blush text-hero hidden shrink-0 leading-none font-bold md:block',
+                                        'text-quote-blush text-mark-sm md:text-hero leading-8.75 font-bold md:block md:shrink-0 md:leading-none',
                                     )}
                                 >
                                     &ldquo;
@@ -52,7 +48,7 @@ const TravelStories = () => {
                                 <blockquote
                                     className={cn(
                                         fontQuote,
-                                        'text-2xs text-ink leading-relaxe md:text-xl-2xl w-full font-normal md:leading-relaxed',
+                                        'text-2xs text-ink md:text-xl-2xl w-full leading-relaxed font-normal md:leading-relaxed',
                                     )}
                                 >
                                     {travelStoriesCopy.quote}
@@ -64,7 +60,7 @@ const TravelStories = () => {
                                                 src={travelStoriesCopy.avatar}
                                                 alt={travelStoriesCopy.name}
                                                 loading="lazy"
-                                                className="bg-bg-placeholder text-2xs text-text-primary shadow-card size-3.75 overflow-hidden rounded-full object-cover object-top md:h-17 md:w-17"
+                                                className="bg-bg-placeholder text-2xs text-text-primary shadow-card size-quiz-check md:size-story-avatar overflow-hidden rounded-full object-cover object-top"
                                             />
 
                                             <span className="flex flex-col leading-none md:gap-1">

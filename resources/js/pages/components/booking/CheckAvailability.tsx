@@ -5,10 +5,9 @@ import { todayISODate } from '@/lib/form-utils';
 import {
     fontPrimary,
     modalDivider,
-    modalInput,
+    modalInputBase,
     modalLabel,
     modalSubtitle,
-    modalTitle,
 } from '@/config/theme';
 import { quizSelectQuestions } from '@/config/quiz';
 import {
@@ -23,7 +22,7 @@ import FieldError from '@/components/forms/FieldError';
 import TextField from '@/components/forms/TextField';
 import SelectField from '@/components/forms/SelectField';
 import FormSuccess from '@/components/forms/FormSuccess';
-import GuestNudge from '@/components/forms/GuestNudge';
+import ModalFormHeader from '@/components/forms/ModalFormHeader';
 import FormActions from '@/components/forms/FormActions';
 import type { PageProps } from '@/types';
 
@@ -115,19 +114,13 @@ export default function CheckAvailability({
                     onSubmit={handleSubmit}
                     className="flex flex-col"
                 >
-                    <h2 className={cn(modalTitle, 'font-inter')}>
-                        {availabilityCopy.title}
-                    </h2>
-                    <p className={cn(modalSubtitle, 'pt-2')}>
-                        {availabilityCopy.intro}
-                    </p>
-                    {!user && (
-                        <GuestNudge
-                            tone="modal"
-                            suffix={availabilityCopy.guestSuffix}
-                        />
-                    )}
-                    <hr className={modalDivider} />
+                    <ModalFormHeader
+                        title={availabilityCopy.title}
+                        intro={availabilityCopy.intro}
+                        titleClassName="font-inter"
+                        showGuest={!user}
+                        guestSuffix={availabilityCopy.guestSuffix}
+                    />
 
                     <TextField
                         id="availability-date"
@@ -160,7 +153,7 @@ export default function CheckAvailability({
                                 role="group"
                                 aria-labelledby="travelers-label"
                                 className={cn(
-                                    modalInput,
+                                    modalInputBase,
                                     'flex items-center justify-between px-2',
                                 )}
                             >

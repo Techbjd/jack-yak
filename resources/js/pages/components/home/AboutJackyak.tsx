@@ -29,7 +29,7 @@ const AboutJackyak = () => {
                     <div className="hidden w-full flex-1 justify-end md:block">
                         <div
                             className={cn(
-                                'rounded-image mx-auto aspect-590/287 w-full max-w-147.5 md:mx-0 md:ml-auto',
+                                'max-w-about-section mx-auto aspect-590/287 w-full md:mx-0 md:ml-auto',
                                 imageRoundedLg,
                             )}
                             style={{
@@ -50,7 +50,7 @@ const AboutJackyak = () => {
                     <div className="-mx-6 flex flex-col items-center gap-8 self-stretch bg-white px-6 py-8">
                         <div
                             className={cn(
-                                'rounded-image aspect-333/162 w-full max-w-83.25',
+                                'max-w-about-image aspect-333/162 w-full',
                                 imageRoundedLg,
                                 'bg-white',
                             )}

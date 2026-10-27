@@ -131,7 +131,7 @@ export default function WeatherCard() {
 
     const tabPill = (activeTab: Tab): string =>
         cn(
-            'font-inter text-base-md flex h-11 shrink-0 cursor-pointer items-center justify-center rounded-full border px-5 font-bold whitespace-nowrap md:h-9.5 md:font-semibold',
+            'font-inter text-base-md md:h-weather-tab flex h-11 shrink-0 cursor-pointer items-center justify-center rounded-full border px-5 font-bold whitespace-nowrap md:font-semibold',
             activeTab === tab
                 ? 'border-cta bg-cta text-white'
                 : 'border-card-line text-slate-text md:text-slate-mute bg-white',
@@ -140,7 +140,7 @@ export default function WeatherCard() {
     const unitPill = (active: boolean): string =>
         cn(
             itinUnitPillBase,
-            'h-6.75 cursor-pointer px-3',
+            'h-alt-pill cursor-pointer px-3',
             active ? itinUnitPillActive : itinUnitPillIdle,
         );
 
@@ -210,7 +210,7 @@ export default function WeatherCard() {
                     </span>
                 </div>
 
-                <div className="md:h-graph-h relative hidden h-75 w-full md:block">
+                <div className="md:h-graph-h h-weather-chart relative hidden w-full md:block">
                     <ResponsiveContainer
                         width={isDesktop ? 1100 : '100%'}
                         height="100%"
@@ -275,7 +275,7 @@ export default function WeatherCard() {
                         </LineChart>
                     </ResponsiveContainer>
                     {tab === 'daily' && (
-                        <span className="absolute right-3.5 bottom-3.5 gap-2.5 md:flex">
+                        <span className="absolute right-3.5 bottom-3.5">
                             <button
                                 type="button"
                                 onClick={prev}
@@ -326,7 +326,7 @@ export default function WeatherCard() {
                             </button>
                         </span>
                     </div>
-                    <div className="relative h-75 w-full">
+                    <div className="h-weather-chart relative w-full">
                         <AltitudeChart unit={altUnit} height={300} />
                     </div>
                 </div>

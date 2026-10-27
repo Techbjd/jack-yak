@@ -4,6 +4,7 @@ import {
     aboutBody,
     aboutHeading,
     aboutSubhead,
+    sectionInner,
 } from '@/config/theme';
 import { IMAGES } from '@/config/images';
 import {
@@ -15,7 +16,12 @@ import {
 
 export default function JourneyStory() {
     return (
-        <section className="flex w-full flex-col gap-6 px-6 py-10 md:gap-8 md:px-12 md:py-16 lg:px-24">
+        <section
+            className={cn(
+                sectionInner,
+                'flex flex-col gap-6 py-10 md:gap-8 md:py-16',
+            )}
+        >
             <h2 className={aboutHeading}>{aboutStoryCopy.heading}</h2>
             <p className={aboutBody}>{aboutStoryIntro}</p>
 

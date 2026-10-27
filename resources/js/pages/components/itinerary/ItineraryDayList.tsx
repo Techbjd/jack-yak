@@ -54,7 +54,7 @@ export default function ItineraryDayList() {
                             className="relative flex items-center justify-center"
                         >
                             <span className="bg-bg-placeholder absolute inset-y-0 left-1/2 w-px -translate-x-1/2" />
-                            <span className="shadow-card relative size-10.5 shrink-0 rounded-full bg-white" />
+                            <span className="shadow-card size-day-nav relative shrink-0 rounded-full bg-white" />
                         </div>
                         <div className="min-w-0 py-3">
                             {right !== undefined && (

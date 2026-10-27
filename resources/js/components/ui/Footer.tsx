@@ -23,7 +23,7 @@ const SocialIcon: React.FC<SocialIconProps> = ({
         <a
             href={href}
             aria-label={label}
-            className="-m-2 flex h-10 w-10 items-center justify-center p-2 text-white transition-colors outline-none hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            className="-m-2 flex h-10 w-10 items-center justify-center p-2 text-white transition-colors outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
         >
             <Icon size={24} />
         </a>
@@ -145,7 +145,7 @@ const Footer: React.FC = () => {
                                                 href={placeholderHref}
                                                 className={cn(
                                                     fontPrimary,
-                                                    'text-md-lg leading-footer-link font-medium text-white transition-colors outline-none hover:text-white focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-white',
+                                                    'text-md-lg leading-footer-link font-medium text-white transition-colors outline-none focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-white',
                                                 )}
                                             >
                                                 {link}

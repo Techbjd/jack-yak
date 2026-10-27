@@ -1,5 +1,5 @@
 import { Link } from '@inertiajs/react';
-import { destCardTitle, fontPrimary } from '@/config/theme';
+import { destCardTitle, fontPrimary, sectionPadX } from '@/config/theme';
 import CoverImage from '@/components/ui/CoverImage';
 import {
     popularDestinations,
@@ -23,14 +23,19 @@ export default function PopularDestinations({
                 aria-busy="true"
                 aria-label="Loading destinations"
             >
-                <div className="flex items-center justify-between px-6 md:px-12 lg:px-24">
+                <div
+                    className={cn(
+                        'flex items-center justify-between',
+                        sectionPadX,
+                    )}
+                >
                     <div className="flex flex-col gap-2">
                         <div className="bg-bg-placeholder h-3 w-24 animate-pulse rounded" />
                         <div className="bg-bg-placeholder h-5 w-48 animate-pulse rounded" />
                     </div>
                     <div className="bg-bg-placeholder h-4 w-20 animate-pulse rounded" />
                 </div>
-                <div className="hidden px-6 md:block md:px-12 lg:px-24">
+                <div className={cn('hidden md:block', sectionPadX)}>
                     <div className="bg-bg-placeholder h-8 w-2/3 animate-pulse rounded" />
                 </div>
                 <div className="no-scrollbar w-full overflow-x-auto md:hidden">
@@ -40,14 +45,19 @@ export default function PopularDestinations({
                                 key={i}
                                 className="w-dest-card-w flex shrink-0 snap-start flex-col gap-2"
                             >
-                                <div className="rounded-dest-card bg-bg-placeholder aspect-[109/192] w-full animate-pulse" />
+                                <div className="rounded-dest-card bg-bg-placeholder aspect-dest-mobile w-full animate-pulse" />
                                 <div className="bg-bg-placeholder h-3 w-3/4 animate-pulse rounded" />
                                 <div className="bg-bg-placeholder h-3 w-1/2 animate-pulse rounded" />
                             </div>
                         ))}
                     </div>
                 </div>
-                <div className="hidden px-6 md:grid md:grid-cols-5 md:gap-6 md:px-12 lg:px-24">
+                <div
+                    className={cn(
+                        'hidden md:grid md:grid-cols-5 md:gap-6',
+                        sectionPadX,
+                    )}
+                >
                     {Array.from({ length: 5 }).map((_, i) => (
                         <div key={i} className="flex flex-col gap-3">
                             <div className="rounded-dest-card bg-bg-placeholder aspect-260/374 w-full animate-pulse" />
@@ -62,7 +72,9 @@ export default function PopularDestinations({
 
     return (
         <section className="flex w-full flex-col gap-6 py-8 md:py-12">
-            <div className="flex items-center justify-between px-6 md:px-12 lg:px-24">
+            <div
+                className={cn('flex items-center justify-between', sectionPadX)}
+            >
                 <SectionHeading
                     title={popularHeader.eyebrow}
                     className="contents"
@@ -79,7 +91,8 @@ export default function PopularDestinations({
             <p
                 className={cn(
                     fontPrimary,
-                    'text-3xl-4xl text-text-primary hidden px-6 leading-snug font-bold md:block md:px-12 lg:px-24',
+                    'text-3xl-4xl text-text-primary hidden leading-snug font-bold md:block',
+                    sectionPadX,
                 )}
             >
                 {popularHeader.question}
@@ -101,7 +114,7 @@ export default function PopularDestinations({
                                     src={dest.image}
                                     alt={dest.name}
                                     fill={false}
-                                    wrapperClassName="rounded-dest-card aspect-[109/192] w-full"
+                                    wrapperClassName="rounded-dest-card aspect-dest-mobile w-full"
                                     className="rounded-dest-card"
                                 />
                             </Link>
@@ -115,7 +128,12 @@ export default function PopularDestinations({
 
             <CarouselDots className="md:hidden" />
 
-            <div className="hidden px-6 md:grid md:grid-cols-5 md:gap-6 md:px-12 lg:px-24">
+            <div
+                className={cn(
+                    'hidden md:grid md:grid-cols-5 md:gap-6',
+                    sectionPadX,
+                )}
+            >
                 {popularDestinations
                     .filter((dest) => !dest.mobileOnly)
                     .map((dest, i) => (
@@ -136,22 +154,17 @@ export default function PopularDestinations({
                                     />
                                 </Link>
                                 <div className="absolute bottom-0 left-0 flex flex-col gap-1 p-4">
-                                    <p
-                                        className={cn(
-                                            fontPrimary,
-                                            'text-md-lg leading-tight font-bold text-white',
-                                        )}
-                                    >
-                                        {dest.name}
-                                    </p>
-                                    <p
-                                        className={cn(
-                                            fontPrimary,
-                                            'text-md-lg leading-tight font-bold text-white',
-                                        )}
-                                    >
-                                        {dest.province}
-                                    </p>
+                                    {[dest.name, dest.province].map((label) => (
+                                        <p
+                                            key={label}
+                                            className={cn(
+                                                fontPrimary,
+                                                'text-md-lg leading-tight font-bold text-white',
+                                            )}
+                                        >
+                                            {label}
+                                        </p>
+                                    ))}
                                 </div>
                             </div>
                         </div>

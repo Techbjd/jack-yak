@@ -8,7 +8,7 @@ import { pageSeo } from '@/config/seo';
 
 export default function About() {
     return (
-        <AppLayout seo={pageSeo.about} shellClassName="bg-canvas">
+        <AppLayout seo={pageSeo.about} background="canvas">
             <Section>
                 <AboutHero />
             </Section>

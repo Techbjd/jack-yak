@@ -69,7 +69,7 @@ export default function DestinationCard({
                 <p className={cn(destCardTagline)}>{tagline}</p>
                 <div className={destCardMetaRow}>
                     <Clock
-                        className="text-ink size-2.5 shrink-0 md:size-5.25"
+                        className="text-ink size-2.5 shrink-0 md:size-social-icon"
                         strokeWidth={2}
                     />
                     <span className={cn(destCardMetaText)}>{meta}</span>

@@ -6,9 +6,7 @@ import { IMAGES } from '@/config/images';
 import { discoverNepalCopy, homeHero } from '@/config/home';
 import { cn } from '@/lib/utils';
 import { useState } from 'react';
-import QuizForm from '../quiz/QuizForm';
-import QuizPanel from '../quiz/QuizPanel';
-import Modal from '@/components/ui/Modal';
+import QuizModal from '../quiz/QuizModal';
 
 export default function Hero() {
     const [quizOpen, setQuizOpen] = useState(false);
@@ -77,7 +75,7 @@ export default function Hero() {
 
                         ariaLabel={homeHero.ctaLabel}
                         className={cn(
-                            'mt-2 h-10.5 w-fit px-2 py-2 sm:mt-4',
+                            'h-cta-pill-lg mt-2 w-fit px-2 py-2 sm:mt-4',
                             'bg-cta-accent sm:bg-cta',
                             'mx-auto flex shrink-0 items-center gap-3 sm:mx-0',
                             fontPrimary,
@@ -97,19 +95,11 @@ export default function Hero() {
                     </CtaButton>
                 </div>
             </div>
-            <Modal
+            <QuizModal
                 open={quizOpen}
                 onClose={() => setQuizOpen(false)}
                 label={discoverNepalCopy.modalLabel}
-                panelClassName="p-0 sm:max-w-hero-panel md:p-0 lg:h-hero-panel-h"
-            >
-                <div className="flex w-full flex-1 items-stretch">
-                    <QuizPanel variant="modal" />
-                    <div className="w-full min-w-0 flex-1 p-6 md:p-10">
-                        <QuizForm compact />
-                    </div>
-                </div>
-            </Modal>
+            />
         </div>
     );
 }

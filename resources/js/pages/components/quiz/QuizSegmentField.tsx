@@ -41,7 +41,7 @@ export default function QuizSegmentField({
                         />
                         <span
                             aria-hidden
-                            className="group-has-checked:border-midnight group-has-focus-visible:outline-midnight flex size-3.75 shrink-0 items-center justify-center rounded-full border border-black transition-colors group-has-focus-visible:outline-2 group-has-focus-visible:outline-offset-2"
+                            className="group-has-checked:border-midnight group-has-focus-visible:outline-midnight size-quiz-check flex shrink-0 items-center justify-center rounded-full border border-black transition-colors group-has-focus-visible:outline-2 group-has-focus-visible:outline-offset-2"
                         >
                             <span className="bg-midnight size-2 rounded-full opacity-0 transition-opacity group-has-checked:opacity-100" />
                         </span>

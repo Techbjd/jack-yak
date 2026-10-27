@@ -88,7 +88,7 @@ export default function Modal({
     // (e.g. Home's `relative z-10` Sections), which would otherwise trap a
     // fixed overlay in their own stacking context.
     return createPortal(
-        <div className="fixed inset-0 z-100 flex items-end justify-center sm:items-center sm:p-6">
+        <div className="fixed inset-0 z-modal flex items-end justify-center sm:items-center sm:p-6">
             <div
                 aria-hidden
                 className="absolute inset-0 bg-black/50"

@@ -161,7 +161,7 @@ export const viewAllDestinations: ViewAllDestination[] = [
         tagline: 'Heritage Site',
         province: 'Bagmati Province',
         days: '1–2 Days',
-        image: IMAGES.viewAll.swayambhuStupa,
+        image: IMAGES.destination.swayambhuStupa,
         href: itineraryPageHref,
     },
     {
@@ -209,7 +209,7 @@ export const viewAllDestinations: ViewAllDestination[] = [
         tagline: 'Heritage Sites',
         province: 'Bagmati Province',
         days: '2–3 Days',
-        image: IMAGES.viewAll.kathmanduDurbar,
+        image: IMAGES.destination.kathmanduTemple,
         href: itineraryPageHref,
     },
     {
@@ -233,7 +233,7 @@ export const viewAllDestinations: ViewAllDestination[] = [
         tagline: 'Jungle Safari',
         province: 'Terai Region',
         days: '1–2 Days',
-        image: IMAGES.viewAll.jeepSafari,
+        image: IMAGES.destination.featured.jeepSafari,
         href: itineraryPageHref,
     },
     {
@@ -249,7 +249,7 @@ export const viewAllDestinations: ViewAllDestination[] = [
         tagline: 'Highest Lake',
         province: 'Gandaki Province',
         days: '8–12 Days',
-        image: IMAGES.viewAll.tilichoLake,
+        image: IMAGES.featured.tilichoLake,
         href: itineraryPageHref,
     },
     {
@@ -265,7 +265,7 @@ export const viewAllDestinations: ViewAllDestination[] = [
         tagline: 'Turquoise Lakes',
         province: 'Koshi Province',
         days: '10–13 Days',
-        image: IMAGES.viewAll.gokyoLakes,
+        image: IMAGES.featured.gokyoLake,
         href: itineraryPageHref,
     },
 ];

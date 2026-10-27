@@ -17,6 +17,11 @@ export const savedCardCopy = {
     latestReviews: 'Latest reviews',
 } as const;
 
+export const savedCardRows = [
+    { id: 'destinations', label: 'Saved Destinations', count: 0 },
+    { id: 'itineraries', label: 'Saved Itineraries', count: 0 },
+] as const;
+
 export const settingsCardCopy = {
     title: 'Settings',
 } as const;

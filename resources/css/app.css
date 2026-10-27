@@ -14,6 +14,8 @@
     --font-poppins: 'Poppins', ui-sans-serif, system-ui, sans-serif;
     --font-roboto: 'Roboto', ui-sans-serif, system-ui, sans-serif;
 
+    --breakpoint-xs2: 22.5rem;
+
     --breakpoint-xs: 25rem;
 
     --breakpoint-ms: 37.5rem;
@@ -213,6 +215,126 @@
     --spacing-explore-icon: 38px;
     --spacing-hero-panel-h: 792px;
     --container-hero-panel: 1188px;
+    --spacing-quiz-panel-w: 398px;
+    --spacing-quiz-logo-w: 213px;
+    --spacing-quiz-copy-w: 330px;
+
+    /* Component-scoped spacing so layouts stay on named tokens. */
+    --spacing-dest-badge: 5px;
+    --spacing-dest-badge-pad: 11px;
+    --spacing-dest-badge-top: 18px;
+    --spacing-dest-badge-w: 184px;
+    --spacing-dest-panel: 27px;
+    --spacing-day-meta-mb: 9px;
+    --spacing-day-meta-gap: 11px;
+    --spacing-quiz-check: 15px;
+    --spacing-itin-section: 18px;
+    --spacing-review-star: 18px;
+    --spacing-pill-icon: 19px;
+    --spacing-booking-perk: 19px;
+    --spacing-social-icon: 21px;
+    --spacing-about-cta-sm: 22px;
+    --spacing-about-cta-sm-w: 172px;
+    --spacing-itin-block: 22px;
+    --spacing-day-meta-sm: 22px;
+    --spacing-cta-pill: 25px;
+    --spacing-featured-arrow: 26px;
+    --spacing-featured-arrow-w: 26px;
+    --spacing-alt-pill: 27px;
+    --spacing-day-meta: 27px;
+    --spacing-user-edit-sm: 29px;
+    --spacing-review-photo: 30px;
+    --spacing-pagination-icon: 30px;
+    --spacing-featured-tab-icon: 34px;
+    --spacing-dest-card-mobile: 37px;
+    --spacing-auth-field: 38px;
+    --spacing-weather-tab: 38px;
+    --spacing-modal-button: 38px;
+    --spacing-cta-pill-lg: 42px;
+    --spacing-day-nav: 42px;
+    --spacing-quiz-input: 47px;
+    --spacing-immersive-cta: 51px;
+    --spacing-cta-button: 52px;
+    --spacing-cta-button-mt: 52px;
+    --spacing-gallery-nav: 54px;
+    --spacing-booking-cta: 59px;
+    --spacing-booking-wa: 60px;
+    --spacing-modal-input: 68px;
+    --spacing-story-avatar: 68px;
+    --spacing-about-cta: 72px;
+    --spacing-profile-avatar: 72px;
+    --spacing-cta-thumb-sm: 88px;
+    --spacing-review-photo-min: 98px;
+    --spacing-guide-slide-sm: 108px;
+    --spacing-guide-slide-md: 220px;
+    --spacing-guide-slide-lg: 260px;
+    --spacing-user-page: 120px;
+    --spacing-cta-banner: 120px;
+    --spacing-user-edit-sm-w: 134px;
+    --spacing-modal-textarea: 152px;
+    --spacing-review-input: 200px;
+    --spacing-user-edit-md: 246px;
+    --spacing-cta-copy: 257px;
+    --spacing-hero-tagline: 280px;
+    --spacing-journey-media: 286px;
+    --spacing-auth-form: 291px;
+    --spacing-weather-chart: 300px;
+    --spacing-immersive: 326px;
+    --spacing-cta-card: 328px;
+    --spacing-about-image: 333px;
+    --spacing-home-section: 360px;
+    --spacing-story-card: 440px;
+    --spacing-journey-glow: 520px;
+    --spacing-about-section: 590px;
+    --spacing-user-hero: 904px;
+    --spacing-dest-section: 960px;
+
+    --aspect-dest-mobile: 109 / 192;
+    --container-map-quote: 1011px;
+}
+
+@utility duration-map {
+    transition-duration: 180ms;
+}
+
+@utility top-hero-deco {
+    top: 6%;
+}
+
+@utility top-about-deco {
+    top: 12.9%;
+}
+
+@utility top-destination-deco {
+    top: 12%;
+}
+
+@utility top-destination-deco-lg {
+    top: 17.5%;
+}
+
+@utility top-guide-card {
+    top: 30%;
+}
+
+@utility pr-map-gutter {
+    padding-right: 5%;
+}
+
+@utility pl-map-label {
+    padding-left: 10%;
+}
+
+@utility pt-map-offset {
+    padding-top: calc(25.6vw - 3rem);
+}
+
+@utility basis-story-card {
+    flex-basis: 38%;
+}
+
+@utility z-modal {
+    z-index: 100;
 }
 
 @utility no-scrollbar {

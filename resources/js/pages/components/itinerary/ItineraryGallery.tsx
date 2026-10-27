@@ -27,7 +27,7 @@ export default function ItineraryGallery() {
     return (
         <section
             aria-label={galleryTiles.sectionLabel}
-            className="flex w-full flex-col gap-2 md:gap-3"
+            className="flex w-full flex-col gap-2 md:gap-3 px-2"
         >
             <div className="relative w-full lg:hidden">
                 <SkeletonImage
@@ -121,10 +121,10 @@ export default function ItineraryGallery() {
                         className="h-full w-full object-cover"
                     />
                     <span className="absolute inset-0 flex items-center justify-center">
-                        <span className="shadow-card flex size-13.5 items-center justify-center rounded-full bg-white/95">
+                        <span className="shadow-card size-gallery-nav flex items-center justify-center rounded-full bg-white/95">
                             <Play
                                 aria-hidden
-                                className="text-review-ink size-5.5 fill-current"
+                                className="text-review-ink size-day-meta-sm fill-current"
                             />
                         </span>
                     </span>

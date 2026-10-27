@@ -11,10 +11,8 @@ import {
     imageRoundedXl,
     sectionPadding,
 } from '@/config/theme';
-import Modal from '@/components/ui/Modal';
 import CtaButton from '@/components/ui/CtaButton';
-import QuizForm from '../quiz/QuizForm';
-import QuizPanel from '../quiz/QuizPanel';
+import QuizModal from '../quiz/QuizModal';
 
 const DiscoverNepal = () => {
     const [quizOpen, setQuizOpen] = useState(false);
@@ -60,7 +58,7 @@ const DiscoverNepal = () => {
                         onClick={() => setQuizOpen(true)}
                         className={cn(
                             ctaMobile,
-                            'text-xs-md order-4 transition-opacity hover:opacity-90 md:hidden',
+                            'order-4 transition-opacity hover:opacity-90 md:hidden',
                         )}
                     >
                         <span className="px-2">{discoverNepalCopy.cta}</span>
@@ -70,7 +68,7 @@ const DiscoverNepal = () => {
                         onClick={() => setQuizOpen(true)}
                         className={cn(
                             fontPrimary,
-                            'bg-cta text-md-lg hidden h-10.5 w-52 items-center justify-center rounded-full font-bold text-white transition-opacity hover:opacity-90 md:order-3 md:mt-5 md:flex',
+                            'bg-cta text-md-lg h-cta-pill-lg hidden w-52 items-center justify-center rounded-full font-bold text-white transition-opacity hover:opacity-90 md:order-3 md:mt-5 md:flex',
                         )}
                     >
                         {discoverNepalCopy.cta}
@@ -84,7 +82,7 @@ const DiscoverNepal = () => {
                         loading="lazy"
                         className={cn(
                             imagePlaceholder,
-                            'mt-13 aspect-257/387 w-64.25 min-w-0 object-cover',
+                            'mt-cta-button-mt w-cta-copy aspect-257/387 min-w-0 object-cover',
                         )}
                     />
 
@@ -94,24 +92,16 @@ const DiscoverNepal = () => {
                         loading="lazy"
                         className={cn(
                             imagePlaceholder,
-                            'aspect-257/387 w-82 min-w-0 object-cover',
+                            'w-cta-card aspect-257/387 min-w-0 object-cover',
                         )}
                     />
                 </div>
             </div>
-            <Modal
+            <QuizModal
                 open={quizOpen}
                 onClose={() => setQuizOpen(false)}
                 label={discoverNepalCopy.modalLabel}
-                panelClassName="p-0 sm:max-w-hero-panel md:p-0 lg:h-hero-panel-h"
-            >
-                <div className="flex w-full flex-1 items-stretch">
-                    <QuizPanel variant="modal" />
-                    <div className="w-full min-w-0 flex-1 p-6 md:p-10">
-                        <QuizForm compact />
-                    </div>
-                </div>
-            </Modal>
+            />
         </section>
     );
 };

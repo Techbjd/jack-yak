@@ -9,11 +9,11 @@ export default function UserHero() {
                 alt=""
                 aria-hidden
                 loading="eager"
-                className="absolute inset-0 hidden h-full w-full bg-transparent object-cover md:block"
+                className="absolute inset-0 hidden h-full w-full object-cover md:block"
             />
             <div
                 aria-hidden
-                className="to-canvas absolute inset-x-0 top-226 hidden h-24 bg-linear-to-b from-transparent md:block"
+                className="to-canvas top-user-hero absolute inset-x-0 hidden h-24 bg-linear-to-b from-transparent md:block"
             />
             <div className="relative w-full">
                 <Header

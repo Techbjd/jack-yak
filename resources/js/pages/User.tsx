@@ -23,8 +23,12 @@ export default function User() {
     const { flash } = usePage<UserPageProps>().props;
 
     return (
-        <AppLayout seo={pageSeo.user} shellClassName="bg-canvas relative">
-            <div className="w-full sm:pb-30">
+        <AppLayout
+            seo={pageSeo.user}
+            background="canvas"
+            shellClassName="relative"
+        >
+            <div className="sm:pb-user-page w-full">
                 <UserHero />
             </div>
             {flash?.success && (

@@ -1,4 +1,9 @@
-import { eyebrow, fontPrimary, imagePlaceholder } from '@/config/theme';
+import {
+    eyebrow,
+    fontPrimary,
+    imagePlaceholder,
+    sectionInner,
+} from '@/config/theme';
 import { IMAGES } from '@/config/images';
 import {
     immersiveExperiences,
@@ -10,7 +15,7 @@ import CoverImage from '@/components/ui/CoverImage';
 
 export default function JourneyNepal() {
     return (
-        <section className="max-w-container flex flex-col gap-0 px-6 py-8 md:px-12 md:py-12 lg:px-24">
+        <section className={cn(sectionInner, 'flex flex-col py-8 md:py-12')}>
             <div className="-mx-6 -my-0.5 grid grid-cols-2 items-stretch gap-0 md:mx-0 lg:-mx-24 lg:grid-cols-12">
                 <div className="xs:pl-8 flex flex-col gap-4 pl-6 md:gap-6 md:pl-0 lg:col-span-5 lg:justify-center lg:pl-20">
                     <img
@@ -36,7 +41,7 @@ export default function JourneyNepal() {
                         {journeyNepalCopy.titleLead}{' '}
                         <span
                             className={cn(
-                                'xl:absolute xl:top-0 xl:left-130 xl:z-10 xl:text-white',
+                                'xl:left-journey-glow xl:absolute xl:top-0 xl:z-10 xl:text-white',
                             )}
                         >
                             {journeyNepalCopy.titleAccent}
@@ -75,8 +80,8 @@ export default function JourneyNepal() {
                 </div>
             </div>
 
-            <div className="xs:grid-cols-2 -mx-6 grid grid-cols-2 items-stretch gap-0 md:mx-0 lg:-mx-24 lg:min-h-71.5 lg:grid-cols-12 lg:gap-0">
-                <div className="bg-cta-ember xs:col-span-1 md:bg-cta col-span-1 flex flex-col justify-center gap-5 px-8 py-10 text-white md:gap-3 md:p-6 lg:col-span-3 lg:justify-start lg:px-16 lg:pt-12">
+            <div className="lg:min-h-journey-media -mx-6 grid grid-cols-2 items-stretch gap-0 md:mx-0 lg:-mx-24 lg:grid-cols-12">
+                <div className="bg-cta-ember md:bg-cta col-span-1 flex flex-col justify-center gap-5 px-8 py-10 text-white md:gap-3 md:p-6 lg:col-span-3 lg:justify-start lg:px-16 lg:pt-12">
                     <h3
                         className={cn(
                             fontPrimary,

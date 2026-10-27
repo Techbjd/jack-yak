@@ -10,7 +10,6 @@ interface FilterPillProps {
     icon: typeof Image;
     label: string;
     count: number;
-    widthClass: string;
 }
 
 function FilterPill({
@@ -18,7 +17,6 @@ function FilterPill({
     icon: Icon,
     label,
     count,
-    widthClass,
 }: FilterPillProps) {
     return (
         <button
@@ -26,7 +24,6 @@ function FilterPill({
             aria-pressed={active}
             className={cn(
                 'flex h-8 shrink-0 cursor-pointer items-center justify-center gap-1 rounded-full border px-3 md:h-12 md:gap-2 md:px-5',
-                widthClass,
                 active
                     ? 'border-deep-teal bg-deep-teal text-white'
                     : 'border-card-line text-slate-text bg-white',
@@ -37,7 +34,7 @@ function FilterPill({
             <span
                 aria-label={`${count} items`}
                 className={cn(
-                    'text-xs-sm md:text-base-md flex h-4 min-w-4.75 items-center justify-center rounded-full leading-none font-bold md:h-6 md:min-w-6 md:px-1.5',
+                    'text-xs-sm md:text-base-md min-w-pill-icon flex h-4 items-center justify-center rounded-full leading-none font-bold md:h-6 md:min-w-6 md:px-1.5',
                     active
                         ? 'bg-count-overlay-active text-white'
                         : 'bg-count-overlay text-slate-text',
@@ -61,19 +58,16 @@ export default function GalleryFilterPills() {
                 icon={Image}
                 label={galleryFilters.gallery}
                 count={galleryFilters.galleryCount}
-                widthClass="w-auto md:w-auto"
             />
             <FilterPill
                 icon={Users}
                 label={galleryFilters.photos}
                 count={galleryFilters.photosCount}
-                widthClass="w-auto md:w-auto"
             />
             <FilterPill
                 icon={SquarePlay}
                 label={galleryFilters.videos}
                 count={galleryFilters.videosCount}
-                widthClass="w-auto md:w-auto"
             />
         </div>
     );

@@ -87,7 +87,7 @@ const Header = ({ tone = 'onDark', mdTone, className }: HeaderProps) => {
                     <ul
                         className={cn(
                             fontPrimary,
-                            'flex items-center gap-8 text-2xl leading-tight font-semibold lg:gap-12 lg:text-2xl',
+                            'flex items-center gap-8 text-2xl leading-tight font-semibold lg:gap-12',
                             ink,
                         )}
                     >
@@ -164,7 +164,7 @@ const Header = ({ tone = 'onDark', mdTone, className }: HeaderProps) => {
                     role="dialog"
                     aria-modal="true"
                     aria-label={headerCopy.menuLabel}
-                    className="fixed inset-0 z-100 md:hidden"
+                    className="fixed inset-0 z-modal md:hidden"
                 >
                     <div
                         className="absolute inset-0 bg-black/50"

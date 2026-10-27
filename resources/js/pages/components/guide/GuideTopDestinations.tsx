@@ -3,13 +3,15 @@ import type { KeyboardEvent } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { guideTopDestinations, viewAllPageHref } from '@/config/destination';
 import { guideTopHeader } from '@/config/guide';
+import { cn } from '@/lib/utils';
+import { sectionInner } from '@/config/theme';
 import CarouselDots from '@/components/ui/CarouselDots';
 import ViewAllLink from '@/components/ui/ViewAllLink';
 import SectionHeading from '@/components/ui/SectionHeading';
 import DestinationCard from '@/components/ui/DestinationCard';
 
 const GUIDE_CARD_LAYOUT =
-    'ms:basis-55 max-w-dest-card mx-auto flex w-full shrink-0 grow basis-27 snap-start flex-col items-center md:basis-65 lg:w-full lg:basis-auto';
+    'ms:basis-guide-slide-md max-w-dest-card mx-auto flex w-full shrink-0 grow basis-guide-slide-sm snap-start flex-col items-center md:basis-guide-slide-lg lg:w-full lg:basis-auto';
 
 type GuideTopDestination = (typeof guideTopDestinations)[number];
 
@@ -99,7 +101,12 @@ const GuideTopDestinations = () => {
 
     return (
         <section className="w-full">
-            <div className="max-w-container mx-auto flex w-full flex-col gap-4 px-6 py-6 md:gap-8 md:px-12 lg:px-24">
+            <div
+                className={cn(
+                    sectionInner,
+                    'flex flex-col gap-4 py-6 md:gap-8',
+                )}
+            >
                 <div className="flex items-end justify-between gap-4">
                     <SectionHeading
                         eyebrow={guideTopHeader.eyebrow}
@@ -137,7 +144,7 @@ const GuideTopDestinations = () => {
                         type="button"
                         onClick={scrollToNextImage}
                         aria-label={guideTopHeader.nextLabel}
-                        className="bg-ink shadow-card absolute top-[30%] right-3 z-10 flex h-6 w-6 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full text-white md:right-8 md:h-9 md:w-9"
+                        className="bg-ink shadow-card top-guide-card absolute right-3 z-10 flex h-6 w-6 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full text-white md:right-8 md:h-9 md:w-9"
                     >
                         <ArrowRight className="h-4 w-4 md:h-5 md:w-5" />
                     </button>

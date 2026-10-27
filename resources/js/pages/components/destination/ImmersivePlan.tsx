@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { fontPrimary, imagePlaceholder } from '@/config/theme';
+import { fontPrimary, imagePlaceholder, sectionInner } from '@/config/theme';
 import { immersiveExperiences, immersivePlanCopy } from '@/config/destination';
 import { IMAGES } from '@/config/images';
 import { cn } from '@/lib/utils';
@@ -10,8 +10,8 @@ import CheckAvailability from '../booking/CheckAvailability';
 export default function ImmersivePlan() {
     const [availabilityOpen, setAvailabilityOpen] = useState(false);
     return (
-        <section className="flex w-full flex-col px-6 py-8 md:px-12 md:py-12 lg:px-24">
-            <div className="rounded-immersive grid grid-cols-2 items-stretch overflow-hidden md:min-h-81.5 md:grid-cols-12">
+        <section className={cn(sectionInner, 'flex flex-col py-8 md:py-12')}>
+            <div className="rounded-immersive md:min-h-immersive grid grid-cols-2 items-stretch overflow-hidden md:grid-cols-12">
                 <div className="bg-surface-warm flex flex-col justify-center gap-4 p-5 md:col-span-5 md:gap-5 md:p-8 lg:gap-6 lg:px-16 lg:py-10">
                     <h2
                         className={cn(
@@ -31,9 +31,10 @@ export default function ImmersivePlan() {
                     </p>
                     <CtaButton
                         onClick={() => setAvailabilityOpen(true)}
+                        shape="block"
                         className={cn(
                             fontPrimary,
-                            'bg-cta-ember text-xs-sm md:bg-cta md:text-md-lg w-fit rounded-none px-5 py-2 tracking-wide md:h-12.75 md:w-52 md:px-0 md:py-0',
+                            'bg-cta-ember text-xs-sm md:bg-cta md:text-md-lg md:h-immersive-cta w-fit px-5 py-2 tracking-wide md:w-52 md:px-0 md:py-0',
                         )}
                     >
                         {immersivePlanCopy.cta}
@@ -46,7 +47,7 @@ export default function ImmersivePlan() {
                 <div
                     className={cn(
                         imagePlaceholder,
-                        'relative flex min-h-40 w-full items-center justify-center overflow-hidden md:col-span-7 md:min-h-81.5',
+                        'md:min-h-immersive relative flex min-h-40 w-full items-center justify-center overflow-hidden md:col-span-7',
                     )}
                 >
                     <CoverImage

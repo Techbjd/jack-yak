@@ -4,14 +4,12 @@ import { Star, ImagePlus, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { todayISODate } from '@/lib/form-utils';
 import {
+    authDividerLine,
     fontPrimary,
     formErrorBorder,
-    modalDivider,
     modalHint,
     modalLabel,
-    modalSubtitle,
     modalTextarea,
-    modalTitle,
 } from '@/config/theme';
 import {
     MAX_REVIEW_LENGTH,
@@ -33,7 +31,7 @@ import FieldError from '@/components/forms/FieldError';
 import TextField from '@/components/forms/TextField';
 import SelectField from '@/components/forms/SelectField';
 import FormSuccess from '@/components/forms/FormSuccess';
-import GuestNudge from '@/components/forms/GuestNudge';
+import ModalFormHeader from '@/components/forms/ModalFormHeader';
 import FormActions from '@/components/forms/FormActions';
 import type { PageProps } from '@/types';
 
@@ -268,19 +266,13 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                     onPaste={handlePaste}
                     className="flex flex-col"
                 >
-                    <h2 className={cn(modalTitle, 'text-2xl-3xl')}>
-                        {giveReviewCopy.title}
-                    </h2>
-                    <p className={cn(modalSubtitle, 'pt-2')}>
-                        {giveReviewCopy.intro}
-                    </p>
-                    {!user && (
-                        <GuestNudge
-                            tone="modal"
-                            suffix={giveReviewCopy.guestSuffix}
-                        />
-                    )}
-                    <hr className={modalDivider} />
+                    <ModalFormHeader
+                        title={giveReviewCopy.title}
+                        intro={giveReviewCopy.intro}
+                        titleClassName="text-2xl-3xl"
+                        showGuest={!user}
+                        guestSuffix={giveReviewCopy.guestSuffix}
+                    />
 
                     <p className={cn(modalLabel, 'pt-6')}>
                         {giveReviewCopy.rateStep}
@@ -423,7 +415,7 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                             setPhotoError(giveReviewCopy.imageFilesOnly);
                         }}
                         className={cn(
-                            'border-ink flex min-h-24.5 cursor-pointer flex-col items-center justify-center gap-3 rounded-lg border border-dashed bg-white p-6 text-center transition-colors',
+                            'border-ink min-h-review-photo-min flex cursor-pointer flex-col items-center justify-center gap-3 rounded-lg border border-dashed bg-white p-6 text-center transition-colors',
                             dragging && 'border-cta bg-surface-cream',
                             urlLoading && 'opacity-60',
                         )}
@@ -434,9 +426,9 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                         </p>
                         <div
                             aria-hidden
-                            className="flex w-full max-w-50 items-center gap-3"
+                            className="max-w-review-input flex w-full items-center gap-3"
                         >
-                            <span className="bg-divider h-px flex-1" />
+                            <span className={authDividerLine} />
                             <span
                                 className={cn(
                                     fontPrimary,
@@ -445,12 +437,12 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                             >
                                 {giveReviewCopy.orDivider}
                             </span>
-                            <span className="bg-divider h-px flex-1" />
+                            <span className={authDividerLine} />
                         </div>
                         <span
                             className={cn(
                                 fontPrimary,
-                                'border-ink text-ink flex h-7.5 items-center justify-center rounded-lg border bg-white px-3 text-xs font-semibold',
+                                'border-ink text-ink h-review-photo flex items-center justify-center rounded-lg border bg-white px-3 text-xs font-semibold',
                             )}
                         >
                             {giveReviewCopy.browseFiles}
@@ -499,7 +491,7 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                         </ul>
                     )}
 
-                    <div className="item-start grid w-full grid-cols-1 gap-2 pt-5 md:grid-cols-2">
+                    <div className="grid w-full grid-cols-1 items-start gap-2 pt-5 md:grid-cols-2">
                         <div className="flex min-w-0 flex-col">
                             <SelectField
                                 id="review-place"
@@ -575,7 +567,7 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                                                 setAgreedError('');
                                             }
                                         }}
-                                        className="accent-ink size-4.5 shrink-0 cursor-pointer"
+                                        className="accent-ink size-review-star shrink-0 cursor-pointer"
                                     />
                                     <span
                                         className={cn(

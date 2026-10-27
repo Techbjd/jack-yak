@@ -28,7 +28,7 @@ export default function ViewAllHeader() {
                     'text-md-lg text-text-primary tracking-card flex cursor-pointer items-center gap-1 font-bold',
                 )}
             >
-                <ArrowLeft className="size-4.75 shrink-0" />
+                <ArrowLeft className="size-booking-perk shrink-0" />
                 {viewAllHeaderCopy.back}
             </button>
             <h1
