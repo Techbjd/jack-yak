@@ -32,6 +32,11 @@ export default function Modal({
         };
     }, []);
 
+    const onCloseRef = useRef(onClose);
+
+    useEffect(() => {
+        onCloseRef.current = onClose;
+    }, [onClose]);
     useEffect(() => {
         if (!open) {
             return;
@@ -40,7 +45,7 @@ export default function Modal({
         const previouslyFocused = document.activeElement as HTMLElement | null;
         const onKey = (e: KeyboardEvent) => {
             if (e.key === 'Escape') {
-                onClose();
+                onCloseRef.current();
                 return;
             }
             if (e.key !== 'Tab' || !panel) {
@@ -63,6 +68,7 @@ export default function Modal({
                 first.focus();
             }
         };
+
         document.addEventListener('keydown', onKey);
         const previousOverflow = document.body.style.overflow;
         document.body.style.overflow = 'hidden';
@@ -72,7 +78,7 @@ export default function Modal({
             document.body.style.overflow = previousOverflow;
             previouslyFocused?.focus();
         };
-    }, [open, onClose]);
+    }, [open]);
 
     if (!open || !mounted) {
         return null;
