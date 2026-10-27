@@ -58,7 +58,7 @@ export interface PageSeo {
 
 function organizationJsonLd(description: string): Record<string, unknown> {
     return {
-        '@context': 'https://schema.org',
+        '@context': 'https://jackyak.org',
         '@type': 'TravelAgency',
         name: siteSeo.siteName,
         url: siteUrl,

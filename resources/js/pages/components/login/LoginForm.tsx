@@ -65,7 +65,7 @@ export default function LoginForm() {
                 <form
                     className={cn(
                         'flex w-full flex-col',
-                        isLocked && 'pointer-events-none opacity-60',
+                        isLocked && 'pointer-events-none opacity-50',
                     )}
                     onSubmit={handleSubmit}
                     noValidate

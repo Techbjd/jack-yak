@@ -19,9 +19,9 @@ export default function Itinerary() {
     return (
         <AppLayout
             seo={pageSeo.itinerary}
-            header={<Header tone="onLight" className="max-w-full" />}
+            header={<Header tone="onLight" className="max-w-full " />}
         >
-            <div className={cn(itinPage, 'md:max-w-full')}>
+            <div className={cn(itinPage, 'md:max-w-full lg:px-2')}>
                 <div className="mt-4 w-full md:mt-8">
                     <ErrorBoundary message="Gallery failed to load.">
                         <ItineraryGallery />
