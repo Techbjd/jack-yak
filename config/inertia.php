@@ -16,8 +16,13 @@ return [
     */
 
     'ssr' => [
-        'enabled' => true,
-        'url' => 'http://127.0.0.1:13714',
+        // Decision (Task 11): SSR stays OFF by default because no process serves
+        // the node bundle in production (start-container.sh runs FrankenPHP only)
+        // — enabled-but-unreachable silently degraded to client rendering.
+        // To serve SSR later: add `node bootstrap/ssr/ssr.js &` to
+        // start-container.sh + set INERTIA_SSR_ENABLED=true.
+        'enabled' => env('INERTIA_SSR_ENABLED', false),
+        'url' => env('INERTIA_SSR_URL', 'http://127.0.0.1:13714'),
         // 'bundle' => base_path('bootstrap/ssr/ssr.mjs'),
 
     ],
