@@ -91,10 +91,6 @@ npm run check:fix         # Apply lint/format fixes
 npm run types:check       # TypeScript type check
 ```
 
-## Testing
-
-Tests live in `tests/` and use Pest with factories. **The `tests/` directory is gitignored** (local-only by repo policy), so CI has no suite to run — `composer test` skips the Pest step when `tests/` is absent. When you do have the suite locally, `composer test` runs Pint, PHPStan, and Pest in that order.
-
 ## Conventions
 
 See `AGENTS.md` for the full coding standards (PHP style, React/Tailwind patterns, commit workflow, and review checklist). In short:
