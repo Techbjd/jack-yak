@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
@@ -30,6 +31,8 @@ class ResetPasswordNotification extends Notification
 
     /**
      * Get the mail representation of the notification.
+     *
+     * @param  User  $notifiable
      */
     public function toMail(object $notifiable): MailMessage
     {

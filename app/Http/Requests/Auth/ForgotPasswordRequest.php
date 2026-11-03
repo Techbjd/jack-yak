@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Auth;
 
+use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Validation\ValidationException;
@@ -16,6 +17,11 @@ class ForgotPasswordRequest extends FormRequest
 
     }
 
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, ValidationRule|array<mixed>|string>
+     */
     public function rules(): array
     {
         return [
@@ -36,24 +42,5 @@ class ForgotPasswordRequest extends FormRequest
             }
             RateLimiter::hit($key, 60);
         }
-    }
-
-    protected function prepareForValidaton(): void
-    {
-        $email = strtolower((string) $this->input('email'));
-        if ($email === '') {
-            return;
-
-        }
-
-        $key = 'forgot-password:'.$email;
-        if (RateLimiter::tooManyAttempts($key, 6)) {
-            throw ValidationException::withMessages([
-                'email' => 'Too many reset attempts. Try again in '.RateLimiter::availableIn($key).' seconds.',
-            ]);
-            RateLimiter::hit($key, 60);
-
-        }
-
     }
 }
