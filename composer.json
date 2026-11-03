@@ -74,7 +74,7 @@
             "@php artisan config:clear --ansi",
             "@lint:check",
             "@types:check",
-            "@php artisan test"
+            "@php -r \"if (is_dir('tests')) { passthru('php artisan test', $status); exit($status); } echo 'No tests directory (local-only); skipping tests.' . PHP_EOL;\""
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
