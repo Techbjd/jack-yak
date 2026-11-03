@@ -79,7 +79,7 @@ export default function CheckAvailability({
         });
     };
 
-    const done = Boolean(flash?.success && !processing);
+    const done = Boolean(flash?.availabilitySuccess && !processing);
 
     return (
         <Modal open={open} onClose={close} label={availabilityCopy.dialogLabel}>
@@ -98,7 +98,7 @@ export default function CheckAvailability({
                             {availabilityCopy.successTail}
                         </>
                     }
-                    flash={flash?.success}
+                    flash={flash?.availabilitySuccess}
                     onPrimary={close}
                     primaryLabel={availabilityCopy.doneLabel}
                     linkHref={user ? siteRoutes.user : siteRoutes.login}

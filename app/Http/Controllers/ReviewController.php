@@ -32,6 +32,6 @@ class ReviewController extends Controller
             'photos' => $photoPaths !== [] ? $photoPaths : null,
         ]);
 
-        return back()->with('success', 'Thank you! Your review was submitted.');
+        return back()->with('reviewSuccess', 'Thank you! Your review was submitted.');
     }
 }

@@ -105,7 +105,7 @@ export const IMAGES = {
     },
     itinerary: {
         icons: {
-            meals: '/images/itinerary/icons/dinner.png',
+            meals: '/images/itinerary/icons143d24e9d4ef2e765e75fbe263dfdb8cfa94170f/dinner.png',
         },
         hero: '/images/itinerary/hero/143d24e9d4ef2e765e75fbe263dfdb8cfa94170f.jpg',
         galleryThumbs: [
@@ -116,7 +116,7 @@ export const IMAGES = {
         dayThumb: '/images/destination/kathmandu-temple.png',
         videoPoster:
             '/images/itinerary/hero/8b68c4df8683f79f38b958532662ce0248180a42.jpg',
-        reviewerAvatar: '/images/about/traveler-avatar.png',
+        reviewerAvatar: '/images/about/avatar-orginal.jpg',
         reviewPhotos: [
             '/images/itinerary/reviews/00c26be59e7a15b8c98eb58a907d3be47fb6542f.jpg',
             '/images/itinerary/reviews/02483580c448ee13dfa0efe32505f7c0f8df971d.jpg',

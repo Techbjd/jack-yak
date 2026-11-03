@@ -7,6 +7,9 @@ export interface PageProps extends Record<string, unknown> {
     };
     flash?: {
         success?: string | null;
+        availabilitySuccess?: string | null;
+        reviewSuccess?: string | null;
+        quizSuccess?: string | null;
     };
 }
 

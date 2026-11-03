@@ -6,7 +6,7 @@ export default function UserHero() {
         <div className="md:h-user-hero-h relative w-full md:absolute md:inset-x-0 md:top-0 md:min-h-0">
             <img
                 src={IMAGES.destination.journeyMountain}
-                alt=""
+                alt="mountain picture"
                 aria-hidden
                 loading="eager"
                 className="absolute inset-0 hidden h-full w-full object-cover md:block"

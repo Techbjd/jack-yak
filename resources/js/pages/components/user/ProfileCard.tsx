@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { usePage } from '@inertiajs/react';
 import { Pencil, ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -25,6 +26,8 @@ export default function ProfileCard() {
     const user = auth?.user;
     const name = user?.name ?? profileCardCopy.guestName;
     const email = user?.email ?? profileCardCopy.guestEmail;
+    const fallbackAvatar = IMAGES.about.travelerAvatar;
+    const [avatar, setAvatar] = useState(user?.avatar || fallbackAvatar);
 
     return (
         <section
@@ -34,8 +37,10 @@ export default function ProfileCard() {
             )}
         >
             <img
-                src={IMAGES.about.travelerAvatar}
+                src={avatar}
                 alt={name}
+                referrerPolicy="no-referrer"
+                onError={() => setAvatar(fallbackAvatar)}
                 className="bg-bg-placeholder size-profile-avatar shrink-0 rounded-full object-cover object-top md:size-36"
             />
             <div className="flex min-w-0 flex-1 flex-col gap-1">

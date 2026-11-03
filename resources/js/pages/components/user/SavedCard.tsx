@@ -17,6 +17,18 @@ interface SavedPageProps extends PageProps {
     recentReviews?: RecentReview[];
 }
 
+const formatVisitDate = (value: string): string => {
+    const date = new Date(`${value}T00:00:00`);
+
+    return Number.isNaN(date.getTime())
+        ? value
+        : date.toLocaleDateString('en-GB', {
+              day: 'numeric',
+              month: 'short',
+              year: 'numeric',
+          });
+};
+
 export default function SavedCard() {
     const { recentAvailability, recentReviews } =
         usePage<SavedPageProps>().props;
@@ -92,7 +104,8 @@ export default function SavedCard() {
                     <ul className="pt-2 text-sm">
                         {recentReviews.map((r) => (
                             <li key={r.id}>
-                                {r.rating}★ · {r.place} · {r.visit_date}
+                                {r.rating}★ · {r.place} ·{' '}
+                                {formatVisitDate(r.visit_date)}
                             </li>
                         ))}
                     </ul>

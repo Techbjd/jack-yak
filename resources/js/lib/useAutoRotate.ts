@@ -17,6 +17,10 @@ export function useAutoRotate(
     const [active, setActive] = useState(0);
 
     useEffect(() => {
+        setActive((index) => (length > 0 ? Math.min(index, length - 1) : 0));
+    }, [length]);
+
+    useEffect(() => {
         if (length < 2) {
             return;
         }

@@ -18,6 +18,6 @@ class AvailabilityController extends Controller
             'looking_for' => $request->validated('looking_for'),
         ]);
 
-        return back()->with('success', 'Availability request received. We will confirm by email.');
+        return back()->with('availabilitySuccess', 'Availability request received. We will confirm by email.');
     }
 }

@@ -19,6 +19,6 @@ class QuizSubmissionController extends Controller
             'answers' => $validated['answers'],
         ]);
 
-        return back()->with('success', 'We will send your personalized recommendations to your email.');
+        return back()->with('quizSuccess', 'We will send your personalized recommendations to your email.');
     }
 }

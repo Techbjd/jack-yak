@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, usePage } from '@inertiajs/react';
 import { Heart, Menu, Search, User as UserIcon, X } from 'lucide-react';
 import { fontPrimary } from '@/config/theme';
@@ -29,18 +29,59 @@ const Header = ({ tone = 'onDark', mdTone, className }: HeaderProps) => {
     const { auth } = usePage<PageProps>().props;
     const user = auth?.user ?? null;
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const mobileMenuRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         if (!isMobileMenuOpen) {
             return;
         }
+
+        const panel = mobileMenuRef.current;
+        const previouslyFocused = document.activeElement as HTMLElement | null;
+        const previousOverflow = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+
+        const getFocusables = () =>
+            panel?.querySelectorAll<HTMLElement>(
+                'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+            ) ?? [];
+
         const onKey = (e: KeyboardEvent) => {
             if (e.key === 'Escape') {
                 setIsMobileMenuOpen(false);
+                return;
+            }
+
+            if (e.key !== 'Tab' || !panel) {
+                return;
+            }
+
+            const focusables = getFocusables();
+            if (focusables.length === 0) {
+                e.preventDefault();
+                return;
+            }
+
+            const first = focusables[0];
+            const last = focusables[focusables.length - 1];
+
+            if (e.shiftKey && document.activeElement === first) {
+                e.preventDefault();
+                last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
             }
         };
+
         document.addEventListener('keydown', onKey);
-        return () => document.removeEventListener('keydown', onKey);
+        getFocusables()[0]?.focus();
+
+        return () => {
+            document.removeEventListener('keydown', onKey);
+            document.body.style.overflow = previousOverflow;
+            previouslyFocused?.focus();
+        };
     }, [isMobileMenuOpen]);
 
     const onLight = tone === 'onLight';
@@ -132,15 +173,9 @@ const Header = ({ tone = 'onDark', mdTone, className }: HeaderProps) => {
                                 ? headerCopy.profileLabel(user.name)
                                 : headerCopy.signInLabel
                         }
-                        className={cn(headerIconLinkBase, 'relative', ring)}
+                        className={cn(headerIconLinkBase, 'relative', ring, 'rounded-full bg-black/30')}
                     >
                         <UserIcon className="h-5 w-5 lg:h-6 lg:w-6" />
-                        {user && (
-                            <span
-                                aria-hidden
-                                className="bg-cta-ember absolute top-0 right-0 size-2.5 rounded-full"
-                            />
-                        )}
                     </Link>
                 </div>
 
@@ -171,7 +206,10 @@ const Header = ({ tone = 'onDark', mdTone, className }: HeaderProps) => {
                         onClick={() => setIsMobileMenuOpen(false)}
                     />
 
-                    <div className="w-sidebar absolute top-0 left-0 flex h-full flex-col bg-white shadow-lg">
+                    <div
+                        ref={mobileMenuRef}
+                        className="w-sidebar absolute top-0 left-0 flex h-full flex-col bg-white shadow-lg"
+                    >
                         <div className="flex items-center justify-end p-4">
                             <button
                                 type="button"
@@ -242,11 +280,21 @@ const Header = ({ tone = 'onDark', mdTone, className }: HeaderProps) => {
                                 ))}
                                 <li className="py-2">
                                     {user ? (
-                                        <Link href={siteRoutes.user}>
+                                        <Link
+                                            href={siteRoutes.user}
+                                            onClick={() =>
+                                                setIsMobileMenuOpen(false)
+                                            }
+                                        >
                                             {headerCopy.accountLabel}
                                         </Link>
                                     ) : (
-                                        <Link href={siteRoutes.login}>
+                                        <Link
+                                            href={siteRoutes.login}
+                                            onClick={() =>
+                                                setIsMobileMenuOpen(false)
+                                            }
+                                        >
                                             {headerCopy.signInLabel}
                                         </Link>
                                     )}

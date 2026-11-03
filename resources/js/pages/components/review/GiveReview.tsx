@@ -81,7 +81,7 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
     const [urlLoading, setUrlLoading] = useState(false);
 
     const lit = hovered || data.rating;
-    const done = Boolean(flash?.success && !processing);
+    const done = Boolean(flash?.reviewSuccess && !processing);
 
     const close = () => {
         previews.forEach((p) => URL.revokeObjectURL(p.url));
@@ -249,7 +249,7 @@ export default function GiveReview({ open, onClose }: GiveReviewProps) {
                     tone="modal"
                     title={giveReviewCopy.successTitle}
                     message={reviewSuccessMessage(data.rating)}
-                    flash={flash?.success}
+                    flash={flash?.reviewSuccess}
                     onPrimary={close}
                     primaryLabel={giveReviewCopy.doneLabel}
                     linkHref={user ? siteRoutes.user : siteRoutes.login}

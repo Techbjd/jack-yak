@@ -52,32 +52,40 @@ export default function QuizForm({ compact = false }: { compact?: boolean }) {
             return;
         }
         post(quizEndpoint, {
-            onError: () => {
-                const firstBackend =
-                    (errors as Record<string, string>).name ||
-                    (errors as Record<string, string>).email
-                        ? 'quiz-name'
-                        : quizSelectQuestions.find(
-                              (q) =>
-                                  (errors as Record<string, string>)[
-                                      `answers.${q.id}`
-                                  ],
-                          )?.id;
-                if (firstBackend) {
-                    document.getElementById(`quiz-${firstBackend}`)?.focus();
+            onError: (formErrors) => {
+                const bag = formErrors as Record<string, string | undefined>;
+
+                let firstErrorId: string | undefined;
+
+                if (bag.name) {
+                    firstErrorId = 'quiz-name';
+                } else if (bag.email) {
+                    firstErrorId = 'quiz-email';
+                } else {
+                    const question = quizSelectQuestions.find(
+                        (q) => bag[`answers.${q.id}`],
+                    );
+
+                    if (question) {
+                        firstErrorId = `quiz-${question.id}`;
+                    }
+                }
+
+                if (firstErrorId) {
+                    document.getElementById(firstErrorId)?.focus();
                 }
             },
         });
     };
 
-    if (flash?.success) {
+    if (flash?.quizSuccess) {
         return (
             <FormSuccess
                 tone="quiz"
                 title={quizFormCopy.successTitle}
                 message={
                     <>
-                        {flash.success} {quizFormCopy.savedFor}{' '}
+                        {flash.quizSuccess} {quizFormCopy.savedFor}{' '}
                         {data.email || quizFormCopy.anonymousLabel}.
                     </>
                 }
